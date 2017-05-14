@@ -1,0 +1,148 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Automating the creation of joint multigram language models as WFST: Part 2'
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-06-30 15:04:59 +0200'
+date_gmt: '2012-06-30 12:04:59 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>Foreword</strong></p>
+<p>This a article presents an updated version of the model training application originally discussed in [1], considering the compatibility issues with phonetisaurus decoder as presented in [2]. The updated code introduces routines to regenerate a new binary fst model compatible with phonetisaurus&rsquo; decoder as suggested in [2] which will be reviewed in the next section.</p>
+<p><strong>1. Code review</strong></p>
+<p>The basic code for the model regeneration is defined in train.cpp in procedure</p>
+<p><code>void relabel(StdMutableFst *fst, StdMutableFst *out, string eps, string skip, string s1s2_sep, string seq_sep);</code></p>
+<p>where fst and out are the input and output (the regenerated) models respectively.</p>
+<p>In the first initialization step is to generate new input, output and states SymbolTables and add to output the new start and final states [2].</p>
+<p>Furthermore, in this step the SymbolTables are initialized. Phonetisauruss decoder requires the symbols   eps, seq_sep, &ldquo;
+<phi>&rdquo;, &ldquo;<s>&rdquo; and &ldquo;<s>&rdquo; to be in keys 0, 1, 2, 3, 4 accordingly.</p>
+<p><code>void relabel(StdMutableFst *fst, StdMutableFst *out, string eps, string skip, string s1s2_sep, string seq_sep) {<br />
+ArcSort(fst, StdILabelCompare());<br />
+const SymbolTable *oldsyms = fst->InputSymbols();</code></p>
+<p><code> </code></p>
+<p><code> // Uncomment the next line in order to save the original model<br />
+// as created by ngram<br />
+// fst->Write("org.fst");<br />
+// generate new input, output and states SymbolTables<br />
+SymbolTable *ssyms = new SymbolTable("ssyms");<br />
+SymbolTable *isyms = new SymbolTable("isyms");<br />
+SymbolTable *osyms = new SymbolTable("osyms");</code></p>
+<p><code>out->AddState();<br />
+ssyms->AddSymbol("s0");<br />
+out->SetStart(0);</p>
+<p>out->AddState();<br />
+ssyms->AddSymbol("f");<br />
+out->SetFinal(1, TropicalWeight::One());</p>
+<p>isyms->AddSymbol(eps);<br />
+osyms->AddSymbol(eps);</p>
+<p>//Add separator, phi, start and end symbols<br />
+isyms->AddSymbol(seq_sep);<br />
+osyms->AddSymbol(seq_sep);<br />
+isyms->AddSymbol("");<br />
+osyms->AddSymbol("");<br />
+int istart = isyms->AddSymbol("<s>");<br />
+int iend = isyms->AddSymbol("</s>");<br />
+int ostart = osyms->AddSymbol("<s>");<br />
+int oend = osyms->AddSymbol("</s>");</p>
+<p></code></p>
+<p><code> out->AddState();<br />
+ssyms->AddSymbol("s1");<br />
+out->AddArc(0, StdArc(istart, ostart, TropicalWeight::One(), 2));<br />
+...<br />
+</code></p>
+<p>In the main step, the code iterates through each State of the input model and adds each one to the output model keeping track of old and new state_id in ssyms SymbolTable.</p>
+<p>In order to transform to an output model with a single final state [2] the code checks if the current state is final and if it is, it adds an new arc connecting from the current state to the single final one (state_id 1) with label &ldquo;</s>:</s>&rdquo; and weight equal to the current state's final weight. It also sets the final weight of current state equal to TropicalWeight::Zero() (ie it converts the current state to a non final).</p>
+<p><code> ...<br />
+for (StateIterator siter(*fst); !siter.Done(); siter.Next()) {<br />
+StateId state_id = siter.Value();</code></p>
+<p><code> </code></p>
+<p><code> int64 newstate;<br />
+if (state_id == fst->Start()) {<br />
+newstate = 2;<br />
+} else {<br />
+newstate = ssyms->Find(convertInt(state_id));<br />
+if(newstate == -1 ) {<br />
+out->AddState();<br />
+ssyms->AddSymbol(convertInt(state_id));<br />
+newstate = ssyms->Find(convertInt(state_id));<br />
+}<br />
+}</code></p>
+<p><code>TropicalWeight weight = fst->Final(state_id);</p>
+<p></code></p>
+<p><code> if (weight != TropicalWeight::Zero()) {<br />
+// this is a final state<br />
+StdArc a = StdArc(iend, oend, weight, 1);<br />
+out->AddArc(newstate, a);<br />
+out->SetFinal(newstate, TropicalWeight::Zero());<br />
+}<br />
+addarcs(state_id, newstate, oldsyms, isyms, osyms, ssyms, eps, s1s2_sep, fst, out);<br />
+}<br />
+out->SetInputSymbols(isyms);<br />
+out->SetOutputSymbols(osyms);<br />
+ArcSort(out, StdOLabelCompare());<br />
+ArcSort(out, StdILabelCompare());<br />
+}<br />
+</code></p>
+<p>Lastly, the addarcs procuder is called in order to relabel the arcs of each state of the input model and add them to the output model. It also creates any missing states (ie missing next states of an arc).</p>
+<p><code>void addarcs(StateId state_id, StateId newstate, const SymbolTable* oldsyms, SymbolTable* isyms,<br />
+SymbolTable* osyms,	SymbolTable* ssyms,	string eps,	string s1s2_sep, StdMutableFst *fst,<br />
+StdMutableFst *out) {<br />
+for (ArcIterator aiter(*fst, state_id); !aiter.Done(); aiter.Next()) {<br />
+StdArc arc = aiter.Value();<br />
+string oldlabel = oldsyms->Find(arc.ilabel);<br />
+if(oldlabel == eps) {<br />
+oldlabel = oldlabel.append("}");<br />
+oldlabel = oldlabel.append(eps);<br />
+}<br />
+vector tokens;<br />
+split_string(&amp;oldlabel, &amp;tokens, &amp;s1s2_sep, true);<br />
+int64 ilabel = isyms->AddSymbol(tokens.at(0));<br />
+int64 olabel = osyms->AddSymbol(tokens.at(1));</code></p>
+<p><code> </code></p>
+<p><code> int64 nextstate = ssyms->Find(convertInt(arc.nextstate));<br />
+if(nextstate  == -1 ) {<br />
+out->AddState();<br />
+ssyms->AddSymbol(convertInt(arc.nextstate));<br />
+nextstate = ssyms->Find(convertInt(arc.nextstate));<br />
+}<br />
+out->AddArc(newstate, StdArc(ilabel, olabel, (arc.weight != TropicalWeight::Zero())?arc.weight:TropicalWeight::One(), nextstate));<br />
+//out->AddArc(newstate, StdArc(ilabel, olabel, arc.weight, nextstate));<br />
+}<br />
+}<br />
+</code></p>
+<p><strong>2. Performance &ndash; Evaluation</strong></p>
+<p>In order to evaluate the perfomance of the model generated with the new code. A new model was trained  with the same dictionaries as in [4]</p>
+<p><code># train/train --order 9 --smooth "kneser_ney" --seq1_del --seq2_del --ifile cmudict.dict.train  --ofile cmudict.fst</code></p>
+<p>and evaluated with phonetisaurus evaluate script</p>
+<p><code># evaluate.py --modelfile cmudict.fst --testfile ../cmudict.dict.test --prefix cmudict/cmudict<br />
+Mapping to null...<br />
+Words: 13335  Hyps: 13335 Refs: 13335<br />
+######################################################################<br />
+EVALUATION RESULTS<br />
+----------------------------------------------------------------------<br />
+(T)otal tokens in reference: 84993<br />
+(M)atches: 77095  (S)ubstitutions: 7050  (I)nsertions: 634  (D)eletions: 848<br />
+% Correct (M/T)           -- %90.71<br />
+% Token ER ((S+I+D)/T)    -- %10.04<br />
+% Accuracy 1.0-ER         -- %89.96<br />
+--------------------------------------------------------<br />
+(S)equences: 13335  (C)orrect sequences: 7975  (E)rror sequences: 5360<br />
+% Sequence ER (E/S)       -- %40.19<br />
+% Sequence Acc (1.0-E/S)  -- %59.81<br />
+######################################################################</code></p>
+<p><strong>3. Conclusions &ndash; Future work</strong></p>
+<p>The evaluation results in cmudict dictionary, are a little bit worst than using the command line procedure in [4]. Although the difference doesn't seem to be important, it needs a further investigation. For that purpose and for general one can uncomment the line fst->Write("org.fst"); in the relabel procedure as depicted in a previous section, in order to have the original binary model saved in a file called &ldquo;org.fst&rdquo;.</p>
+<p>Next steps would probably be to write code in order to load the binary model in java code and to port the decoding algorithm along with the required fst operations to java and eventually integrate it with CMUSphinx.</p>
+<p><strong>References</strong><br />
+[1] <a title="Automating the creation of joint multigram language models as WFST" href="https://cmusphinx.github.io/2012/06/automating-the-creation-of-joint-multigram-language-models-as-wfst/">Automating the creation of joint multigram language models as WFST</a><br />
+[2] <a title="Compatibility issues using binary fst models generated by OpenGrm NGram Library with phonetisaurus decoder" href="https://cmusphinx.github.io/2012/06/compatibility-issues-using-binary-fst-models-generated-by-opengrm-ngram-library-with-phonetisaurus-decoder/">Compatibility issues using binary fst models generated by OpenGrm NGram Library with phonetisaurus decoder</a><br />
+[3] <a title="fstinfo on models created with opengrm" href="http://www.openfst.org/twiki/bin/view/Forum/FstForum#fstinfo_on_models_created_with_o" target="_blank">fstinfo on models created with opengrm</a><br />
+[4] <a title="Using OpenGrm NGram Library for the encoding of joint multigram language models as WFST" href="https://cmusphinx.github.io/2012/06/using-opengrm-ngram-library-for-the-encoding-of-joint-multigram-language-models-as-wfst/">Using OpenGrm NGram Library for the encoding of joint multigram language models as WFST</a></p>

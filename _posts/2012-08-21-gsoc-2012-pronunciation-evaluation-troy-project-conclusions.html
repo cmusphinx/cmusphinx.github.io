@@ -1,0 +1,27 @@
+---
+layout: post
+status: publish
+published: true
+title: 'GSoC 2012: Pronunciation Evaluation #Troy - Project Conclusions'
+author:
+  display_name: troy.lee2008
+  login: troy.lee2008
+  email: troy.lee2008@gmail.com
+  url: ''
+author_login: troy.lee2008
+author_email: troy.lee2008@gmail.com
+date: '2012-08-21 06:44:15 +0200'
+date_gmt: '2012-08-21 03:44:15 +0200'
+---
+<p>(author: <a href="mailto:troy.lee2008@gmail.com">Troy Lee</a>)</p>
+<p>This article briefly&nbsp;summarized the Pronunciation Evaluation Web Portal Design and Implementation for the GSoC 2012 Pronunciation Evaluation Project.</p>
+<p>The pronunciation evaluation system mainly consists following components:</p>
+<p>1) Database management module: Store, retrieve and update all the necessary information including both user information and various data information such as phrases, words, correct pronunciations, assessment scores and etc.</p>
+<p>2) User management module: New user registration, information update, change/reset password and so on.</p>
+<p>3) Audio recording and playback module: Recording the user's pronunciation for further processing.</p>
+<p>4) Exemplar verification module: Justify whether a given recording is an exemplar or not.</p>
+<p>5) Pronunciation assessment module: Provide numerical evaluation at the phoneme level (which could be aggregated to form higher level evaluation scores) in both acoustic and duration aspects.</p>
+<p>6) Phrase library module: Allow users to create new phrases into the database for evaluation.</p>
+<p>7) Human evaluation module: Support human experts to evaluate the users' pronunciations which could be compared with the automatically generated evaluations.</p>
+<p>The website could be tested at <a href="http://talknicer.net/~li-bo/datacollection/login.php">http://talknicer.net/~li-bo/datacollection/login.php</a>. Do let me know (troy.lee2008@gmail.com) once you&nbsp;encounter&nbsp;any problem as the site needs quite a lot testing before it works robustly.&nbsp;The complete setup of the website could be found at <a href="http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/troy/">http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/troy/</a>.&nbsp;More detailed functionality and implementations could be found in a more manual like report: <a name="gsoc_final_report_LiBo_Troy.pdf"></a></p>
+<p>Although it is the end of this GSoC, it is just the start of our project that leveraging on open source tools to improve people's lives around the world using speech technologies. We are currently preparing using Amazon Mechanical Turk to collect more exemplar data through our web portal to build a rich database for improved pronunciation evaluation performance and further making the learning much more fun through gamification.</p>

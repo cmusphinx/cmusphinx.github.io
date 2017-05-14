@@ -1,0 +1,177 @@
+---
+layout: post
+status: publish
+published: true
+title: Sphinx3 Forced Alignment with different arguments, edit-distance grammar generation
+author:
+  display_name: ronanki
+  login: ronanki
+  email: srikanth.143.iiit@gmail.com
+  url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+author_login: ronanki
+author_email: srikanth.143.iiit@gmail.com
+author_url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+date: '2012-06-10 11:24:22 +0200'
+date_gmt: '2012-06-10 08:24:22 +0200'
+---
+<p style="margin: 0px">(Author:&nbsp;<a href="http://researchweb.iiit.ac.in/~srikanth.ronanki" target="_blank">Srikanth Ronanki</a>)</p>
+<p style="margin: 0px">(Status: GSoC 2012 Pronunciation Evaluation Week 2)</p>
+<p></p>
+<p style="margin: 0px">
+<p style="margin: 0px">
+<p style="margin: 0px">Following last week's discussion describing how to obtain phoneme acoustic scores from sphinx3_align, here is some additional detail pertaining to two of the necessary output arguments:</p>
+<p style="margin: 0px">
+<p style="margin: 0px">1. Following up on the discussion at&nbsp;<a href="https://sourceforge.net/projects/cmusphinx/forums/forum/5471/topic/4583225">https://sourceforge.net/projects/cmusphinx/forums/forum/5471/topic/4583225</a><span style="font-family: Arial, Helvetica, sans-serif">, I was able to produce acoustic scores for each frame, and thereby also for each phoneme in a single recognition pass. </span><span style="line-height: 18px"><span style="font-family: Arial, Helvetica, sans-serif">Add the following code to the</span><span style="font-family: 'Courier New', Courier, monospace">write_stseg</span><span style="font-family: Arial, Helvetica, sans-serif"> function in </span><span style="font-family: 'Courier New', Courier, monospace">main_align.c</span><span style="font-family: Arial, Helvetica, sans-serif"> and use the </span></span><span style="line-height: 18px;font-family: Arial, Helvetica, sans-serif;background-color: white">state segmentation parameter </span><span style="line-height: 18px;font-family: 'Courier New', Courier, monospace;background-color: white">-stsegdir</span><span style="line-height: 18px;font-family: 'Courier New', Courier, monospace;background-color: white"> </span><span style="line-height: 18px;font-family: Arial, Helvetica, sans-serif;background-color: white">as an argument to the program:</span></p>
+<div style="color: #222222"><code></p>
+<p style="margin: 0px">char str2[1024];</p>
+<p style="margin: 0px">align_stseg_t *tmp1;</p>
+<p></code></div>
+<div style="color: #222222"><code></p>
+<p style="margin: 0px">for (i = 0, tmp1 = stseg; tmp1; i++, tmp1 = tmp1->next) {</p>
+<p style="margin: 0px">mdef_phone_str(kbc->mdef, tmp1->pid, str2);</p>
+<p style="margin: 0px">fprintf(fp, "FrameIndex %d Phone %s PhoneID %d SenoneID %d state %d Ascr %11d \n", i, str2, tmp1->pid, tmp1->sen, tmp1->state, tmp1->score);</p>
+<p style="margin: 0px">}</p>
+<p></code></div>
+<p style="margin: 0px"><span style="line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222;background-color: white">2. By using the phone segmentation parameter </span><span style="line-height: 18px;font-family: 'Courier New', Courier, monospace;color: #222222;background-color: white">-phsegdir</span><span style="line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222;background-color: white"> as an argument to the program, the acoustic scores for each phoneme can be calculated. </span><span style="line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222;background-color: white">The output sequence for the word "approach" </span><span style="line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222;background-color: white">is as follows</span><span style="line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222;background-color: white">:</span></p>
+<p style="margin: 0px">
+<p style="margin: 0px"><code><span style="font-family: 'Courier New', Courier, monospace"><strong><span style="line-height: 18px;color: #222222"> </span><span style="line-height: 18px;color: #222222">SFrm &nbsp;EFrm &nbsp; SegAScr &nbsp; &nbsp; &nbsp; Phone</span></strong></span></code></p>
+<p><code></p>
+<p style="margin: 0px"><span style="color: #222222"><span style="line-height: 18px;font-family: 'Courier New', Courier, monospace"><strong>0 &nbsp; &nbsp; 9 &nbsp; &nbsp;-64725 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; SIL</strong></span></span></p>
+<p style="margin: 0px"><span style="color: #222222"><span style="line-height: 18px;font-family: 'Courier New', Courier, monospace"><strong>10 &nbsp; &nbsp;21 &nbsp; &nbsp;-63864 &nbsp; &nbsp; &nbsp; AH SIL P b</strong></span></span></p>
+<p style="margin: 0px"><span style="color: #222222"><span style="line-height: 18px;font-family: 'Courier New', Courier, monospace"><strong>22 &nbsp; &nbsp;33 &nbsp; -126819 &nbsp; &nbsp; &nbsp; P AH R i</strong></span></span></p>
+<p style="margin: 0px"><span style="color: #222222"><span style="line-height: 18px;font-family: 'Courier New', Courier, monospace"><strong>34 &nbsp; &nbsp;39 &nbsp; &nbsp;-21470 &nbsp; &nbsp; &nbsp; R P OW i</strong></span></span></p>
+<p style="margin: 0px"><span style="color: #222222"><span style="line-height: 18px;font-family: 'Courier New', Courier, monospace"><strong>40 &nbsp; &nbsp;51 &nbsp; &nbsp;-69577 &nbsp; &nbsp; &nbsp; OW R CH i</strong></span></span></p>
+<p style="margin: 0px"><span style="color: #222222"><span style="line-height: 18px;font-family: 'Courier New', Courier, monospace"><strong>52 &nbsp; &nbsp;64 &nbsp; &nbsp;-55937 &nbsp; &nbsp; &nbsp; CH OW DH e</strong></span></span></code></p>
+<p style="margin: 0px"><span style="line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222;background-color: white">Each phoneme in the "Phone" column is represented as <Aligned_phone> <Previous_phone> <Next_phone>
+<position_in_the_word (b-begin, i-middle, e-end)>. &nbsp;The full command line usage for this output is:</span></p>
+<div>
+<div style="line-height: 18px"><code></p>
+<p style="margin: 0px"><span style="font-family: 'Courier New', Courier, monospace"><span style="color: #222222">$ sphinx3_align -hmm </span><span style="color: #222222">wsj_all_cd30.mllt_cd_cont_4000</span><span style="color: #222222"> -dict cmu.dic -fdict phone.filler -ctl phone.ctl -insent phone.insent -cepdir feats -phsegdir phonesegdir -phlabdir phonelabdir -stsegdir statesegdir -wdsegdir aligndir </span><span style="color: #222222">-outsent phone.outsent</span></span></p>
+<p></code></div>
+<div style="line-height: 18px">
+<p style="margin: 0px"><span style="font-family: Arial, Helvetica, sans-serif;color: #222222;background-color: white"><br />
+</span></p>
+</div>
+<div style="line-height: 18px">
+<p style="margin: 0px"><span style="font-family: Arial, Helvetica, sans-serif;color: #222222;background-color: white"><strong>Work in progress:</strong></span></p>
+</div>
+<p style="margin: 0px">
+<div>
+<div style="line-height: 18px">
+<p style="margin: 0px">1. It's very important to weight word scores by the words'&nbsp;part of speech&nbsp;(articles don't matter very much if they are omitted, but nouns,&nbsp;adjectives, verbs, and adverbs are the most important.)</p>
+</div>
+</div>
+<div style="line-height: 18px">
+<p style="margin: 0px">
+</div>
+<div style="line-height: 18px">
+<p style="margin: 0px">2. I put some exemplar recordings for three phrases the project mentor had collected at&nbsp;<a href="http://talknicer.net/~ronanki/Datasets/">http://talknicer.net/~ronanki/Datasets/</a> in each subdirectory there for each of the three phrases. &nbsp;The description of the phrases is at&nbsp;<a href="http://talknicer.net/~ronanki/Datasets/files/phrases.txt">http://talknicer.net/~ronanki/Datasets/files/phrases.txt</a>.</p>
+<p style="margin: 0px">
+</div>
+<div>
+<div style="line-height: 18px">
+<p style="margin: 0px">3. I ran&nbsp;sphinx3_align&nbsp;for that sample data set. I wrote a program to calculate mean and standard deviations of phoneme acoustic scores, and the mean duration of each phoneme.&nbsp;I also generated neighbor phonemes for each of the phrases, and the output is written in this file:&nbsp;<a href="http://talknicer.net/~ronanki/Datasets/out_ngb_phonemes.insent">http://talknicer.net/~ronanki/Datasets/out_ngb_phonemes.insent</a></p>
+<p style="margin: 0px">
+</div>
+<div style="line-height: 18px">
+<p style="margin: 0px"><span style="font-family: arial, sans-serif;color: #222222;background-color: white">4. </span>I also tried some of the other sphinx3 executables such as&nbsp;sphinx3_decode,&nbsp;sphinx3_livepretend, andsphinx3_continous&nbsp;for mispronunciation detection. For the sentence, "Approach the teaching of pronunciation with more confidence." (phrase 1), I used this command:</p>
+</div>
+<div>
+<div>
+<p style="margin: 0px">
+</div>
+<div>
+<div><code></p>
+<p style="margin: 0px"><span style="font-family: 'Courier New', Courier, monospace">$ SPHINX3DECODE -hmm ${WSJ} -fsg phone.fsg -dict basicphone.dic -fdict phone.filler -ctl new_phone.ctl -hyp phone.out -cepdir feats -mode allphone -hypseg phone_hypseg.out -op_mode 2</span></p>
+<p></code></div>
+<div>
+<div style="font-family: arial, sans-serif">
+<p style="margin: 0px">
+</div>
+<div>
+<div>
+<p style="margin: 0px"><span style="font-family: arial, sans-serif">The decoder, </span><span style="font-family: 'Courier New', Courier, monospace">sphinx3_decode</span><span style="font-family: arial, sans-serif">, produced this output:</span></p>
+<div style="font-family: arial, sans-serif">
+<p style="margin: 0px">
+</div>
+<p><code></p>
+<p style="margin: 0px"><span style="font-family: 'Courier New', Courier, monospace"><strong>P UH JH DH CH IY CH Y N Z Y EY SH AH W Z AO K AA F AH N Z</strong></span></p>
+<p></code></div>
+<div>
+<p style="margin: 0px">
+<p style="margin: 0px"><span style="font-family: arial, sans-serif">The forced alignment system, </span><span style="font-family: 'Courier New', Courier, monospace">sphinx3_align</span><span style="font-family: arial, sans-serif">, produced this output:</span></p>
+<div style="font-family: arial, sans-serif">
+<p style="margin: 0px">
+</div>
+<p><code></p>
+<p style="margin: 0px"><span style="font-family: 'Courier New', Courier, monospace"><strong>AH P R OW CH DH AH T IY CH IH NG AH V P R AH N AH N S IY EY SH AH N W IH TH M AO R K AA N F AH D AH N S</strong></span></p>
+<p></code></div>
+</div>
+</div>
+<div>
+<p style="margin: 0px">
+</div>
+<div>
+<p style="margin: 0px"><span style="font-family: Arial, Helvetica, sans-serif">The </span><span style="font-family: 'Courier New', Courier, monospace">sphinx3_livepretend</span><span style="font-family: arial, sans-serif"> and </span><span style="font-family: 'Courier New', Courier, monospace">sphinx3_continous</span><span style="font-family: arial, sans-serif"> commands produce output in words using language models and acoustic models along with a complete dictionary of expected words:</span></p>
+</div>
+<div style="font-family: arial, sans-serif">
+<p style="margin: 0px">
+</div>
+<div><code></p>
+<p style="margin: 0px"><span style="font-family: 'Courier New', Courier, monospace"><strong>Approach to teaching opponents the nation with more confidence</strong></span></p>
+<p></code></div>
+</div>
+</div>
+<div style="line-height: 18px">
+<p style="margin: 0px"><strong><br />
+</strong></p>
+</div>
+<div style="line-height: 18px">
+<p style="margin: 0px"><strong><span style="font-family: Arial, Helvetica, sans-serif">Plans for the coming week:</span></strong></p>
+<p style="margin: 0px"><strong><br />
+</strong></p>
+</div>
+<div>
+<div>
+<p style="margin: 0px">1. Write and test audio upload and pronunciation evaluation for per-phoneme standard scores.</p>
+</div>
+<div>
+<p style="margin: 0px">
+</div>
+<div>
+<p style="margin: 0px">2. Since there are many deletions in the edit distance scoring grammars tried so far, we need to modify the grammar file and/or the method we are using to detect whether neighboring phonemes match more closely. Here is my idea of finding neighboring phonemes by dynamic programming:</p>
+</div>
+<div>
+<p style="margin: 0px">
+</div>
+<div>
+<p style="margin: 0px">a. Run the decoder to get the best possible output</p>
+<p style="margin: 0px">
+</div>
+<div>
+<p style="margin: 0px">b. Align the decoder output to forced-alignment output using a dynamic programming string matching algorithm</p>
+</div>
+<div>
+<p style="margin: 0px">
+<p style="margin: 0px">c. The aligned output will have the same number of phones as from forced alignment. So, we need to test two things for each phoneme:</p>
+</div>
+<div>
+<ul style="color: #222222;font-family: arial, sans-serif;line-height: normal;text-align: left">
+<li>If the phone is same as expected phoneme, no need to do anything</li>
+<li>If the phone is not as expected phoneme, check that phone in the list of neighboring phonemes of the expected phoneme.</li>
+</ul>
+</div>
+<div>
+<p style="margin: 0px">
+<p style="margin: 0px">d. Then, we can run sphinx3_align with this outcome against the same wav file to check whether the acoustic scores actually indicate a better match.</p>
+</div>
+<div>
+<p style="margin: 0px">3. As an alternative to the above,&nbsp;I used sox to split each input wave file in to individual phoneme wav files using the forced alignment phone labels, and then used a&nbsp;separate&nbsp;recognition pass on each tiny speech segment. Now, I am writing&nbsp;separate&nbsp;grammar files for the neighboring phonemes for each phoneme. Once I complete them, I will check the output using decoder for each phoneme segment. This should provide for more accurate assessment of mispronunciations.</p>
+<div style="line-height: normal;color: #222222;font-family: arial, sans-serif">
+<p style="margin: 0px">
+</div>
+<p style="margin: 0px">4. I will update the wiki here at&nbsp;<a href="https://cmusphinx.github.io/wiki/pronunciation_evaluation">https://cmusphinx.github.io/wiki/pronunciation_evaluation</a> with my current tasks and milestones.</p>
+</div>
+</div>
+</div>
+</div>

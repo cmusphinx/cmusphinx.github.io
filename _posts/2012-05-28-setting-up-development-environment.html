@@ -1,0 +1,81 @@
+---
+layout: post
+status: publish
+published: true
+title: Setting up Development Environment
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2012-05-28 00:55:35 +0200'
+date_gmt: '2012-05-27 21:55:35 +0200'
+---
+<h2>This information is outdated and can not be applied to recent versions. See our wiki for recent document </h2>
+<p>Sphinx4 is an open source speech recognition engine, which involves a wide variety of researchers and developers.</p>
+<p>Here is an introduction to how to set up the environment if someone would like to contribute to the project. You can find guild lines for other platform at <a title="setupguide" href="https://cmusphinx.github.io/sphinx4/#download_and_install" target="_blank">sphinx4 wiki</a>. Now, I focus only on Ubuntu with Eclipse.</p>
+<h2 id="UbuntuEclipse">Ubuntu &amp; Eclipse</h2>
+<p>This procedure has been tested on Ubuntu 12.04, but  should also work for newer and older releases.</p>
+<h2 id="Software">Required Software</h2>
+<ul>
+<li>JDK (Sphinx-4 is written in Java and therefore requires the JVM to run. However, usually JDK is already installed in Ubuntu)</li>
+<li>Eclipse (IDE (Integrated Development Environment))</li>
+<li>Ant (to build to source code)</li>
+<li>Subversion (svn, source code control)</li>
+<li>Subclipse (svn for eclipse)</li>
+<li>sharutils (to unpack jsapi)</li>
+</ul>
+<h2 id="Step">Step by Step</h2>
+<p><em>Install Basic required software</em><br />
+<code>$ sudo apt-get install eclipse subversion ant sharutils</code><br />
+<em> Install Subclipse</em></p>
+<ul>
+<li>Open Eclipse</li>
+<li>"Help" -> "Install New Software"</li>
+<li>Click "Add"</li>
+<li>"Name" = "SVN", and Location is "http://subclipse.trigris.org/update_1.8.x", Click "OK"</li>
+<li>Check "SVNKit" and Open the submenu of &nbsp;"Subclipse" in the Name field, and check "Subclipse (Required)", Click "Next"</li>
+<li>Click "Next"</li>
+<li>Check "I accept ...", Click "Finish"</li>
+<li>Click "OK", "Restart Now"</li>
+</ul>
+<p><em>Obtaining the Code</em></p>
+<ul>
+<li>Open Eclipse</li>
+<li>Click "File" &rarr; "New" &rarr; "Project" &rarr; "SVN", choose  "Checkout Project from SVN"</li>
+<li>Create a new repository location, click "Next"</li>
+<li>URL = "<a title="https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/trunk/sphinx4" rel="nofollow" href="https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/trunk/sphinx4">https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx</a>"&nbsp;(replace to your own source code directory)</li>
+<li>Choose the code folder you want to check out, such as "branches/sphinx4_slm"</li>
+<li>Finish</li>
+</ul>
+<p><em>Building Sphinx-4</em></p>
+<p>Setup JSAPI 1.0, see <a href="https://cmusphinx.github.io/sphinx4/#how_build">sphinx4_wiki</a></p>
+<ul>
+<li><span style="font-family: Arial"><span style="line-height: normal">Go to the lib directory.</span></span></li>
+<li><span style="font-family: Arial"><span style="line-height: normal">Type<code>$ chmod +x ./jsapi.sh</code></span></span></li>
+<li><span style="font-family: Arial"><span style="line-height: normal">Type<code>$ sh ./jsapi.sh V</code></span></span>iew the BCL. Accept it by typing "y"</li>
+</ul>
+<p>Now, you can build sphinx4 in Eclipse as follows</p>
+<ul>
+<li>"Run" &rarr;&nbsp;"External Tools" &rarr;&nbsp;"sphinx4 build.xml"</li>
+</ul>
+<p>If you want to run demo project, follow the steps below:</p>
+<ul>
+<li>Project &rarr; Properties &rarr; Jave Build Path &rarr;  Source</li>
+<li>open "sphinx4/src/apps" in tab "source folder on build path"</li>
+<li>Double click "Included: All"</li>
+<li>Click "Add Multiple"</li>
+<li>select "edu", click "OK"</li>
+<li>click "Finish" in the window "Inclusion and Exclusion Patterns"</li>
+<li>"OK"</li>
+</ul>
+<p>Now, you can open the file "src/apps/edu/cmu/sphinx/demo/HelloWorld.java"</p>
+<ul>
+<li>click "Run" &rarr;&nbsp;"Run"</li>
+</ul>
+<h2 id="Commit ">Commit your codes</h2>
+<ul>
+<li>Right Click the file or folder that you want to commit &rarr; "Team" &rarr; "Commit"</li>
+</ul>

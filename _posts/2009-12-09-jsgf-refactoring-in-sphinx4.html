@@ -1,0 +1,26 @@
+---
+layout: post
+status: publish
+published: true
+title: JSGF Refactoring in sphinx4
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2009-12-09 02:48:48 +0100'
+date_gmt: '2009-12-08 23:48:48 +0100'
+---
+<p>The major refactoring of JSAPI part of sphinx4 happened recently. The roots of it lie deep in the history of sphinx4. From birth in the previous century sphinx4 was going to support industy-streight standards in particular java speech API. Actually sphinx4 was a playground for JSAPI development.</p>
+<p>The code for JSAPI support as any unsupported code that was written long time ago was rather hard to read and modify. And, the most important, JSAPI structures were used everywhere in it. That would be ok if JSAPI was free and distributed in sources, unfortunately it's not the case. It goes under restrictive license that prevents free redistribution. That was the major problem, and I bet you meet it when you started sphinx4 development first time and forgot to unpack jsapi.jar and agree with it's license. Not to mention that implementation of the API was incomplete, basically you could only play with grammars, nothing more. No real recognizer API was supported.</p>
+<p>Now this sutuation changed drastically:</p>
+<ul>
+<li>JSGF Parser and grammars are now parts of sphinx4.jar, free from any licence issues. You could use JSGF grammars as any other part of api.</li>
+<li>Implementation of JSAPI now is built on top of sphinx4, making it easy to split it, test it and use it.</li>
+<li>New JSAPI code looks more or less modern.</li>
+<li>Functional JSAPI-1.0 implementation with recognition part implemented will be here soon.</li>
+<li>In a near future JSAPI-2.0 interface will probably arrive.</li>
+</ul>
+<p>Such big architectural changes aren't smooth of couse, regressions are expected. Don't hestitate to report them&nbsp; :).</p>

@@ -1,0 +1,25 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Long Audio Training: Update 1'
+author:
+  display_name: xkrajnan
+  login: xkrajnan
+  email: michal.krajnansky@gmail.com
+  url: ''
+author_login: xkrajnan
+author_email: michal.krajnansky@gmail.com
+date: '2011-05-30 12:41:39 +0200'
+date_gmt: '2011-05-30 09:41:39 +0200'
+---
+<p>Here comes the first update on the <strong>Long Audio Training</strong> project. It's aim is to enable SphinxTrain training on recordings hours long. Presently the SphinxTrain can process files up to 3 minutes approx.</p>
+<p>Full info on the project can be found at <a title="https://cmusphinx.github.io/wiki/longaudiotraining" href="https://cmusphinx.github.io/wiki/longaudiotraining">https://cmusphinx.github.io/wiki/longaudiotraining</a>.</p>
+<p>During the last week a collection of audio files 5 to 10 minutes long have been turned into  CMUSphinx training database in order to determine possible issues when  training on longer recordings. The first experiments resulted in two main findings:</p>
+<ul>
+<li>Some of the components of SphinxTrain put an arbitrary limit to the size of data they process. E.g. the problem is with the function <em>read_line</em> which reads a line only up to the constant size of a buffer. This implementation resulted in crashes of training process in the baum-welch step due to the failed word lookup.</li>
+<li>Another finding is that the training process currently requires a huge amout of memory. This takes about 1.7GB of RAM when trainning on ~5 minutes-long recording and much over 4GB processing ~10 minutes-long input. (I did not determine the actual value because this actually shot down my machine.) This indicates there is a flaw in the memory management of the training process and will be subject to examination in the following days.</li>
+</ul>
+<p>A branch <strong>long-audio-training</strong> was created in the CMUSphinx SVN repository. All work done on this project will be commited into this branch.</p>
+<p>First change is the fix for the word-lookup problem which was caused by the truncation of transcription sentence and thus it's last word. The idea is to replace all usages of <em>read_line</em> in SphinxTrain with the <em>lineiter_*</em> set of functions from <em>sphinxbase</em>, which do not impose any such limits on the length of the data.</p>
+<p>More update to come soon, stay tuned!</p>

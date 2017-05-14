@@ -1,0 +1,26 @@
+---
+layout: post
+status: publish
+published: true
+title: Grapheme-to-phoneme tool based on sequence-to-sequence learning
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2016-04-28 22:46:29 +0200'
+date_gmt: '2016-04-28 19:46:29 +0200'
+---
+<p><a href="https://www.tensorflow.org/versions/r0.8/tutorials/seq2seq/index.html"><img alt="" src="https://www.tensorflow.org/versions/r0.8/images/basic_seq2seq.png" class="alignleft" width="500" height="100" /></a></p>
+<p>Recurrent neural networks (RNN) with long short term memory cells (LSTM) recently demonstrated very promising performance results in language modeling,  machine translation, speech recognition and other fields related to sequence processing. Nice thing is that the system is almost plug and play, you feed any inputs and get a decent accuracy.</p>
+<p>We released a grapheme-to-phoneme toolkit based on <a href="https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf">sequence-to-sequence encoder-decoder LSTM</a> for machine translation task. It is already successfully <a href="http://research.microsoft.com/pubs/246719/rnnlts.pdf">used by Microsoft</a> and Google for the task of grapheme-to-phoneme conversion. The great thing in this approach is ultra simplicity. One LSTM is used to encode character sequences in continuous space and another LSTM decodes the phoneme sequence with attention mechanism. Interestingly, the training does not require phoneme and grapheme alignments as in conventional WFST approaches, it simply learns from the data.</p>
+<p>This implementation is based on <a href="https://www.tensorflow.org/versions/r0.8/tutorials/seq2seq/index.html">TensorFlow</a> which allows an efficient training on both CPU and GPU.</p>
+<p>The code is available in <a href="https://github.com/cmusphinx/g2p-seq2seq">CMUSphinx section on github</a>.</p>
+<p>You can download an <a href="https://sourceforge.net/projects/cmusphinx/files/G2P%20Models/g2p-seq2seq-cmudict.tar.gz/download">example model</a> with 2 hidden layers and 64 units per layer trained on CMU dict for generating pronunciations of new words and use it in the following simple way:</p>
+<p><code>python g2p.py --decode [your_wordlist] --model [path_to_model]</code></p>
+<p>In addition, you can make new G2P models using any existing dictionary.</p>
+<p><code>python g2p.py --train [train_dictionary.dic] --model [output_model_path]</code></p>
+<p>The tool allows to select various training parameters. Feel free to experiment with the number of parameters and learning rates. Training speed is not fast, it takes about 1 day to train a large model, but it should be faster with GPU.</p>
+<p>We are still testing accuracy of the model, but it seems that it is comparable with <a href="https://github.com/AdolfVonKleist/Phonetisaurus">Phonetisaurus</a> tool. Small model with hidden layer size 64 performs slightly worse, but is very small (500kb), large model with 512 elements in hidden layer is slightly more accurate.</p>

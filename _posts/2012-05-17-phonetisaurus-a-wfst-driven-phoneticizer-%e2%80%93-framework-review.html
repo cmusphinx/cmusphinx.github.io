@@ -1,0 +1,52 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Phonetisaurus: A WFST-driven Phoneticizer &ndash; Framework Review'
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-05-17 23:25:29 +0200'
+date_gmt: '2012-05-17 20:25:29 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>Foreword</strong></p>
+<p>This article tries to analyze the phonetisaurus g2p [1], [2] code by describing it's main parts and algorithms behind these. Phonetisaurus is a modular system and includes support for several third-party components. The system has been implemented primarily in python, but also leverages the OpenFST framework [3].<strong></strong></p>
+<p><strong>1. Overall Architecture</strong></p>
+<p>The procedure for model training and evaluation in phonetisaurus consists by three parts [4]: the dictionary alignment, the model training and finally the evaluation of the model.<strong></strong></p>
+<p><strong>1.1. Dictionary Alignment</strong><br />
+Manual G2P alignments are generally not available, thus it is necessary to first align the grapheme and phoneme sequences in a pronunciation dictionary, prior to building a pronunciation model. Phonetisaurus utilizes the EM-based many-to-many alignment procedure detailed in [5] that supports alignments from digraphs such as &ldquo;sh&rdquo; to a single phoneme, or the reverse case. Recently the dictionary alignment was reimplemented and upgraded using OpenFst.<br />
+The command line script that controls the alignment procedure <span style="font-family: Courier New,monospace"><em>m2m-aligner.py</em></span> interfaces with the <span style="font-family: Courier New,monospace">M2MFstAligner</span> class (<span style="font-family: Courier New,monospace"><em>M2MFstAligner.cpp</em></span>) using Swig [6], in order to transform two sequences, one of graphemes and one of phonemes to an FST that encodes all possible alignments between the symbols in the two sequences.<br />
+The basic transformation of the sequence<br />
+<code>void M2MFstAligner::Sequences2FST( VectorFst* fst, vector* seq1, vector* seq2 );</code><br />
+creates a <span style="font-family: Courier New,monospace"><span style="font-size: x-small">VectorFst<LogArc> fst</span></span> instance and iterates over all possible combinations which are added to the fst. It uitilizes the Plus semiring operation and the Connect optimization operation.</p>
+<p>After the FSTs for all entries are created the procedure continus with the EM algorithm which is implemented in the<br />
+<code>void M2MFstAligner::expectation( );</code><br />
+and<br />
+<code>float M2MFstAligner::maximization( bool lastiter );</code><br />
+procedures. These procedures utilize the ShortestDistance search operation and the Divide, Times and Plus semiring operations.<strong></strong></p>
+<p><strong>1.2. Model Training</strong></p>
+<p>The command line script that controls the model training procedure <span style="font-family: Courier New,monospace"><em>train-model.py</em></span> uses the estimate-ngram utility of the MIT Language Modeling (MITLM) toolkit [7] in order to estimate an n-gram language model language model by cumulating n-gram count statistics,"smoothing observed counts, and building a backoff n-gram mode [8].<br />
+The estimate-ngramm utility produces a language model in ARPA format which is then converted to a FST textual represantion through the use of the <span style="font-family: Courier New,monospace"><em>arpa2fst.py</em></span> script. This textual represantion is then parsed by the fstcompile command line utility of OpenFST and converted to the final binary representation.<strong></strong></p>
+<p><strong>1.3. Model Evaluation</strong></p>
+<p>The command line script that controls the model evaluation procedure <span style="font-family: Courier New,monospace"><em>evaluate.py</em></span> utilizes the <span style="font-family: Courier New,monospace">Phonetisaurus</span> class (<span style="font-family: Courier New,monospace">Phonetisaurus</span><span style="font-family: Courier New,monospace"><em>.cpp</em></span>), through the phonetisaurus-g2p command line interface, for the g2p conversion, which is then evaluated. It uitilizes the Compose binary operation, Project unary operation, ShortestPath search operation, Times semiring operation and RmEpsilon optimization operation.<br />
+A pronunciation for a new word is achieved by compiling the word into a WFSA and composing it with the pronunciation model. The best hypothesis is just the shortest path through the composed WFST. [1]<br />
+The input word is converted to an acceptor I which has one arc for each of the characters in the word. I is then composed with M according to O = I ◦ M where ◦ denotes the composition operator. The n-best paths are extracted from O by projecting the output, removing the epsilon labels and applying the n-shortest paths algorithm with determinization. [2]<strong></strong></p>
+<p><strong>2. Conclusion &ndash; Future Work</strong></p>
+<p>This article tried to analyze the phonetisaurus g2p code and its main parts. Having this description will allow us to produce a more accurate and analytical planning and scheduling the tasks required for the integration of phonetisaurus g2p into sphinx 4 for my GSoC 2012 project [9].<strong></strong></p>
+<p><strong>References</strong></p>
+<p>[1] J. Novak, D. Yang, N. Minematsu, K. Hirose, "Initial and Evaluations of an Open Source WFST-based Phoneticizer", The University of Tokyo, Tokyo Institute of Technology</p>
+<p>[2] D. Yang, et. al., &ldquo;Rapid development of a G2Psystem based on WFST framework&rdquo;, ASJ 2009<br />
+Autumn session, pp. 111-112, 2009.</p>
+<p>[3] C. Allauzen, M. Riley, J. Schalkwyk, W. Skut, M. Mohri, "OpenFst: a general and efficient weighted finite-state transducer library", Proceedings of the 12th International Conference on Implementation and Application of Automata (CIAA 2007), pp. 11&ndash;23, Prague, Czech Republic, July 2007.</p>
+<p>[4] J. Novak, <a href="http://code.google.com/p/phonetisaurus/source/browse/README.txt">README.txt</a>, phonetisaurus source code, last accessed: 29/04/2012.</p>
+<p>[5] S. Jiampojamarn, G. Kondrak, T. Sherif, &ldquo;Applying Many-to-Many Alignments and Hidden Markov Models to Letter-to-Phoneme Conversion&rdquo;, NAACL HLT, pp. 372-379, 2007.</p>
+<p>[6] <a title="Simplified Wrapper and Interface Generator" href="http://www.swig.org/" target="_blank">Simplified Wrapper and Interface Generator</a>, last accessed: 29/04/2012.</p>
+<p>[7] <a title="MIT Language Modeling Toolkit" href="http://code.google.com/p/mitlm/" target="_blank">MIT Language Modeling Toolkit</a>, last accessed: 29/04/2012.</p>
+<p>[8] D. Jurafsky, J. H. Martin, &ldquo;Speech and Language Processing&rdquo;, Prentice Hall, 2000.</p>
+<p>[9] J. Salatas, <a title="GSoC 2012 Project: Letter to Phoneme Conversion in sphinx4 (John Salatas)" href="http://www.google-melange.com/gsoc/project/google/gsoc2012/jsalatas/13001" target="_blank">GSoC 2012 Project: Letter to Phoneme Conversion in sphinx4</a>, last accessed: 29/04/2012.</p>

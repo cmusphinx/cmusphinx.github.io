@@ -1,0 +1,24 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Long Audio Training: Update 2'
+author:
+  display_name: xkrajnan
+  login: xkrajnan
+  email: michal.krajnansky@gmail.com
+  url: ''
+author_login: xkrajnan
+author_email: michal.krajnansky@gmail.com
+date: '2011-06-06 13:26:50 +0200'
+date_gmt: '2011-06-06 10:26:50 +0200'
+---
+<p>The past-days-work addressed the usage of restrictive function <em>read_line</em> in the SphinxTrain. All occurrences of <em>read_line</em> were eliminated making use of line iterators from sphinxbase. During this a decission to modify the <em>lineiter</em> interface was made in order to support original <em>read_line</em> functionality, e.g. comments skipping and whitespace trimming. This now takes following methods:</p>
+<ul>
+<li><em>lineiter_init</em> - init iterator for reading without any preprocessing</li>
+<li><em>lineiter_init_clean</em> - init iterator for reading compatible with the <em>read_line</em> function: skip commented lines and trim leading and trailing whitespaces</li>
+<li><em>lineiter_next</em> - read next line from the file</li>
+<li><em>lineiter_free</em> - finish reading and free resources</li>
+</ul>
+<p>Usages of line iterators in the sphinxbase were also updated to comply with the interface modifications. These changes were necessary to enable SphinxTrain training on audio files of unlimited size and the lineiter is meant to be central input interface in the SphinxTrain in the future.</p>
+<p>Work on the examination of memory issues is ongoing and will be followed by the implementation of memory-optimized Baum-Welch algorithm as described at <a href="https://cmusphinx.github.io/wiki/longaudiotraining">https://cmusphinx.github.io/wiki/longaudiotraining</a> as well as finding other ways to reduce unreasonable memory demands of current SphinxTrain version.</p>

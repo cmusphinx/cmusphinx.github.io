@@ -1,0 +1,34 @@
+---
+layout: post
+status: publish
+published: true
+title: Enlarging In-domain Data Using Perplexity Differences for Language Model Training
+author:
+  display_name: emre
+  login: emre
+  email: emre@celikten.name
+  url: http://emre.celikten.name
+author_login: emre
+author_email: emre@celikten.name
+author_url: http://emre.celikten.name
+excerpt: "We are using the web to obtain extra language model training data for a
+  topic, but what good is that data if it does not fit to our domain?\r\n\r\nA paper
+  published by Moore et al.[1] uses an interesting and relatively cheap way of enlarging
+  an in-domain corpus using a general corpus. "
+date: '2012-07-31 00:40:55 +0200'
+date_gmt: '2012-07-30 21:40:55 +0200'
+---
+<p>(Author: <a href="http://emre.celikten.name">Emre &Ccedil;elikten</a>)</p>
+<p>We are using the web to obtain extra language model training data for a topic, but what good is that data if it does not fit to our domain?</p>
+<p>A paper published by Moore et al.[1] uses an interesting and relatively cheap way of enlarging an in-domain corpus using a general corpus. </p>
+<p>The argument is that if a general (i.e. not in-domain) corpus has a subset of in-domain data, since this subset is statistically similar to our in-domain corpus, it could be used as extra training data. We are trying to find an optimum value for P(N_I|s,N) &asymp; P(s|I)/P(s|N), where P(N_I|s,N) is the probability of a text segment s being in N_I, which is the in-domain corpus in N, given N; P(s|I) is the probability of having s given an in-domain language model I and P(s|N) is the probability of having s given a general language model N.</p>
+<p>We compute perplexities of small chunks from the general corpus against both language models. Then for each chunk we subtract perplexity for the general model from perplexity for the in-domain model. We pick all segments below a perplexity difference threshold afterwards.</p>
+<p>The experiment is as follows. We use normalized Gutenberg corpus. We choose Jane Eyre book as our in-domain data and separate it from the general corpus. We split Jane Eyre in a 90%/10% fashion and hold out the latter as our test set. The former becomes our training corpus.</p>
+<p>We choose the same amount of sentences randomly from the general corpus to have a comparable language model, as in the paper. A dictionary from training corpus is extracted and words that occur less than twice are removed. We construct a 3-gram language model for both of the corpuses using the dictionary extracted. Singleton 3-grams are pruned.</p>
+<p>Then, we pick sentences from the main corpus one by one and calculate perplexities against in-domain and general corpus. We sort perplexity difference values and split them into 10 cutoff segments. Also, we create 10 segments by random selection to see how the method works compared to randomly selecting sentences. We compute perplexity of the held-out test set for all of these language models.</p>
+<p>Here are the results for a random subset of Gutenberg corpus that contains approximately 2000000 sentences (46335000 words). In-domain training data has 8681 sentences (200056 words) and test set has 966 sentences (17294 words).</p>
+<p><img src="http://db.tt/ImT70oPi" alt="Perplexities" /></p>
+<p><img src="http://db.tt/FGqiRYVm" alt="Perplexity differences" /></p>
+<p>Results for the entire corpus will follow soon.</p>
+<p><strong>References</strong></p>
+<p>[1] R. Moore, W. Lewis, "Intelligent Selection of Language Model Training Data"</p>

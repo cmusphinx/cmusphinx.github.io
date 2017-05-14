@@ -1,0 +1,29 @@
+---
+layout: post
+status: publish
+published: true
+title: PocketSphinx 0.6.1 release
+author:
+  display_name: dhd
+  login: dhd
+  email: dhuggins@cs.cmu.edu
+  url: ''
+author_login: dhd
+author_email: dhuggins@cs.cmu.edu
+date: '2010-07-30 03:00:13 +0200'
+date_gmt: '2010-07-30 00:00:13 +0200'
+---
+<p>This is a bugfix release, addressing a number of important issues in the 0.6 release.  Specifically:</p>
+<ul>
+<li> The GStreamer plugin was broken with old versions of GStreamer (such as the one shipped on Nokia Internet Tablets) which did not accept "BSD" as a valid license type.</li>
+<li>Runtime performance of the statistical LM based decoder was significantly worse than 0.5 when not using phoneme lookahead.&nbsp; It is now about 10% faster and also uses less memory.</li>
+<li>The FSG decoder now consumes drastically less memory and CPU power.&nbsp; (It is still not as good as it should be, but no longer completely embarrassing)</li>
+<li>The Python modules were undocumented.&nbsp; Docstrings compatible with epydoc have been added.</li>
+<li>Raw audio logging (-rawlogdir) was broken.</li>
+<li>Adding new words works properly, including words with unknown triphones (which never worked before).</li>
+<li>The SphinxBase Python module can now use class-based language models.</li>
+<li>The pitch estimation utility (sphinx_pitch) now builds properly on Win32.</li>
+<li>Some problems with the N-Gram iterator API have been fixed.</li>
+<li>Bestpath search has been fixed to handle recognition failure gracefully.</li>
+</ul>
+<p>Source code is available for download on SourceForge.&nbsp; Binary packages for Ubuntu will be updated shortly.</p>

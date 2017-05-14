@@ -1,0 +1,102 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Porting openFST to java: Part 3'
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-07-01 22:18:10 +0200'
+date_gmt: '2012-07-01 19:18:10 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>Foreword</strong></p>
+<p>This article, the third in a series regarding, porting openFST to java, introduces the latest update to the java code, which resolve the previously raised issues regarding the java fst architecture in general and its compatibility with the original openFST format for saving models. [1]</p>
+<p><strong>1. Code Changes</strong></p>
+<p><strong>1.1. Simplified java generics usage</strong></p>
+<p>As suggested in [1], the latest java fst code revision (11456), available in the cmusphinx SVN Repository [2],  assumes only the base Weight class and modifies the State, Arc and Fst classes definition to simply use a type parameter.</p>
+<p>The above modifications provide an easier to use api. As an example the construction of a basic FST in the class <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.demos.basic.FstTest</span> is simplified as follows</p>
+<p><code>...<br />
+Fst fst = new Fst();</code></p>
+<p><code>// State 0<br />
+State s = new State();<br />
+s.AddArc(new Arc(new Weight(0.5), 1, 1, 1));<br />
+s.AddArc(new Arc(new Weight(1.5), 2, 2, 1));<br />
+fst.AddState(s);</code></p>
+<p><code>// State 1<br />
+s = new State();<br />
+s.AddArc(new Arc(new Weight(2.5), 3, 3, 2));<br />
+fst.AddState(s);</code></p>
+<p><code> </code></p>
+<p><code>// State 2 (final)<br />
+s = new State(new Weight(3.5));<br />
+fst.AddState(s);<br />
+...<br />
+</code></p>
+<p><strong>1.2. openFST models compatibilty</strong></p>
+<p>Besides the simplified java generics usage above, the most important change is the code to load an openFST model in text format and convert it to a java fst serialized model. This is achieved also in the latest java fst code revision (11456) [2].</p>
+<p><strong>2. Converting openFST models to java</strong></p>
+<p><strong>2.1. Installation</strong></p>
+<p>The procedure below is tested on an Intel CPU running openSuSE 12.1 x64 with gcc 4.6.2, Oracle Java Platform (JDK) 7u5, and ant 1.8.2.</p>
+<p>In order to convert an openFST model in text format to java fst model, the first step is to checkout from the cmusphinx SVN repository the latest java fst code revision:</p>
+<p><code># svn co https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/g2p/fst</code></p>
+<p>Next step is to build the java fst code<br />
+<code> cd fst<br />
+# ant jar<br />
+Buildfile:
+<path-to>/fst/build.xml<br />
+jar:<br />
+build-subprojects:<br />
+init:<br />
+[mkdir] Created dir:
+<path-to>/fst/bin<br />
+build-project:<br />
+[echo] fst:
+<path-to>/fst/build.xml<br />
+[javac]
+<path-to>/fst/build.xml:38: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds<br />
+[javac] Compiling 10 source files to
+<path-to>/fst/bin<br />
+[javac]
+<path-to>/fst/build.xml:42: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds<br />
+build:<br />
+[jar] Building jar:
+<path-to>/fst/fst.jar<br />
+BUILD SUCCESSFUL<br />
+Total time: 2 seconds<br />
+#</code></p>
+<p><strong>2.2. Usage</strong></p>
+<p>Having completed the installation as described above, and trained an openfst model named binary.fst as described in [3], with the latest model training code revision (11455) [4] the model is also saved in the openFST text format in a file named binary.fst.txt. The conversion to a java fst model is performed using the openfst2java.sh which can be found in the root directory of the java fst code. The openfst2java.sh accepts two parameters being the openfs input text model and the java fst output model as follows:</p>
+<p><code># ./openfst2java.sh binary.fst.txt binary.fst.ser<br />
+Parsing input model...<br />
+Saving as binary java fst model...<br />
+Import completed.<br />
+Total States Imported: 1091667<br />
+Total Arcs Imported: 2652251<br />
+#</code></p>
+<p>The newly generated binary.fst.ser model can then be loaded in java, as follows:</p>
+<p><code>try {<br />
+Fst fst = (Fst) Fst.loadModel("binary.fst.ser");<br />
+} catch (ClassNotFoundException e) {<br />
+// TODO Auto-generated catch block<br />
+e.printStackTrace();<br />
+} catch (IOException e) {<br />
+// TODO Auto-generated catch block<br />
+e.printStackTrace();<br />
+}<br />
+</code></p>
+<p><strong>3. Performance: Memory Usage</strong></p>
+<p>Testing the conversion and loading of the cmudict.fst model generated in [3], reveal that the conversion task requires about 1.0GB and the loading of the converted model requires about 900MB of RAM.</p>
+<p><strong>4. Conclusion &ndash; Future Works</strong></p>
+<p>Having the ability to convert and load an openFST model in java, takes the &ldquo;Letter to Phoneme Conversion in CMU Sphinx-4&rdquo; project to the next step, which is the port of phonetisaurus decoder to java which will eventually lead to its integration with cmusphinx 4.</p>
+<p>A major concern at this point is the high memory utilization while loading large models. Although it is expected for java applications to consume more memory compared to a similar C++ application, this could be a problem especially when running in low end machines and needs further investigation and optimization (if possible).</p>
+<p><strong>References</strong></p>
+<p>[1] <a title="Porting openFST to java: Part 2" href="https://cmusphinx.github.io/2012/05/porting-openfst-to-java-part-2/">Porting openFST to java: Part 2</a></p>
+<p>[2] <a title="Java fst SVN (Revision 11456)" href="http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx?diff_format=h&amp;view=revision&amp;revision=11456" target="_blank">Java fst SVN (Revision 11456)</a></p>
+<p>[3] <a href="https://cmusphinx.github.io/2012/06/automating-the-creation-of-joint-multigram-language-models-as-wfst-part-2/">Automating the creation of joint multigram language models as WFST: Part 2</a></p>
+<p>[4] <a title="openFST model training SVN (Revision 11455)" href="http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx?diff_format=h&amp;view=revision&amp;revision=11455" target="_blank">openFST model training SVN (Revision 11455)</a></p>

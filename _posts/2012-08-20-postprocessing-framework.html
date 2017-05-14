@@ -1,0 +1,37 @@
+---
+layout: post
+status: publish
+published: true
+title: Postprocessing Framework
+author:
+  display_name: tomy
+  login: tomy
+  email: alexandru.dan.tomescu@gmail.com
+  url: ''
+author_login: tomy
+author_email: alexandru.dan.tomescu@gmail.com
+date: '2012-08-20 16:45:18 +0200'
+date_gmt: '2012-08-20 13:45:18 +0200'
+---
+<p>(author: Alex Tomescu)</p>
+<p>The Postprocessing Framework project (part of GSoC 2012) is ready for use.</p>
+<p>This project concentrates on capitalization and punctuation recovery tasks, based on capitalized and punctuated language models. The current accuracy<span style="color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc"> for comma prediction is 35% and for period it's 39%. Capitalization is at around 94% (most of the words are lower-cased). </span></p>
+<p style="text-align: justify"><span style="font-family: Verdana, Tahoma, Arial, sans-serif;color: #111111"><span style="line-height: normal">This project had two main parts: the language model and the main algorithm.</span></span></p>
+<p style="text-align: justify">
+<p style="text-align: justify"><span style="font-family: Verdana, Tahoma, Arial, sans-serif;color: #111111"><span style="line-height: normal"><strong>The language model</strong></span></span></p>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc">For the post processing task the language model used has to contain capitalized words and punctuation mark word tokens. In the training data, commas are replaced with <COMMA> and periods are replaced with <PERIOD>. Also sentences should be grouped into paragraphs so that start and end of sentence markers (<s> and </s>) are not very frequent. The language model need to be compressed from ARPA format to DMP format with sphinx_lm_convert (or sphinx3_lm_convert).</p>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc">The gutenberg.DMP language model is correctly formatted and can be found in the language model download section on the project's sourceforge page (<a href="https://sourceforge.net/projects/cmusphinx/files/">https://sourceforge.net/projects/cmusphinx/files/</a>).</p>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc"><strong>The Algorithm</strong></p>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc"><span style="color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc">The algorithm relies on iterating throught word symbols to create word sequences, which are evaluated and put into stacks. When a stack gets full (a maximum capacity is set) it gets sorted (by sequence probabilities) and the lowest scoring part is discarded. This way bad scoring sequences are discarded, and only the best ones are kept. The final solution is the sequence with the same size as the input, with the best probability.</span></p>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc">
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc"><span style="color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc"><strong>Usage:</strong></span></p>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc">The project is available for download at:</p>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc"><a rel="nofollow" href="https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/ppf">https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/ppf</a></p>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc">To compile the project install apache ant and be sure to set the required enviroment variables. Then type the following:</p>
+<blockquote>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc">ant</p>
+</blockquote>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc">To postprocess text use the postprocess.sh script:</p>
+<blockquote>
+<p style="padding: 0px;margin: 0px 0px 1em;color: #111111;font-family: Verdana, Tahoma, Arial, sans-serif;line-height: normal;text-align: justify;background-color: #fcfcfc">sh ./postprocessing.sh -input_text path_to_file -lm path_to_lm</p>
+</blockquote>

@@ -1,0 +1,49 @@
+---
+layout: post
+status: publish
+published: true
+title: "[GSoC 2012: Pronunciation Evaluation #ronanki] Work prior to Official Start"
+author:
+  display_name: ronanki
+  login: ronanki
+  email: srikanth.143.iiit@gmail.com
+  url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+author_login: ronanki
+author_email: srikanth.143.iiit@gmail.com
+author_url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+date: '2012-05-26 11:12:56 +0200'
+date_gmt: '2012-05-26 08:12:56 +0200'
+---
+<div><span style="font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px;text-align: left">Well, it has been a month since I got accepted into this year's Google Summer of Code. This has been a great time for me, during the community bonding period within the CMU Sphinx organization.</span></div>
+<div><span style="font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px;text-align: left"><br />
+</span></div>
+<div><span style="line-height: 18px;text-align: left;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif">It has been four days since GSoC 2012 started officially. Prior to that, I became familiarized&nbsp;with a few different things with the help of my mentor. He created a wiki page for our projects at <a href="https://cmusphinx.github.io/wiki/pronunciation_evaluation">https://cmusphinx.github.io/wiki/pronunciation_evaluation</a>.</span><span style="line-height: 18px;text-align: left;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif"> Troy and I are going to blog here</span><span style="line-height: 18px;text-align: left;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif"> and update the wiki there during this summer. So please check here for important updates.</span></p>
+<p><span style="line-height: 18px;text-align: left;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif">Currently, my goal is to build a web interface which allows users to evaluate their pronunciation. Some of the sub-tasks have already been accomplished, and some of them are still ongoing:</span></p>
+<p><strong>Work accomplished:</strong></p>
+<ul style="line-height: 18px;text-align: left;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;margin: 0.5em 0px;padding: 0px 2.5em">
+<li>Created an initial web interface which allows users to record and playback their speech using the open source&nbsp;<a href="http://code.google.com/p/wami-recorder/" target="_blank">wami-recorder</a> which is being designed by the spoken language systems at MIT.</li>
+<li>When the recording is completed, the wave file is uploaded to the server for processing.</li>
+<li>Sphinx3 forced alignment is used to align a phoneme string expected from the utterance with the recorded speech to calculate time endpoints acoustic scores for each phoneme.</li>
+<li>I tried many different output arguments in sphinx3_align from&nbsp;&nbsp;<a href="https://cmusphinx.github.io/wiki/sphinx4:sphinxthreealigner" target="_blank">https://cmusphinx.github.io/wiki/sphinx4:sphinxthreealigner</a> and successfully&nbsp;tested producing the&nbsp;phoneme acoustic scores using two recognition passes.
+<ul style="padding: 0px 2.5em;margin: 0.5em 0px;line-height: 1.4">
+<li>In the first pass, I use&nbsp;<span style="font-family: 'Courier New', Courier, monospace">-phlabdir</span> as an argument to get a .lab file as output, which contains the list of recognized phonemes.</li>
+<li>In the second pass, I use that list to get acoustic scores for each phoneme using&nbsp;<span style="font-family: 'Courier New', Courier, monospace">-wdsegdir</span> as an input argument.</li>
+</ul>
+</li>
+<li>Later, I integrated sphinx3 forced alignment with the wami-recorder microphone recording applet so that the user sees the acoustic scores after uploading their recording.</li>
+<li>Please try this link to test it:&nbsp;&nbsp;<a href="http://talknicer.net/~ronanki/test/" target="_blank">http://talknicer.net/~ronanki/test/</a></li>
+<li>Wrote a program to convert&nbsp;a list of each phoneme's "neighbors," or most similar other phonemes, provided by the project mentor from the Worldbet phonetic alphabet to CMUbet.</li>
+<li>Wrote a program to take a string of phonemes representing an expected utterance as input and&nbsp;produce a sphinx3 recognition grammar consisting of a string of alternatives representing each expected phoneme and all of its&nbsp;neighboring,&nbsp;phonemes for automatic edit distance scoring.</li>
+</ul>
+<div style="line-height: 18px;text-align: left;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif"><strong>Ongoing work:</strong></div>
+<ul style="line-height: 18px;text-align: left;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;margin: 0.5em 0px;padding: 0px 2.5em">
+<li>Reading about Worldbet, OGIbet, ARPAbet, and CMUbet, the different ASCII-based phonetic alphabets and their mappings between each other and the International Phonetic Alphabet.</li>
+<li>Will be enhancing the first pass of recognition described above&nbsp;using the generated alternative&nbsp;neighboring&nbsp;phoneme grammars to find phonemes which match the recorded speech more closely than the expected phonemes without using complex post-processing acoustic score statistics.</li>
+<li>Trying more parameters and options to derive acoustic scores for each phoneme from sphinx3 forced alignment.</li>
+<li>Writing an exemplar score&nbsp;aggregation&nbsp;algorithms to find the means, standard deviations, and their expected error for each phoneme in a phrase from a set of recorded exemplar pronunciations of that phrase.</li>
+<li>Writing an algorithm which can detect mispronunciations by comparing a recording's acoustic scores to the expected mean and standard deviation for each phoneme, and&nbsp;aggregating&nbsp;those scores to biphones, words, and the entire phrase.</li>
+</ul>
+<div style="text-align: left"><span style="font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;color: #222222"><span style="line-height: 18px"><br />
+</span></span></div>
+</div>
+<div><span style="font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;color: #222222"><span style="line-height: 18px">My GSoC project proposal page: </span></span><a href="http://www.google-melange.com/gsoc/proposal/review/google/gsoc2012/ronanki/1" target="_blank">http://www.google-melange.com/gsoc/proposal/review/google/gsoc2012/ronanki/1</a></div>

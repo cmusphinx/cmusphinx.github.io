@@ -1,0 +1,85 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Porting openFST to java: Part 2'
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-05-18 13:37:49 +0200'
+date_gmt: '2012-05-18 10:37:49 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>Foreword</strong></p>
+<p>This article, the second in a series regarding, porting openFST to java, briefly presents some additional base classes and raise some issues regarding the java fst architecture in general and its compatibility with the original openFST binary format for saving models.</p>
+<p><strong>1. FST java library base architecture</strong><br />
+The first article in the series [1] introduced the <span style="font-family: Courier New,monospace">Weight<T></span> class, the semiring operations related classes and interfaces and finally a solid class implementation for the tropical semiring based on float weights. In the last svn commit (revision 11363) [2] includes the <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.weight.LogSemiring class which implements a logarithmic semiring based on Double weight values.</span></p>
+<p>Furthermore revision 11363 includes the <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.state.State<W extends Weight<?>></span>, <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.arc.Arc<W extends Weight<?>></span> and <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.fst.Fst<W extends Weight<?>></span> classes which implement the state, arc and fst functionality, respectively.</p>
+<p><strong>2. Architecture design issues</strong></p>
+<p><strong>2.1. Java generics support</strong></p>
+<p>As described in the first part [1], the <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.weight.Weight<T></span> acts basically as a wrapper for the weight&rsquo;s value. The current implementation of State, Arc and Fst classes take as a type parameter any class that extends the Weight base class. Although this approach provides a great flexibility on buildin custom types of FSTs, the implementations can be greatly simplified if we assume only the base Weight class and modify the State, Arc and Fst classes definition to simply usse a type parameter.</p>
+<p>As an example the Arc class definition would be simplified to</p>
+<p><code>public class Arc implements Serializable{</code></p>
+<p><code>private static final long serialVersionUID = -7996802366816336109L;</p>
+<p></code></p>
+<p><code> // Arc's weight<br />
+protected Weight weight;<br />
+// Rest of the code.....<br />
+}</code></p>
+<p>instead of its current definition</p>
+<p><code>public class Arc<W extends Weight> implements Serializable{</code></p>
+<p><code>private static final long serialVersionUID = -7996802366816336109L;</p>
+<p></code></p>
+<p><code> // Arc's weight<br />
+protected W weight;<br />
+// Rest of the code.....<br />
+}</code></p>
+<p>The proposed modification can be applied also to State and Fst classes and provide an easier to use api. In that case the construction of a basic FST in the class <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.demos.basic.FstTest</span> would be simplified as follows</p>
+<p><code>// ...<br />
+Fst fst = new Fst();</code></p>
+<p><code>// State 0<br />
+State s = new State();<br />
+s.AddArc(new Arc(new Weight(0.5), 1, 1, 1));<br />
+s.AddArc(new Arc(new Weight(1.5), 2, 2, 1));<br />
+fst.AddState(s);</p>
+<p>// State 1<br />
+s = new State();<br />
+s.AddArc(new Arc(new Weight(2.5), 3, 3, 2));<br />
+fst.AddState(s);</p>
+<p></code></p>
+<p><code>// State 2 (final)<br />
+s = new State(new Weight(3.5));<br />
+fst.AddState(s);<br />
+// ...</code></p>
+<p>The code could be further simplified by completely dropping generics support in State, Arc and Fst classes by just providing solid implementations based on Weight weights.</p>
+<p><strong>2.2. Compatibility with the original openFST binary format</strong></p>
+<p>A second issue is the compatibility of the serialized binary format with the original openFST format. A compatible java library that is able to load/save openFST models, would provide us the ability to share trained models between various applications. As an example, in the case of ASR appliactions, trained models could be easily shared between between sphinx4 and kaldi [3] which is written in C++ and already uses the openFST library.</p>
+<p><strong>2.3. Logarithmic Semiring implementation issues</strong></p>
+<p>A final issue has to do with a possible inconsistency of the plus operation definition between Allauzen's et. Al paper [4] and the actual openFST code (version 1.3.1.): The plus operation ( $latex \oplus_{\log} $ ) is defined in [4] as $latex x \oplus_{\log} y = -\log(e^{-x} +e^{-y}) $, however in code it is implemented as follows</p>
+<p><code>template<br />
+inline T LogExp(T x) { return log(1.0F + exp(-x)); }</code></p>
+<p><code> </code></p>
+<p><code>template<br />
+inline LogWeightTpl Plus(const LogWeightTpl &amp;w1,<br />
+const LogWeightTpl &amp;w2) {<br />
+T f1 = w1.Value(), f2 = w2.Value();<br />
+if (f1 == FloatLimits::kPosInfinity)<br />
+return w2;<br />
+else if (f2 == FloatLimits::kPosInfinity)<br />
+return w1;<br />
+else if (f1 > f2)<br />
+return LogWeightTpl(f2 - LogExp(f1 - f2));<br />
+else<br />
+return LogWeightTpl(f1 - LogExp(f2 - f1));<br />
+}<br />
+</code></p>
+<p><strong>References</strong></p>
+<p>[1] &ldquo;<a title="Porting openFST to java: Part 1" href="https://cmusphinx.github.io/2012/05/porting-openfst-to-java-part-1/" target="_blank">Porting openFST to java: Part 1</a>&rdquo;, last accessed: 18/05/2012.</p>
+<p>[2] <a title="CMUSphinx g2p SVN repository" href="https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/g2p/" target="_blank">CMUSphinx g2p SVN repository</a></p>
+<p>[3] <a title="Kaldi Speech recognition toolkit" href="http://kaldi.sourceforge.net/" target="_blank">Kaldi Speech recognition research toolkit</a> , last accessed: 18/05/2012.</p>
+<p>[4] C. Allauzen, M. Riley, J. Schalkwyk, W. Skut, M. Mohri, &ldquo;OpenFst: a general and efficient weighted finite-state transducer library&rdquo;, Proceedings of the 12th International Conference on Implementation and Application of Automata (CIAA 2007), pp. 11&ndash;23, Prague, Czech Republic, July 2007.</p>

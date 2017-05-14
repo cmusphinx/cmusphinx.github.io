@@ -1,0 +1,53 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Scoring routines for pronunciation evaluation: part1'
+author:
+  display_name: ronanki
+  login: ronanki
+  email: srikanth.143.iiit@gmail.com
+  url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+author_login: ronanki
+author_email: srikanth.143.iiit@gmail.com
+author_url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+date: '2012-07-10 23:13:47 +0200'
+date_gmt: '2012-07-10 20:13:47 +0200'
+---
+<p>(Author: <a href="http://researchweb.iiit.ac.in/~srikanth.ronanki">Srikanth Ronanki</a>)<br />
+(Status: GSoC 2012 Pronunciation Evaluation Week 5)</p>
+<p>The basic scoring routine for the pronunciation evaluation system is now available at <a href="http://talknicer.net/~ronanki/test/">http://talknicer.net/~ronanki/test/</a>. The output is generated for each phoneme in the phrase and displays the total score.</p>
+<p><strong>1. Edit-distance neighbor grammar generation:</strong></p>
+<p>Earlier, I did this with: </p>
+<p>(a) a single-phone decoder</strong><br />
+<a href="http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_1phone.txt">http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_1phone.txt</a></p>
+<p>(b) a three-phone decoder (contextual)<br />
+<a href="http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_3phones.txt">http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_3phones.txt</a></p>
+<p>(c) an entire phrase decoder with neighboring phones<br />
+<a href="http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_compgram.txt">http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_compgram.txt</a></p>
+<p>This week, I added two more decoders: a word-decoder and a complete phrase decoI used using each phoneme at each time</p>
+<p><strong>word-decoder:</strong> Use sox to split each wav file into worded  based on forced-alignment output and then present each word as follows. </p>
+<p>Ex: word - "with" is presented as</p>
+<p>public  = ( (W | L | Y) (IH) (TH) );</p>
+<p>public  = ( (W) (IH | IY | AX | EH) (TH) );</p>
+<p>public  = ( (W) (IH) (TH | S | DH | F | HH) ); </p>
+<p>The accuracy turned out to be better than single-phone/three-phone decoder, same as entire phrase decoder and the output of a sample test phrase is at <a href="http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_words.txt">http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_words.txt</a></p>
+<p><strong>Complete phrase decoder using each phoneme:</strong> This is again more similar to entire phrase decoder. This time I supplied neighboring phones for each phoneme at each time and fixed the rest of the phonemes in the phrase. Not a good approach, takes more time to decode. But, the accuracy is better than all the previous methods. The output is at <a href="http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_phrases.txt">http://talknicer.net/~ronanki/phrase_data/results_edit_distance/output_phrases.txt</a></p>
+<p>The code for above methods are uploaded in cmusphinx sourceforge at <a href="http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/ronanki/scripts/neighborphones_decode/">http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/ronanki/scripts/neighborphones_decode/</a></p>
+<p>Please follow the README file in each folder for detailed instructions on how to use them.</p>
+<p><strong>2. Scoring paradigm:</strong></p>
+<p><strong>Phrase_wise:</strong><br />
+The current basic scoring routine which is deployed at <a href="http://talknicer.net/~ronanki/test/">http://talknicer.net/~ronanki/test/</a> aligns the test recording with the utterance using forced alignment in sphinx and generates a phone segmentation file. Each phoneme in the file is then compared with mean, std. deviation of the respective phone in phrase_statistics (<a href="http://talknicer.net/~ronanki/phrase_data/phrase1_stats.txt">http://talknicer.net/~ronanki/phrase_data/phrase1_stats.txt</a>) and standard scores are calculated from z-scores of acoustic_score and duration.</p>
+<p><strong>Random_phrase:</strong><br />
+I also derived statistics (mean score, std. deviation score, mean duration) for each phone in CMUphoneset irrespective of context using the exemplar recordings for all the three phrases (http://talknicer.net/~ronanki/phrase_data/phrases.txt) which I have as of now. So, If a test utterance is given, I can test each phone in the random phrase with respective phone statistics. </p>
+<p>Statistics are at : <a href="http://talknicer.net/~ronanki/phrase_data/all_phrases_stats">http://talknicer.net/~ronanki/phrase_data/all_phrases_stats</a> (column count represents number of times each phone occurred)</p>
+<p><strong>Things to do in the upcoming week:</strong></p>
+<p>1. Use of an edit-distance grammar to derive standard scores such that the minimal effective training data set is required.<br />
+2. Use of the same grammar to detect the words that are having two correct different pronunciation (ex: READ/RED)<br />
+3. In a random phrase scoring method, another column can be added to store the position of each phone with respect to word (or SILence) such that each phone will have three statistics and can be compared better with the exemplar phonemes based on position.<br />
+4. Link all those modules to try to match experts' scores.<br />
+5. Provide feedback to the user with underlined mispronunciations, or numerical labels.</p>
+<p><strong>Future tasks:</strong></p>
+<p>1. Use of CART models in training to do better match of statistics for each phoneme in the test utterance with the training data based on contextual information<br />
+2. Use of phonological features instead of mel-cepstral features, which are expected to better represent the state of pronunciation.<br />
+3. Develop a complete web-based system so that end user can test their pronunciation in an efficient way.</p>

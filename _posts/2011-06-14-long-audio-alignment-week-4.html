@@ -1,0 +1,19 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Long Audio Alignment: Week 4'
+author:
+  display_name: apurv
+  login: apurv
+  email: apurvtwr@gmail.com
+  url: ''
+author_login: apurv
+author_email: apurvtwr@gmail.com
+date: '2011-06-14 15:58:07 +0200'
+date_gmt: '2011-06-14 12:58:07 +0200'
+---
+<p>Extending my work from last week, I have added a framework for testing  audio aligner. The framework includes tools to read transcription from a  file and convert it into a format compatible with grammar, corrupt a  transcription with desired error rates of particular types and finally a  pronunciation generator for OOV words.</p>
+<p>The problem we are trying to tackle first is of word insertions. For  this, the aligner grammar has been modified to contain word self-loops  and one backward jump per word. The word error rates for small audio (~ 5 min) with word repetitions is less than 2% with the current configuration. However it models word repetitions quite  well, it can't model word insertion completely as words inserted don't  necessarily come from the neighborhood of recently decoded word.<br />
+A similar (but not quite the same) out of grammar utterance recognition  problem was attempted in S4 by adding an out of grammar branch  (PhoneLoops) in SentenceHMM parallel to the one obtained by expanding  grammar. But this addition does not model insertion of a couple of words  in an utterance that "almost" fits the grammar.<br />
+So I plan to modify the same approach, but rather than having a branch  parallel to one generated from grammar, I will have similar branches  between consecutive words nodes in the grammar. The branch out probability for this branch will require some experimentation as well, but I expect this addition to model insertion of words completely.</p>

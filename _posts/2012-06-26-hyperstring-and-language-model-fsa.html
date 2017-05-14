@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: Hyperstring and Language Model FSA
+author:
+  display_name: tomy
+  login: tomy
+  email: alexandru.dan.tomescu@gmail.com
+  url: ''
+author_login: tomy
+author_email: alexandru.dan.tomescu@gmail.com
+date: '2012-06-26 11:37:35 +0200'
+date_gmt: '2012-06-26 08:37:35 +0200'
+---
+<p>(author: Alexandru Tomescu)</p>
+<p><strong>Foreword</strong></p>
+<p>As part of the PostProcessing Framework task of capitalization and punctuation recovery I am using Finite State Automata (FSA) to model hyperstrings ( all written forms of a text) and Language Models. These will be composed and a best-path search in the resulting FSA will output the best version (capitalized and punctuated) of a string.</p>
+<p><strong>Hyperstring FSA</strong></p>
+<p>The hyperstring FSA is composed from a string (i.e. "This is exciting") and considers all the possible written forms of the string.</p>
+<blockquote><p>S0 --- (This, this, THIS) ---> T0 --- (<COMMA>, <PERIOD>, <NONE>) ---> S1 --- (Is, is, IS) ---> T1 --- (<COMMA>, <PERIOD>, <NONE>) ---> S2 --- (Exciting, exciting, EXCITING) ---> T2 --- (<COMMA>, <PERIOD>, <NONE>) ---> S3</p></blockquote>
+<div style="width: 1px;height: 1px;overflow: hidden">Language Model FSA</div>
+<div style="width: 1px;height: 1px;overflow: hidden">The language model FSA encodes a language model into a FSA structure. Two states are default for every LM FSA: start and eps states. Transitions from a</div>
+<p>[caption id="" align="aligncenter" width="612" caption="Hyperstring FST"]<img src="http://i50.tinypic.com/21j417b.png" alt="" width="612" height="52" />[/caption]</p>
+<p>S0 is the start state and S3 is the final state. Transitions between Si and Ti contain words and transitions between Ti and Ti+1 contain punctuation marks.</p>
+<p>In the project this is represented by the FSA object which is constructed with the String we want to model and a boolean value which states if we also want punctuation added between transitions. If not the FSA will look like this:</p>
+<blockquote><p>S0 --- (This, this, THIS) ---> S1 --- (Is, is, IS) ---> S2 --- (Exciting, exciting, EXCITING) ---> S3</p></blockquote>
+<p><strong>Language Model FSA</strong></p>
+<p>The language model FSA encodes a language model into a FSA structure. Two states are default for every LM FSA: start and eps states. Transitions from a state to another contain a word and the probability of the destination state ngram. Transitions from a state to the eps state contain the backoff probability of that ngram.</p>
+<p>When initialized, the LanguageModelFSA object takes as parameters URL objects which contain the location of the language model, a dictionary and a filler dictionary. In this class I have used the sphinx4 library to read the language model. When created, the object outputs three files: a file which contains the fsa (lm_fsa), the input symbols table (lm_fsa_isyms) which is the same as the output symbols table (in case we want to consider a FST) and the state symbols table (lm_fsa_ssyms). If needed the output can be compiled with openfst and printed.</p>
+<p>[caption id="" align="aligncenter" width="684" caption="Language Model FST"]<img src="http://i50.tinypic.com/2rmqver.png" alt="" width="684" height="257" />[/caption]</p>
+<p>To download the code: svn co https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/ppf</p>
+<p>Compile with make and run program with scripts/createfsa.sh with the string you want to model into a FSA, the path to the LM, dictionary and filler dictionary as parameters.</p>

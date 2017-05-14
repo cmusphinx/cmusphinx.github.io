@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: 'edit-distance grammar decoding using sphinx3: Part 1'
+author:
+  display_name: ronanki
+  login: ronanki
+  email: srikanth.143.iiit@gmail.com
+  url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+author_login: ronanki
+author_email: srikanth.143.iiit@gmail.com
+author_url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+date: '2012-06-19 12:15:50 +0200'
+date_gmt: '2012-06-19 09:15:50 +0200'
+---
+<p style="margin: 0px">(Author:&nbsp;<a href="http://researchweb.iiit.ac.in/~srikanth.ronanki" target="_blank">Srikanth Ronanki</a>)</p>
+<p style="margin: 0px">(Status: GSoC 2012 Pronunciation Evaluation Week 3)</p>
+<p></p>
+<p>I finally finished trying different methods for edit-distance grammar decoding. Here is what I have tried so far:</p>
+<p>1. I used sox to split each input wave file into individual phonemes based on the forced alignment output. Then, I tried decoding each phoneme against its neighboring phonemes. The decoding output matched the expected phonemes only 12 out of 41 times for the exemplar recordings in the phrase "Approach the teaching of pronunciation with more confidence"</p>
+<p>The accuracy for that method of edit distance scoring was 12/41 (29%) -- This naive approach didn't work well.</p>
+<p>2. I used sox to split each input wave file into three phonemes based on the forced alignment output and position of the phoneme. If a phoneme is at beginning of its word, I used a grammar like:  (current phone) (next) (next2next) and if it is middle phoneme: (previous) (current) (next) and if it is at the end: (previous2previous) (previous) (current) and supplied neighboring phones for the current phone and fixed the other two.<br />
+For example, phoneme IH in word  "with"  is encoded as:<br />
+<code>((W) (IH|IY|AX|EH) (TH))</code></p>
+<p>The accuracy was 19/41 (46.2%) -- better because of more contextual information.</p>
+<p>3. I used the entire phrase with each phoneme encoded in a sphinx3_decode grammar file for matching a sequence of alternative neighboring phonemes which looks something like this:</p>
+<p><code><br />
+#JSGF V1.0;<br />
+grammar phonelist;<br />
+public<br />
+= (SIL (AH|AE|ER|AA) (P|T|B|HH) (R|Y|L) (OW|AO|UH|AW) (CH|SH|JH|T) (DH|TH|Z|V)(AH|AE|ER|AA) (T|CH|K|D|P|HH) (IY|IH|IX) (CH|SH|JH|T) (IH|IY|AX|EH) (NG|N) (AH|AE|ER|AA) (V|F|DH) (P|T|B|HH)(R|Y|L) (AH|AE|ER|AA) (N|M|NG) (AH|AE|ER|AA) (N|M|NG) (S|SH|Z|TH) (IY|IH|IX) (EY|EH|IY|AY) (SH|S|ZH|CH) (AH|AE|ER|AA) (N|M|NG) (W|L|Y) (IH|IY|AX|EH) (TH|S|DH|F|HH) (M|N) (AO|AA|ER|AX|UH) (R|Y|L) (K|G|T|HH) (AA|AH|ER|AO) (N|M|NG) (F|HH|TH|V) (AH|AE|ER|AA) (D|T|JH|G|B) (AH|AE|ER|AA) (N|M|NG) (S|SH|Z|TH) SIL);<br />
+</code><br />
+The accuracy for this method of edit distance scoring was 30/41 (73.2%) -- the more contextual information provided, better the accuracy.</p>
+<p>Here is some sample output, written both one below the other to have a comparison of phonemes.</p>
+<p>Forced-alignment output:<br />
+<code> AH P R OW CH DH AH T IY CH IH NG AH V P R AH N AH N S IY EY SH AH N W IH TH M</code></p>
+<p>Decoder output:<br />
+<code>ER P R UH JH DH AH CH IY CH IY N AH V P R ER N AH NG Z IY EY SH AH N W IH TH M</code></p>
+<p>In this case, both are forced outputs. So, if someone skips or inserts something during phrase recording, it may not work well. We need to think a method to solve this. Will a separate pass decoder grammar to test for whole word or syllable insertions and deletions work?</p>
+<p><b>Things to do for next week:</b></p>
+<p>1. We are trying to combine acoustic standard scores (and duration) from forced alignment with an edit distance scoring grammar, which was reported to have better correspondence with human expert phonologists.</p>
+<p>2. Complete a basic demo of the pronunciation evaluation without edit distance scoring from exemplar recordings using conversion of phoneme acoustic scores and durations to normally distributed scores, and then using those to derive their means and standard deviations, so we can produce per-phoneme acoustic and duration standard scores for new uploaded recordings.</p>
+<p>3. Finalize the method for mispronunciation detection at phoneme and word level.</p>

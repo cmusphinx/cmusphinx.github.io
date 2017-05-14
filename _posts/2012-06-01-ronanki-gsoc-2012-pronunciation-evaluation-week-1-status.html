@@ -1,0 +1,55 @@
+---
+layout: post
+status: publish
+published: true
+title: Sphinx3 phoneme acoustic scores, CMUbet neighboring phonemes
+author:
+  display_name: ronanki
+  login: ronanki
+  email: srikanth.143.iiit@gmail.com
+  url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+author_login: ronanki
+author_email: srikanth.143.iiit@gmail.com
+author_url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+date: '2012-06-01 15:51:51 +0200'
+date_gmt: '2012-06-01 12:51:51 +0200'
+---
+<p style="margin: 0px">(Author:&nbsp;<a href="http://researchweb.iiit.ac.in/~srikanth.ronanki" target="_blank">Srikanth Ronanki</a>)</p>
+<p style="margin: 0px">(Status: GSoC 2012 Pronunciation Evaluation Week 1)</p>
+<p></p>
+<p style="margin: 0px;font-family: 'Times New Roman';line-height: normal;text-align: left;font-size: medium"><span style="font-size: 13px;line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222">Last week, I accomplished the following:</span></p>
+<ol style="font-family: 'Times New Roman';line-height: normal;text-align: left;font-size: medium">
+<li><span style="font-size: 13px;line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222">Successfully&nbsp;tested producing phoneme acoustic scores from sphinx3_align using two recognition passes. I was able to use the state segmentation parameter </span><span style="font-size: 13px;line-height: 18px;font-family: 'Courier New', Courier, monospace;color: #222222">-stsegdir</span><span style="font-size: 13px;line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222"> as an argument to the program, to obtain acoustic scores for each frame and thereby for each phoneme as well. But, the output of the program is to be decoded to integer format which I will try to do by the end of next week.</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif"><span style="font-size: 13px;line-height: 18px;color: #222222">Last week I wrote a program which converts a list of each phoneme's "neighbors," or most similar other phonemes, provided by the project mentor from the Worldbet phonetic alphabet to CMUbet. But, yesterday, when I compared both files manually, found some of the phones mismatched. So, I re-checked my code and fixed the bug. The corrected</span><span style="font-size: 13px;line-height: 18px;color: #222222"> program takes a string of phonemes representing an expected utterance as input and&nbsp;produces a sphinx3 recognition grammar consisting of a string of alternatives representing each expected phoneme and all of its&nbsp;neighboring,&nbsp;phonemes for automatic edit distance scoring. </span></span></li>
+</ol>
+<p style="margin: 0px;font-family: 'Times New Roman';line-height: normal;text-align: left;font-size: medium"><span style="font-family: Arial, Helvetica, sans-serif;font-size: small"><span style="line-height: 18px;color: #222222">All the programs I have written so far are checked in at </span><a href="http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/ronanki/">http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/ronanki</a> <span style="line-height: 18px;color: #222222">using su</span><span style="line-height: 18px;color: #222222">bversion. (Similarly, Troy's code is checked in at </span><a href="http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/troy/">http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/troy</a>.)</span></p>
+<p style="margin: 0px;font-family: 'Times New Roman';line-height: normal;text-align: left;font-size: medium"><span style="font-family: Arial, Helvetica, sans-serif"><br />
+</span></p>
+<p style="margin: 0px;font-family: 'Times New Roman';line-height: normal;text-align: left;font-size: medium"><span style="font-family: Arial, Helvetica, sans-serif"><span style="font-size: 13px;line-height: 18px;color: #222222">Here is the procedure for using that code to obtain neighboring phonemes of CMUbet from a file which contains a string of phonemes:</span></span></p>
+<ul style="font-family: 'Times New Roman';line-height: normal;text-align: left;font-size: medium">
+<li><span style="font-size: 13px;line-height: 18px;font-family: Arial, Helvetica, sans-serif;color: #222222">To convert Worldbet phonetic alphabet to CMUbet </span></li>
+<p><span style="font-family: Arial, Helvetica, sans-serif"><span style="font-size: 13px;line-height: 18px;color: #222222"><br />
+<code><br />
+python convert_world2cmu.py <input_worldbet_phone> <input_key_map> <output_cmubet_phone><br />
+</code><br />
+</span></span></p>
+<li><span style="font-family: Arial, Helvetica, sans-serif"><span style="font-size: 13px;line-height: 18px;color: #222222">To convert input list of phonemes to neighboring phones</span><span style="line-height: 18px;color: #222222;font-size: small"> </span></span></li>
+<p><span style="font-family: Arial, Helvetica, sans-serif"><strong> </strong><span style="line-height: 18px;color: #222222;font-size: small"> </span><span style="font-size: 13px;line-height: 18px;color: #222222"><br />
+<code>python convert2_ngbphones.py <input_phoneme_list> <input_phone_map> <output_neighboring_phone_list><br />
+</code><br />
+</span></span></ul>
+<ul style="font-family: 'Times New Roman';line-height: normal;text-align: left;font-size: medium">
+<li><span style="font-family: Arial, Helvetica, sans-serif"><span style="font-size: 13px;line-height: 18px;color: #222222"> </span><span style="font-size: 13px;line-height: 18px;color: #222222"><strong>Ex: </strong>"I had faith in them" (arctic_a0030) - a sentence from arctic database:</span></span></li>
+<p><span style="font-family: Arial, Helvetica, sans-serif;font-size: small"><span style="line-height: 18px;color: #222222"><br />
+<code><br />
+<input_phoneme_list>&nbsp;AY HH AE D F EY TH IH N DH EH M (arctic_a0030)<br />
+</code><br />
+</span></span><span style="color: #222222"> </span></p>
+<div style="color: black">
+<p style="margin: 0px"><span style="font-family: Arial, Helvetica, sans-serif"><span style="font-size: small"><br />
+<code><br />
+<output_neighboring_phone_list>&nbsp;<span style="line-height: 18px;color: #222222">{AY|AA|IY|OY|EY} {HH|TH|F|P|T|K} {AE|EH|ER|AH} {D|T|JH|G|B} {F|HH|TH|V} {EY|EH|IY|AY} {TH|S|DH|F|HH} {IH|IY|AX|EH} {N|M|NG} {DH|TH|Z|V} {EH|IH|AX|ER|AE} {M|N} (arctic_a0030)<br />
+</code><br />
+</span></span></span></p>
+</div>
+</ul>

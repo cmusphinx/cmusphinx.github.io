@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: Enlarging In-Domain Data Using Crawled News Articles
+author:
+  display_name: emre
+  login: emre
+  email: emre@celikten.name
+  url: http://emre.celikten.name
+author_login: emre
+author_email: emre@celikten.name
+author_url: http://emre.celikten.name
+excerpt: In the previous post, we used the Gutenberg corpus for selecting sentences
+  that resembled Jane Eyre. We need to see how it applies to real world problems such
+  as constructing a language model for running speech recognition on podcasts.
+date: '2012-08-20 11:31:14 +0200'
+date_gmt: '2012-08-20 08:31:14 +0200'
+---
+<p>(Author: <a href="http://emre.celikten.name">Emre &Ccedil;elikten</a>)</p>
+<p>In the <a href="https://cmusphinx.github.io/2012/07/enlarging-in-domain-data-using-perplexity-differences-for-language-model-training/">previous post</a>, we used the Gutenberg corpus for selecting sentences that resembled Jane Eyre. We need to see how it applies to real world problems such as constructing language models for podcasts.</p>
+<p>In this case, <a href="http://www.democracynow.org/">Democracy Now</a> transcripts was used as in-domain data. We examine two cases: Using the Gutenberg corpus and crawled news articles from the web.</p>
+<p>A custom multi-threaded web scraper has been created for this purpose. The scraper works in a simple way: There is a crawler thread for each starting URL. The threads only follow links that are on the same domain address with their starting URL. In other words, they do not follow links that go to other websites. Text from websites are extracted using <a href="http://code.google.com/p/boilerpipe/">Boilerpipe</a> library. </p>
+<p>A text corpus around 1 billion words were obtained from news websites in English. Due to time constraints, it was not possible to try the entire corpus.</p>
+<p>Three experiments have been conducted for obtaining extra data: Using a 340M word subset of Gutenberg corpus, using 140M and 315M subsets of crawled news. It allows us to compare two different data sets and also see the results of having more data for running the algorithm.</p>
+<p>Democracy Now corpus which was used has 1259987 words. (59571 sentences). After splitting the in-domain corpus in a 90/10 fashion for creating training and test sets, test set perplexity against training set LM was 125.63.</p>
+<p>Total amount of words including sentence markers are:</p>
+<p>Gutenberg corpus: 371665822 (15999414 sentences)<br />
+Subset #1 of crawled news corpus: 158474509 (7257989 sentences)<br />
+Subset #2 of crawled news corpus: 349157708 (15988267 sentences) </p>
+<p>For the Gutenberg case, the following results were obtained. Note that the number of words include sentence markers in the graphs. </p>
+<p><a href="http://dl.dropbox.com/u/16064906/gsoc/demo-pp-word.gif"><img src="http://dl.dropbox.com/u/16064906/gsoc/demo-pp-word.gif" alt="Gutenberg case for words" /></a><br />
+<a href="http://dl.dropbox.com/u/16064906/gsoc/demo-pp-sent.gif"><img src="http://dl.dropbox.com/u/16064906/gsoc/demo-pp-sent.gif" alt="Gutenberg case for sentences" /></a></p>
+<p>After trying smaller LMs, the lowest perplexity was obtained with the smallest segment, which had 4491752 words in it and had a test set perplexity of 212.4. </p>
+<p>The algorithm seems to favor shorter sentences.</p>
+<p>Here are the results for 140M subset of crawled data: </p>
+<p><a href="http://dl.dropbox.com/u/16064906/gsoc/crawled140-pp-word.gif"><img src="http://dl.dropbox.com/u/16064906/gsoc/crawled140-pp-word.gif" alt="Crawled corpus 140M case for words" /></a><br />
+<a href="http://dl.dropbox.com/u/16064906/gsoc/crawled140-pp-sent.gif"><img src="http://dl.dropbox.com/u/16064906/gsoc/crawled140-pp-sent.gif" alt="Crawled corpus 140M case for sentences" /></a></p>
+<p>Crawled data works much better than the previous case.</p>
+<p>Here are the results for 300M subset of crawled data: </p>
+<p><a href="http://dl.dropbox.com/u/16064906/gsoc/crawled315-pp-word.gif"><img src="http://dl.dropbox.com/u/16064906/gsoc/crawled315-pp-word.gif" alt="Crawled corpus 315M case for words" /></a><br />
+<a href="http://dl.dropbox.com/u/16064906/gsoc/crawled315-pp-sent.gif"><img src="http://dl.dropbox.com/u/16064906/gsoc/crawled315-pp-sent.gif" alt="Crawled corpus 315M case for sentences" /></a></p>
+<p>We can see that using more data results in better test set perplexity values, since there are more sentences that are similar to in-domain data from which we select our data.</p>

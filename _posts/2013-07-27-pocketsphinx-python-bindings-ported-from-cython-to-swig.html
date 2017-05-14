@@ -1,0 +1,19 @@
+---
+layout: post
+status: publish
+published: true
+title: Pocketsphinx Python bindings ported from Cython to SWIG
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2013-07-27 20:30:54 +0200'
+date_gmt: '2013-07-27 17:30:54 +0200'
+---
+<p>As of today a large change of using SWIG-generated python bindings has been merged into pocketsphinx and sphinxbase trunk.</p>
+<p><a href="http://www.swig.org/">SWIG</a> is an interface compiler that connects programs written in C and C++ with scripting languages such as Perl, Python, Ruby, and Tcl. It works by taking the declarations found in C/C++ header files and using them to generate the wrapper code that scripting languages need to access the underlying C/C++ code. In addition, SWIG provides a variety of customization features that let you tailor the wrapping process to suit your application.</p>
+<p>By this port we hope to increase coverage of pocketsphinx bindings and provide a uniform and documented interface in various language: Python, Ruby, Java. </p>
+<p>To test the change checkout sphinxbase and pocketsphinx from trunk and see the examples in <em>pocketsphinx/swig/python/test</em>.</p>

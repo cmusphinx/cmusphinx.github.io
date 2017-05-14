@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: 'GSoC 2012: Pronunciation Evaluation using CMUSphinx &ndash; Project Conclusions'
+author:
+  display_name: ronanki
+  login: ronanki
+  email: srikanth.143.iiit@gmail.com
+  url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+author_login: ronanki
+author_email: srikanth.143.iiit@gmail.com
+author_url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+date: '2012-08-26 14:57:26 +0200'
+date_gmt: '2012-08-26 11:57:26 +0200'
+---
+<p>(Author: <a href="http://researchweb.iiit.ac.in/~srikanth.ronanki">Srikanth Ronanki</a>)<br />
+(Status: GSoC 2012 Pronunciation Evaluation Final Report)</p>
+<p>This article briefly summarizes the implementation of GSoC 2012 Pronunciation Evaluation project.</p>
+<p>Primarily, I started with sphinx forced-alignment and obtained the spectral matching acoustic scores, duration at phone, word level using WSJ models. After that I tried concentrating mainly on two things. They are edit-distance neighbor phones decoding and Scoring routines for both Text-dependent and Text-independent systems as a part of GSoC 2012 project.</p>
+<p><strong>Edit-distance Neighbor phones decoding:</strong></p>
+<p>1. Primarily started with single-phone decoder and then explored three-phones decoder, word decoder and complete phrase decoder by providing neighbor phones as alternate to the expected phone.<br />
+2. The decoding results shown that both word level and phrase level decoding using JFGF are almost same.<br />
+3. This method helps to detect the mispronunciations at phone level and to detect homographs as well if the percentage of error in decoding can be reduced.</p>
+<p><strong>Scoring Routines:</strong></p>
+<p><strong>Text-dependent: </strong><br />
+This method is based on exemplars for each phrase. Initially, mean acoustic score, mean duration along with deviations are calculated for each of the phone in the phrase based on exemplar recordings. Now, given the test recording, each phone in the phrase is then compared with exemplar statistics. After that, z-scores are calculated and then normalized scores are calculated based on maximum and minimum of z-scores from exemplar recordings. All phone scores are aggregated to get word score and then all word scores are aggregated with POS weight to get complete phrase score.</p>
+<p><strong>Text-independent:</strong><br />
+This method is based on predetermined statistics built from any corpus. Here, in this project, I used TIMIT corpus to build statistics for each phone based on its position (begin/middle/end) in the word. Given any random test file, each phone acoustic score, duration is compared with corresponding phone statistics based on contextual information. The scoring method is same as to that of Text-dependent system.</p>
+<p><strong>Demo:</strong><br />
+Please try our demo @ <a href="http://talknicer.net/~ronanki/test/">http://talknicer.net/~ronanki/test/</a> and help us by giving the feedback.</p>
+<p><strong>Documentation and Codes</strong><br />
+All codes are uploaded at CMUSphinx svn @ <a href="http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/ronanki/">http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/ronanki/</a> and raw documentation of the project can be found <a href="http://talknicer.net/~ronanki/Pronunciation_scoring_documentation.pdf">here</a>.</p>
+<p><strong>Conclusions:</strong><br />
+The pronunciation evaluation system really helps second-language learners to improve their pronunciation by trying multiple times and it lets you correct your-self by giving necessary feedback at phone, word level. I couldn't complete some of the things like CART modelling I have mentioned earlier during the project. But I hope that I can keep my contributions to this project in future as well.</p>
+<p>This summer has been a great experience to me. Google Summer of code 2012 has finally ended. As a final note, the current article is just a summary of the work during the project, an extensive set of documentation will be updated at <a href="https://cmusphinx.github.io/wiki/faq#qhow_to_implement_pronunciation_evaluation">https://cmusphinx.github.io/wiki/faq#qhow_to_implement_pronunciation_evaluation</a>. You can also read more about this project and weekly progress reports at <a href="http://pronunciationeval.blogspot.in/">http://pronunciationeval.blogspot.in/</a></p>

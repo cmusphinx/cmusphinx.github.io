@@ -1,0 +1,48 @@
+---
+layout: post
+status: publish
+published: true
+title: Pocketvox is listening you!
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2014-11-07 00:29:18 +0100'
+date_gmt: '2014-11-06 21:29:18 +0100'
+---
+<p>We are pleased to announce a release of Pocketvox, a voice control project for Linux desktop.</p>
+<p><strong>What is Pocketvox ?</strong></p>
+<p>Pocketvox is a desktop application and a development library written in C and created by Benoit Franquet, a french newly graduated engineer, visually impaired and passionated by desktop accessibility and application development.</p>
+<p>Pocketvox is based on several well known open source libraries such as Sphinxbase, Pocketsphinx, GStreamer, GLib-2.0, GObject-2.0, Gtk+, ... from the <a href="http://gnome.org">GNOME</a> project, Espeak to make Pocketvox respond with voice and Xlib to detect the focused window.</p>
+<p>Pocketvox comes with several tools in order to make both developers and desktop users able to create or use voice controlled applications.</p>
+<p><iframe width="420" height="315" src="//www.youtube.com/embed/0m1E3qMrAsU" frameborder="0" allowfullscreen></iframe></p>
+<p><strong>Pocketvox for desktop users</strong></p>
+<p>For the desktop, Pocketvox comes with:</p>
+<p>- A menu launcher to launch the pocketvox application<br />
+- A panel applet to manage Pocketvox<br />
+- A configuration GUI and its launcher in the menu<br />
+- A common way to store the configuration using GSettinsgs<br />
+- A way to choose the micro input<br />
+- A way to send commands over TCP<br />
+- An activation keyword in order to start actions when you say a specific word<br />
+- A very flexible way to manage modules</p>
+<p><strong>Pocketvox for developers</strong></p>
+<p>For developers, Pocketvox provides:</p>
+<p>- A .pc file to develop with Pocketvox<br />
+- A Python interface<br />
+- A very easy way to design your own module in Python</p>
+<p>Python interface has been built using the GObject introspection, a very basic example is available on the Github page of the project.</p>
+<p><strong>Some addons Pocketvox comes with</strong></p>
+<p><strong> </strong>Pocketvox has been build in order to use a system of module. Why ?  Because, this allow desktop users to define and create very rapidly new modules only by writing a dictionnary file with a very simple structure like this:</p>
+<p>open my documents=xdg-open ~/Documents<br />
+open my images=xdg-open ~/Images</p>
+<p>Moreover, thanks to this structure users are able to associate a specific application to a module. When pocketvox is running then it will detect the focused application and execute commands listed in the module's dictionnary file.</p>
+<p>Besides somes bash scripts have been integrated to the Pocketvox project in order to make users able to rapidly create a custom language model using the cmuclmtk toolkit.</p>
+<p>Pocketvox is working out of the box using language models, acoustic models and dictionaries available on our website.</p>
+<p>Pocketvox is ready for translation and already available in French and English.&nbsp;All steps to translate it are available on the Pocketvox repository on Github. Pocketvox is waiting for you to make it available in other language.</p>
+<p><strong>How to get Pocketvox ?</strong></p>
+<p><strong></strong>You can find all informations to try Pocketvox on the <a href="https://github.com/benoitfragit/pocketVox">Github's page</a> of the project.</p>
+<p>The first release has been published yesterday, so you can get it <a href="https://github.com/benoitfragit/pocketVox/releases">here</a>.</p>

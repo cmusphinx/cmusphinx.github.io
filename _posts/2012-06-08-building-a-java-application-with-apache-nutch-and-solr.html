@@ -1,0 +1,270 @@
+---
+layout: post
+status: publish
+published: true
+title: Building a Java application with Apache Nutch and Solr
+author:
+  display_name: emre
+  login: emre
+  email: emre@celikten.name
+  url: http://emre.celikten.name
+author_login: emre
+author_email: emre@celikten.name
+author_url: http://emre.celikten.name
+excerpt: "<a href=\"http://nutch.apache.org/\">Apache Nutch</a> is a scalable web
+  crawler that supports <a href=\"http://hadoop.apache.org/\">Hadoop</a>. <a href=\"http://lucene.apache.org/solr/\">Apache
+  Solr</a> is a complete search engine that is built on top of <a href=\"http://lucene.apache.org/\">Apache
+  Lucene</a>. \r\n\r\nIn this tutorial, we make a simple Java application that crawls
+  \"World\" section of CNN.com with Apache Nutch and uses Solr to index them. We are
+  going to use both of them as libraries, which means Solr must be working without
+  a servlet and HTTP connections.\r\n\r\nWe will be using Eclipse as the IDE. This
+  is going to be a long tutorial, so get yourself a cup of your favorite drink."
+date: '2012-06-08 18:26:02 +0200'
+date_gmt: '2012-06-08 15:26:02 +0200'
+---
+<p>(Author: <a href="http://emre.celikten.name">Emre &Ccedil;elikten</a>)</p>
+<p><a href="http://nutch.apache.org/">Apache Nutch</a> is a scalable web crawler that supports <a href="http://hadoop.apache.org/">Hadoop</a>. <a href="http://lucene.apache.org/solr/">Apache Solr</a> is a complete search engine that is built on top of <a href="http://lucene.apache.org/">Apache Lucene</a>. </p>
+<p>Let's make a simple Java application that crawls "World" section of CNN.com with Apache Nutch and uses Solr to index them. We are going to use both of them as libraries, which means Solr must be working without a servlet and HTTP connections.</p>
+<p>We will be using Eclipse as the IDE. This is going to be a long tutorial, so get yourself a cup of your favorite drink.</p>
+<p>First of all, you need:<br />
+<a href="http://www.apache.org/dyn/closer.cgi/nutch/">Apache Nutch 1.5</a>. You must download the source code for Nutch.<br />
+<a href="http://www.apache.org/dyn/closer.cgi/lucene/solr/3.4.0">Apache Solr 3.4.0</a>.</p>
+<p>For development environment, you need JDK, Eclipse IDE and Ant. You can use <a href="https://cmusphinx.github.io/2012/05/setting-up-development-environment/">this</a> tutorial by Wencan for Ubuntu and similar distributions. If you wish to set them up yourself, here are the links for your convenience:</p>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a>.<br />
+<a href="http://www.eclipse.org/downloads/">Eclipse IDE</a>.<br />
+<a href="http://ant.apache.org/bindownload.cgi">Ant</a> to make Nutch binaries.</p>
+<p><strong>Part 1: Extracting Nutch and Solr</strong></p>
+<p>Extract them to an appropriate place. Do not build anything yet. In this tutorial, <tt>/path/to/nutch</tt> and <tt>/path/to/solr</tt> will be used to refer to these folders.</p>
+<p><strong>Part 2: Adding EmbeddedSolrServer support to Nutch</strong></p>
+<p>As of writing, Nutch only supports Solr if it runs as a servlet. We wish to create a Solr server inside our application, so we need to add some code to Nutch sources to do so. We will use EmbeddedSolrServer from Solrj library. The good part is, they use the same interfaces, so this could also be used for any type of SolrServer that we want to pass programmatically. We do not need to care about if it is a servlet or an embedded one afterwards. (Note that the approach we are taking here is a <em>hack</em> that gets the job done.)</p>
+<p>If you want to skip this part, you can use this <a href="http://db.tt/xyarw1Iw">patch</a> that I have created. To apply it place it in the folder designated below and run <tt>patch < embeddedsolrserver.patch</tt>.</p>
+<p>First, you need to navigate to <tt>/path/to/nutch/src/java/org/apache/nutch/indexer/solr</tt>.</p>
+<p>We need to edit SolrIndexer.java and add a constructor to this class that will allow us to pass our SolrServer as a parameter.</p>
+<pre>[code lang="java"]public SolrIndexer(SolrServer solrServer) {
+  super(null);
+  SolrUtils.setSolrServer(solrServer);
+}[/code]</pre>
+<p>Let's edit SolrUtils.java. This file contains an important method, <tt>getCommonsHttpSolrServer</tt>, which returns a SolrServer for Nutch. We need to add a method that uses the server that we have passed in the constructor. First, let's start by adding a necessary import:</p>
+<pre>[code lang="java"]
+import org.apache.solr.client.solrj.SolrServer;
+[/code]</pre>
+<p>and then add an attribute to <tt>SolrUtils</tt> class:</p>
+<pre>[code lang="java"]
+private static SolrServer solrServer = null;
+[/code]</pre>
+<p>and then paste this ugly snippet of code below:</p>
+<pre>[code lang="java"]
+public static void setSolrServer(SolrServer server) {
+  solrServer = server;
+}
+
+public static SolrServer getSolrServer(JobConf job) throws MalformedURLException {
+  if (solrServer == null)
+    return getCommonsHttpSolrServer(job);
+  else
+    return solrServer;
+}
+
+public static boolean isSolrServerSet() {
+  return solrServer != null;
+}
+[/code]</pre>
+<p>which will allow us to get our own SolrServer if we have one. Our next step is to replace every instance of <tt>getCommonsHttpSolrServer</tt> with <tt>getSolrServer</tt> in the source code at  <tt>/path/to/nutch/src/java/org/apache/nutch/indexer/solr</tt>.</p>
+<p>We can compile Nutch now. Run <tt>ant</tt> in <tt>/path/to/nutch</tt> and hope that all goes well.</p>
+<p><strong>Part 3: Preparing libraries, Nutch and Solr</strong></p>
+<p>There are some last things we need to do before making our Java application.</p>
+<p>Go to <tt>/path/to/solr/dist</tt> and open <tt>apache-solr-3.4.0.war</tt> with your favorite archive manager. Go to <tt>/WEB-INF/lib/</tt> and extract everything there to <tt>/path/to/solr/dist</tt>. This will allow us to include all the libraries we need in our Java application.</p>
+<p>We now need to configure Nutch for crawling. Navigate to <tt>/path/to/nutch/local/conf</tt>. You will see a lot of configuration files in there. There are two files that we are particularly interested in. First of them is <tt>nutch-default.xml</tt>, which has configuration settings for Nutch. The second is <tt>regex-urlfilter.txt</tt>. This file includes regular expressions for URLs that we are going to crawl. This is extremely good as we can limit our searches to domain, subdomains or even categories if the website supports it!</p>
+<p>Make a new folder called <tt>nutchConf</tt> in a place you want and copy everything from <tt>/path/to/nutch/local/conf</tt> to there. Let's edit <tt>nutch-default.xml</tt> first. Open it with a text editor and search for <tt>http.agent.name</tt>. This field contains the name of our crawler and needs to be set. Set <tt><value></value></tt> below to anything you like, for example <tt>NutchCrawlingExperiment</tt>. Similarly, you can set a description for your agent below, if you wish to do so. We also need to decrease our fetching delay a bit. Search for <tt>fetcher.server.delay</tt> and set <tt>5.0</tt> below to <tt>2.0</tt>. You can set it lower if you want to, but please refrain from going too low as it might put a load on the website depending on your connection. We are done here, so save your file and open <tt>regex-urlfilter.txt</tt>.</p>
+<p>Since our goal is to crawl World section of CNN.com, we need to set our regular expressions in that way. We need to observe URLs of CNN.com to do so. Here are two examples:</p>
+<pre>[code]
+http://edition.cnn.com/2012/06/07/world/asia/japan-british-explorer/index.html?hpt=wo_c2
+http://edition.cnn.com/2012/06/08/world/asia/singapore-supertrees-gardens-bay/index.html
+[/code]</pre>
+<p>We are interested in URLs like this, which goes on like</p>
+<pre>[code]
+http://edition.cnn.com/number/number/number/world/text/text-text-.../index.html[?...]
+[/code]</pre>
+<p>We can express this as the regular expression</p>
+<pre>[code]
+^http://edition.cnn.com/[0-9]+/[0-9]+/[0-9]+/world/[a-z]+/[a-z]+(-[a-z]+)*/index.html.*$
+[/code]</pre>
+<p>(You can learn about regular expressions <a href="en.wikipedia.org/wiki/Regular_expression">here</a> and check the correctness of your regular expressions <a href="http://regexpal.com/">here</a>.)</p>
+<p>So let's put this regular expression into our <tt>regex-urlfilter.txt</tt> file. Navigate down to the part that says <tt># accept anything else</tt> and change <tt>+.</tt> to <tt>^http://edition.cnn.com/[0-9]+/[0-9]+/[0-9]+/world/[a-z]+/[a-z]+(-[a-z]+)*/index.html.*$</tt>. We also need to comment out the part that says <tt># skip URLs containing certain characters as probable queries, etc.</tt> as our links can contain question marks. Change <tt>-[?*!@=]</tt> to <tt># -[?*!@=]</tt> by adding a # to the beginning of the line. Also append the line</p>
+<pre>[code]
++^http://edition.cnn.com/WORLD/$
+[/code]</pre>
+<p>to the end as this will be our seed URL.</p>
+<p>We need to create a seed URLs file to start crawling too, but we will do it later.</p>
+<p>Now let's configure Solr. Just like we did for Nutch, make a new folder called <tt>solrConf</tt> and copy everything from <tt>/path/to/solr/example/solr/conf</tt> to there. We need to edit a schema file that defines document structure for crawled pages. Nutch has its own schema and it is provided in the distribution, so we don't need to do much. Open <tt>schema.xml</tt> in your folder. Search for</p>
+<pre>[code]
+<field name="content" type="text" stored="false" indexed="true"/>
+[/code]</pre>
+<p>You can set <tt>stored</tt> value to true if you wish to fetch contents of the file in search results. We need to add another field in this section. Duplicate the line above and change it to</p>
+<pre>[code]
+<field name="site" type="text" stored="false" indexed="true"/>
+[/code]</pre>
+<p>which will prevent an error we can encounter later. Save your file.</p>
+<p><strong>Part 4: Creating an Eclipse project</strong></p>
+<p>We can now create an Eclipse project. From File menu, choose New->Java project and follow the menus. After creating the project, add a package by <tt>File</tt>-><tt>New</tt>-><tt>Package</tt>. I named the package <tt>edu.cmu.sphinx.crawler</tt>. We need to add a Java class to the package we have created. I called it <tt>Crawler</tt>.</p>
+<p>Let's copy configuration and libraries into our project. Move your <tt>nutchConf</tt> and <tt>solrConf</tt> into your project folder. Make a new folder called <tt>lib</tt>. Make two subfolders in lib with the names <tt>nutch</tt> and <tt>solr</tt>. Copy everything from <tt>/path/to/nutch/runtime/local/lib</tt> to <tt>lib/nutch</tt>. Also make a new folder called <tt>plugins</tt> copy everything from <tt>/path/to/nutch/runtime/local/plugins</tt> to there. For Solr, copy all JAR files from <tt>/path/to/solr/dist</tt> to <tt>lib/solr</tt>.</p>
+<p>Now we need to include those libraries in our project to be able to use them. From <tt>Project</tt> menu, click on <tt>Properties</tt>. Go to <tt>Java Build Path</tt>. Select Libraries and then <tt>Add JARs...</tt>. Go to <tt>lib/nutch</tt> folder and add everything except plugins. Do the same for <tt>lib/solr</tt>. Remove duplicates in the list. You also need to remove either <tt>slf4j-jdk14-1.6.1.jar</tt> or <tt>slf4j-log4j12-1.6.1.jar</tt> too.</p>
+<p>Almost done. Click on <tt>Add Class Folder...</tt> and add <tt>nutchConf</tt> and <tt>solrConf</tt> folders from your project. Go to <tt>Order and Export</tt>, find the entries for <tt>nutchConf</tt> and <tt>solrConf</tt> and move them to the top.</p>
+<p>Lastly, let's create a file for the list of initial URLs to crawl. Make a new folder in your project named <tt>urls</tt> and create a text file called <tt>seed.txt</tt> in it. Put</p>
+<pre>[code]
+http://edition.cnn.com/WORLD/
+[/code]</pre>
+<p>inside of the text file.</p>
+<p><strong>Part 5: Coding time!</strong></p>
+<p>Finally we're there! Just paste this snippet into your Crawler.java and run.</p>
+<pre>[code lang="java"]
+package edu.cmu.sphinx.crawler;
+
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.apache.hadoop.util.ToolRunner;
+import org.apache.nutch.crawl.Crawl;
+import org.apache.nutch.indexer.solr.SolrIndexer;
+import org.apache.nutch.segment.SegmentReader;
+import org.apache.nutch.util.NutchConfiguration;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.core.CoreContainer;
+import org.xml.sax.SAXException;
+
+public class Crawler {
+
+	public static void main(String[] args) {
+
+		/*
+		 * Arguments for crawling.
+		 *
+		 * -dir dir names the directory to put the crawl in.
+		 *
+		 * -threads threads determines the number of threads that will fetch in
+		 * parallel.
+		 *
+		 * -depth depth indicates the link depth from the root page that should
+		 * be crawled.
+		 *
+		 * -topN N determines the maximum number of pages that will be retrieved
+		 * at each level up to the depth.
+		 */
+
+		String crawlArg = "urls -dir crawl -threads 5 -depth 3 -topN 20";
+
+		// Run Crawl tool
+
+		try {
+			ToolRunner.run(NutchConfiguration.create(), new Crawl(),
+					tokenize(crawlArg));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
+		}
+
+		// Let's dump the segments we have to see what we have obtained. You
+		// need to refresh your workspace to see the new folders. You can see
+		// plaintext by going into dump folder and examining "dump".
+		String dumpArg = "-dump crawl/segments/* dump -nocontent -nofetch -nogenerate -noparse -noparsedata";
+
+		// Run dump
+		try {
+			SegmentReader.main(tokenize(dumpArg));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+
+		System.setProperty("solr.solr.home", "/home/emre/solr");
+		CoreContainer.Initializer initializer = new CoreContainer.Initializer();
+		CoreContainer coreContainer;
+
+		try {
+			coreContainer = initializer.initialize();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+		EmbeddedSolrServer server = new EmbeddedSolrServer(coreContainer, "");
+
+		// Arguments for indexing
+		String indexArg = "local crawl/crawldb -linkdb crawl/linkdb crawl/segments/*";
+
+		// Run indexing tool
+		try {
+			ToolRunner.run(NutchConfiguration.create(),
+					new SolrIndexer(server), tokenize(indexArg));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+
+		// Let's query for something!
+		SolrQuery query = new SolrQuery();
+		query.setQuery("title:queen"); // Searching queen in query
+		query.addSortField("title", SolrQuery.ORDER.asc);
+		QueryResponse rsp;
+		try {
+			rsp = server.query(query);
+		} catch (SolrServerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+
+		// Display the results in the console
+		SolrDocumentList docs = rsp.getResults();
+		for (int i = 0; i < docs.size(); i++) {
+			System.out.println(docs.get(i).get("title").toString() + " Link: "
+					+ docs.get(i).get("url").toString());
+		}
+
+		// Shut down the container so JVM ends.
+		coreContainer.shutdown();
+
+	}
+
+	/**
+	 * Helper function to convert a string into an array of strings by
+	 * separating them using whitespace.
+	 *
+	 * @param str
+	 *            string to be tokenized
+	 * @return an array of strings that contain a each word each
+	 */
+	public static String[] tokenize(String str) {
+		StringTokenizer tok = new StringTokenizer(str);
+		String tokens[] = new String[tok.countTokens()];
+		int i = 0;
+		while (tok.hasMoreTokens()) {
+			tokens[i] = tok.nextToken();
+			i++;
+		}
+
+		return tokens;
+
+	}
+
+}
+[/code]</pre>
+<p>Congratulations! Now you have an application that crawls a subset of articles from CNN.com, indexes it and searches for something inside the index. You can try adding new categories by changing regular expressions. Or maybe you can try adding support for another news site!</p>
+<p>For more information, you can explore <a href="http://wiki.apache.org/nutch/">Nutch wiki</a> and <a href="http://wiki.apache.org/solr/">Solr wiki</a>.</p>

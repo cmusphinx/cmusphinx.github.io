@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Troy: GSoC 2012 Pronunciation Evaluation Week 1'
+author:
+  display_name: troy.lee2008
+  login: troy.lee2008
+  email: troy.lee2008@gmail.com
+  url: ''
+author_login: troy.lee2008
+author_email: troy.lee2008@gmail.com
+date: '2012-05-30 05:28:12 +0200'
+date_gmt: '2012-05-30 02:28:12 +0200'
+---
+<p><span style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">The first week of GSoC 2012 has already been a busy summer. Here is what I have accomplished so far:</span></p>
+<ol style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">
+<li>To measure the Speex recording "quality" parameter (which is set by the client from 0 to 10) I recorded the same Sphinx3 test utterance ("NO ONE AT THE STATE DEPARTMENT WANTS TO LET SPIES IN") with the quality varying from 0 to 10. As shown on the graph, the higher the Speex quality parameter, the larger the .FLV file will be. Judging from my own listening, greater quality parameter values do result in better quality, but it is difficult to hear the differences above level 7. I also tried to generate alignment scores to see whether the quality affects the alignment. However, from the results shown in the following graph, the acoustic scores seems essentially&nbsp;identical&nbsp;for the different recordings. But to be on the safe side in case of background and line noise, for now we will use a Speex recording quality parameter of 8.<img src="https://docs.google.com/spreadsheet/oimg?key=0AnmjwEuGJ5xldHR5N25feWxpOGhja3QyVWRxVjFEc2c&amp;oid=2&amp;zx=puoyjnpt1v3q" alt="graph" width="400" height="247" /></li>
+<li>The rtmplite server is now configured to save its uploaded files to the<strong>[path_to_webroot]/data</strong> directory on the server. The initial audioRecorder applet will place its recordings in the<strong> [path_to_webroot]/data/audioRecorder</strong> directory, and for each user there will be a separate folder (e.g.&nbsp;<strong>[path_to_webroot]/data/audioRecorder/user1</strong>). For each recording utterance, the file name is now in the format of&nbsp;<strong>[sentence name]_[quality level].flv</strong></li>
+<li>The conversion from .FLV Speex uploads to .WAV PCM audio files is done entirely in the rtmplite server using a process spawned by Python's subprocess.Popen() function calling ffmpeg. After the rtmplite closes the FLV file, the conversion is performed immediately and the converted WAV file has exactly the same path and name except the suffix, which is .wav instead of .flv.&nbsp;<a href="https://plus.google.com/102046902944478837894" target="_blank">Guillem</a> suggested the sox command for the conversion, but it doesn't recognize .flv files directly.&nbsp; Other possibilities included speexdec, but that won't open .flv files either.</li>
+<li>In the audioRecorder client, the user interface now waits for NetConnection and NetStream events to open and close successfully before proceeding with other events. And a 0.5 second delay has been inserted at the beginning and end of the recording button click event to avoid&nbsp;inadvertently&nbsp;trimming the front or end of the recording.</li>
+</ol>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">My plans for the 2nd week are:</div>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">
+<ol>
+<li>Solve a problem encountered in converting FLV files to WAV using ffmpeg with Python's Popen() function. If the main Python script (call it test.py for example) is run from a terminal as "python test.py", then everything works great. However, if I put it in background and log off the server by doing "python test.py &amp;", everytime when Popen() is invoked, the whole process hangs there with a "Stopped + test.py &amp;" error message. I will try to figure out a way to work around this issue. Maybe if I start the process from cron (after checking to see whether it already running with a process ID number in a .pid text file) then it will start subprocesses without stopping as occurs when it is detached from a terminal.</li>
+<li>Finish the upload interface. There will be two kinds of interfaces: one for students and one for exemplar pronunciations. For the students, we will display from one&nbsp;to five cue phrases below space for a graphic or animation, assuming the&nbsp;smallest screen possible using HTML which would also look good in a&nbsp;larger window. For the exemplar recordings, we just need to&nbsp;display one phrase but we should also have per-upload form fields&nbsp;(e.g., name, age, sex, native speaker (y/n?), where speaker lived ages 6-8&nbsp;(which determines their accent), self-reported accent, etc.) which should persist&nbsp;across multiple uploads by the same user (perhaps using HTTP cookies.) &nbsp;I want to integrate those fields with the mysql database running on our server, so I will need to create a SQL schema with some CREATE TABLE statements to hold all those fields, the filenames, maybe recording durations, the date and time, and perhaps other information.</li>
+<li>Test the rtmplite upload server to make sure it works correctly and without race conditions during&nbsp;simultaneous&nbsp;uploads from multiple users, and both&nbsp;sequential&nbsp;and&nbsp;simultaneous&nbsp;recording uploads by the same user, just to be on the safe side.</li>
+<li>Further milestones are listed at&nbsp;<a href="https://cmusphinx.github.io/wiki/pronunciation_evaluation#milestones1">https://cmusphinx.github.io/wiki/pronunciation_evaluation#milestones1</a></li>
+</ol>
+</div>

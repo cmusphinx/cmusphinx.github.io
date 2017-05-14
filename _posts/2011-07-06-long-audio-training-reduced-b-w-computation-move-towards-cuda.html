@@ -1,0 +1,27 @@
+---
+layout: post
+status: publish
+published: true
+title: Long Audio Training - reduced B-W computation &amp; move towards CUDA
+author:
+  display_name: xkrajnan
+  login: xkrajnan
+  email: michal.krajnansky@gmail.com
+  url: ''
+author_login: xkrajnan
+author_email: michal.krajnansky@gmail.com
+date: '2011-07-06 14:18:59 +0200'
+date_gmt: '2011-07-06 11:18:59 +0200'
+---
+<p>It's been a while since my last post. In theese days I was modifying the Baum-Welch algorithm to the reduced version, which is finally complete.</p>
+<p>Forward, backward and Viterbi methods were changed in the following way:</p>
+<ul>
+<li>'Reduced' forward method was created. This method computes the checkpoints for later re-computation of actual alpha &amp; scaling values. The size of reduced matrices is a function of block size, which is taken as a parameter.</li>
+<li>'Local' forward method was created. This method performs the alpha values re-computation for a particular checkpoint (block of values).</li>
+<li>As SphinxTrain has Viterbi back-pointers computation embedded in the Forward pass, the modification of Viterbi was just to use the reduced forward and to recompute the alpha values with the local forward.</li>
+<li>Backward update was modified in a similar way as the Viterbi.</li>
+</ul>
+<p>The modification was successfully tested on an4 database. It performed somewhat slower, which was anticipated, as the modified algorithm does more computation.</p>
+<p>I also tried the modification on the 'rita' (long audio) database. I was forced to quit the computation as it took all my system's memory. This sadly seems as no improvement in the memory demands and might suggest that some of the memory demands are not in the forward/backward/Viterbi as well as that I might have just introduced some memory leaks. During the brief tests the <em>block_size</em> parameter was set arbitrarily to 11, not the sqrt function of time frames count, which also may have some performance consequences.</p>
+<p>The actual slow-down and memory requirements are subject to more detailed tests.</p>
+<p>Regarding the <strong>CUDA</strong>, I have gain access to 3 CUDA machines. Two of them belong to <a href="http://www.sitola.cz/wordpress/about/en/">Sitola, The Laboratory of Advanced Network Technologies</a>. The access to these machines is provided by <a href="https://metavo.metacentrum.cz/en/index.html">MetaCentrum</a>, Czech academic grid organization providing the computation and storage resources. The cards are <em>GeForce GTX 285</em>, <em>GeForce 8800 Ultra</em> and <em>GeForce 8400M GS</em> (a rather low-end one in my personal laptop). These are devices the CUDA development and testing will take place on. More info to come, please check the <a href="https://cmusphinx.github.io/wiki/longaudiotraining/">project page</a>.</p>

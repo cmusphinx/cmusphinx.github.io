@@ -1,0 +1,24 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Long Audio Alignment: Week 1'
+author:
+  display_name: apurv
+  login: apurv
+  email: apurvtwr@gmail.com
+  url: ''
+author_login: apurv
+author_email: apurvtwr@gmail.com
+date: '2011-05-23 21:42:17 +0200'
+date_gmt: '2011-05-23 18:42:17 +0200'
+---
+<p>After one week of steady work, I finally make the first post on my results and findings.</p>
+<p>For detailed description of the project please read <a href="https://cmusphinx.github.io/wiki/longaudioalignment" target="_blank">here</a>.</p>
+<p>I started with a few experiments on various grammars to see which preformed best and in what scenarios. By manipulating just the grammar I could only reach a word error rate of almost 18% for audio files which were almost 6 minutes long. Some observations made from these experiments were:</p>
+<ul>
+<li> Branching in the grammar yields better results, i.e.&nbsp; by having large number grammar paths from start word node to the final node while keeping sizes of each such path small.&nbsp; I preferred making one grammar path for each sentence in the text, since a sentence in an utterance is usually accompanied with small silence at the end.</li>
+<li>Allowing inter-word transitions between word and a large number of it's neighbors&nbsp; in the grammar does not improve the results but also slows down the alignment by incurring additional computational overhead.</li>
+<li>A left to right no skip grammar is not good for alignment of slightly large utterances, with or without out of vocabulary words.</li>
+</ul>
+<p>A source of error in alignment comes from words in the text that are not in the dictionary (Out of Vocabulary words). It was hence proposed to provide a Java based model for generating phonetic representations for any such word. This module prepares a FST based on test data and uses it to make hypothesis for word pronunciations. As of now, the front end for this module is nearly complete and depends on an automata library in Java (which as it seems does not exist for now). We now plan to implement this library and finally test the improvement in alignment due to this addition.</p>

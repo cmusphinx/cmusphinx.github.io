@@ -1,0 +1,18 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Long Audio Alignment: Dynamic Linguist and Phone Loops'
+author:
+  display_name: apurv
+  login: apurv
+  email: apurvtwr@gmail.com
+  url: ''
+author_login: apurv
+author_email: apurvtwr@gmail.com
+date: '2011-07-06 21:21:57 +0200'
+date_gmt: '2011-07-06 18:21:57 +0200'
+---
+<p>My last update on Phone Loops indicated some significant improvements in Out of Grammar words recognition while aligning audio files with text, but it also remarked on alignment of large audio file's&nbsp; need for some special attention because of the huge search space generated the linguist and it's associated memory.</p>
+<p>I hence modified the linguist to dynamically generate search graph during the process of recognition by adding Phone Loop only at the current grammar state, hence significantly reducing the memory required to store 1 phone-loop per word in the transcription. Some tests were conducted as well to determine 'Out of Grammar Branch" probability and 'Phone Insertion Probability" for audio files with some noise and close to 3% error in transcription. Best results in Out of Grammar word recognition were achieved at out of grammar branch probability ~ 1E-8 and phone insertion probability ~ 1E - 80. The word error rate hence obtained was close 5%.</p>
+<p>Current version of the linguist is now available in long-audio-aligner branch. We now proceed towards the implementation of Keyword spotting algorithm for improving the alignment even further.</p>

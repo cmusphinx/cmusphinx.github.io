@@ -1,0 +1,28 @@
+---
+layout: post
+status: publish
+published: true
+title: Help to distribute CMUSphinx data through Bittorrent
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2012-12-23 16:29:48 +0100'
+date_gmt: '2012-12-23 13:29:48 +0100'
+---
+<p>Modern speech recognition algorithms require enormous amount of data to estimate speech parameters. Audio recordings, transcriptions, texts for langauge model, pronuncation dictionaries and vocabularies are collected by speech developers. While it's not necessary to be the case in the future and better algorithms might require just a few examples, now you need to process thousands of hours of recordings to build a speech recognition system.</p>
+<p>Estimates show that human recieves thousands hours of speech data before it learns to understand speech. Note that human has prior knowledge structure embedded into the brain we are not aware of. Google trains their models on 100 thousands hours of audio recorings and petabytes of transcriptions, still it behind the human performance in speech recognition tasks. For search queries they still have word error rate of 10%, for youtube Google's word error rate is over 40%.</p>
+<p><img class="aligncenter" title="Big Data" src="http://farm2.staticflickr.com/1155/5150336351_ae2a64336a.jpg" alt="" width="500" height="274" /></p>
+<p><a href="http://www.flickr.com/photos/mrflip/5150336351/in/photostream/">mrflip/CC BY-NC-SA 2.0</a></p>
+<p>While Google has a vast of resources so we do. We definitely can collect, process and share even more data than Google has. The first step in this direction is to create a shared storage for the audio data and CMUSphinx models.</p>
+<p><strong>We created a torrent tracker specifically to distribute a legal speech data related to CMUSphinx, speech recognition, speech technologies and natural language processing. Thanks to Elias Majic, the tracker is available at<br />
+</strong></p>
+<p><a href="http://cmusphinx.info">http://cmusphinx.info</a></p>
+<p>Currently tracker contains torrents for the existing acoustic and language models but new more accurate models for US English and other languages will be released soon.</p>
+<p>We encourage you to make other speech-related data available through our tracker. Please contact <a href="mailto://cmusphinx-devel@lists.sourceforge.net">cmusphinx-devel@lists.sourceforge.net</a> mailing list if you want to add your data set to the tracker.</p>
+<p>Please help us to distribute the data, start a client on your host and make the data available to others.</p>
+<p>To learn more about BitTorrent visit <a href="http://lifehacker.com/285489/a-beginners-guide-to-bittorrent">this link</a> or search in the web, there is a vast amount of resources about it.</p>
+<p>You might wonder what is the next step. Pretty soon we will be able to run a distributed acoustic model training system to train the acoustic model using vast amount of distributed data and computing power. With a <a href="http://boinc.berkeley.edu/">BOINC</a>-grid computation network of CMUSphinx tools we together will create the most accurate models for speech. Stay tuned.</p>

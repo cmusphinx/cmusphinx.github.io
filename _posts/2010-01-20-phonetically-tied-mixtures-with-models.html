@@ -1,0 +1,19 @@
+---
+layout: post
+status: publish
+published: true
+title: Phonetically Tied Mixtures (with models)
+author:
+  display_name: dhd
+  login: dhd
+  email: dhuggins@cs.cmu.edu
+  url: ''
+author_login: dhd
+author_email: dhuggins@cs.cmu.edu
+date: '2010-01-20 23:04:14 +0100'
+date_gmt: '2010-01-20 20:04:14 +0100'
+---
+<p>Support for phonetically-tied mixture acoustic models has been added to the Subversion repository for SphinxTrain, Sphinx3, and PocketSphinx.&nbsp; Briefly, phonetically-tied mixture models are somewhere between semi-continuous and fully-continuous models, offering most of the speed of the former combined with the ability of the latter to effectively use large amounts of training data.</p>
+<p>Parameter settings for training PTM models are present in the template sphinx_train.cfg file&nbsp; created by SphinxTrain, and can be enabled by setting $CFG_HMM_TYPE to ".ptm.".&nbsp; The development version of PocketSphinx will automatically recognize PTM models, while Sphinx3 requires you to add "-senmgau .ptm." to the command line.</p>
+<p>We have made PTM models for <a href="https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/English%20Broadcast%20News%20acoustic%20models/en_broadcastnews_16k_ptm256_5000.tar.bz2/download">English</a> and <a href="https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/Mandarin%20Broadcast%20News%20acoustic%20models/zh_broadcastnews_16k_ptm256_8000.tar.bz2/download">Mandarin</a> available for download on the SourceForge dowloads page.&nbsp; These have not been extensively optimized, but the English models, at least, already offer better performance than comparable fully-continuous models.&nbsp; Compressed and optimized versions of these in 8k bandwidth will be released with PocketSphinx 0.6.</p>
+<p>n.b. A dictionary and language model (caution: very large) for Mandarin are <a href="https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/Mandarin%20Language%20Model/">also available</a>.</p>

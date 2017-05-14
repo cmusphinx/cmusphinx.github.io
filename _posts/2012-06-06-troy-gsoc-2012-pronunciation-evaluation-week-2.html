@@ -1,0 +1,128 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Troy: GSoC 2012 Pronunciation Evaluation Week 2 '
+author:
+  display_name: troy.lee2008
+  login: troy.lee2008
+  email: troy.lee2008@gmail.com
+  url: ''
+author_login: troy.lee2008
+author_email: troy.lee2008@gmail.com
+date: '2012-06-06 16:51:54 +0200'
+date_gmt: '2012-06-06 13:51:54 +0200'
+---
+<p>Although quite frustrated with what i have encountered in the last few days, everyday i have to struggle with my own research and stay up to work on the open source project, but all my efforts are not recognized at all. Anyway it's better to keep a log of what i have done and then take some time to think how things should go on.</p>
+<p><span style="color: #222222;line-height: 18px;font-family: Arial, Helvetica, sans-serif">These are the things I've accomplished in the second week of GSoC 2012:</span></p>
+<p><span style="color: #222222;line-height: 18px;font-family: Arial, Helvetica, sans-serif">1. Set up a cron job for the rtmplite server to automatically check whether the process is still running or not. If it is stopped, restart it. This will allow the server to stay up if the machine gets rebooted, and will allow the server to spawn subprocesses without being stopped by job control as happens when the process is put into the background from a terminal shell. </span><span style="color: #222222;line-height: 18px;font-family: Arial, Helvetica, sans-serif">To accomplish this, I first created a </span><span style="color: #222222;line-height: 18px;font-family: 'Courier New', Courier, monospace">.process</span><span style="color: #222222;line-height: 18px;font-family: Arial, Helvetica, sans-serif"> file in my home directory with the rtmplite server's process id number as its sole contents. You can use 'top' or 'ps' to find out the process id of the server. </span><span style="color: #222222;line-height: 18px;font-family: Arial, Helvetica, sans-serif">Then I created this shell script file to check the status of the rtmplite server process:</span></p>
+<pre style="color: #222222;font-size: 13px"><span style="color: #906030;font-family: 'UbuntuBeta Mono', 'Ubuntu Mono', monospace;font-size: x-small">pidfile</span><span style="color: #303030;font-family: 'UbuntuBeta Mono', 'Ubuntu Mono', monospace;font-size: x-small">=~/.process
+</span><span style="font-family: 'UbuntuBeta Mono', 'Ubuntu Mono', monospace;font-size: x-small"><span style="color: green;font-weight: bold">if</span> <span style="color: #303030">[</span> -e <span style="background-color: #fff0f0">"$pidfile"</span> <span style="color: #303030">]</span>
+<span style="color: green;font-weight: bold">then</span>
+<span style="color: #808080">    # check whether the process is running</span>
+<span style="color: #906030">    rtmppid</span><span style="color: #303030">=</span><span style="background-color: #fff0f0">`</span>/usr/bin/head -n 1 <span style="color: green;font-weight: bold">${</span><span style="color: #906030">pidfile</span><span style="color: green;font-weight: bold">}</span> | /usr/bin/awk <span style="background-color: #fff0f0">'{print $1}'</span><span style="background-color: #fff0f0">`</span>;
+<span style="color: #808080">    # restart the process if not running</span>
+<span style="color: green;font-weight: bold">    if</span> <span style="color: #303030">[</span> ! -d /proc/<span style="color: green;font-weight: bold">${</span><span style="color: #906030">rtmppid</span><span style="color: green;font-weight: bold">}</span> <span style="color: #303030">]</span>
+<span style="color: green;font-weight: bold">    then</span>
+       /usr/bin/python <span style="color: green;font-weight: bold">${</span><span style="color: #906030">exefile</span><span style="color: green;font-weight: bold">}</span> -r <span style="color: green;font-weight: bold">${</span><span style="color: #906030">dataroot</span><span style="color: green;font-weight: bold">}</span> &amp;
+<span style="color: #906030">       rtmppid</span><span style="color: #303030">=</span><span style="color: #906030">$!</span>
+<span style="color: #007020">       echo</span> <span style="background-color: #fff0f0">"${rtmppid}"</span> > <span style="color: green;font-weight: bold">${</span><span style="color: #906030">pidfile</span><span style="color: green;font-weight: bold">}</span>
+<span style="color: #007020">       echo</span> <span style="background-color: #fff0f0">`</span>/bin/date<span style="background-color: #fff0f0">`</span> <span style="background-color: #fff0f0">"### rtmplite process restarted with pid: ${rtmppid}"</span>
+<span style="color: green;font-weight: bold">    fi</span>
+<span style="color: green;font-weight: bold">fi
+</span></span></pre>
+<p><span style="font-family: arial, helvetica, sans-serif">This script first checks whether the .process file exists or not. If we don't want the </span><span style="font-family: arial, helvetica, sans-serif">cron job to check for this process temporarily (such as when we apply patches to the program), we can simply delete this file and it won't check on or try to restart the server; after out maintenance, recreate the file with the new process id, and the checking will automatically resume.</span><br />
+<span style="font-family: arial, helvetica, sans-serif"><br />
+The last and also the most important step is to schedule this task in cron by creating following item with the command </span><span style="font-family: 'Courier New', Courier, monospace">crontab -e</span><span style="font-family: 'UbuntuBeta Mono', 'Ubuntu Mono', monospace"><br />
+</span><br />
+<span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><span style="font-family: 'UbuntuBeta Mono', 'Ubuntu Mono', monospace"> * * * * * [path_to_the_script]/check_status.sh<br />
+</span><br />
+</span><span style="font-family: arial, helvetica, sans-serif">This causes the cron system to run this script every minute, thereby checking the rtmplite server process every minute.</span><br />
+<span style="font-family: arial, helvetica, sans-serif">2. Implemented web server user login and registration pages using MySQL and HTML. </span><span style="font-family: arial, helvetica, sans-serif">We use a MySQL database for storing user information, so I designed and created this table for user information in the server's mysql database:</span></p>
+<table style="color: #222222;font-size: 13px;line-height: 18px;border-spacing: 0px;font-family: Arial" border="1">
+<tbody>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Comments</th>
+</tr>
+<tr>
+<td>userid</td>
+<td>INTEGER</td>
+<td>Compulsory, automatically increased, primary key</td>
+</tr>
+<tr>
+<td>email</td>
+<td>VARCHAR(200)</td>
+<td>Compulsory, users are identified by emails</td>
+</tr>
+<tr>
+<td>password</td>
+<td>VARCHAR(50)</td>
+<td>Compulsory, encrypted using SHA1, at least 8 alphanumeric characters</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR(100)</td>
+<td>Not compulsory, default 'NULL'</td>
+</tr>
+<tr>
+<td>age</td>
+<td>INTEGER</td>
+<td>Not compulsory, default 'NULL', accepted values [0,150]</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>CHAR(1)</td>
+<td>Not compulsory, default 'NULL', accepted values {'M', 'F'}</td>
+</tr>
+<tr>
+<td>native</td>
+<td>CHAR(1)</td>
+<td>Not compulsory, default 'NULL', accepted values {'Y', 'N'}. Indicating the user is a native English speaker or not.</td>
+</tr>
+<tr>
+<td>place</td>
+<td>VARCHAR(1000)</td>
+<td>Not compulsory, default 'NULL'. Indicating the place when the user lived at the age between 6 and 8.</td>
+</tr>
+<tr>
+<td>accent</td>
+<td>CHAR(1)</td>
+<td>Not compulsory, default 'NULL', accepted values {'Y', 'N'}. Indicating the user has a self-reported accent or not.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: #222222;line-height: 18px;font-family: arial, helvetica, sans-serif">This table was created by the following SQL command:</span><span style="color: #222222;line-height: 18px;font-family: 'UbuntuBeta Mono', 'Ubuntu Mono', monospace"><br />
+</span></p>
+<pre style="color: #222222;font-size: 13px"><span style="font-family: 'UbuntuBeta Mono', 'Ubuntu Mono', monospace"><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>CREATE</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>TABLE</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> users (
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;userid </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">INTEGER</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>NOT</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>NULL</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> AUTO_INCREMENT,
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;email </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">VARCHAR</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">(</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>200</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">) </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>NOT</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>NULL</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">,
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;password </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">VARCHAR</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">(</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>50</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">) </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>NOT</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>NULL</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">,
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;name </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">VARCHAR</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">(</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>100</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">),
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;age </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">INTEGER</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">,
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;sex </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>SET</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">(</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">'M'</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">, </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">'F'</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">),
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;native </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>SET</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">(</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">'Y'</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">, </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">'N'</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">) </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>DEFAULT</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">'N'</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">,
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;place </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">VARCHAR</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">(</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>1000</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">),
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;accent </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>SET</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">(</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">'Y'</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">, </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">'N'</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">),
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;</span><strong>CONSTRAINT</strong><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> </span><strong>PRIMARY</strong><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> </span><strong>KEY</strong><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> (userid),
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">&nbsp; &nbsp;</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>CONSTRAINT</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> chk_age </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>CHECK</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> (age</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">>=</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>0</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> </span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>AND</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"> age</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><=</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small"><strong>150</strong></span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">)
+</span><span style="font-family: 'Courier New', Courier, monospace;font-size: x-small">);</span></span></pre>
+<p><span style="color: #222222;line-height: 18px;font-family: 'UbuntuBeta Mono', 'Ubuntu Mono', monospace"><span style="font-family: arial, helvetica, sans-serif">I also prototyped the login and simple registration pages are in HTML. Here are their preliminary screenshots:</span></span></p>
+<p><a href="http://1.bp.blogspot.com/-fCIb_IdZjwA/T8upeTM6OyI/AAAAAAAAAyU/1ONnJXDc1l0/s1600/login-756956.png"><img src="http://1.bp.blogspot.com/-fCIb_IdZjwA/T8upeTM6OyI/AAAAAAAAAyU/1ONnJXDc1l0/s320/login-756956.png" border="0" alt="" /></a><a href="http://3.bp.blogspot.com/-ub0xg3o2qCY/T8upelf7zUI/AAAAAAAAAyg/NtfXf9Sk8JE/s1600/register-757946.png"><img src="http://3.bp.blogspot.com/-ub0xg3o2qCY/T8upelf7zUI/AAAAAAAAAyg/NtfXf9Sk8JE/s320/register-757946.png" border="0" alt="" /></a><br />
+<span style="font-family: 'UbuntuBeta Mono', 'Ubuntu Mono', monospace"><span style="font-family: arial, helvetica, sans-serif">If you like, you can go to this page to help us test the system: </span><span style="background-color: transparent"><span style="font-family: arial, helvetica, sans-serif"><a href="http://talknicer.net/~li-bo/datacollection/login.php" target="_blank">http://talknicer.net/~li-bo/datacollection/login.php</a>. On the server, we use PHP to retrive the form information from the login and registration pages, perform an update or query in mysql database, and then send data back in HTML.<br />
+</span></span><span style="font-family: arial, helvetica, sans-serif"><br />
+The recording interface, has also been modified to use HTML instead of pure Flex as earlier. The page currently displays well, but there is no event interaction between HTML and Flash</span><span style="font-family: arial, helvetica, sans-serif"> yet.<br />
+</span></span></p>
+<p>3. Database schema design for the entire project:  S<span style="font-family: arial, helvetica, sans-serif">everal SQL tables have been designed to store the various information used by all aspects of this project. Detailed table information can be found on our wiki page: </span><a href="http://talknicer.net/w/Database_schema">http://talknicer.net/w/Database_schema</a><span style="font-family: arial, helvetica, sans-serif">. Here is a brief discussion.<br />
+</span><span style="font-family: arial, helvetica, sans-serif"><br />
+First, the </span><a href="http://talknicer.net/w/Database_schema#Users">user table</a><span style="font-family: arial, helvetica, sans-serif"> shown above will be augmented to keep two additional kinds of user information: one for normal student users and one for those who are providing exemplar recordings. Student users, when they can provide correct pronunciation, should also be allowed to contribute to the exemplar recordings. Also if exemplar recorders register through the website, they have to show they are proficient enough to contribute a qualified exemplar recording, so we should be able to use the student evaluation system to qualify them for uploading exemplar contributions.<br />
+</span><span style="font-family: arial, helvetica, sans-serif"><br />
+There are several other tables for additional information such as </span><a href="http://talknicer.net/w/Database_schema#Languages">languages</a><span style="font-family: arial, helvetica, sans-serif"> for a list of languages defined by the ISO in case we may extend our project to other languages; a </span><a href="http://talknicer.net/w/Database_schema#Regions">region table</a><span style="font-family: arial, helvetica, sans-serif"> to store some idea of the user's accent; </span><a href="http://talknicer.net/w/Database_schema#Prompts">prompts table</a><span style="font-family: arial, helvetica, sans-serif"> for the list of text resources will be used for pronunciation evaluation. </span><span style="font-family: arial, helvetica, sans-serif">Then are also </span><a href="http://talknicer.net/w/Database_schema#Recordings">tables</a><span style="font-family: arial, helvetica, sans-serif"> to log the recordings the users do and tables for set of </span><a href="http://talknicer.net/w/Database_schema#Tests">tests</a><span style="font-family: arial, helvetica, sans-serif"> stored in the system.<br />
+</span></p>
+<p>Here are my plans for the coming week:</p>
+<p><span style="font-family: arial, helvetica, sans-serif">1. Discuss details of the game specification to finish the last part of schema design.<br />
+</span><span style="font-family: arial, helvetica, sans-serif"><br />
+2. Figure out how to integrate the Flash audio recorder with the HTML interface using bidirectional communication between ActionScript and JavaScript. </span></p>
+<p>3<span style="font-family: arial, helvetica, sans-serif">. Implement the student recording interface. </span></p>
+<p>4.<span style="font-family: arial, helvetica, sans-serif"> Further tasks can be found at: </span><a href="http://talknicer.net/w/To_do_list">http://talknicer.net/w/To_do_list</a></p>

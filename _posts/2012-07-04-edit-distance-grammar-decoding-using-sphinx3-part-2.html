@@ -1,0 +1,63 @@
+---
+layout: post
+status: publish
+published: true
+title: 'edit-distance grammar decoding using sphinx3: Part 2'
+author:
+  display_name: ronanki
+  login: ronanki
+  email: srikanth.143.iiit@gmail.com
+  url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+author_login: ronanki
+author_email: srikanth.143.iiit@gmail.com
+author_url: http://researchweb.iiit.ac.in/~srikanth.ronanki
+date: '2012-07-04 09:25:36 +0200'
+date_gmt: '2012-07-04 06:25:36 +0200'
+---
+<p>(Author: <a href="http://researchweb.iiit.ac.in/~srikanth.ronanki">Srikanth Ronanki</a>)<br />
+(Status: GSoC 2012 Pronunciation Evaluation Week 4)</p>
+<p>The source code for the functions below [1] have been uploaded to <a href="http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/ronanki/scripts/">http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/branches/speecheval/ronanki/scripts/</a><br />
+Here are some brief notes on how to use those programs:</p>
+<p><strong>Method 1: (phoneme decode)</strong><br />
+<strong>Path:</strong><br />
+neighborphones_decode/one_phoneme/<br />
+<strong>Steps To Run:</strong><br />
+1. Use split_wav2phoneme.py to split a sample wav file in to individual phoneme wav files<br />
+<code>$ python split_wav2phoneme.py <input_phoneseg_file> <complete_phone_list> <input_wav_file> <out_split_dir></code><br />
+2. Create split.ctl file using extracted split_wav directory<br />
+<code>$ ls split_wav/* > split.ctl<br />
+$ sed -i 's/.wav//g' split.ctl</code><br />
+3. Run feature_extract.sh program to extract features for individual phoneme wav files<br />
+<code>$ sh feature_extract.sh</code><br />
+4. Java Speech Grammar Format (JSGF) files are already created in FSG_phoneme<br />
+5. Run jsgf2fsg.sh in FSG_phoneme to convert from jsgf to fsg.<br />
+<code>$ sh jsgf2fsg.sh</code><br />
+6. Run decode_1phoneme.py to get the required output in output_decoded_phones.txt<br />
+<code>$ python decode_1phoneme.py <input_split_ctl_file> <output_phone_file></code></p>
+<p><strong>Method 2: (Three phones decode)<br />
+Path:</strong><br />
+neighborphones_decode/three_phones/<br />
+<strong>Steps To Run:</strong><br />
+1. Use split_wav2threephones.py to split a sample wav file in to individual phoneme wav files which consists of three phones the other two being served as contextual information for the middle one.<br />
+<code>$ python split_wav2threephones.py <input_phoneseg_file> <ngb_key_mapper> <input_wav_file> <out_split_dir> </code><br />
+2. Create split.ctl file using extracted split_wav directory<br />
+<code>$ ls split_wav/* > split.ctl<br />
+$ sed -i 's/.wav//g' split.ctl</code><br />
+3. Run feature_extract.sh program to extract features for individual phoneme wav files<br />
+<code> $ sh feature_extract.sh </code><br />
+4. Java Speech Grammar Format (JSGF) files are already created in FSG_phoneme<br />
+5. Run jsgf2fsg.sh in FSG_phoneme to convert from jsgf to fsg<br />
+<code> $ sh jsgf2fsg.sh </code><br />
+6. Run decode_3phones.py to get the required output in output_decoded_phones.txt<br />
+<code>$ python decode_3phones.py <input_split_ctl_file> <output_phone_file> </code></p>
+<p><strong>Method 3: (Single/Batch phrase decode)<br />
+Path: </strong><br />
+neighborphones_decode/phrases/<br />
+<strong>Steps To Run:</strong><br />
+1. Construct grammar file (JSGF) using my earlier scripts from phonemes2ngbphones [2] and then use jsgf2fsg in sphinxbase to convert from JSGF to FSG which serves as input Language Model to sphinx3_decode<br />
+2. Provide the input arguments such as grammar file, feats, acoustic models etc., for the input test phrase<br />
+3. Run decode.sh program to get the required output in sample.out<br />
+<code> $ sh decode.sh </code></p>
+<p>References:</p>
+<p>[1] <a href="https://cmusphinx.github.io/2012/06/edit-distance-grammar-decoding-using-sphinx3/">edit-distance grammar decoding using sphinx3: Part 1</a></p>
+<p>[2] <a href="https://cmusphinx.github.io/2012/06/ronanki-gsoc-2012-pronunciation-evaluation-week-1-status/">Input string of phonemes to CMUBet neighboring phones</a></p>

@@ -1,0 +1,24 @@
+---
+layout: post
+status: publish
+published: true
+title: New language model binary format
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2015-07-02 00:34:12 +0200'
+date_gmt: '2015-07-01 21:34:12 +0200'
+---
+<p>Expectations for the vocabulary size in LVCSR has grown dramatically in recent years. 150 thousand words is a must for modern speech recognizers while 10 years ago most system operated only with 60 thousand words. In several morphologically-rich languages like Russian the vocabulary of such size is critical for good OOV rate, but even in English it is important because of the variety of topics one can expect as an input. With such a large vocabulary ngram language models should store millions of ngrams and their weights, which requires memory efficient data structure that allows fast queries. Ngram language models are also widely used in NLP, machine translation, so this topic got a lot of attention in recent years. Several toolkits for language modeling like <a href="http://www.speech.sri.com/projects/srilm/">SRILM</a>, <a href="http://sourceforge.net/projects/irstlm/">IRSTLM</a>, <a href="https://code.google.com/p/mitlm/">MITLM</a>, <a href="https://code.google.com/p/berkeleylm/">BerkeleyLM</a> implement special data structures to hold the language model.</p>
+<p>CMUSphinx decoders use its own ngram model data structure that support files in ARPA and DMP format. While it has some fancy techniques like trie organization of ngrams, simple weight quantizing and sorted ngram arrays, there is a serious shortcoming. Word ID is limited with uint16 type, so maximum vocabulary is 65k words. Simply replacing the ID type could seriously increase currently used language models sizes. Moreover, current implementation is limited by a maximum ngram order of 3. So it was decided to implement a new state-of-art data structure. <a href="http://kheafield.com/code/kenlm/">KenLM</a> reverse trie data structure was selected as a base for CMUSphinx implementation. &ldquo;Reverse&rdquo; means that last word of ngram is looked up first:</p>
+<p> <img alt="" src="http://i.imgur.com/ymdSrQp.png" title="Trie Lookup" class="alignnone" width="430" height="378" /></p>
+<p>In example above trigram &ldquo;is one of&rdquo; is queried. Each node contains &ldquo;next pointer&rdquo; to the beginning of successors list. Separate array for each ngram order is maintained. Each node contains quantized weights: probability and backoff. Nodes are stored in bit array, i.e. minimum amount of bits required to store next pointers and word IDs are used. </p>
+<p> Those ideas where carefully implemented in both sphinxbase and sphinx4 and now the one can use language model of unlimited vocabulary size with improved memory consumption and query speed. It is still possible to use arpa and dmp models, but to enhance loading time, convert your model into trie binary format using sphinx_lm_convert:</p>
+<p>           <code>sphinx_lm_convert -i your_model.lm.(dmp) -o your_model.lm.bin</code></p>
+<p>Worth to mention that while it is possible to read DMP format, ability to generate DMP files is removed.</p>
+<p>New generic 70k language model also landed in trunk. Check out its performance and report how it works on your tasks. It is expected to somewhat boost recognition accuracy decreasing OOV rate. For example <a href="http://trulymadlywordly.blogspot.com/2011/12/sphinx4-speech-recognition-results-for.html">in lecture transcription task</a> OOV decreased by factor of 2. </p>
+<p>Looking forward for your feedback: opinions, suggestions, bug reports. Say thanks to Vyacheslav Klimkov for the amazing implementation!</p>

@@ -1,0 +1,21 @@
+---
+layout: post
+status: publish
+published: true
+title: A way to make the world accessible
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2014-11-04 01:50:03 +0100'
+date_gmt: '2014-11-03 22:50:03 +0100'
+---
+<p>We recently got information about CDRV project, a great effort to make the word more accessible.</p>
+<p>CDRV (&ldquo;Device Controller by Speech Recognition&rdquo; in spanish) is a device which can control a lift chair using voice commands. The purpose of this project is to help people with mobility problems such as disabilities or old people who are not able to use their hands to control the lift chair. The hardware of the CDRV consists on an overclocked Raspberry Pi model B and an extension board developed to control the motors of the lift chair, a Wi-Fi dongle, an external manual control and a Logitech USB microphone. The operative system used has been developed with Buildroot and runs in RAM completely so it is possible to turn off the power without shutting down the OS. The extension board has been developed with KiCAD and the plastic box has been designed entirely with OpenSCAD and printed with a Prusa i3 RepRap. The offline speech recognition software that runs into the Raspberry Pi is the C implementation of CMUSphinx: pocketsphinx. It uses the spanish acoustic model provided by the CMUSphinx community and a slightly modified version of the application pocketsphinx_continuous to perform a command and control task. A language model with approximately 25 common words behaves like a garbage model. No kind of confidence measures are computed. </p>
+<p>CDRV is continuously listening for the utterance &ldquo;Lift Chair Activation&rdquo; (&ldquo;Activaci&oacute;n Sill&oacute;n&rdquo;, actually). Once this command is recognized, it produces a confirmation beep. Then, it waits for some seconds searching for the actions &ldquo;Up&rdquo; (Sube) or &ldquo;Down&rdquo; (Baja). If any of these actions is recognized, the lift chair will be activated accordingly. If not, a desactivation beep will be emitted. Anytime, the command &ldquo;Stop&rdquo; (Para) will turn off the lift chair motors.</p>
+<p>The device has been tested with real users in real situations achieving very good results. Some exceptional users, due to it&rsquo;s particular phonetics, are not properly recognized but in general, the device reacts only when the correct words are pronounced even with a close loud television. In the video below you can find a short demonstration of the device.</p>
+<p><iframe width="420" height="315" src="//www.youtube.com/embed/yvs-vLb13R8" frameborder="0" allowfullscreen></iframe></p>
+<p>This project is being developed for a non profit organization called <a href="http://www.cvi-bcn.org/en/">CVI</a> (Center of independent living). The non profit <a href="http://www.fundaciononce.es/en">ONCE</a> foundation is funding the project and the <a href="https://www.upc.edu/?set_language=en">UPC</a> university provides tech support.</p>
