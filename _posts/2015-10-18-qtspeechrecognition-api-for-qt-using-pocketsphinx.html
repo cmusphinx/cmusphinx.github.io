@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: QtSpeechRecognition API for Qt Using Pocketsphinx
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2015-10-18 01:07:41 +0200'
+date_gmt: '2015-10-17 22:07:41 +0200'
+---
+<p><img class="alignleft" title="Qt Logo" src="http://d3hp9ud7yvwzy0.cloudfront.net/wp-content/uploads/2015/02/Qt-logo-medium.png" alt="Qt Logo" width="200" height="200" /><br />
+It is really great to see the wide variety of APIs raising around Pocketsphinx, one recent new one is QtSpeechRecognition API implemented by <a href="http://www.code-q.fi/en/">Code-Q</a> for assistive applications. This undertaking is quite ambitious, the main features include</p>
+<ul>
+<li>Speech recognition engines are loaded as plug-ins.</li>
+<li>Engine is controlled asynchronously, causing only minimal load to the<br />
+application thread.</li>
+<li>Built-in task queue makes plug-in development easier and forces<br />
+unified behavior between engine integrations.</li>
+<li>Engine integration handles the audio recording, making it easy to use<br />
+from the application.</li>
+<li>Application can create multiple grammars and switch between them.</li>
+<li>Setting mute temporarily disables speech recognition, allowing<br />
+co-operation with audio output (speech prompts or audio cues).</li>
+<li>Includes integration to PocketSphinx engine (latest codebase) as a<br />
+reference.</li>
+</ul>
+<p>You can discuss features and find more details on the following <a href="http://lists.qt-project.org/pipermail/development/2015-September/023034.html">thread</a> in Qt mailing list. You can find the sources in review in qtspeech project, branch&nbsp;<a href="https://codereview.qt-project.org/#/q/project:qt/qtspeech+branch:wip/speech-recognition,n,z">wip/speech-recognition</a>.</p>
+<p>The implementation already includes pretty interesting features, for example it intelligently saves and restores CMN state for more robust recognition. So let us see how it goes.</p>

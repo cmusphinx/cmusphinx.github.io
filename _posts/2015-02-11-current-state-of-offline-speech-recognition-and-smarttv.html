@@ -1,0 +1,37 @@
+---
+layout: post
+status: publish
+published: true
+title: Current state of offline speech recognition and SmartTV
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2015-02-11 17:14:19 +0100'
+date_gmt: '2015-02-11 14:14:19 +0100'
+---
+<p>Recently there was a lot of buzz in the internet about <a href="http://www.bbc.com/news/technology-31296188">Samsung SmartTV speech recognition policy</a>. The part of user agreement that states that everything you speak in a room can be recorded and sent to the third party company (not even to Samsung) raises reasonable concerns of the users. So the question arrives what is the current state of technology to recognize speech fully offline without the internet. And what CMUSphinx can suggest here.</p>
+<p>Beside privacy concern speech recognition with the server has other disadvantages. For example, unpredictable response time. Not everyone expects to wait for 1-2 seconds while data is sent to the server and results sent back. Immediate response is way more attractive.</p>
+<p>Modern phones, TVs and embedded devices are not supercomputers, with ARM processor at 1-2GHz frequency they are comparable to the old good Pentium II Intel CPUs in general computing performance. Of course they have hardware extension modules to solve more resource-consuming tasks like to decode a HD video stream, but for general computing their performance is not that high. Such extensions are proprietary and not always easy to use. And energy consumption puts very strong limits on possible computation. CPUs have multiple cores if you use them you drain battery faster, so it will not last a day. Due to that it is not easy to expect to see a major CPU power boost in coming years.</p>
+<p>Modern large vocabulary speech recognition solutions like the one that runs at Google requires about 2Gb of memory per decoding stream and requires access to the language model of terabyte in size. For that reason it is not practical to run it on the phone. There have been several decoders designed to work in low-resource environments and among them:</p>
+<ul>
+<li>Dragon Naturally Speaking, the first continuous dictation system appeared in 1997. Successfully run on 25Mb of memory and was able to use vocabulary of 25 thousand words</li>
+<li><a href="http://dl.acm.org/citation.cfm?id=1289249">SRI Dynaspeak</a> engine from SRI. Up to 50k vocabulary with pretty modest hardware requirements</li>
+</ul>
+<p>Well, almost every decoder from 90's might be considered as a decoder with low requirements now. However, the expectation from speech recognition system has been changed since them. The decoder is expected to recognize the vocabulary up to 200 thousand words and recognize natural language with high accuracy. So old decoders do not match expectations either.</p>
+<p>Among recent publications on efficient speech recognition one must note a publication from Google about offline mobile speech recognizer:</p>
+<p><a href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/41176.pdf">Accurate and Compact Large Vocabulary Speech Recognition on Mobile Devices by Xin Lei, Andrew Senior, Alexander Gruenstein and Jeffrey Sorensen</a></p>
+<p>The key features of this recognizer are:</p>
+<ul>
+<li>Accurate DNN models which score input features on multiple cores</li>
+<li>Quantization everywhere</li>
+<li>Very cleaver compression of the language model</li>
+</ul>
+<p>Those feature allow decoder to recognize user queries with 50 thousand words vocabulary with pretty low error rate of just 15%. This is a very impressive accuracy but still below the user accuracy expectation. So a lot of work is still required to recognize on mobile phone efficiently and without the use of the internet. Unless there would be means to restrict the vocabulary and increase the accuracy.</p>
+<p>As for Pocketsphinx, our main embedded speech recognition engine, there are few features missing. First of all, pocketsphinx uses less accurate GMM models. However, one should note that those model do not require multiple-core scoring like DNN, so their energy consumption is way lower.</p>
+<p>Pocketsphinx model compression is a bit worse than Google's one but not significantly worse. The data in our models is compressed to 16bits, scores are compressed to 22bits. We can use within 30mb per language.</p>
+<p>One of the advantages of Pocketsphinx is configurable vocabulary so you can create the models you need. With proper configuration and tuning of the beams pocketsphinx can recognize 10 thousand words vocabulary on a device in realtime with error rate around 20%. With smaller vocabulary the accuracy is significantly higher, you can expect just 3% of errors when you recognize below 100 words, this approaches to practical system. You can also use keyword activation mode with pocketsphinx which allows modern phone to listen continuously for the whole day. </p>
+<p>So if you really need a system which recognizes a dozen commands without the internet, pocketsphinx is a solution to consider. There is no need to send user speech anywhere and include strange items in user agreement. If you want bigger vocabulary, there is still some work to do.</p>

@@ -1,0 +1,75 @@
+# Site settings
+title:       CMUSphinx Open Source Speech Recognition
+email:       nshmyrev@gmail.com
+author:      Nickolay Shmyrev
+description: "CMUSphinx is an open source speech recognition system for mobile and server applications. Supported languages: C, C++, C#, Python, Ruby, Java, Javascript. Supported platforms: Unix, Windows, IOS, Android, hardware."
+baseurl:     ""
+url:         "http://cmusphinx.github.io"
+date_format: "%b %-d, %Y"
+
+# Google services
+google_verification: _R4NJivcsvPqYA9iHHpaJnxnkzogKzRei5a5_UvA4W4
+# Use either direct GA implementation or set up GTM account
+# - using both will skew your data (leave blank to not use at all)
+google_analytics: UA-11921517-1
+google_tag_manager:
+
+# Optional features
+animated:             false
+show_related_posts:   false
+show_social_icons:    false
+extended_fonts: false
+# Preview image for social media aka og:image and twitter:image
+post_preview_image: false
+
+# Social icons
+github_username: cmusphinx
+
+# Post sharing icons
+show_sharing_icons: false
+# Change to 'true' to enable individual icons
+share_facebook: true
+share_twitter: true
+share_googleplus: true
+share_linkedin: true
+share_digg: false
+share_tumblr: false
+share_reddit: false
+share_stumbleupon: false
+share_hackernews: true
+
+text:
+  pagination:
+    newer: 'Newer'
+    older: 'Older'
+  share_buttons:
+    text:         'Share this post!'
+    facebook:     'Share on Facebook'
+    twitter:      'Share on Twitter'
+    googleplus:   'Share on Google+'
+    linkedin:     'Share on LinkedIn'
+    digg:         'Share on Digg'
+    tumblr:       'Share on Tumblr'
+    reddit:       'Share on Reddit'
+    stumbleupon:  'Share on StumbleUpon'
+    hackernews:   'Share on Hacker News'
+  post:
+    updated:        'Updated'
+    minute_read:    'minute read'
+    related_posts:  'Related Posts'
+  index:
+    coming_soon: 'Coming soon...'
+  og_locale: 'en_US'
+
+# Build settings
+markdown:     kramdown
+redcarpet:
+  extensions: ['smart', 'tables', 'with_toc_data']
+permalink:    pretty
+paginate:     4
+sass:
+  style: compressed
+gems:
+  - jekyll-paginate
+  - jekyll-sitemap
+exclude: [vendor]

@@ -1,0 +1,26 @@
+---
+layout: post
+status: publish
+published: true
+title: Russian Audiobook Morphology-Based Model
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2011-09-23 02:22:07 +0200'
+date_gmt: '2011-09-22 23:22:07 +0200'
+---
+<p>In many languages the amount of lexical forms is huge due to morphology. Even simple vocabulary can contain several million forms and variations. It's hard to recognize such a big vocabulary because of huge search space. Decoder is slow and a language model takes enormous amount of memory.</p>
+<p>Of course brute force approach make sense and actually quite successful but better ones already suggested. For example using morphological segmener we can build a language model and the acoustic model which can describe the same vocabulary in way smaller number of subword items. Real words are combined from the chunks which are separate entities in a language model. This way our search space is efficiently represented and the speed is comparable to English models.</p>
+<p>The tricky part is to properly segment the words. Because pronunciaiton of decomposition is not so straightforward it takes some effort to build the split. We are happy that our contributor Zamir Ostroukhov managed to solve that problem. He created the acoustic model from the audiobooks from the Voxforge database and used large text corpora to create a morphologically-segmented language model. This is a very promising approach for morphologically-rich language so we look forward to see this framework as a part of CMUSphinx. Maybe this framework could be extended to multilevel speech representation which could hold both subwords and sentence-level items.</p>
+<p>Check Zamir's project<br />
+<a href="https://github.com/zamiron/ru4sphinx">https://github.com/zamiron/ru4sphinx</a></p>
+<p>For more details on the approach please see</p>
+<p><a href="http://dl.acm.org/citation.cfm?id=1268180">Large vocabulary continuous speech recognition of an inflected language using stems and endings</a> by Toma Rotovnik at al.</p>
+<p>Download Russian audiobook model here, the morphological language model is included:<br />
+<a href="http://sourceforge.net/projects/cmusphinx/files/Acoustic and Language Models/Russian Audiobook Morphology Zero/">http://sourceforge.net/projects/cmusphinx/files/Acoustic and Language Models/Russian Audiobook Morphology Zero</a></p>
+<p>For more details see<br />
+<a href="http://www.cis.hut.fi/projects/morpho/">http://www.cis.hut.fi/projects/morpho/</a></p>

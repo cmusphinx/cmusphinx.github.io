@@ -1,0 +1,49 @@
+---
+layout: post
+status: publish
+published: true
+title: "[GSoC 2012: Pronunciation Evaluation #Troy] Before Week 1"
+author:
+  display_name: troy.lee2008
+  login: troy.lee2008
+  email: troy.lee2008@gmail.com
+  url: ''
+author_login: troy.lee2008
+author_email: troy.lee2008@gmail.com
+date: '2012-05-25 20:51:38 +0200'
+date_gmt: '2012-05-25 17:51:38 +0200'
+---
+<div style="width: 570px;line-height: 1.4;color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif">
+<p>Google Summer of Code 2012 officially started this Monday (21 May). Our expected weekly report should begin next Monday, but here is a brief overview of the preparations we have accomplished during the "community bonding period."</p>
+<div>We started with a group chat including our mentor&nbsp;James and the other student Ronanki. The project details are becoming more clear to me, from the chat and subsequent email communications. For my project, the major focuses will be:</div>
+<div>1) A web portal for automatic pronunciation evaluation audio collection; and</div>
+<div>2) An Android-based mobile automatic pronunciation evaluation app.</div>
+<div></div>
+<div>The core of these two applications is edit distance grammar based-automatic pronunciation evaluation using CMU Sphinx3.</p>
+<p>Here are the preparations I have accomplished during the bonding period:</p></div>
+<div>
+<ol>
+<li>Trying out the basic&nbsp;<a href="http://code.google.com/p/wami-recorder/" target="_blank">wami-recorder</a> demo on my school's server;</li>
+<li>Changing&nbsp;<a href="http://code.google.com/p/rtmplite/" target="_blank">rtmplite</a> for audio recording. Rtmplite is a Python implementation of an RTMP server with minimum support needed for real-time streaming and recording using Adobe's AMF0 protocol. On the server side, the RTMP server&nbsp;daemon&nbsp;process listens on TCP port&nbsp;1935&nbsp;by default,&nbsp;for connections and media data streaming. On the client side, the Flash user needs to use Adobe ActionScript 3's NetConnection function to set up a session with the server, and the NetStream function for audio and video streaming, and also microphone recording. The demo application has been set up at:&nbsp;<a href="http://talknicer.net/~li-bo/testClient/bin-debug/testClient.html">http://talknicer.net/~li-bo/testClient/bin-debug/testClient.html</a></li>
+<li>Based on my understanding of the demo application, which does the real time streaming and recording of both audio and video, I started to write my own audio recorder which is a key user interface component for both the web-based audio data collection and the evaluation app. The basic version of the recorder was hosted at:&nbsp;<a href="http://talknicer.net/~li-bo/audioRecorder/audioRecorder.html">http://talknicer.net/~li-bo/audioRecorder/audioRecorder.html</a> . The current implementation:
+<ol>
+<li>Distinguishes recordings from different users with user IDs;</li>
+<li>Loads pre-defined text sentences to display for recording, which will be useful for pronunciation exemplar data collection;</li>
+<li>Performs peal-time audio recording;</li>
+<li>Can play back the recordings from the server; and</li>
+<li>Has basic event control logic, such as to prevent&nbsp;users from recording and playing at the same time, etc.</li>
+</ol>
+</li>
+<li>Also, I have also learned from&nbsp;<a href="https://cmusphinx.github.io/wiki/sphinx4:sphinxthreealigner">https://cmusphinx.github.io/wiki/sphinx4:sphinxthreealigner</a> on how to get phoneme acoustic scores from "forced alignment" using sphinx3. To generate the phoneme alignment scores, two steps are needed. The details of how to perform that alignment can be found on my more tech-oriented posts at&nbsp;<a href="http://troylee2008.blogspot.com/2012/05/testing-cmusphinx3-alignment.html">http://troylee2008.blogspot.com/2012/05/testing-cmusphinx3-alignment.html</a> and&nbsp;<a href="http://troylee2008.blogspot.com/2012/05/cmusphinx3-phoneme-alignment.html">http://troylee2008.blogspot.com/2012/05/cmusphinx3-phoneme-alignment.html</a> on my personal blog.</li>
+</ol>
+<div>Currently, these tasks are ongoing:</div>
+</div>
+<div>
+<ol>
+<li>Set up the server side process to manage user recordings, i.e., distinguishing between users and different utterances.</li>
+<li>Figure out how to use ffmpeg, speexdec, and/or sox to automatically convert the recorded server side FLV files to PCM .wav files after the users upload the recordings.</li>
+<li>Verify the recording parameters against the recording and speech recognition quality, possibly taking the network bandwidth into consideration.</li>
+<li>Incorporating delays between network and microphone events in the recorder. The current version does not wait for the network events (such as connection set up, data package transmission, etc.) to successfully finish before processing the next user event, which can often cause the recordings to be clipped.</li>
+</ol>
+</div>
+<p>My GSoC Project Page:<a href="http://www.google-melange.com/gsoc/proposal/review/google/gsoc2012/troylee2008/1"> http://www.google-melange.com/gsoc/proposal/review/google/gsoc2012/troylee2008/1</a></div>

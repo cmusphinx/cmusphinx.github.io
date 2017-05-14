@@ -1,0 +1,20 @@
+---
+layout: post
+status: publish
+published: true
+title: CMLLR Adaptation in SphinxTrain
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2011-02-17 18:53:35 +0100'
+date_gmt: '2011-02-17 15:53:35 +0100'
+---
+<p>The problem is that with a complexity of ASR algorithms it's very hard to implement them all. While some of them are sometimes better, some are worse. For specific application you can always choose most reasonable approach but it may be not readily available in your system and it might be  quite resource-consuming to implement them. That's why frameworks<br />
+like CMUSphinx are valuable for both researchers and speech application developers. That's why we are so happy to see your contributions to CMUSphinx.</p>
+<p>Good example of this is a set of approaches to train MLLR transform. Basically there is MLLR where mean and variance of the gaussians are estimated alone or CMLLR where mean and variance of the gaussian distribution are estimated together. CMLLR is more complex to  estimate but because of smaller amount of parameters it does make sense to apply<br />
+it when your adaptation data is small. For example if you have just a minute of speech to adapt, CMLLR can give you better results than MLLR.</p>
+<p>Why do we write this today you'll ask? Easy. Today CMLLR estimation code landed in Sphinxtrain trunk. See the file <code>cmllr.py</code>. Thanks a lot to Stephan Vanni who contributed that part, that's really valuable addition! Enjoy!</p>

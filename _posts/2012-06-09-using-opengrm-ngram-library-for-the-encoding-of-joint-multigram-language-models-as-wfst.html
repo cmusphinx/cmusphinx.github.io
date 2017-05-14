@@ -1,0 +1,77 @@
+---
+layout: post
+status: publish
+published: true
+title: Using OpenGrm NGram Library for the encoding of joint multigram language models
+  as WFST.
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-06-09 05:33:49 +0200'
+date_gmt: '2012-06-09 02:33:49 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>Foreword</strong><br />
+This article will review the OpenGrm NGram Library [1] and its usage for language modeling in ASR. OpenGrm makes use of functionality in the openFST library [2] to create, access and manipulate n-gram language models and it can be used as the language model training toolkit for integrating  phonetisaurus' model training procedures [3] into a simplified application.</p>
+<p><strong>1. Model Training</strong><br />
+Having the aligned corpus produced from cmudict by the aligner code of our previous article [4], the first step is to generate an OpenFst-style symbol table for the text tokens in input corpus. This can be done with: [5]</p>
+<p><code># ngramsymbols < cmudict.corpus > cmudict.syms</code></p>
+<p>Given the symbol table, a text corpus can be converted to a binary finite state archive (far) [6] with:</p>
+<p><code># farcompilestrings --symbols=cmudict.syms --keep_symbols=1 cmudict.corpus > cmudict.far</code></p>
+<p>Next step is to count n-grams from an input corpus, converted in FAR format. It produces an n-gram model in the FST format. By using the switch <em>--order</em> the maximum length n-gram to count can be chosen.</p>
+<p>The 1-gram through 9-gram counts for the cmudict.far finite-state archive file created above can be created with:</p>
+<p><code># ngramcount --order=9 cmudict.far > cmudict.cnts</code></p>
+<p>Finally the 9-gram counts in cmudict.cnts above can be converted to a WFST model with:</p>
+<p><code># ngrammake --method="kneser_ney" cmudict.cnts > cmudict.mod</code></p>
+<p>The <em>--method</em> option is used for selecting the smoothing method [7] from one of the six available:</p>
+<ul>
+<li>witten_bell: smooths using Witten-Bell [8], with a hyperparameter k, as presented in [9].</li>
+<li>absolute: smooths based on Absolute Discounting [10], using bins and discount parameters.</li>
+<li>katz: smooths based on Katz Backoff [11], using bins parameters.</li>
+<li>kneser_ney: smooths based on Kneser-Ney [12], a variant of Absolute Discounting.</li>
+<li>presmoothed: normalizes at each state based on the n-gram count of the history.</li>
+<li>unsmoothed: normalizes the model but provides no smoothing.</li>
+</ul>
+<p><strong>2. Evaluation &ndash; Comparison with phonetisaurus</strong></p>
+<p>In order to evaluate OpenGrm models, ther procedure described above was repeated using the standard 90%-10% split of the cmudict into a training and test set respectively. The binary fst format produced by ngrammake wasn't readable by the phonetisaurus evaluation script, so it was converted to ARPA format with:</p>
+<p><code># ngramprint --ARPA cmudict.mod > cmudict.arpa</code></p>
+<p>and then back to a phonetisaurus binary fst format with:</p>
+<p><code># phonetisaurus-arpa2fst --input=cmudict.arpa --prefix="cmudict/cmudict"</code></p>
+<p>Finally the test set was evaluated with</p>
+<p><code># evaluate.py --modelfile cmudict/cmudict.fst --testfile cmudict.dict.test --prefix cmudict/cmudict<br />
+Words: 13328  Hyps: 13328 Refs: 13328<br />
+##############################################<br />
+EVALUATION RESULTS<br />
+---------------------------------------------------------------------<br />
+(T)otal tokens in reference: 84955<br />
+(M)atches: 77165  (S)ubstitutions: 7044  (I)nsertions: 654  (D)eletions: 746<br />
+% Correct (M/T)           -- %90.83<br />
+% Token ER ((S+I+D)/T)    -- %9.94<br />
+% Accuracy 1.0-ER         -- %90.06<br />
+---------------------------------------------------------------------<br />
+(S)equences: 13328  (C)orrect sequences: 8010  (E)rror sequences: 5318<br />
+% Sequence ER (E/S)       -- %39.90<br />
+% Sequence Acc (1.0-E/S)  -- %60.10<br />
+##############################################</code></p>
+<p><strong>3. Conclusion &ndash; Future Works</strong></p>
+<p>The evaluation results above are, as expected, almost identical with those produced by the phonetisaurus' procedures and the use of MITLM toolkit instead of OpenGrm.</p>
+<p>Having the above description, the next step is to integrate all of the commands above into a simplified application, combined with the dictionary alignment code introduced in our previous article [13].</p>
+<p><strong>References</strong></p>
+<p>[1]<a title="OpenGrm NGram Library" href="http://www.openfst.org/twiki/bin/view/GRM/NGramLibrary" target="_blank"> OpenGrm NGram Library</a></p>
+<p>[2]  <a title="OpenFst Library" href="http://www.openfst.org" target="_blank">openFST library</a></p>
+<p>[3] <a title="Phonetisaurus: A WFST-driven Phoneticizer &ndash; Framework Review" href="https://cmusphinx.github.io/2012/05/phonetisaurus-a-wfst-driven-phoneticizer-%E2%80%93-framework-review/" target="_self">Phonetisaurus: A WFST-driven Phoneticizer &ndash; Framework Review</a></p>
+<p>[4]<a title="Porting phonetisaurus many-to-many alignment python script to C++" href="https://cmusphinx.github.io/2012/05/porting-phonetisaurus-many-to-many-alignment-python-script-to-c/" target="_self"> Porting phonetisaurus many-to-many alignment python script to C++</a></p>
+<p>[5] <a title="OpenGrm NGram Library Quick Tour" href="http://www.openfst.org/twiki/bin/view/GRM/NGramQuickTour" target="_blank">OpenGrm NGram Library Quick Tour</a></p>
+<p>[6] <a title="OpenFst Extensions: FST Archives (FARs)" href="http://www.openfst.org/twiki/bin/view/FST/FstExtensions#FstArchives" target="_blank">OpenFst Extensions: FST Archives (FARs)</a></p>
+<p>[7] S.F. Chen, G. Goodman, &ldquo;An Empirical Study of Smoothing Techniques for Language Modeling&rdquo;, Harvard Computer Science Technical report TR-10-98, 1998.</p>
+<p>[8] I. H. Witten, T. C. Bell, "The zero-frequency problem: Estimating the probabilities of novel events in adaptive text compression", IEEE Transactions on Information Theory 37 (4), pp. 1085&ndash;1094, 1991.</p>
+<p>[9] B. Carpenter, "Scaling high-order character language models to gigabytes", Proceedings of the ACL Workshop on Software, pp. 86&ndash;99, 2005.</p>
+<p>[10] H. Ney, U. Essen, R. Kneser, "On structuring probabilistic dependences in stochastic language modeling", Computer Speech and Language 8, pp. 1&ndash;38, 1994.</p>
+<p>[11] S. M. Katz, "Estimation of probabilities from sparse data for the language model component of a speech recogniser", IEEE Transactions on Acoustics, Speech, and Signal Processing 35 (3), pp. 400&ndash;401, 1987.</p>
+<p>[12] R. Kneser, H. Ney, "Improved backing-off for m-gram language modeling", Proceedings of the IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP). pp. 181&ndash;184, 1995.</p>
+<p>[13] Porting phonetisaurus many-to-many alignment python script to C++</p>

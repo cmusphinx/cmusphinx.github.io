@@ -1,0 +1,17 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Long Audio Alignment: Phone Loops'
+author:
+  display_name: apurv
+  login: apurv
+  email: apurvtwr@gmail.com
+  url: ''
+author_login: apurv
+author_email: apurvtwr@gmail.com
+date: '2011-06-27 10:34:32 +0200'
+date_gmt: '2011-06-27 07:34:32 +0200'
+---
+<p>Our objective this week was to model presence of words in the utterance that are not in the transcription. The approach used was to model it using Phone Loops. A phone loop contains all the phones of an acoustic model and can model any utterance (i.e. also words in the transcription).&nbsp; Hence the key to good alignment using phone loop is an optimal branch probability which is large enough so that recogniser does not mistake a OOV word as a word in the grammar and small enough to not replace a word in grammar by a OOV word.</p>
+<p>A linguist satisfying the above criteria has been added to long audio aligner branch. However, the linguist performs quite well for small sized transcriptions , the size of the search graph produced is too large for small sized transcription. We plan to generate this search graph dynamically now, to solve this memory issue. This way the memory requirements for generating and storing huge search graphs will be reduced to almost&nbsp; O(1) .</p>

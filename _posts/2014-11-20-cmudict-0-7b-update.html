@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: CMUDict 0.7b update
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2014-11-20 21:49:59 +0100'
+date_gmt: '2014-11-20 18:49:59 +0100'
+---
+<p>Recently Professor Rudnicky has updated CMUDict with the latest changes and now we have cmudict-0.7b version which you are welcome to checkout from subversion and use in your applications. CMUDict, the phonetic dictionary for US English has been one of the major components of the CMUSphinx toolkit. CMUDict has a long history being a unique resource for English pronunciation which is used by many other speech projects, commercial and open source. </p>
+<p>There are few things in CMUDict which we would love to improve, those things would definitely have a huge impact on speech recognition research and overall speech recognition technology:</p>
+<p><strong>Phonemic vs phonetic</strong></p>
+<p>CMUDict is originally a phonetic dictionary opposed to phonemic dictionary. It contains the approximations to the word pronunciation, it describes how the US native speaker would pronounce the word in a read speech. On the other hand in other condition even native US speaker would pronounce them differently. For example </p>
+<p><code>uniform Y UW1 N AH0 F AO2 R M</code></p>
+<p>with AH0 in the middle is already a reduced form of the </p>
+<p><code>uniform Y UW1 N IH0 F AO2 R M<br />
+</code></p>
+<p>Which the speaker would say if he will pronounce the word slowly. On the other hand it doesn't have the form</p>
+<p><code>uniform Y UW1 N AH0 F AH0 R M<br />
+</code></p>
+<p>Which native speaker would use in fast conversational speech. There are many cases like that. Because of such structure the dictionary is ready to use in speech recognition system but it makes it hard to conduct research on real phonetic reduction in various contexts just because the dictionary often doesn't have the original form. In modern systems where phonetic reduction gets more importance, we need to have more information on it in the dictionary. Hopefully, one day we will be able to collect both the information about original phonemic representation of words and their possible phonetic representation.</p>
+<p><strong>Newly appeared words</strong></p>
+<p>All the words which appeared in last few years and widely used around are often missing in CMUDict: "skype", "ipad", "spotify", there are so many important entries to add. Well, "spotify" has to be added to my spellchecker first. Hopefully we could keep the update rate of the dictionary faster. The reasonable estimation of the required size of the dictionary is about 200-500 thousand US English words, so the size of the dictionary has to be increased twice. That's a lot of work to review.</p>
+<p><strong>Word origins and morphology</strong></p>
+<p>There are many research projects on modeling the pronunciation of the words automatically. Still, for CMUDict the symbol error rate is about 8% which causes word error rate about 30%.  However, it's often very sad they are trying to model words as blackboxes without the attempt to add some sense to them. It's very important in what context the word is used, what is the origin of the word. Is it a surname, an abbreviation, a geographical term or a scientific term. Such information could greatly improve the quality of the dictionary and the accuracy of the prediction.</p>
+<p><strong>Other languages</strong></p>
+<p>There is a growing interest in supporting other languages in CMUSphinx toolkit - Spanish, French, British English. One of the serious problems is that we still lack a lot of data for them and dictionary is one big issue. Hopefully, we will be able to make an original approximation to the dictionary with rule-based systems for at least some of the languages. Such data would enable research on multi-language and language-independent speech recognizer and would greatly benefit the speech recognition toolkits.</p>
+<p><strong>Automatic dictionary acquisition</strong></p>
+<p>This is still an emerging technology, however, <a href="http://vincent.jousse.org/static/resources/pdf/some-recent-research-work.pdf">there are already some advancements in automatic dictionary collection</a> with software by LIUM. One can imagine the tool which scans through the audio and just learns the words it met and generates pronunciation for them to add to the dictionary. Hopefully, such tools are not a far future of speech recognition.</p>
+<p>So there is a huge space of improvement for CMUDict alone which is very important for the speech recognition research unrelated to the toolkit or speech recognition implementation. For that reason it is worth to note that CMUDict is also <a href="http://github.com/cmusphinx/cmudict">available on github</a>, so you are welcome to clone the repository, make your changes and submit a pull request, that would be very much appreciated!</p>

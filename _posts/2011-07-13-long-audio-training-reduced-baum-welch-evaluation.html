@@ -1,0 +1,17 @@
+---
+layout: post
+status: publish
+published: true
+title: Long Audio Training - Reduced Baum-Welch Evaluation
+author:
+  display_name: xkrajnan
+  login: xkrajnan
+  email: michal.krajnansky@gmail.com
+  url: ''
+author_login: xkrajnan
+author_email: michal.krajnansky@gmail.com
+date: '2011-07-13 13:48:59 +0200'
+date_gmt: '2011-07-13 10:48:59 +0200'
+---
+<p>In the last post regarding the <strong>Long Audio Training</strong> it was<img class="alignright" src="https://cmusphinx.github.io/wiki/_media/wiki:long-training:modules-rita.png" alt="" width="300" height="186" /> indicated that there were still some problems in the reduced Baum-Welch implementation. Fortunately these were identified as memory leaks introduced during the optimization and were fixed. In the past days I have made some extensive tests, which show, that modified algorithms perform significantly better than the original version of SphinxTrain with the respect to the memory consumption.</p>
+<p>See <a href="https://cmusphinx.github.io/wiki/longaudiotraining">https://cmusphinx.github.io/wiki/longaudiotraining</a> for more detailed evaluation.</p>

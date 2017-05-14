@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: Web Data Collection For Language Modeling - New plan, IRST LM and perplexity
+author:
+  display_name: emre
+  login: emre
+  email: emre@celikten.name
+  url: http://emre.celikten.name
+author_login: emre
+author_email: emre@celikten.name
+author_url: http://emre.celikten.name
+excerpt: "Dr. Tony Robinson, one of the mentors, has come up with a new plan for the
+  project. The core idea remains the same. The difference is that we are going to
+  use Lucene for obtaining text from a small set of websites that provide high-quality
+  text, such as news websites. This eliminates the problem with search engine automated
+  query policies and also increases the speed of processing data as everything is
+  queried locally.\r\n\r\nThe language model toolkit was chosen to be IRST LM. I have
+  run some experiments on the training data that was provided by IRST LM. Details
+  inside.\r\n"
+date: '2012-05-14 10:25:17 +0200'
+date_gmt: '2012-05-14 07:25:17 +0200'
+---
+<p>Dr. Tony Robinson, one of the mentors, has come up with a new plan for the project.</p>
+<p>The core idea remains the same: Given some audio and its transcripts belonging to some domain, we find additional text on the web which matches our domain. Then we build language models on this obtained text.</p>
+<p>We will use podcasts for this. Podcasts can have very different domains and also sometimes come with transcripts. The task therefore becomes building adaptive language models for podcasts.</p>
+<p>The difference is that we are going to use <a href="http://lucene.apache.org/core/">Lucene</a> for searching text after obtaining it from a small set of websites that provide high-quality text, such as news websites. This eliminates the problem of search engine automated query policies and also increases the speed of processing data as everything is queried locally.</p>
+<p>The language model toolkit was chosen to be <a href="http://sourceforge.net/projects/irstlm/">IRST LM</a>. Installation of IRST LM is straightforward. <a href="http://sourceforge.net/projects/irstlm/files/irstlm/irstlm-5.60.01/irstlm-manual-5.60.01.pdf/download">Manual for version 5.60.01</a> explains the process quite well, with one minor error. Caching has to be enabled in <tt>configure</tt> step.</p>
+<p>I have read some of &ldquo;Speech and Language Processing&rdquo; by Jurafsky et al. to get some ideas about n-grams, smoothing and perplexity. Then I have run some experiments on <a href="http://sourceforge.net/projects/irstlm/files/irstlm/examples/">training data that was provided by IRST LM</a>. I used <tt>your-text-file</tt> and <tt>test</tt> files in the zip archive to get some results. Punctuation marks and suffixes like <tt>'s</tt> have already been separated by whitespace in the provided text, so no extra processing than adding sentence boundary marks was necessary. I added sentence boundaries using the provided script <tt>add-start-end.sh</tt> and saved the result as <tt>training-text</tt> for convenience:</p>
+<p><code>emre@ammit ~/gsoc/irstlm $ add-start-end.sh < your-text-file > training-text</code></p>
+<p>(Note that you have to set environment path correctly to access IRST LM tools without specifying folders.)</p>
+<p>Then, I created a language model using trigrams and Witten-Bell smoothing and evaluated it using given test file:</p>
+<p><code>emre@ammit ~/gsoc/irstlm $ tlm -tr=training-text -n=3 -lm=wb -te=test</code></p>
+<p>which gave <tt>n=49984 LP=301734.5406 PP=418.4772517 OVVRate=0.05007602433</tt> as output. <tt>PP</tt> stands for the perplexity of the language model and <tt>OOVRate</tt> is out-of-vocabulary rate of the test set. When using Modified shift-beta smoothing by setting the parameter <tt>-lm</tt> to <tt>msb</tt>,</p>
+<p><code>emre@ammit ~/gsoc/irstlm $ tlm -tr=training-text -n=3 -lm=msb -te=test</code></p>
+<p>the perplexity score seems to be much lower: <tt>n=49984 LP=287035.4908 PP=311.8578364 OVVRate=0.05007602433</tt>.</p>
+<p>The project proposal is going to be updated soon. My next task is using some actual text and comparing perplexities. I also have to read a bit more about entropy as I am confused about the idea that the cross entropy of a model of a language is always going to be higher than the entropy of the language itself, i.e. cross entropy of a language model is an upper bound to entropy of the language.</p>
+<p>- Emre</p>

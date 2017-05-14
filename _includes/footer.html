@@ -1,0 +1,55 @@
+<footer>
+  <div class="measure footer-region">
+     <div class="footer-links">
+        <div class="footer-block">
+            <div class="footer-title">CONTACT US</div>
+            <ul class="footer-ul">
+                <li>
+                    <a href="http://sourceforge.net/p/cmusphinx/discussion/help/">Forum</a>
+                </li>
+                <li>
+                    <a href="https://lists.sourceforge.net/lists/listinfo/cmusphinx-devel">Mailing List</a>
+                </li>
+                <li>
+                    <a href="http://sourceforge.net/p/cmusphinx/bugs/">Issue Tracker</a>
+                </li>
+                <li>
+                    <a href="http://t.me/cmusphinx">Telegram</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-block">
+            <div class="footer-title">
+                LINKS
+            </div>
+            <ul class="footer-ul">
+                <li>
+                 <a href="http://alphacephei.com"><div class="icon_alphacephei"></div>Alphacephei</a>
+                </li>
+                <li>
+                 <a href="http://www.linkedin.com/groups?gid=2754506"><div class="icon_linkedin"></div>LinkedIn</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-block">
+            <div class="footer-title">FEEDS</div>
+            <ul class="footer-ul">
+	        <li>
+	            <a href="/feed.xml">Posts</a>
+	        </li>
+	    </ul>
+        </div>
+     <div class="center">
+      <small>
+	Pixyll theme crafted by <a href="http://johnotander.com">John Otander</a> available on <a href="https://github.com/johnotander/pixyll">GitHub</a>.
+      </small>
+     </div>
+  </div>
+</footer>
+
+{% if site.enable_anchorjs %}<!-- AnchorJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.0.0/anchor.min.js"></script>
+<script>
+    anchors.options.visible = 'always';
+    anchors.add('article h2, article h3, article h4, article h5, article h6');
+</script>{% endif %}

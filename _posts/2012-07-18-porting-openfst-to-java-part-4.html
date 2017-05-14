@@ -1,0 +1,119 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Porting openFST to java: Part 4'
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-07-18 15:58:09 +0200'
+date_gmt: '2012-07-18 12:58:09 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>Foreword</strong></p>
+<p>This article, the fourth in a series regarding porting openFST to java, describes the latest version of the java fst library, which contains all the required code for porting phonetisaurus g2p decoder [1] to java and eventually integrate it with sphinx4.</p>
+<p><strong>1. Basic Usage</strong></p>
+<p>Creating as simple wfst like the one in in figure 1 below is a straightforward procedure</p>
+<p>[caption id="attachment_339" align="aligncenter" width="497" caption="Figure 1: Example weighted finite-state transducer"]<a href="http://jsalatas.ictpro.gr/wp-content/uploads/2012/05/wfst_example.png"><img class="size-full wp-image-339 " src="http://jsalatas.ictpro.gr/wp-content/uploads/2012/05/wfst_example.png" alt="Figure 1: Example weighted finite-state transducer" width="497" height="130" /></a>[/caption]</p>
+<p><code> // Create a new Semiring<br />
+TropicalSemiring ts = new TropicalSemiring();<br />
+// Create the wfst<br />
+Fst wfst = new Fst(ts);<br />
+// Create input and output symbol tables<br />
+// and assign these to the wfst<br />
+Mapper isyms = new Mapper();<br />
+isyms.put(0, "a");<br />
+isyms.put(1, "b");<br />
+isyms.put(2, "c");<br />
+wfst.setIsyms(isyms);</code></p>
+<p><code>Mapper osyms = new Mapper();<br />
+osyms.put(0, "x");<br />
+osyms.put(1, "y");<br />
+osyms.put(2, "z");<br />
+wfst.setIsyms(osyms);</code></p>
+<p><code>// Create state 0<br />
+State state = new State(ts.zero());<br />
+// Add it to the wfst<br />
+wfst.addState(state);<br />
+// Set it as the start state<br />
+wfst.setStart(s.getId());<br />
+// Add arcs to state 0<br />
+state.addArc(new Arc(0, 0, 0.5, "1"));<br />
+state.addArc(new Arc(1, 1, 1.5, "1"));</p>
+<p>// Create state 1<br />
+state = new State(ts.zero());<br />
+// Add it to the wfst<br />
+wfst.addState(state);<br />
+// Add arcs to state 1<br />
+state.addArc(new Arc(2, 2, 2.5, "2"));</p>
+<p></code></p>
+<p><code> // Create (final) state 2<br />
+state = new State(new Weight(3.5));<br />
+// Add it to the wfst<br />
+wfst.addState(state);<br />
+</code></p>
+<p>Then this wfst can be serialized as binary java fst<br />
+<code> try {<br />
+wfst.saveModel("path/to/filename");<br />
+} catch (IOException e) {<br />
+e.printStackTrace();<br />
+}<br />
+</code></p>
+<p>or exported to openFst text format</p>
+<p><code>Convert.export(wfst, wfst.getSemiring(), "path/to/exported");</code></p>
+<p>Finally it can also be used for several operations as described in the following section.</p>
+<p><strong>2. Fst Operations</strong></p>
+<p>As already mentioned, priority was given to operations that are required for the porting of phonetisaurus' g2p decoder to java. All operations described are defined in their own class having the same name with the operation under the edu.cmu.sphinx.fst.operations package.</p>
+<p><strong>2.1. ArcSort</strong></p>
+<p>This operation sorts the arcs in an FST per state. It is defined as follows:<br />
+<code>public static <T extends Comparable> void apply(Fst fst, Comparator<Arc> cmp)</code></p>
+<p>The Comparator cmp can be either ILabelCompare or OlabelCompare which short the arcs according to their input or output labels accordingly.</p>
+<p><strong>2.2. Compose</strong></p>
+<p>This operation computes the composition of two transducers [2]. It is defined as follows:<br />
+<code>public static <T extends Comparable> Fst get(Fst fst1, Fst fst2, Semiring semiring)</code></p>
+<p><strong>2.3. Connect</strong></p>
+<p>This operation removes all states that are not contained on a path leading from the initial state to a final state. It is defined as follows:<br />
+<code>public static <T extends Comparable> void apply(Fst fst)</code></p>
+<p><strong>2.4. Determinize</strong></p>
+<p>This operation determinizes a weighted transducer. The result will be an equivalent FST that has the property that no state has two transitions with the same input label. For this algorithm, epsilon transitions are treated as regular symbols [3]. It is defined as follows:<br />
+<code>public static <T extends Comparable> Fst get(Fst fst)</code></p>
+<p><strong>2.5. ExtendFinal</strong></p>
+<p>This operations extends a wfst by adding a new final state with weight 0 and adding epsilon transitions from the existing final states to the new one, with weights equal to the existing state's final weight. It is defined as follows:<br />
+<code>public static <T extends Comparable> void apply(Fst fst)</code></p>
+<p>Furthermore there is also a procedure to undo this change, which is defined as:<br />
+<code>public static <T extends Comparable> void undo(Fst fst)</code></p>
+<p><strong>2.6. NShortestPaths</strong></p>
+<p>This operation produces an FST containing the n -shortest paths in the input FST [4], [5]. It is defined as follows:<br />
+<code>public static <T extends Comparable> Fst get(Fst fst, int n)</code></p>
+<p>where n is the number of the best paths to return.</p>
+<p><strong>2.7. Project</strong></p>
+<p>This operation projects an FST onto its domain or range by either copying each arc's input label to its output label or vice versa.  It is defined as follows:<br />
+<code>public static <T extends Comparable> void apply(Fst fst, ProjectType pType)</code></p>
+<p>where pType is an enumeration talking values either INPUT or OUTPUT which project the input labels to the output or the output to the input accordingly.</p>
+<p><strong>2.8. Reverse</strong></p>
+<p>This operation reverses an FST. Internally it first extends the input to a single final state and this extension is undone before exiting leaving the input fst unchanged. It is defined as follows:<br />
+<code>public static <T extends Comparable> Fst get(Fst fst)</code></p>
+<p><strong>2.9. RmEpsilon</strong></p>
+<p>This operation removes epsilon-transitions (when both the input and output label are an epsilon) from a transducer. The result will be an equivalent FST that has no such epsilon transitions [2]. It is defined as follows:<br />
+<code>public static <T extends Comparable> Fst get(Fst fst)</code></p>
+<p><strong>3. Performance in g2p decoding</strong></p>
+<p>The performance of the fst java library, was evaluated in g2p decoding by porting the phonetisaurus' g2p decoder to java (available at [6]). N-gram fst models were created (for n=6,7,8,9 and 10) and then loaded in the decoder in order to phoneticize 5 different words. The loading time for each model and also the time of various operations taking place during the decoding, were measured and their average are summarized in the table below. The table also shows the memory used by the java VM after loading the model (this refers more or less to the memory needed by the model) and also the maximum amount of memory utilized during the g2p decoding. All tests were performed on an Intel Core Duo CPU running openSuSE 12.1 x64.</p>
+<p>[caption id="attachment_570" align="aligncenter" width="371" caption="Table 1: Performance tests of java g2p decoder"]<a href="http://jsalatas.ictpro.gr/wp-content/uploads/2012/07/2.png"><img class="size-full wp-image-570 " src="http://jsalatas.ictpro.gr/wp-content/uploads/2012/07/2.png" alt="Performance tests of java g2p decoder" width="371" height="181" /></a>[/caption]</p>
+<p style="text-align: center">
+<p>The graphs below visualize the first four rows of the above table.</p>
+<p>[caption id="attachment_571" align="aligncenter" width="528" caption="Figure 2: Performance graphs for the java g2p decoder"]<a href="http://jsalatas.ictpro.gr/wp-content/uploads/2012/07/3.png"><img class="wp-image-571 " src="http://jsalatas.ictpro.gr/wp-content/uploads/2012/07/3.png" alt="Performance graphs for the java g2p decoder" width="528" height="346" /></a>[/caption]</p>
+<p><strong>4. Conclusion &ndash; Future work</strong></p>
+<p>Studying the performance table in the previous section it is clear that the critical procedure in the decoding process is the model loading (deserialization) which usually take more than a minute to complete. Although this is an issue that needs to be fixed, a quick workaround is to load it in advance and keep a copy of it in memory for providing pronunciations for all required words. This of course comes with additional requirements for memory which are more or less equal to the amount shown in 3rd in the previous section's table (row &ldquo;Memory usage after load&rdquo;).</p>
+<p>Next step is of course to evaluate the g2p decoder's ability to provide correct pronunciations for words and compare it with the original pronunciations produced by phonetisaurus. Having a same quality java g2p decoder will first of confirm the correctness of the java fst library code and enable us to continue with its integration with CMUSphinx 4.</p>
+<p><strong>References</strong><br />
+[1] <a title="Phonetisaurus: A WFST-driven Phoneticizer &ndash; Framework Review" href="https://cmusphinx.github.io/2012/05/phonetisaurus-a-wfst-driven-phoneticizer-%E2%80%93-framework-review/">"Phonetisaurus: A WFST-driven Phoneticizer &ndash; Framework Review"</a>.<br />
+[2] M. Mohri, "Weighted automata algorithms", Handbook of Weighted Automata. Springer, pp. 213-250, 2009.<br />
+[3] M. Mohri, "Finite-State Transducers in Language and Speech Processing", Computational Linguistics, 23:2, 1997.<br />
+[4] M. Mohri, "Semiring Framework and Algorithms for Shortest-Distance Problems", Journal of Automata, Languages and Combinatorics, 7(3), pp. 321-350, 2002.<br />
+[5] M. Mohri,  M. Riley, "An Efficient Algorithm for the n-best-strings problem", Proceedings of the International Conference on Spoken Language Processing 2002 (ICSLP '02).<br />
+[6] <a title="G2P java decoder SVN repository" href="https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/g2p/decoder" target="_blank">G2P java decoder SVN repository</a></p>

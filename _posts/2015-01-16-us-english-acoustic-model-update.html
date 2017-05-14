@@ -1,0 +1,21 @@
+---
+layout: post
+status: publish
+published: true
+title: US English acoustic model update
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2015-01-16 02:09:13 +0100'
+date_gmt: '2015-01-15 23:09:13 +0100'
+---
+<p>We are pleased to announce that we have just released two new acoustic noise-robust model for US English. Trained from a big amount of speech data they advance CMUSphinx accuracy and robustness to a new level.</p>
+<p>You can download new models <a href="https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/US%20English%20Generic%20Acoustic%20Model/">in downloads</a></p>
+<p>Two models have been released - a traditional continuous model with 5000 senones and 32 mixtures and a new PTM model with 5000 senones and 128 mixtures. This PTM model is worth some attention because it provides a great balance between decoding speed, accuracy and model size. We have recently added support for PTM models in sphinx4, you can already use this PTM model with sphinx4 trunk and get a decent decoding result.</p>
+<p>The difference between PTM, semi-continuous and continuous models is the following. We use mixture of gaussians to compute the score of each frame, the difference is how do we build such mixture. In continuous model every senone has it's own set of gaussians thus the total number of gaussians in the model is about 150 thousand. That's too much to compute the mixture efficiently. In semi-continuous model we have just 700 gaussians, way less than in continuous and we only use them with different mixtures to score the frame. Due to the smaller number of gaussians semi-continuous models are fast. PTM models is a gold middle here. It uses about 5000 gaussians thus providing better accuracy than semi-continuous, but it is still significantly faster than continuous thus can be used in mobile.</p>
+<p>So far PTM model demonstrates very good result - it decodes almost with continuous accuracy and works about 5 times faster than continuous model. With new PTM model you can decode speech with 60k words vocabulary in realtime with Java with sphinx4 and you can decode up to 5000 words in mobile phone in realtime. We consider this model an important direction of development, so all our future models will have this format. Of course PTM can not match the best results of deep neural networks yet but it is sufficiently faster, we are doing research to match the DNN performance keeping the impressive speed and model size.</p>
+<p>Those are good news, but we are going to release a model for a new language soon, guess which one.</p>

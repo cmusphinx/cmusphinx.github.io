@@ -1,0 +1,23 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Long Audio Training: Update 3'
+author:
+  display_name: xkrajnan
+  login: xkrajnan
+  email: michal.krajnansky@gmail.com
+  url: ''
+author_login: xkrajnan
+author_email: michal.krajnansky@gmail.com
+date: '2011-06-14 01:14:38 +0200'
+date_gmt: '2011-06-13 22:14:38 +0200'
+---
+<p>During the last week the <strong>memory management</strong> of the current SphinxTrain version was examined using Valgrind family tools.</p>
+<p>Program was profiled on one pass Baum-Welch training on the whole <em>an4</em> database (948 files) and on one recording from custom <em>'rita'</em> database. The total length of traing recordings was ~42 minutes and 5:31 minutes respectively. The reason for the testing on <em>rita</em> database considered only one file was the big amount of time taken by the training process. In both cases this was about 8 minutes without Valgrind profiling. (This time has increased about 15 times when profiling.)</p>
+<p>First interesting result is that the training on 42 minutes of short audio files (each few seconds long) took about the same as training on a single file 5:31 minutes long.</p>
+<p>During the experiments an issue with <strong>extensive memory reallocation</strong> was found in the <em>forward</em> algorithm. This was cca 760,000 of <em>__ckd_realloc__</em> function calls when training on <em>an4</em> database. The cause was found by the analysis of source codes: initial active state set allocation size was repeatedly set too low and after that vastly insreased (by about 1.3 GB on <em>rita</em> database) by the step of a few bytes. Algorithm was modified to reallocate the memory by quadratic step instead of linear. The modification reduced the reallocation to the 18,500 function calls on <em>an4</em> database, thus by the factor of about 40. The tradeof was slight increase in the total amount of memory allocated from 5.7 MB to 6.2 MB and from 1.4 GB to 1.7 GB on <em>an4</em> and <em>rita</em> databases respectively. The multiplication factor was set to 2 but this was arbitrary and can be subject to optimization.</p>
+<p>In theory this modification could also reduce the running time of the algorithm but significant reduce of time was not measured (approximately 8 minutes +- few seconds in all cases - <em>an4</em> &amp; <em>rita</em> with and without the modification).</p>
+<p>A question was whether a substantial fraction of memory demands could be attributed to <strong>memory leaks</strong>. This has shown not to be the case. Some memory leaks were found but nothing significant - under 1 MB in all cases. It was concluded that the reduced space technique implementation is necessary.</p>
+<p>The work on the <strong>implementation of reduced space Baum-Welch</strong> has begun. This will involve a major rewriting of the <em>forward</em>, <em>backward</em> and <em>Viterbi</em> algorithms using <strong>checkpoints</strong> method (as described in article <a href="http://www.cse.ucsc.edu/research/compbio/papers/samspace.pdf">http://www.cse.ucsc.edu/research/compbio/papers/samspace.pdf</a>). This method allows parametrization reducing the memory use from linear with respect to T to an arbitrary integer-root of T. The tradeof is increase in the computation length by the same factor. During this also the memory leaks should be completely prevented.</p>
+<p>In order of testing this should be done in few phases to ensure the new implementation is correct. More information will be found at the project wiki <a href="https://cmusphinx.github.io/wiki/longaudiotraining">https://cmusphinx.github.io/wiki/longaudiotraining</a> as the work progresses.</p>

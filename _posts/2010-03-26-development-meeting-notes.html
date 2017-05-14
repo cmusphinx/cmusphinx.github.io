@@ -1,0 +1,82 @@
+---
+layout: post
+status: publish
+published: true
+title: Development Meeting Notes
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2010-03-26 00:06:33 +0100'
+date_gmt: '2010-03-25 21:06:33 +0100'
+---
+<p>There were two great development meetings in Dallas during ICASSP. The goal was to develop some roadmap document about what will happen in near future. First meeting was about discussions and second meeting was for review of statements and to make an action plan. Attendees were</p>
+<p>Both meetings:</p>
+<ul>
+<li> Bhiksha Raj</li>
+<li> Rita Singh</li>
+<li> Evandro Govea</li>
+<li> <a href="http://nexiwave.com">Nick Shmyrev</a></li>
+<li> David Huggins-Daines</li>
+</ul>
+<p>Only first meeting:</p>
+<ul>
+<li> Benoit Favre</li>
+<li>Jagadeesh Balam</li>
+<li>Alex Rudnicky (over phone)</li>
+</ul>
+<p>The following topics were discussed.</p>
+<p><a id="more"></a><a id="more-157"></a></p>
+<p><strong>Development directions.</strong> It's long waited to implement WFST-based decoder as part of CMUSphinx tools. Such decoders are considered to be very interesting because language models, acoustic models, dictionary and even result lattices are unified under common data framework. Training could be done using openfst tools. Such framework could appear in a near future.</p>
+<p><strong>Development directions.</strong> CMU starts a project at CISL dedicated to building a methods to support almost all languages on Earth. That will include collection of data for semi-supervised model training,<br />
+automatic selection of the dictionary, language modeling and many other interesting things. More updates on this project will appear soon.</p>
+<p><strong>Sphinx4-1.0 release.</strong> Right now sphinx4 is not as good as sphinx3 for the following reasons:</p>
+<ul>
+<li> There is difference of results of lextree search in sphinx3 and token search in sphinx4, such difference could be easily tested by comparison of single lextree search in sphinx3 and search in sphinx4.</li>
+<li> There are no good regressions tests everyone can run to make sure nothing is broken.</li>
+<li> Lattices aren't generated properly, they are not really usable (see Long Qin presentation).</li>
+<li>There is no flat search implementation.</li>
+</ul>
+<p>The issues here are listed in order of their complexity. Once those issues  will be resolved we can deprecate sphinx3 and release sphinx4-1.0. There is concern about using Java for most accurate<br />
+recognizer, we need to run poll on that issue and also we could suggest pocketsphinx as sphinx3 replacement for resource-constrained environments.</p>
+<p><strong>Documentation. </strong>We really want to improve the quality of documentation. It means we'll try to create consistent online documentation with howto's, video tutorials and many other things as well as good printed documentation as it's also very important. The following things would be nice to do in near future:</p>
+<ul>
+<li> Create a plan what should be in a user book. To do that we need to review  most popular books like a book for Weka, HTK book. This book is  intended for the users of CMU Sphinx, developers of ASR applications, not for researchers.</li>
+<li> There will be book on ASR research soon that is closely tied to CMU Sphinx and that will be book we could suggest to researchers interested in CMU Sphinx. For now "Spoken Language Processing" is recommended book.</li>
+<li> Update FAQ. We encourage everyone to submit most frequent questions to FAQ in order to make it usable for reference.</li>
+<li> Try to clean old obsolete information</li>
+<li> Help is required to sort out wiki documents merged from twiki, subwiki and other sources.</li>
+</ul>
+<p>Web-Service. Web services in particular lmtool proved to be very successful because of low entrance cost to try the system. We need to develop web infrastructure in various ways. Since this requires more control over the system and also more computational resources we have to setup<br />
+cluster to provide services:</p>
+<ul>
+<li> Various ASR services like language model service, pronunciation, transcription</li>
+<li> Data uploading</li>
+<li> Data distribution</li>
+</ul>
+<p>We'll also provide a live system image for CMU Sphinx tools to lower barrier to try CMU Sphinx.</p>
+<p><strong>Funding.</strong> We have a number of very things to be done. Since many of them require significant resources it would be nice to have an organization that will be able to fund the development and infrastructure maintaince. The example of such organizations are 503(c)(6) non-profits like Apache<br />
+Foundation. Suggestions are welcome.</p>
+<p><strong>LIUM suggestions.</strong> LIUM is doing amazing work on CMUSphinx project and we would be glad to make it merged. During presentation LIUM raised the following issues:</p>
+<ul>
+<li> Is it possible to build a common roadmap to anticipate future changes (and to help for future  collaboration between all the Sphinx developers)?</li>
+<li> Can we work together around a common project (demonstrator,evaluation campaign, or other)? in order to federate our efforts to valorize the CMU Sphinx project</li>
+</ul>
+<p>On our side there are following concerns:</p>
+<ul>
+<li> License of the LIUM code</li>
+<li>Availability of the changes done by LIUM during the development</li>
+<li> Research scope of LIUM tools while we also want to target application developers.</li>
+</ul>
+<p>We would be glad to discuss those things. Follow up on this will be posted soon.</p>
+<p><strong>Various bits. </strong>We'll try to improve sphinx4 as time goes. Some bits to mention:</p>
+<ul>
+<li>Frontend rework to include modern VAD/noise cancellation</li>
+<li> Multipass decoding</li>
+<li>Development sets introduced in tutorials for optimizing parameters during training.</li>
+<li>PLP models by default</li>
+<li>MLLR will be used for online adaptation</li>
+</ul>

@@ -1,0 +1,54 @@
+---
+layout: post
+status: publish
+published: true
+title: JVoiceXML and CMUSphinx
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2010-10-11 20:47:49 +0200'
+date_gmt: '2010-10-11 17:47:49 +0200'
+---
+<p>Are you one of those who think that CMUSphinx is build for mad scientists to support DARPA sniffing on the Arabic broadcasts? Let me show you something interesting. Today's story is about a very important project that uses CMUSphinx - <a href="http://jvoicexml.sourceforge.net">JVoiceXML</a>, a VoiceXML browser written in Java.&nbsp;It serves hundreds of VoiceXML browsers in the VoIP world. Beside VoiceXML gateways, it provides development tools, including a VoiceXML plugin for Eclipse.</p>
+<p>We asked the lead JVoiceXML developer Dr. Dirk Schnelle-Walka several questions about JVoixeXML and CMUSphinx. Here are his answers.</p>
+<p><a id="more"></a><a id="more-224"></a></p>
+<p><strong>Q: When was JVoiceXML started?</strong></p>
+<p>I started JVoiceXML in 2005 as I pursued my PhD at Telecooperation Lab at Technical University of Darmstadt.</p>
+<p>The goal of my PhD was to use speech interfaces in smart environments. The dilemma for a research institute is that commercial systems are too expensive. Free VoiceXML hosting exists but can not be used without a telephone. So I decided: "Well, maybe I can do the programming myself". It was an easy start but there is still a lot to do for full compliance with the W3C standard. After a short time, Steve Doyle joined the project. He worked on the XML library and provided a robust support for VoiceXML document authoring. In 2006 two new members joined the project: Torben Hardt and Christoph B&uuml;nte. Torben took care of the scripting engine and Christoph did his masters thesis about the grammar processor. Shortly after that, some people of INESC discovered JVoiceXML and pushed the project a lot. They were Hugo Monteiro, Renato Cassaca and David Rodriguez. In 2009, Zhang Nan joined and started to work on the W3C compliance test. Shortly thereafter, Spencer Lord form SpokenTech added initial support for MRCP and SIP. At the same time, the Telecom Labs sponsored support for the Mary Speech Synthesizer.&nbsp;In 2010, Cibek started to use this project to control installations in home environments. Their engagement is now leading to further improvements of the JSAPI 2 support.</p>
+<p><strong>Q: What are the advantages of JVoiceXML over commercial offerings?</strong></p>
+<p>The main advantage is that it can be used for free, even in commercial settings.</p>
+<p>During the design of JVoiceXML we focused on extensibility, interoperability and support for standard interfaces. The use of JSAPI 1 enables the use it without any telephony environment.&nbsp;The platform makes it easy to test VoiceXML applications quickly, you can even define your own custom tags and assign functionality to them. This makes it also ideal to be used when teaching students about speech user interface development.</p>
+<p><strong>Q: Who are your users?</strong></p>
+<p>JVoiceXML is mostly used in teaching and by some smaller start-up companies, especially in India, China and the U.S. It is also used in several research projects.</p>
+<p><strong>Q: What is the status of VXML2.1 support?</strong></p>
+<p>There is initial support for nearly all tags. Missing tags are "link" and "transfer". Transfer has some initial code that has not been tested yet.&nbsp;By initial support I mean that not all attributes of each tag are supported, but the interpreter seems to behave as expected and can be used for simple applications.</p>
+<p><strong>Q: What about VXML 3.0?</strong></p>
+<p>Currently, I am investigating the publicly available working draft for an analysis. One of the next steps will be to adjust the interpreter to match the interfaces that are described there. So we will definitely go for it.</p>
+<p><strong>Q: What are the plans for speaker (voice) recognition which is part of VXML 3.0 specification?</strong></p>
+<p>JVoiceXML is only the voice browser. But the current architecture is designed for easy extensibility. It's easy to plug in external functionality. We are also looking for a suitable speaker recognition software. Marf could be a candidate, but it seems that it is no longer actively developed. So we are also interested in good hints about a decent piece of software filling that gap.</p>
+<p><strong>Q: What place does JVoiceXML take in the open source telephony stack?</strong></p>
+<p>JVoiceXML does not explicitly require a telephone. It can also be used without any telephony support on a desktop for example.</p>
+<p>The extensible architecture allows to use different PBX's. JVoiceXML has been successfully used together with Asterisk and currently we are working on an integration with FreeSwitch. Some recent contacts promised to offer support for Mobicents as well.</p>
+<p>The integration with telephony applications is done by means of standard APIs and protocols. JTAPI can take over the role as a bridge for other protocols or telephony products, but MRCP will be needed to enable audio streaming to them. The MRCP stack used is identical to the one that is used in Zanzibar. Zanzibar, which is using JVoiceXML as its VoiceXML processor, offers an integrated product while JVoiceXML can also be used with other PBX's.</p>
+<p><strong>Q: What are the future plans for JVoiceXML development?</strong></p>
+<p>The major goal is to establish a framework that can be used for free. So all tags should be fully supported. Currently we are also working to use the W3C conformance test. Unfortunately, it will not be possible to get a certification since this has to be paid for and we do not earn money with JVoiceXML.</p>
+<p><strong>Q: What was your biggest issue with CMUSphinx?</strong></p>
+<p>Sphinx4 was easy to integrate. The most tricky part was to make it JSAPI 1.0 compliant. We developed some code, that was submitted back to the Sphinx4 project.</p>
+<p><strong>Q: What feature do you miss the most in CMUSphinx?</strong></p>
+<p>Since VoiceXML utilizes SRGS it would be good to have this supported natively.<br />
+We hope to add this to our contribution of JSAPI 2 support for sphinx 4. Currently, we are trying to transform the grammars which leads to some ambiguities.</p>
+<p><strong>Q: What is the state of TTS in JVoiceXML?</strong></p>
+<p>We have support for different TTS engines. The most important ones are FreeTTS, OpenMary and the Microsoft Speech API.</p>
+<p><strong>Q: What do you think about natural language interfaces and open vocabulary communication?</strong></p>
+<p>We came closer and closer to this vision but we are not there. In fact this would mean that the computer has the same communication capabilities as a human. To achieve this, we will also need to incorporate context into the evaluation. This is still a long way to go.&nbsp;VoiceXML tries do achieve this by what they call "mixed initiative".&nbsp;For me, this is rather slot-filling than real mixed initiative. It is possible to mimic the behavior of a true human to human communication with the help of some voice user interface design techniques, but there are still some important aspects missing, like information overloading, intention recognition and partial speech recognition.</p>
+<p><strong>Q: Can you list few projects a student can do as a term project in the university?</strong></p>
+<p>We have many interesting tasks, to list a few:</p>
+<p>- completion of the SRGS processor<br />
+- implement a cache for resources<br />
+- complete the W3C conformance test</p>
+<p>You definitely need to contact us if you are interested!</p>
+<p><em>Want to share you experience about CMUSphinx? </em><a href="mailto:nshmyrev@nexiwave.com"><em>Contact us.</em></a></p>

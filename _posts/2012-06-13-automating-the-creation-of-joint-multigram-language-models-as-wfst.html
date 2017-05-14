@@ -1,0 +1,81 @@
+---
+layout: post
+status: publish
+published: true
+title: Automating the creation of joint multigram language models as WFST
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-06-13 16:16:05 +0200'
+date_gmt: '2012-06-13 13:16:05 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>Foreword</strong></p>
+<p>Previous articles have introduced the C++ code to align a pronounciation dictionary [1] and how this aligned dictionary can be used in combination with OpenGrm Ngram Library for the encoding of joint multigram language models as WFST [2]. This article will describe the automation of the language model creation procedures as a complete C++ application that is simpler to use than the original procedures described in [2].</p>
+<p><strong>1. Installation</strong><br />
+The procedure below is tested on an Intel CPU running openSuSE 12.1 x64 with gcc 4.6.2. Further testing is required for other systems (MacOSX, Windows).</p>
+<p>The code requires the openFST library to be installed on your system. Having downloaded, compiled and installed openFST, the first step is to checkout the code from the cmusphinx SVN repository:</p>
+<p><code>$ svn co https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/g2p/train</code></p>
+<p>and compile it</p>
+<p><code>$ cd train<br />
+$ make<br />
+g++ -c -g -o src/train.o src/train.cpp<br />
+g++ -c -g -o src/phonetisaurus/M2MFstAligner.o src/phonetisaurus/M2MFstAligner.cpp<br />
+g++ -c -g -o src/phonetisaurus/FstPathFinder.o src/phonetisaurus/FstPathFinder.cpp<br />
+g++ -g -L/usr/local/lib64/fst -lfst -lfstfar -lfstfarscript -ldl -lngram -o train src/train.o src/phonetisaurus/M2MFstAligner.o src/phonetisaurus/FstPathFinder.o<br />
+$</code></p>
+<p><strong>2. Usage</strong><br />
+Having compiled the script, running it without any command line arguments will print out it's usage:<br />
+<code>$ ./train<br />
+Input file not provided<br />
+Usage: ./train [--seq1_del] [--seq2_del] [--seq1_max SEQ1_MAX] [--seq2_max SEQ2_MAX]<br />
+[--seq1_sep SEQ1_SEP] [--seq2_sep SEQ2_SEP] [--s1s2_sep S1S2_SEP]<br />
+[--eps EPS] [--skip SKIP] [--seq1in_sep SEQ1IN_SEP] [--seq2in_sep SEQ2IN_SEP]<br />
+[--s1s2_delim S1S2_DELIM] [--iter ITER] [--order ORDER] [--smooth SMOOTH]<br />
+[--noalign] --ifile IFILE --ofile OFILE</code></p>
+<p><code> </code></p>
+<p><code> --seq1_del,              Allow deletions in sequence 1. Defaults to false.<br />
+--seq2_del,              Allow deletions in sequence 2. Defaults to false.<br />
+--seq1_max SEQ1_MAX,     Maximum subsequence length for sequence 1. Defaults to 2.<br />
+--seq2_max SEQ2_MAX,     Maximum subsequence length for sequence 2. Defaults to 2.<br />
+--seq1_sep SEQ1_SEP,     Separator token for sequence 1. Defaults to '|'.<br />
+--seq2_sep SEQ2_SEP,     Separator token for sequence 2. Defaults to '|'.<br />
+--s1s2_sep S1S2_SEP,     Separator token for seq1 and seq2 alignments. Defaults to '}'.<br />
+--eps EPS,               Epsilon symbol.  Defaults to ''.<br />
+--skip SKIP,             Skip/null symbol.  Defaults to '_'.<br />
+--seq1in_sep SEQ1IN_SEP, Separator for seq1 in the input training file. Defaults to ''.<br />
+--seq2in_sep SEQ2IN_SEP, Separator for seq2 in the input training file. Defaults to ' '.<br />
+--s1s2_delim S1S2_DELIM, Separator for seq1/seq2 in the input training file. Defaults to '  '.<br />
+--iter ITER,             Maximum number of iterations for EM. Defaults to 10.<br />
+--ifile IFILE,           File containing training sequences.<br />
+--ofile OFILE,           Write the binary fst model to file.<br />
+--noalign,               Do not align. Assume that the aligned corpus already exists.<br />
+Defaults to false.<br />
+--order ORDER,           N-gram order. Defaults to 9.<br />
+--smooth SMOOTH,         Smoothing method. Available options are:<br />
+"presmoothed", "unsmoothed", "kneser_ney", "absolute",<br />
+"katz", "witten_bell", "unsmoothed". Defaults to "kneser_ney".<br />
+$</code></p>
+<p>As in [1], the two required options are the pronunciation dictionary (IFILE) and the file in which the binary fst model will be saved (OFILE). The script provide default values for all other options and an fst binary model for cmudict (v. 0.7a) can be created simply by the following command</p>
+<p><code>$ ./train --seq1_del --seq2_del --ifile
+<path to cmudict> --ofile
+<path to binary fst></code></p>
+<p>allowing for deletions in both graphemes and phonemes, and</p>
+<p><code>$ ./</code><code>train</code><code> --ifile
+<path to cmudict> --ofile
+<path to binary fst></code></p>
+<p>not allowing for deletions.</p>
+<p><strong>3. Performance, Evaluation and Comparison with phonetisaurus</strong><br />
+in order to test the new code's performance, tests similar to those in [1] and [2] where performed, with similar results in both resource utilization and it's ability to generate pronunciations for previously unseen words.</p>
+<p><strong>4. Conclusion - Future Works</strong><br />
+Having integrated the model training procedure into a simplified application, combined with the dictionary alignment code, the next step would be to create the evaluation code in order to avoid using phonetisaurus evaluate python script. Further steps include the writing of the necessary code to load the WFST binary model in java code, and convert it to the java's implementation of openFST [3], [4].</p>
+<p><strong>References</strong><br />
+[1] <a title="Porting phonetisaurus many-to-many alignment python script to C++." href="https://cmusphinx.github.io/2012/05/porting-phonetisaurus-many-to-many-alignment-python-script-to-c/" target="_self">Porting phonetisaurus many-to-many alignment python script to C++.</a><br />
+[2] <a title="Using OpenGrm NGram Library for the encoding of joint multigram language models as WFST." href="https://cmusphinx.github.io/2012/06/using-opengrm-ngram-library-for-the-encoding-of-joint-multigram-language-models-as-wfst/" target="_self">Using OpenGrm NGram Library for the encoding of joint multigram language models as WFST.</a><br />
+[3] <a title="Porting openFST to java: Part 1" href="https://cmusphinx.github.io/2012/05/porting-openfst-to-java-part-1/" target="_self">Porting openFST to java: Part 1.</a><br />
+[4] <a title="Porting openFST to java: Part 2" href="https://cmusphinx.github.io/2012/05/porting-openfst-to-java-part-2/" target="_self">Porting openFST to java: Part 2. </a></p>

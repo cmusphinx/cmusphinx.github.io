@@ -1,0 +1,113 @@
+---
+layout: post
+status: publish
+published: true
+title: Building Pocketsphinx On Android
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2011-05-26 15:33:19 +0200'
+date_gmt: '2011-05-26 12:33:19 +0200'
+---
+<p><strong>Update:</strong></p>
+<p><strong>Windows users, please check more or less updated manual here:</strong></p>
+<p><strong><a href="https://sites.google.com/site/opiatefuchs/home/pocketsphinxandroiddemo">https://sites.google.com/site/opiatefuchs/home/pocketsphinxandroiddemo</a></strong></p>
+<p>I know you waited for the instruction for a long time, here it is. Cudos to Matthew Cooper who wrote this. These instruction should work on any GNU/Linux distributuion, for example on Fedora or Ubuntu. This is also written for phones have OS 2.2 or higher. Previous OS requires a different path to the sdcard, so it will be easy to adapt this guide.</p>
+<p><strong>Download and build pocketsphinx</strong></p>
+<p>To run pocketsphinx download the following from <a href="https://cmusphinx.github.io/wiki/download/">https://cmusphinx.github.io/wiki/download/</a></p>
+<p><a href="http://sourceforge.net/projects/cmusphinx/files/sphinxbase/0.8/sphinxbase-0.8.tar.gz/download">sphinxbase-0.8</a><br />
+<a href="http://sourceforge.net/projects/cmusphinx/files/pocketsphinx/0.8/pocketsphinx-0.8.tar.gz/download">pocketsphinx-0.8</a></p>
+<p>Then download PocketSphinxDemo archive from<br />
+<a href="http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/trunk/PocketSphinxAndroidDemo/?view=tar">PocketsphinxAndroidDemo - snapshot</a></p>
+<p>Unzip all three folders into a place where you will remember to find them. It is necessary to unzip both pocketsphinx and sphinxbase folders into the same parent directory and rename them to just "sphinxbase" and "pocketsphinx" without version information.</p>
+<p>Open up the terminal and type:</p>
+<p><tt>sudo -i</tt></p>
+<p>followed by your password.  This will give you root access.</p>
+<p>You will need swig later, so let's install it. You need swig 1.3, for now we do not support newer swig like 2.0:</p>
+<p><tt>apt-get install swig</tt></p>
+<p>or</p>
+<p><tt>yum install swig</tt></p>
+<p>On Windows install swig according to the following document:</p>
+<p><a href="http://www.swig.org/Doc1.3/Windows.html">http://www.swig.org/Doc1.3/Windows.html</a></p>
+<p>Now, cd into sphinxbase and run the following commands from command line:</p>
+<p><tt><br />
+./configure<br />
+make<br />
+make install<br />
+</tt></p>
+<p>cd into pocketsphinx and type:</p>
+<p><tt><br />
+./configure<br />
+make<br />
+make install<br />
+</tt></p>
+<p>On Windows you do not need to compile Sphinxbase, just unpack it.</p>
+<p>Now cd into PocketSphinxDemo/jni folder</p>
+<p>Open the Android.mk file, found in the jni folder, and change the <tt>SPHINX_PATH</tt>(line #5) to the parent folder holding pocketsphinx and sphinxbase.</p>
+<p>from command line type:</p>
+<p><tt> <em>the-path-to-your-ndk-folder</em>/ndk-build -B </tt></p>
+<p>Of course, substitude the real path to your ndk folder for <em>the-path-to-your-ndk-folder</em></p>
+<p><strong>Eclipse</strong></p>
+<p>Now open Eclipse and import the PocketSphinxDemo.</p>
+<p>In the Navigator View look for PocketSphinxDemo project.  Right click on it and select properties.  The properties screen will pop up and you will need to select Builders.  In the Builders screen you will see SWIG and NDK build.</p>
+<p>Click on NDK build and edit.</p>
+<p>In the edit screen change the field Location to point to your ndk-folder you have on your machine. Click on the Refresh tab and select "The project containing the selected resource"<br />
+Click on the Build Options tab and deselect "Specify working set of relevant resources"<br />
+Apply changes and exit the configuration for NDK build.</p>
+<p>Click on SWIG and edit.</p>
+<p>You will not need to change the Location since downloaded swig at the start of the tutorial.<br />
+In the refresh tab select "The folder containing the selected resource"<br />
+In the Build Options tab deselect "Specifiy working set of relevant resources"<br />
+Apply changes and exit the configuration for SWIG.</p>
+<p><strong>Phone</strong></p>
+<p>Connect to your android phone and create the edu.cmu.pocketsphinx folder at</p>
+<p><tt>/mnt/sdcard</tt></p>
+<p>You can do this by opening terminal command and typing:</p>
+<p><tt>adb shell</tt></p>
+<p>In shell type:</p>
+<p><tt>mkdir /mnt/sdcard/edu.cmu.pocketsphinx</tt></p>
+<p>now cd into the edu.cmu.pocketsphinx folder that is located on your phone and create the following folder structure:</p>
+<p><tt><br />
+edu.cmu.pocketsphinx<br />
+|<br />
+----> hmm<br />
+|	|<br />
+|	----> en_US<br />
+|		|<br />
+|		----> hub4wsj_sc_8k<br />
+|<br />
+----> lm<br />
+|<br />
+-----> en_US<br />
+</tt></p>
+<p>Now type quit to leave adb shell.</p>
+<p>While still in terminal you will need to push files from your computer onto the phone.<br />
+<tt>cd into pocketsphinx/model/hmm/en_US/</tt> and type:</p>
+<p><tt>adb push ./hub4wsj_sc_8k /mnt/sdcard/edu.cmu.pocketsphinx/hmm/en_US/hub4wsj_sc_8k</tt></p>
+<p>Now cd into pocketsphinx/model/lm/ in your and type:</p>
+<p><tt>adb push ./en_US /mnt/sdcard/edu.cmu.pocketsphinx/lm/en_US</tt></p>
+<p>Now open the RecognizerTask.java found in<br />
+<tt>/src/edu/cmu/pocketsphinx/demo</tt></p>
+<p>There are declared paths to a structure that is not valid on a 2.2 phone.  We will need to change the paths so that they work correctly.  Here is my code for the section.</p>
+<p><tt><br />
+pocketsphinx.setLogfile("/mnt/sdcard/edu.cmu.pocketsphinx/pocketsphinx.log");<br />
+Config c = new Config();<br />
+/*<br />
+* In 2.2 and above we can use getExternalFilesDir() or whatever it's called<br />
+*/<br />
+c.setString("-hmm", "/mnt/sdcard/edu.cmu.pocketsphinx/hmm/en_US/hub4wsj_sc_8k");<br />
+c.setString("-dict", "/mnt/sdcard/edu.cmu.pocketsphinx/lm/en_US/hub4.5000.dic");<br />
+c.setString("-lm", "/mnt/sdcard/edu.cmu.pocketsphinx/lm/en_US/hub4.5000.DMP");<br />
+c.setString("-rawlogdir", "/mnt/sdcard/edu.cmu.pocketsphinx"); // Only use it to store the audio<br />
+</tt></p>
+<p>If your model is different, you will have to use different paths, for example fo rthe mandarin model<br />
+<tt><br />
+c.setString("-hmm", "/sdcard/Android/data/edu.cmu.pocketsphinx/hmm/zh/tdt_sc_8k");<br />
+c.setString("-dict", "/sdcard/Android/data/edu.cmu.pocketsphinx/lm/zh_TW/mandarin_notone.dic");<br />
+c.setString("-lm", "/sdcard/Android/data/edu.cmu.pocketsphinx/lm/zh_TW/gigatdt.5000.DMP");<br />
+</tt></p>
+<p>Now build and run the project.</p>

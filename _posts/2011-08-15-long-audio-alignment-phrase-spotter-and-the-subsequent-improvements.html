@@ -1,0 +1,18 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Long Audio Alignment: Phrase Spotter and the subsequent improvements'
+author:
+  display_name: apurv
+  login: apurv
+  email: apurvtwr@gmail.com
+  url: ''
+author_login: apurv
+author_email: apurvtwr@gmail.com
+date: '2011-08-15 14:41:35 +0200'
+date_gmt: '2011-08-15 11:41:35 +0200'
+---
+<p>Over the last couple of weeks Long Audio Alignment Project has had a lot of new developments. It was understood that the accuracy of audio alignment would improve even further if some approximate time information for certain words were known from before the actual alignment. A decoder without such an information, during alignment has to go through all the frames of the audio to finally tell which alignment hypothesis scores the best. However, with such approximate timed information the decoder only has to wait until one (or more) of it's hypothesis token agree with this additional information, allowing it to prune out the rest of the tokens. This helps keeping the beam size small.<br />
+A highly configurable phrase spotter was hence implemented to get this timed information. Phrase spotter creates a left to right no skips grammar from the words in the phrase and (like Aligner) uses a garbage model to model all out of grammar utterances. The grammar has been chosen this way to ensure that a phrase is recognized only when all the words in the phrase are present in the utterance without a skip. Corresponding changes in the linguist were made as well to ( allow and ) ensure that one a Phone Loop is inserted only at the start of a phrase in the search graph.</p>
+<p>Aligner search manager was then designed to exploit this phrase spotter's result and perform audio alignment. As a result, even with much more complicated grammar, the aligner can now align audio with much better accuracy (almost 0% error) , however memory requirements for aligning very large text allowing large skips still poses a problem. For now I am profiling the memory usage to locate and tackle this issue.</p>

@@ -1,0 +1,27 @@
+---
+layout: post
+status: publish
+published: true
+title: New 27k words 70h German model released
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2016-09-05 17:22:33 +0200'
+date_gmt: '2016-09-05 14:22:33 +0200'
+---
+<p>Guenter Bartsch writes us:</p>
+<blockquote><p>The latest release of my audio models built from voxforge submissions is up to 70 hours of audio and 27k dictionary entries, available for download <a href="http://goofy.zamia.org/voxforge/de/">here</a>.</p>
+<p>This release includes:</p>
+<ul>
+<li>A CMU Sphinx audio model</li>
+<li>Several Kaldi models (still very experimental)</li>
+<li>A Sequitur g2p model</li>
+<li>Language models created using cmuclmtk and srilm</li>
+</ul>
+<p>For the first time, the audio models include small portions of openpento und german-speechdata-package-v2.tar.gz - reviewing and transcribing those is quite laborious, so it will take some time until they are fully reviewed and integrated into the models. Also note that this model includes more distant-microphone recordings than older releases which means the word error rate has increased accordingly.</p></blockquote>
+<p>It is amazing more and more languages get accurate speech recognition support in CMUSphinx. While you might think a project might support a variety of languages, in practice without local person it is very hard to train a good database. Simply because you do not know where to take audio for training. A local person is needed to evaluate recognition results too. For example Spanish has half a billion speakers around the world, while we still have no good resources to train Spanish models.</p>
+<p>So we encourage you once again to build the models for your own language, to collect transcribed speech, to contribute to Voxforge. Only joined effort will enable really good coverage of languages in speech recognition.</p>

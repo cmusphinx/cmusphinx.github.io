@@ -1,0 +1,32 @@
+---
+layout: post
+status: publish
+published: true
+title: Long Audio Aligner Landed in Trunk
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2014-07-27 23:38:43 +0200'
+date_gmt: '2014-07-27 20:38:43 +0200'
+---
+<p>After three years of development we have finally merged an aligner for long audio files into trunk. The aligner takes audio file and corresponding text and dumps timestamps for every word in the audio. This functionality is useful for processing of the transcribed files like podcasts with further applications like better support for audio editing or for automatic subtitle syncronization. Another important application is acoustic model training, with a new feature you can easily collect databases of thousand hours for your native language with the data from the Internet like news broadcasts, podcasts and audio books. With that new feature we expect the list of supported languages will grow very fast.</p>
+<p>To access new feature checkout sphinx4 from subversion or from our new repository on Github <a href="http://github.com/cmusphinx/sphinx4">http://github.com/cmusphinx/sphinx4</a> and build code with maven with "mvn install"</p>
+<p>For the best accuracy download En-US generic acoustic model from downloads as well as g2p model for US English.</p>
+<p>Then run the alignment</p>
+<pre>java -cp sphinx4-samples/target/sphinx4-samples-1.0-SNAPSHOT-jar-with-dependencies.jar \
+edu.cmu.sphinx.demo.aligner.AlignerDemo file.wav file.txt en-us-generic \
+cmudict-5prealpha.dict cmudict-5prealpha.fst.ser</pre>
+<p>The result will look like this:</p>
+<pre>
++ of                        [10110:10180]
+  there                     [11470:11580] 
+  are                       [11670:11710]
+- missing
+</pre>
+<p>Where + denotes inserted word and - is for missing word. Numbers are times in milliseconds. </p>
+<p>Please remember that input file must be 16khz 16bit mono. Text must be preprocessed, the algorithm doesn't handle numbers yet.</p>
+<p>The work on long alignment started during 2011 GSoC project with proposal from Bhiksha Raj and James Baker. Apurv Tiwari made a lot of progress on it, however, we were not able to produce a robust algorithm for alignment. It still failed on too many cases and failures were critical. Finally we changed algorithm to multipass decoding and it started to work better and survive gracefully in case of errors in transcription. Alexander Solovets was responsible for the implementation. Still, the algorithm doesn't handle some important tokens like numbers or abbreviations and the speed requires improvement, however, the algorithm is useful already so we can proceed with further steps of model training. We hope to improve the situation in near future.</p>

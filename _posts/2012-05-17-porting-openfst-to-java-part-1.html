@@ -1,0 +1,72 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Porting openFST to java: Part 1'
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-05-17 23:25:49 +0200'
+date_gmt: '2012-05-17 20:25:49 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>Foreword</strong></p>
+<p>This article is the first part of a series of articles on porting openFST[1] in java. OpenFST is an open-source C++ library for weighted finite-state transducers (WFSTs) [1] and having a similar java implementation is a crucial first step for the integration of phonetisaurus g2p into sphinx 4 [2]</p>
+<p>This article will briefly review some mathematical background of weighted finite-state transducers  describe the current implementation of openFST and then start describing the java implementation which will be completed in articles that will follow.</p>
+<p><strong>1.  Weighted finite-state transducers</strong></p>
+<p>Weighted finite-state transducers have been used in speech recognition and synthesis, machine translation, optical character recognition, pattern matching,string processing, machine learning, information extraction and retrieval among others. Having a comprehensive software library of weighted transducer representations and core algorithms is key for using weighted transducers in these applications and for the development of new algorithms and applications. [1]</p>
+<p>A weighted finite-state transducer (WFST) is a finite automaton for which each transition has an input label, an output label, and a weight. Figure 1 depicts a weighted finite state transducer: [1]</p>
+<p>[caption id="attachment_339" align="aligncenter" width="497" caption="Figure 1: Example weighted finite-state transducer"]<a href="http://jsalatas.ictpro.gr/wp-content/uploads/2012/05/wfst_example.png"><img class="size-full wp-image-339" src="http://jsalatas.ictpro.gr/wp-content/uploads/2012/05/wfst_example.png" alt="Figure 1:  Example weighted finite-state transducer" width="497" height="130" /></a>[/caption]</p>
+<p>The initial state is labeled 0. The final state is 2 with final weight of 3.5. Any state with non-infinite final weight is a final state. There is a transition from state 0 to 1 with input label a, output label x, and weight 0.5. This machine transduces, for instance, the string ac to xz with weight 6.5 (the sum of the arc and final weights). [1]</p>
+<p>The weights may represent any set so long as they form a semiring. A semiring $latex (\mathbb{K}, \oplus, \otimes, \bar{0}, \bar{1}) $  is specified by a set of values $latex \mathbb{K} $, two binary operations $latex \oplus $  and $latex \otimes $, and two designated values $latex \bar{0} $ and $latex \bar{1} $. The operation $latex \oplus $ is associative, commutative, and has  $latex \bar{0} $ as identity. The operation $latex \otimes $ is associative, has identity $ and $latex \bar{1} $, distributes with respect to $latex \oplus $, and has $latex \bar{0} $ as annihilator: for all $latex a \in \mathbb{K} , a \otimes \bar{0} = \bar{0} \otimes a = \bar{0} $. If $latex \otimes $ is also commutative, we say that the semiring is commutative. [1]</p>
+<p>Table 1 below lists some common semirings. All but the last are defined over subsets of the real numbers (extended with positive and negative infinity). In addition to the familiar Boolean semiring, and the probability semiring used to combine probabilities, two semirings often used in applications are the log semiring which is isomorphic to the probability semiring via the negative-log mapping, and the tropical semiring which is similar to the log semiring except the  operation is min. The left (right) string semiring, which is defined over strings, has longest common prefix (suffix) and concatenation as its operations, and has the (extended element) infinite string and the empty string for its identity elements. It only distributes on the left (right). [1]</p>
+<p>[caption id="attachment_355" align="aligncenter" width="347" caption="Table 1: Semiring examples."]<a href="http://jsalatas.ictpro.gr/wp-content/uploads/2012/05/semiring_examples.png"><img class="size-full wp-image-355" src="http://jsalatas.ictpro.gr/wp-content/uploads/2012/05/semiring_examples.png" alt="Table 1:  Semiring examples." width="347" height="183" /></a>[/caption]</p>
+<p><strong>2.  The openFST C++ library:  Representation and Construction</strong></p>
+<p>The motivation for OpenFst was to create a library as comprehensive and efficient as the AT&amp;T FSM [3] Library, but that was an open-source project. We also sought to make this library as flexible and customizable as possible given the wide range of applications WFSTs have enjoyed in recent years. It is a C++ template library, allowing it to be both very customizable and efficient. [1]</p>
+<p>In the OpenFst Library, a transducer can be constructed from either the C++ level using class constructors and mutators or from a shell-level program using a textual file representation. [1]</p>
+<p>In order to create a transducer using openFST we need first to construct an empty <span style="font-family: Courier New,monospace">VectorFst</span>: [1]</p>
+<p><code>// A vector FST is a general mutable FST<br />
+VectorFst fst;</code></p>
+<p>The <span style="font-family: Courier New,monospace">VectorFst</span>, like all transducer representations and algorithms in this library, is templated on the transition type. This permits customization of the labels, state IDs and weights in a transducer. <span style="font-family: Courier New,monospace">StdArc</span> defines the library-standard transition representation:</p>
+<p><code>template<br />
+class ArcTpl {<br />
+public:<br />
+typedef W Weight;<br />
+typedef int Label;<br />
+typedef int StateId;</code></p>
+<p><code>ArcTpl(Label i, Label o, const Weight&amp; w, StateId s)<br />
+: ilabel(i), olabel(o), weight(w), nextstate(s) {}</code></p>
+<p><code>ArcTpl() {}</p>
+<p>static const string &amp;Type(void) {<br />
+static const string type =<br />
+(Weight::Type() == "tropical") ? "standard" : Weight::Type();<br />
+return type;<br />
+}</p>
+<p></code></p>
+<p><code> Label ilabel;<br />
+Label olabel;<br />
+Weight weight;<br />
+StateId nextstate;<br />
+};</code></p>
+<p>A <span style="font-family: Courier New,monospace">Weight</span> class holds the set element and provides the semiring operations. Currently openFST provides many different C++ Template-based implementations like <span style="font-family: Courier New,monospace">TropicalWeightTpl</span>, <span style="font-family: Courier New,monospace">LogWeightTpl</span> and <span style="font-family: Courier New,monospace">MinMaxWeightTpl</span> which extend a base <span style="font-family: Courier New,monospace">FloatWeightTpl</span> (see float-weight.h for implementation details) and others. Having these Template-based implementations opeFST we need just have a typedef to define a particular <span style="font-family: Courier New,monospace">Weight</span> such as TropicalWeight:</p>
+<p><code>// Single precision tropical weight<br />
+typedef TropicalWeightTpl TropicalWeight;<br />
+</code></p>
+<p><strong>3. The proposed FST java library</strong></p>
+<p>Based on the above description and on technical implementation differences between C++ and Java, and more specific mostly on a) difference between C++ Templates and Java generics [4] and b) the lack of operation overloads in Java, the initial implementation includes the <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.weight.Weight<T></span> class, acting basically as a wrapper for the weight's value, which can be on any type. The <span style="font-family: Courier New,monospace">Weight<T></span> class can be extended in order to create more advanced implementations, if needed.</p>
+<p>There is also a generics based interface <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.weight.Semiring<W extends Weight<?>></span> which declares the Plus, Times and Divide semiring operations for a <span style="font-family: Courier New,monospace">Weight<?></span> class. In addition, it declares the zero and one elements of the semiring and the <span style="font-family: Courier New,monospace">boolean isMember(Weight<?> w)</span> method which should be implemented in a way that returns true if w is a member of the semiring  set of values ($latex \mathbb{K} $) or false if it is not. The <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.weight.TropicalSemiring</span> class implements this interface in order to create a solid class of a Tropical Semiring based on single-precision <span style="font-family: Courier New,monospace">Float</span> type for storing the weight's values.</p>
+<p>Finaly the <span style="font-family: Courier New,monospace">edu.cmu.sphinx.fst.demos.basic</span> package contains a main class for testing the above functionality by instatiating a TropicalSemiring and performing some operations on various Weight values.</p>
+<p><strong>4. Conclusion &ndash; Future work</strong></p>
+<p>This article tried to describe some basic theoritical background on weighted finite-state transducers, provide a brief description on the openFST architect and foundation classes and finally presented an initial design for the FST java library implementation. Following the general open-source philosophy &ldquo;perform small commits often&rdquo; the library is available in CMUShinx' repository created for the integration of phonetisaurus g2p into sphinx 4. [5]</p>
+<p>The next steps is to provide the Arc and Fst classes which over time will be extended to provide the required functionality for the various FST operations needed for my GSoC 2012 project. Hopefully, over time, more functionality will be provided by the community.</p>
+<p><strong>References</strong></p>
+<p>[1] C. Allauzen, M. Riley, J. Schalkwyk, W. Skut, M. Mohri, &ldquo;OpenFst: a general and efficient weighted finite-state transducer library&rdquo;, Proceedings of the 12th International Conference on Implementation and Application of Automata (CIAA 2007), pp. 11&ndash;23, Prague, Czech Republic, July 2007.</p>
+<p>[2] J. Salatas, &ldquo;<a title="Phonetisaurus: A WFST-driven Phoneticizer &ndash; Framework Review" href="https://cmusphinx.github.io/2012/05/phonetisaurus-a-wfst-driven-phoneticizer-%E2%80%93-framework-review/" target="_blank">Phonetisaurus: A WFST-driven Phoneticizer &ndash; Framework Review</a>&rdquo;, last accessed: 08/05/2012.</p>
+<p>[3] M. Mohri, F. Pereira, M. Riley, &ldquo;The Design Principles of a Weighted Finite-State Transducer Library&rdquo;, Theoretical Computer Science, pp. 15-32, 2000.</p>
+<p>[4] H. M. Qusay, &ldquo;<a title="Using and Programming Generics in J2SE 5.0" href="http://www.oracle.com/technetwork/articles/javase/generics-136597.html" target="_blank">Using and Programming Generics in J2SE 5.0</a>&rdquo;, Oracle Technology Network, 2004,  last accessed: 08/05/2012.</p>
+<p>[5] <a title="CMUSphinx g2p SVN repository" href="https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/g2p/">CMUSphinx g2p SVN repository</a></p>

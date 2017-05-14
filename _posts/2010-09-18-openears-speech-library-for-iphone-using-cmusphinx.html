@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: OpenEars, speech library for IPhone using CMUSphinx
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2010-09-18 20:51:20 +0200'
+date_gmt: '2010-09-18 17:51:20 +0200'
+---
+<p>We are very pleased to see the ongoing progress on OpenEars. Please consider</p>
+<p><a href="http://www.politepix.com/openears/">http://www.politepix.com/openears/</a></p>
+<p>OpenEars is an iOS library for continuous, multithreaded speech recognition and text-to-speech using CMU Pocketsphinx and CMU Flite, for use in iPhone and iPad development.  OpenEars can:</p>
+<p>&bull; Do continuous speech recognition on a managed background thread that uses less than 10% CPU on average on an iPhone 3G while listening (decoding and text-to-speech use more CPU),<br />
+&bull; Quickly suspend and resume continuous recognition on demand,<br />
+&bull; Choose between 8 Flite voices for text-to-speech using a simple config file,<br />
+&bull; Suspend recognition during Flite speech automatically when using the external speaker,<br />
+&bull; Make use of a Cocoa-standard static library project, allowing SDK and architecture re-targeting from the application project,<br />
+&bull; Do management and notification of the state of the Audio Session to handle microphone changes and interruptions like incoming calls,<br />
+&bull; Return input/output decibel metering of the audio functions so it is ready for your UI.<br />
+&bull; Let you use these features via Objective-C methods.</p>
+<p>Please report any bugs at <a href="ttp://www.politepix.com/forums/">http://www.politepix.com/forums/</a></p>
+<p>Since you probably urge to know more, we asked the OpenEars developer, Halle Winkler a few questions. Halle is a professional developer specializing in software development for the iPhone, iPad, and iPod Touch, as well as UX design, with an emphasis on usability and the emerging interaction possibilities of multitouch platforms.</p>
+<p><a id="more"></a><a id="more-215"></a></p>
+<p><strong>Q:</strong> How are you going to expand this?</p>
+<p><strong>Halle:</strong> I'm going to see what users ask for, but my guess is that they will want in-app lm/dic generation or a RESTful API for creating new lm/dic files.  Other features that I would consider would be switching lmsets on the fly in the course of the listening loop, or maybe an API for managing a logical tree of different outcomes from commands, which was definitely the most headache-causing aspect of AllEars to test.  I'm very interested to see what people do with it and what they tell me they want.  I'm not ready to publish any kind of roadmap yet.</p>
+<p>Oh, something I definitely need to do for an upcoming version is improve the responsiveness/threading/CPU overhead for Flite processing and speech playback.  I need to use a lower-level audio API for Flite and get Flite streaming working.  On an iPhone 4 some of the voices can generate a sentence in a third of a second, which is impressive and definitely not in the range that is getting unresponsive from a UX perspective, but on my iPhone 3G it can take a second and a half plus the latency of the audio API I'm using, which is getting into "is anything happening?" UX territory (I know that is still an impressive speed given the CPU, but for endusers it's confusing).</p>
+<p><strong>Q: </strong> What are the most important issues users complain about?</p>
+<p><strong>Halle: </strong>There are no complains yet, but I'm would be glad to hear any feedback from OpenEars users.</p>
+<p><strong>Q: </strong>What are most important pocketsphinx issues you've met?</p>
+<p><strong>Halle:</strong> Well, when I was originally using Pocketsphinx, a big frustration was the build_for_iphone.sh method of creating static libraries because it often didn't work for me since I often don't have my developer tools installed to the default location (which seems to be required by the script), and once I got it working I ended up having to make or copy 12 different static libraries in order to be able to target 3 different SDK versions while I was experimenting.  Then in the middle of it, Apple shipped a beta iOS4 SDK that wiped out those libraries with its installer, which has nothing to do with Pocketsphinx but was a time-killer to figure out what had happened, which is the point at which I made a new method for linking to your libraries.</p>
+<p>OpenEars ships with Cocoa static library projects for Pocketsphinx and Sphinxbase which are linked via cross-project references with the user's app project, so when they want to target the simulator versus the device, or target to one SDK but deploy with backwards-compatibility to an earlier SDK, the Cocoa static library project just gets that information passively from the main project and recompiles itself at the build time for the user's app project.  </p>
+<p>In general I think Pocketsphinx is fantastic!  It runs really well on the iPhone in continuous mode.  More documentation is always good.  I tried to err on the side of overkill for the OpenEars docs since I think the topic of speech recognition can be very complex to first get into as an outsider, when you're just expecting that you'll compile the library and suddenly you'll have a device that understands an entire language's worth of vocabulary with no trouble, but actually there are lms, dics, hmms, all the arguments that you can run pocketsphinx with, etc.  Easing developers into some complexities that would benefit them (or me) to understand on a more fundamental level while encapsulating other complexities that might not need to be grappled with in a run-of-the-mill speech app seems like the challenge.</p>

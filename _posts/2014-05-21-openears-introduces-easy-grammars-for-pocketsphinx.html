@@ -1,0 +1,34 @@
+---
+layout: post
+status: publish
+published: true
+title: OpenEars introduces easy grammars for Pocketsphinx
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2014-05-21 16:14:21 +0200'
+date_gmt: '2014-05-21 13:14:21 +0200'
+---
+<p>The proper design of the voice interface is still quite a challenging task. It seems easy to generate the string from user speech and act on it, however, in practice things are way more complicated. On mobile devices there are no resources to decode every possible speech, sometimes you need to restrict the interaction to a some domain. Even if we restrict ourselves to a domain, it's not clear how to handle non-straightforward interaction with the user with repetitions, delays and corrections. Consider you want to recognize just "left" or "right", what will you do if user says "left, hm, no, right". What if the word "right" will be uttered in context like "you are right", do you need to react on it as well?</p>
+<p>We provide two major ways to describe the user language - grammars and language models. Many people prefer to use language models due to the simple way to create them with a web service. You just submit a list of phrases and get the data back, however, this is a slippery road. The issue is that language model generation code usually makes some significant assumptions about the distribution of the probabilities of unseen ngrams in the target language and calculates unseen combination probabilities using those assumptions. For most of the simple cases the assumptions are wrong. For example our SimpleLM uses constant backoff with 0.5 discount ratio which means you get some unusual word combinations with nonzero probability. Most times it's now what you expect. If you are using language modeling toolkits, please be aware that default smoothing methods like Good-Turing or Knesser-Ney assume you submit them really huge texts. For small data sizes you most likely need different discounting.</p>
+<p>On the other hand grammars are complex to create online, they are hard to debug and there are many unseen cases that are hard to cover with a grammar. If you have more than 10 rules in the grammar, I can tell you that you are doing something wrong. You do not account the probabilities of the rules properly and probably your grammar is suboptimal for the efficient recognition. Grammars make sense only for a very simple lists of commands. Next comes the issue with the format itself which should be both readable and parseable by machine. We are using JSGF grammars but they require special parsers and not so well-supported by automatic tools outside of CMUSphinx. Most of the world is using XML-based grammars like SRGS, however, you know how is it hard to edit XML manually. Thanks Matrix, we don't use XML for everything anymore, there are way more readable formats like JSON. Next, you probably want to create the grammars on the fly based on context from a simple list of strings, without writing any text files on the storage.</p>
+<p>Its amazing to see that <a href="http://www.politepix.com/openears/">OpenEars</a>, a speech recognition toolkit for iOS based on CMUSphinx is proposed a solution for this issue. In recently <a href="http://www.politepix.com/2014/04/10/openears-1-7-introducing-dynamic-grammar-generation/">released version 1.7 it introduced</a> a nice way to create on-the-fly grammars with the API directly from the in-memory data. The grammar looks like this:</p>
+<pre style="margin-top: 0px; margin-bottom: 1.618em; padding: 10px; border: 1px solid #e6e6e6; vertical-align: baseline; white-space: pre-wrap; word-wrap: break-word; background-color: #fafafa; font-family: monospace, sans-serif; width: 757px; color: #606668; line-height: 19px;">@{
+     ThisWillBeSaidOnce : @[
+         @{ OneOfTheseCanBeSaidOnce : @[@"HELLO COMPUTER", @"GREETINGS ROBOT"]},
+         @{ OneOfTheseWillBeSaidOnce : @[@"DO THE FOLLOWING", @"INSTRUCTION"]},
+         @{ OneOfTheseWillBeSaidOnce : @[@"GO", @"MOVE"]},
+         @{ThisWillBeSaidWithOptionalRepetitions : @[
+             @{ OneOfTheseWillBeSaidOnce : @[@"10", @"20",@"30"]},
+             @{ OneOfTheseWillBeSaidOnce : @[@"LEFT", @"RIGHT", @"FORWARD"]}
+         ]},
+         @{ OneOfTheseWillBeSaidOnce : @[@"EXECUTE", @"DO IT"]},
+         @{ ThisCanBeSaidOnce : @[@"THANK YOU"]}
+     ]
+ };</pre>
+<p>and is defined directly in the code. This method uses Objective-C native primitives for grammar construction so you don't need to learn any other syntax for the grammars and you do not need to create any text files. I think this approach will be popular across developers of OpenEars and probably one day an approach similar to this one will be merged in Pocketsphinx core. The final design is still evolving, but it seems to be the step in the right direction.</p>
+<p>Feel free to <a href="https://plus.google.com/101248307869498693477/">contact Halle Winkler</a>, the OpenEars author, if you are interested in this new way to define grammars.</p>

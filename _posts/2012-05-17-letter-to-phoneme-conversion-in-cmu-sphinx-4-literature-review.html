@@ -1,0 +1,64 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Letter to Phoneme Conversion in CMU Sphinx-4: Literature review'
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-05-17 23:25:06 +0200'
+date_gmt: '2012-05-17 20:25:06 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>1. Foreword</strong><br />
+Currently Sphinx-4 uses a predefined dictionary for mapping words to sequence of phonemes. I propose modifications in the Sphinx-4 code that will enable it to use trained models (through some king of machine learning algorithm) to map letters to phonemes and thus map words to sequence of phonemes without the need of a predefined dictionary. A dictionary will be only used to train the required models.</p>
+<p><strong>2. Literature Review</strong><br />
+<strong>2.1. Grapheme-to-Phoneme methods</strong><br />
+Grapheme to Phoneme (G2P) (or Letter to Sound &ndash; L2S) conversion is an active research field with applications to both text-to-speech (TTS) and automated speech recognition (ASR) systems. There are many different approaches used for the G2S conversion proposed by different researchers.<br />
+Hein [1] proposes a method that use a feedforward neural network for the G2S conversion process and proposes a simple algorithm for the creation of the grapheme-to-phoneme matching database with a phonetic dictionary as input. The method has been tested in both English and German languages. 99.2% of 305000 entries of the German CELEX could be completely mapped and 91.8% of 59000 entries of the English PRONLEX.<br />
+Stoianov et al. [2] propose the use of Simple Recurrent Network (SRN) [3] for learning grapheme-to-phoneme mapping in Dutch. They conclude that SRN performs well on training and unseen test data sets even after very limited number of training epochs. Also, there were significant consistency and frequency effects on error.<br />
+Daelemans and Van Den Bosch [4] propose a data-oriented language-independent approach to grapheme-to-phoneme conversion problem. Their method takes as input a set of spelling words with their associative pronunciation, which do not have to be aligned, and produces as its output the phonetic transcription according to the implicit rules in the training dataset. The method is evaluated for the Dutch language with a 95,1% accuracy in unseen words.<br />
+Jouvet et al. [5] propose the combination of two g2p converters, one based on joint multigram model (JMM) [6] and one on conditional random fields (CRF) [7] and, furthermore, they evaluate the g2p conversion in a speech recognition context using French broadcast news data and cmusphinx.<br />
+The Joint-Multigram Model approach is a state of the art approach for grapheme-to-phoneme conversion [6]. The JMM approach relies on using joint sequences, where each joint sequence is actually composed of a sequence of graphemes and its associated sequence of phonemes. A language model is applied on the joint sequences. The training algorithm aims at determining the optimal set of joint sequences as well as the associated language model. The training proceeds in an incremental way. An initial pass creates a very simple model. Then each new training pass refines the model by enlarging the joint sequences whenever it is relevant to do so (i.e. it optimizes some training criteria). [5]<br />
+The CRF-based approach for grapheme-to-phoneme conversion [7],[8] is more recent than the JMM-based approach. It relies on the probabilistic framework and discriminative training offered by CRFs for labeling structured data such as sequences. The advantage of the CRF approach is its ability to handle various features, that is an arbitrary window length of letters, and possibly additional information such as word category. [5]<br />
+<strong>2.2. The CMU Sphinx-4 speech recognition system</strong><br />
+Sphinx-4 [9],[10] is a flexible, modular and pluggable framework to help foster new innovations in the core research of hidden Markov model (HMM) recognition systems. The design of Sphinx-4 is based on patterns that have emerged from the design of past systems as well as new requirements based on areas that researchers currently want to explore. To exercise this framework, and to provide researchers with a &rdquo;research-ready&rdquo; system, Sphinx-4 also includes several implementations of both simple and state-of-the-art techniques. The framework and the implementations are all freely available via open source. [9]<br />
+The Sphinx-4 architecture has been designed with a high degree of modularity. Figure 1 shows the overall architecture of the system. Even within each module shown in Figure 1, the code is extremely modular with easily replaceable functions. [10]</p>
+<p>[caption id="attachment_320" align="aligncenter" width="428" caption="Figure 1: Architecture of the Sphinx-4 system. The main blocks are Frontend, Decoder and Knowledge base. Except for the blocks within the KB, all other blocks are independently replaceable software modules written in Java. Stacked blocks indicate multiple types which can be used simultaneously"]<a href="http://jsalatas.ictpro.gr/wp-content/uploads/2012/04/sphinx4_architecture.png"><img class="size-full wp-image-320" src="http://jsalatas.ictpro.gr/wp-content/uploads/2012/04/sphinx4_architecture.png" alt="Sphinx4 architecture" width="428" height="278" /></a>[/caption]</p>
+<p><strong>3. Initial Implementation Considerations</strong><br />
+Regarding the CRF models, there is already a java implementation [11] which is based on the original CRF paper by J. Lafferty et al [12].<br />
+For the JMM models, there are many different approaches proposed [6], [13], [14] and all of them provide the implementation code (in C++/python) as free software available at [15], [16] and [17] respectively.<br />
+Another point regarding the JMM models, is the implementation of Weighted Finite State Transducers in java. Two possible approaches would be to a) either reimplement OpenFST Library [18] in java (it is written in C++) or b) investigate if the classes under the fst package [19] of the MARY Text-to-Speech System [20] can be easily integrated in cmusphinx, or if it can just be the basis for a new WFST implementation in Java.</p>
+<p><strong>4. Conclusion &ndash; Future work</strong><br />
+The modular architecture of Sphinx-4 allows for experimentation in emerging areas of research and gives the ability to researchers to easily replace most of it's parts.<br />
+On a recent paper [21] Jouvet et al. propose the combination of two g2p converters, one based on joint multigram model (JMM) and one on conditional random fields (CRF). They evaluate the g2p conversion in a speech recognition context using French broadcast news data and cmusphinx.<br />
+During the Google Summer of Code 2012, I will follow a similar approach as in the above paper in order to evaluate and implement the necessary code for g2p conversion in sphinx-4.<br />
+You can follow my progress by subscribing to my project's blog feeds [22]</p>
+<p><strong>References</strong><br />
+[1] H. U. Hein, &ldquo;Automation of the training procedures for neural networks performing multi-lingual grapheme to phoneme conversion&rdquo;, EUROSPEECH'99, pp. 2087-2090, 1999.<br />
+[2] I. Stoianov, L. Stowe, and J. Nerbonne, &ldquo;Connectionist learning to read aloud and correlation to human data&rdquo;, Proceedings of the 21st Annual Conference of the Cognitive Science Society. Hillsdale, NJ: Erlbaum, 1999.<br />
+[3] J.L. Elman, &ldquo;Finding structure in time&rdquo;, Cognitive Science, 14, pp. 213-252, 1990.<br />
+[4] W. Daelemans, A. V.D. Bosch, "Language-independent data-oriented grapheme-to-phoneme conversion", Progress in Speech Synthesis, pp. 77&ndash;89. New York, USA, 1997.<br />
+[5] D. Jouvet, D. Fohr, I. Illina, "Evaluating Grapheme-to-Phoneme Converters in Automatic Speech Recognition Context", IEE International Conference on Acoustics, 2012.<br />
+[6] M. Bisani, H. Ney, "Joint-sequence models for grapheme-to-phoneme conversion", Speech Communications, vol. 50, no. 5, 2008.<br />
+[7] D. Wang, S. King, "Letter-to-sound Pronunciation Prediction Using Conditional Random Fields", IEEE Signal Processing Letters, vol. 18, no. 2, pp. 122-125, 2011.<br />
+[8] I. Illina, D. Fohr &amp; D. Jouvet, "Grapheme-to-Phoneme Conversion using Conditional Random Fields", in Proc. INTERSPEECH'2011, Florence, Italy, Aug. 2011.<br />
+[9] W. Walker, P. Lamere, P. Kwok, B. Raj, R. Singh, E. Gouvea, P. Wolf, and J. Woelfel, &ldquo;Sphinx-4: A flexible open source framework for speech recognition&rdquo;, Technical Report SMLI TR2004-0811, Sun Microsystems Inc., 2004.<br />
+[10] P. Lamere, P. Kwok, W. Walker, E. Gouvea, R. Singh, B. Raj, and P. Wolf, &ldquo;Design of the CMU Sphinx-4 decoder&rdquo;, Proceedings of the 8th European Conference on Speech Communication and Technology, Geneve, Switzerland, pp. 1181&ndash;1184, Sept. 2003.<br />
+[11] <a title="CRF Project Page" href="http://crf.sourceforge.net/" target="_blank">&ldquo;CRF Project Page&rdquo;</a>, last accessed: 24/04/2012<br />
+[12] J. Lafferty, A. McCallum, F. Pereira, &ldquo;Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data&rdquo;, Proceedings of the International Conference on Machine Learning (ICML-2001),2001.<br />
+[13] <a title="&ldquo;Phonetisaurus g2p tutorial&rdquo;" href="http://code.google.com/p/phonetisaurus/wiki/PhoneticizerTutorial" target="_blank">&ldquo;Phonetisaurus g2p tutorial&rdquo;</a>,  last accessed: 25/04/2012<br />
+[14] S. Jiampojamarn, C. Cherry, G. Kondrak, &ldquo;Joint Processing and Discriminative Training for Letter-to-Phoneme Conversion&rdquo;, Proceeding of the Annual Meeting of the Association for Computational Linguistics: Human Language Technologies (ACL-08: HLT), pp.905-913, Columbus, OH, June 2008.<br />
+[15] <a title="&ldquo;Sequitur G2P, A trainable Grapheme-to-Phoneme converter&rdquo;" href="http://www-i6.informatik.rwth-aachen.de/web/Software/g2p.html" target="_blank">&ldquo;Sequitur G2P, A trainable Grapheme-to-Phoneme converter&rdquo;</a>, last accessed: 25/04/2012<br />
+[16] <a title="&ldquo;phonetisaurus: A WFST-driven Phoneticizer&rdquo;" href="http://code.google.com/p/phonetisaurus/" target="_blank">&ldquo;phonetisaurus: A WFST-driven Phoneticizer&rdquo;</a>, last accessed: 25/04/2012<br />
+[17] <a title="&ldquo;DirecTL+ : String transduction model&rdquo;" href="http://code.google.com/p/directl-p/" target="_blank">&ldquo;DirecTL+ : String transduction model&rdquo;</a>, http://code.google.com/p/directl-p/ last accessed: 25/04/2012<br />
+[18] <a title="&ldquo;OpenFST Library&rdquo;" href="http://www.openfst.org/twiki/bin/view/FST/WebHome" target="_blank">&ldquo;OpenFST Library&rdquo;</a>, last accessed: 25/04/2012<br />
+[19] <a title="&ldquo;Javadoc for package marytts.fst&rdquo;" href="http://mary.dfki.de/javadoc/4.0.0/marytts/fst/package-summary.html" target="_blank">&ldquo;Javadoc for package marytts.fst&rdquo;</a>,  last accessed: 25/04/2012<br />
+[20] <a title="&ldquo;The MARY Text-to-Speech System&rdquo;" href="http://mary.dfki.de/" target="_blank">&ldquo;The MARY Text-to-Speech System&rdquo;</a>, last accessed: 25/04/2012<br />
+[21] D. Jouvet, D. Fohr, I. Illina, "Evaluating Grapheme-to-Phoneme Converters in Automatic Speech Recognition Context", IEE International Conference on Acoustics, 2012<br />
+[22] <a title="&ldquo;GSoC 2012: Letter to Phoneme Conversion in CMU Sphinx-4&rdquo;" href="http://jsalatas.ictpro.gr/category/projects/gsoc-2012">&ldquo;GSoC 2012: Letter to Phoneme Conversion in CMU Sphinx-4&rdquo;</a>, Project progress updates.</p>

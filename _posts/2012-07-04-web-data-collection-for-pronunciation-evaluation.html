@@ -1,0 +1,30 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Web data collection for pronunciation evaluation '
+author:
+  display_name: troy.lee2008
+  login: troy.lee2008
+  email: troy.lee2008@gmail.com
+  url: ''
+author_login: troy.lee2008
+author_email: troy.lee2008@gmail.com
+date: '2012-07-04 13:57:17 +0200'
+date_gmt: '2012-07-04 10:57:17 +0200'
+---
+<p>(author: Troy)</p>
+<p>(status: week 4)</p>
+<p><span style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">[Project mentor note: &nbsp;I have been holding these more recent blog posts pending some issues with Adobe Flash security updates which periodically break cross-platform audio upload web browser solutions. We have decided to plan for a fail-over scheme using low-latency HTTP POST multipart/form-data binary Speex uploads to provide backup in case Flash/rtmplite fails again in the future. This might also support most of the mobile devices. Please excuse the delay and rest assured that progress continues and will continue to be announced at such time as we are confident that we won't need to contradict ourselves as browser technology for audio upload continues to develop. --James Salsman]</span></p>
+<p><span style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">The data collection website now can provide basic capabilities. Anyone interested, please check out </span><a href="http://talknicer.net/~li-bo/datacollection/login.php">http://talknicer.net/~li-bo/datacollection/login.php</a><span style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px"> and give it a try. If you encounter any problems, please let us know.</span></p>
+<p><span style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">Here are my accomplishments from last week:</span></p>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">1) Discussed the project schema design with&nbsp;<span style="background-color: white"> the project mentor</span><span style="background-color: white"> and created the database with MySQL. The current schema is shown at </span><a href="http://talknicer.net/w/Database_schema">http://talknicer.net/w/Database_schema</a><span style="background-color: white">. &nbsp;During the development of the user interface, slight modifications were made to refine the database schema, such as the age field in for the users table: Storing the user's birth date is much better. Other similar changes were made. I learned that good database design comes from practice, not purely imagination.</span></div>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px"><span style="background-color: white"><br />
+</span></div>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">2) Implemented the two types of user registration pages: one for students and one for exemplar uploaders. To avoid&nbsp;redundant&nbsp;work and allow for fewer constraints on types of users, the registration process involves two steps: one basic registration and one extra information update. For students, only the basic one is mandatory, but the exemplar uploaders have to fill out two&nbsp;separate&nbsp;forms.</div>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px"></div>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px"></div>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">3) Added extra supporting functionality for user management, including password reset and mode selection for users with more than one type.</div>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px"></div>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px"></div>
+<div style="color: #222222;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 18px">4) Incorporated the audio recorder with the website for recording and uploading to servers.</div>

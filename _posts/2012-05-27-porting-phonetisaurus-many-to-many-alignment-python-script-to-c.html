@@ -1,0 +1,91 @@
+---
+layout: post
+status: publish
+published: true
+title: Porting phonetisaurus many-to-many alignment python script to C++
+author:
+  display_name: John Salatas
+  login: jsalatas
+  email: jsalatas@gmail.com
+  url: http://jsalatas.ictpro.gr
+author_login: jsalatas
+author_email: jsalatas@gmail.com
+author_url: http://jsalatas.ictpro.gr
+date: '2012-05-27 01:51:14 +0200'
+date_gmt: '2012-05-26 22:51:14 +0200'
+---
+<p>(author: <a title="Personal blog" href="http://jsalatas.ictpro.gr" target="_blank">John Salatas</a>)</p>
+<p><strong>Foreword</strong><br />
+Following our previous article on phonetisaurus [1] and the decision to use this framework as the g2p conversion method for my GSoC project, this article will describe the port of the dictionary alignment script to C++.</p>
+<p><strong>1. Installation</strong><br />
+The procedure below is tested on an Intel CPU running openSuSE 12.1 x64 with gcc 4.6.2. Further testing is required for other systems (MacOSX, Windows).</p>
+<p>The alignment script requires the openFST library [2] to be installed on your system. Having downloaded, compiled and installed openFST, the first step is to checkout the alignment code from the cmusphinx SVN repository:</p>
+<p><code>$ svn co https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/g2p/train</code></p>
+<p>and compile it<br />
+<code>$ cd train<br />
+$ make<br />
+g++ -c -g -o src/align.o src/align.cpp<br />
+g++ -c -g -o src/phonetisaurus/M2MFstAligner.o src/phonetisaurus/M2MFstAligner.cpp<br />
+g++ -c -g -o src/phonetisaurus/FstPathFinder.o src/phonetisaurus/FstPathFinder.cpp<br />
+g++ -g -l fst -l dl -o src/align src/align.o src/phonetisaurus/M2MFstAligner.o src/phonetisaurus/FstPathFinder.o<br />
+$</code></p>
+<p><strong>2. Usage</strong><br />
+Having compiled the script, running it without any command line arguments will print out it's usage, which is similar to that of the original phonetisaurus m2m-aligner python script:<br />
+<code>$ cd src<br />
+$ ./align<br />
+Input file not provided<br />
+Usage: ./align [--seq1_del] [--seq2_del] [--seq1_max SEQ1_MAX] [--seq2_max SEQ2_MAX]<br />
+[--seq1_sep SEQ1_SEP] [--seq2_sep SEQ2_SEP] [--s1s2_sep S1S2_SEP]<br />
+[--eps EPS] [--skip SKIP] [--seq1in_sep SEQ1IN_SEP] [--seq2in_sep SEQ2IN_SEP]<br />
+[--s1s2_delim S1S2_DELIM] [--iter ITER] --ifile IFILE --ofile OFILE</code></p>
+<p><code> </code></p>
+<p><code>--seq1_del,              Allow deletions in sequence 1. Defaults to false.<br />
+--seq2_del,              Allow deletions in sequence 2. Defaults to false.<br />
+--seq1_max SEQ1_MAX,     Maximum subsequence length for sequence 1. Defaults to 2.<br />
+--seq2_max SEQ2_MAX,     Maximum subsequence length for sequence 2. Defaults to 2.<br />
+--seq1_sep SEQ1_SEP,     Separator token for sequence 1. Defaults to '|'.<br />
+--seq2_sep SEQ2_SEP,     Separator token for sequence 2. Defaults to '|'.<br />
+--s1s2_sep S1S2_SEP,     Separator token for seq1 and seq2 alignments. Defaults to '}'.<br />
+--eps EPS,               Epsilon symbol.  Defaults to ''.<br />
+--skip SKIP,             Skip/null symbol.  Defaults to '_'.<br />
+--seq1in_sep SEQ1IN_SEP, Separator for seq1 in the input training file. Defaults to ''.<br />
+--seq2in_sep SEQ2IN_SEP, Separator for seq2 in the input training file. Defaults to ' '.<br />
+--s1s2_delim S1S2_DELIM, Separator for seq1/seq2 in the input training file. Defaults to '  '.<br />
+--iter ITER,             Maximum number of iterations for EM. Defaults to 10.<br />
+--ifile IFILE,           File containing sequences to be aligned.<br />
+--ofile OFILE,           Write the alignments to file.<br />
+$</code></p>
+<p>The two required options are the pronunciation dictionary to align (IFILE) and the file in which the aligned corpus will be saved (OFILE). The script provide default values for all other options and cmudict (v. 0.7a) can be aligned simply by the following command<br />
+<code>$ ./align --seq1_del --seq2_del --ifile
+<path to cmudict> --ofile
+<path to aligned corpus></code><br />
+allowing for deletions in both graphemes and phonemes<br />
+and<br />
+<code>$ ./align --ifile
+<path to cmudict> --ofile
+<path to aligned corpus></code><br />
+not allowing for deletions</p>
+<p><strong>3. Performance</strong><br />
+In order to test the new alignment script's performance in both its results and its requirements for cpu and memory usage, I have performed two tests for aligning of the full cmudict (v. 0.7a) allowing deletions in both sequenses:<br />
+<code>$ ./align --seq1_del --seq2_del --ifile ../data/cmudict.dict --ofile ../data/cmudict.corpus.gsoc</code><br />
+and compared with the original phonetisuarus script<br />
+<code>$  ./m2m-aligner.py --align ../train/data/cmudict.dict -s2 -s1 --write_align ../train/data/cmudict.corpus</code></p>
+<p><strong>3.1. Alignment</strong><br />
+Comparing of the two outputs using the linux diff util, didn't result in major differences. Minor differences were noticed in case of the alignment double vowels and consonants with a single phoneme, as in the two following examples:<br />
+<code>--- cmudict.corpus<br />
++++ cmudict.corpus.gsoc<br />
+....<br />
+-B}B O}AO1 R}_ R}R I}IH0 S}S<br />
++B}B O}AO1 R}R R}_ I}IH0 S}S<br />
+....<br />
+-B}B O}AO1 S|C}SH H}_ E}_ E}IY0<br />
++B}B O}AO1 S|C}SH H}_ E}IY0 E}_<br />
+....</code></p>
+<p><strong>3.2. CPU memory usage</strong><br />
+In the system described above, the average (of two runs) running time for new aligned command was 1h:14m in comparison to an average of  1h:28m of the original phonetisaurus script. Both scripts consumed the same RAM amount (~ 1.7GB).</p>
+<p><strong>Conclusion &ndash; Future works</strong><br />
+This article presented the new g2p align script which seems to produce the same results as the original one and is a little bit faster than that.<br />
+Although it should compile and run as expected to any modern linux system, further testing is reeuired for other systems (like MacOSX, windows). We need also to investigated the alignment differnces (compared to the original script) in the  vowels and consonants as described above. Although it doesn't seem critical, it may cause problems later.</p>
+<p><strong>References</strong><br />
+[1] <a title="Phonetisaurus: A WFST-driven Phoneticizer &ndash; Framework Review" href="https://cmusphinx.github.io/2012/05/phonetisaurus-a-wfst-driven-phoneticizer-%E2%80%93-framework-review/">Phonetisaurus: A WFST-driven Phoneticizer &ndash; Framework Review</a></p>
+<p>[2] <a title="OpenFst Library" href="http://www.openfst.org/twiki/bin/view/FST/WebHome" target="_blank">OpenFst Library</a>, http://www.openfst.org/twiki/bin/view/FST/WebHome</p>

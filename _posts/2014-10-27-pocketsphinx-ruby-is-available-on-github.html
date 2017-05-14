@@ -1,0 +1,30 @@
+---
+layout: post
+status: publish
+published: true
+title: Pocketsphinx Ruby Is available on Github
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2014-10-27 00:39:46 +0100'
+date_gmt: '2014-10-26 21:39:46 +0100'
+---
+<p>We are pleased to announce the availability of the Ruby bindings for pocketsphinx created by <a href="https://github.com/watsonbox">Howard Wilson</a>.</p>
+<p><a href="http://ruby-lang.org"><img alt="" src="http://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png" title="Ruby" class="alignleft" width="100" height="100" /></a><br />
+ <a href="https://github.com/watsonbox/pocketsphinx-ruby">pocketsphinx-ruby</a> is a high-level Ruby wrapper for the pocketsphinx C API. It uses the Ruby Foreign Function Interface (FFI) to directly load and call functions in libpocketsphinx, as well as libsphinxad for recoding live audio using a number of different audio backends.</p>
+<p>The goal of the project is to make it as easy as possible for the Ruby community to experiment with speech recognition, in particular for use in grammar-based command and control applications. Setting up a real time recognizer is as simple as:</p>
+<pre>
+configuration = Pocketsphinx::Configuration::Grammar.new do
+  sentence "Go forward ten meters"
+  sentence "Go backward ten meters"
+end
+
+Pocketsphinx::LiveSpeechRecognizer.new(configuration).recognize do |speech|
+  puts speech
+end
+</pre>
+<p>This library supports Ruby MRI 1.9.3+, JRuby, and Rubinius. It depends on the current development versions of Pocketsphinx and Sphinxbase - there are <a href="https://github.com/watsonbox/homebrew-cmu-sphinx">Homebrew recipes</a> available for a quick start on OSX.</p>

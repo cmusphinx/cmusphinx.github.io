@@ -1,0 +1,22 @@
+---
+layout: post
+status: publish
+published: true
+title: SOA Architecture For Speech Recognition
+author:
+  display_name: admin
+  login: admin
+  email: nshmyrev@nexiwave.com
+  url: ''
+author_login: admin
+author_email: nshmyrev@nexiwave.com
+date: '2014-06-04 12:35:14 +0200'
+date_gmt: '2014-06-04 09:35:14 +0200'
+---
+<p>It's interesting that since speech recognition becomes widespread the approach to the architecture of speech recognition system changes significantly. When only a single &nbsp;application needed speech recognition it was enough to provide a simple library for the speech recognition functions like pocketsphinx and link it to the application. It's still a valid approach for embedded devices and specialized deployments. However, approach changes significantly when you start to plan the speech recognition framework on a desktop. There are many applications which require voice interface and we need to let all of them interact with the user. Each interaction requires time to load the models into memory and memory to hold the models. Since the requirements are pretty high it becomes obvious that speech recognition service has to be placed into a centralized process. Naturally a concept of speech recognition server appears.</p>
+<p>It's interesting that many speech recognition projects start to talk about the server:</p>
+<p><a href="http://simon.kde.org">Simon</a> has been using a common daemon (SimonD) managed over the sockets in order to provide speech recognition functions</p>
+<p><a href="http://rodrigo-parra.tumblr.com">Rodrigo Parra</a> implements dbus-based server for TamTam Listens project - &nbsp;a speech recognition framework for Sugar OLPC project. This is a very active work in progress, subscribe to the Tumblr blog to get the latest updates .</p>
+<p><a href="https://wiki.mozilla.org/SpeechRTC_-_Speech_enabling_the_open_web">Andre Natal</a> talks about speech recognition server for the FirefoxOS during his summer project.</p>
+<p>Right now the solution is not yet stable, it is more work in progress. It would be great if such efforts could converge to a single point in the future, probably CMUSphinx can be the common denominator here and provide the desktop service for the applications looking to implement voice interfaces. A standalone library is certainly needed, we shouldn't only focus on the service architecture, but service would be a good addition too. It could provide the common interfaces for the applications which just need to register required commands on the service.</p>
+<p>Of course there is an option to put everything in the cloud, but cloud solution has its own disadvantages. Privacy concerns are still here and the data connection is still expensive and slow. There are similar issues with other resource-intensive APIs like text-to-speech, desktop natural language processing, translation, and so on, so soon quite a lot of memory on the desktop will be spent on desktop intelligence. So reserve few more gigabytes of memory in your systems, it will be taken pretty soon.</p>
