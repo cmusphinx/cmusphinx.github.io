@@ -24,24 +24,14 @@ The structure is the following:
 
 
 *  [ Basic concepts of speech](/wiki/tutorialconcepts )
-
 *  [ Overview of the CMUSphinx toolkit](/wiki/tutorialoverview )
-
 *  [ Before you start](/wiki/tutorialbeforestart )
-
 *  [ Building the application with sphinx4](/wiki/tutorialsphinx4 )
-
 *  [ Building the application with pocketsphinx](/wiki/tutorialpocketsphinx )
-
 *  [ Using pocketsphinx on Android](/wiki/tutorialandroid )
-
 *  [ Building the dictionary](/wiki/tutorialdict )
-
 *  [ Building the language model](/wiki/tutoriallm )
-
 *  [ Adapting existing acoustic model](/wiki/tutorialadapt )
-
 *  [ Building the acoustic model](/wiki/tutorialam )
-
 *  [ Tuning the performance](/wiki/tutorialtuning )
 
