@@ -16,9 +16,7 @@ is to provide a short example that we can run ourselves. Do not just tell that t
 There are bunch of forums on sourceforge.  Be sure to search the forums to see if your question was asked previously.
 
 *  [Help](https://sourceforge.net/p/cmusphinx/discussion/help/ ) - Help on pocketsphinx and sphinxtrain
-
 *  [Sphinx4 Help](https://sourceforge.net/p/cmusphinx/discussion/sphinx4/) - Discussions and help on sphinx4
-
 *  [Speech Recognition](https://sourceforge.net/p/cmusphinx/discussion/speech-recognition ) - Generic discussions about speech recognition
 
 ### Subscribe to developer mailing list

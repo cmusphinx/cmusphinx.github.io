@@ -53,9 +53,7 @@ If continuous is showing READY and doesn't react to your speech it means that po
 *  Pocketsphinx is decoding from a wrong device. Try to check log for the warning `<code>`
      ''Warning: Could not find Mic element'' 
 `</code>` (try to change device with ''-adcdev'' option)
-
 *  Recording volume is too low (try to increase recording level in volume settings)
-
 *  Microphone is broken (test that other programs can record)
 
 ## Q: Which languages are supported
@@ -66,35 +64,25 @@ CMUSphinx itself is language-independent, you can recognize any language. Howeve
 The process of building a new language model consists of the following
 steps:
 
-
 *  Data collection (you can collect audiobooks with text transcriptoin from project like librivox, transcribed podcasts, or setup web data collection. You can also try to contribute to [ Voxforge](http://voxforge.org ). You can start very quickly with just few hours of transcribed data.
-
 *  Data cleanup
-
 *  Model training 
-
 *  Testing
+
 Most steps are described in [tutorial](tutorial)
 ## Q: I have an issue with CMUSphinx and need help
 
 When you report about problem always provide the following information:
 
-
 *  Version of the software you are using
-
 *  Information about your system
-
 *  Actions you've made
-
 *  Your expectations
-
 *  What went wrong
 
 If you want to get fast answer, submit also the following information
 
-
 *  System logs
-
 *  Test sample. Try to make test sample as small and as self-contained as possible. It will help **you** to get fast and detailed answer 
 
 See [ How to ask questions howto](http://catb.org/~esr/faqs/smart-questions.html  ) for more details
