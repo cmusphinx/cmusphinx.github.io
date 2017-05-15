@@ -71,7 +71,7 @@ You can crawl Wiktionary to get mapping for significant amount of words covered 
 
 You can use TTS tools like from [ OpenMary ](http://mary.dfki.de/ ) written in Java or from [Espeak](http://espeak.sourceforge.net) written in C to create the phonetic dictionary for the languages they support.
 
-Many languages which use hieroglyphs like Korean or Japanese have specialized software like Mecab https://sourceforge.net/projects/mecab to romanize their words. You can use Mecab to build a phonetic dictionary by converting words to romanized form and then simply applying rules to turn them into phones.
+Many languages which use hieroglyphs like Korean or Japanese have specialized software like [Mecab](https://sourceforge.net/projects/mecab) to romanize their words. You can use Mecab to build a phonetic dictionary by converting words to romanized form and then simply applying rules to turn them into phones.
 
 It is enough to transcribe few thousand most common words to bootstrap the dictionary.
 
