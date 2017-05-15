@@ -35,11 +35,11 @@ If dictionary does not cover all the words you are interested in you can extend 
 
 ### Using G2P-seq2seq to extend the dictionary
 
-There are various tools to help you to extend an existing dictionary for new words or to build a new dictionary from scratch: [ Phonetisaurus](http://code.google.com/p/phonetisaurus ), [ Sequitur](http://www-i6.informatik.rwth-aachen.de/web/Software/g2p.html ). 
+There are various tools to help you to extend an existing dictionary for new words or to build a new dictionary from scratch: [Phonetisaurus](http://code.google.com/p/phonetisaurus), [Sequitur](http://www-i6.informatik.rwth-aachen.de/web/Software/g2p.html). 
 
-We recommend to use our latest too [ g2p-seq2seq ](https://github.com/cmusphinx/g2p-seq2seq ). It is based on neural networks implemented in Tensorflow framework and provides a state of the art accuracy of conversion.
+We recommend to use our latest tool [g2p-seq2seq ](https://github.com/cmusphinx/g2p-seq2seq). It is based on neural networks implemented in Tensorflow framework and provides a state of the art accuracy of conversion.
 
-An English model 2-layer LSTM with 256 hidden units is [ available for download]( https://sourceforge.net/projects/cmusphinx/files/G2P%20Models/g2p-seq2seq-cmudict.tar.gz/download ) on cmusphinx website. Unpack the model after download. It is trained on CMU English dictionary. Read my lips - this model works only for English. For other languages you need to bootstrap dictionary first as described below and then use G2P tool to extend it.
+An English model 2-layer LSTM with 256 hidden units is [available for download]( https://sourceforge.net/projects/cmusphinx/files/G2P%20Models/g2p-seq2seq-cmudict.tar.gz/download ) on cmusphinx website. Unpack the model after download. It is trained on CMU English dictionary. Read my lips - this model works only for English. For other languages you need to bootstrap dictionary first as described below and then use G2P tool to extend it.
 
 The easiest way to check how the tool works is to run it the interactive mode with model above and type the words
 
@@ -69,13 +69,10 @@ Usually dictionaries are bootstrapped with hand-written rules. You can find a li
 
 You can crawl Wiktionary to get mapping for significant amount of words covered there.
 
-You can use TTS tools like from [ OpenMary ](http://mary.dfki.de/ ) written in Java or from [[http://espeak.sourceforge.net
- | espeak]] written in C to create the phonetic dictionary for the languages they support.
- | ---------------------------------------------------------------------------------------
+You can use TTS tools like from [ OpenMary ](http://mary.dfki.de/ ) written in Java or from [Espeak](http://espeak.sourceforge.net) written in C to create the phonetic dictionary for the languages they support.
 
 Many languages which use hieroglyphs like Korean or Japanese have specialized software like Mecab https://sourceforge.net/projects/mecab to romanize their words. You can use Mecab to build a phonetic dictionary by converting words to romanized form and then simply applying rules to turn them into phones.
 
 It is enough to transcribe few thousand most common words to bootstrap the dictionary.
 
 Once dictionary is bootstrapped you can extend it to larger vocabulary with the g2p-seq2seq tool as described in previous chapter.
-
