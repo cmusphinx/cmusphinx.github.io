@@ -132,15 +132,10 @@ Pocketsphinx is provided with prebuilt binaries and it's not easy to compile it 
 
 ### Build dependencies
 
-
 *  [ Gradle](http://gradle.org/ )
-
 *  [ JDK](http://openjdk.java.net/ ) **>= 1.6**
-
 *  [ SWIG](http://www.swig.org/ ) **>= 2.0**
-
 *  [ Android SDK](http://developer.android.com/sdk/ )
-
 *  [ Android NDK](http://developer.android.com/tools/sdk/ndk/ )
 
 ### Building steps
@@ -167,9 +162,7 @@ After arragement of the files you need to update the file
 ''local.properties'' in the project root and define the following
 properties:
 
-
 *  ''sdk.dir'' - path to Android SDK
-
 *  ''ndk.dir'' - path to Android NDK
 
 For example:
