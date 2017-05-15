@@ -128,19 +128,14 @@ This simple code transcribes file test.wav, just make sure it exists in the proj
 There are several high-level recognition interfaces in Sphinx-4:
 
 *  LiveSpeechRecognizer
-
 *  StreamSpeechRecognizer
-
 *  SpeechAligner
 
 For the most of the speech recognition jobs high-levels interfaces should be enough. And basically you will have only to setup four attributes:
 
 *  Acoustic model.
-
 *  Dictionary.
-
 *  Grammar/Language model.
-
 *  Source of speech.
 
 First three attributes are setup using Configuration object which is passed then to a recognizer. The way to point out to the speech source depends on a concrete recognizer and usually is passed as a method parameter.
