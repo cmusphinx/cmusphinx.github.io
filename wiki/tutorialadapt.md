@@ -23,7 +23,6 @@ The actual set of sentences you use is somewhat arbitrary, but ideally it should
 
 
 *  [arctic20.fileids](http://cmusphinx.sourceforge.net/data/arctic20.fileids)
-
 *  [arctic20.transcription](http://cmusphinx.sourceforge.net/data/arctic20.transcription)
 
 The sections below will refer to these files, so it would be a good idea to download them now.  You should also make sure that you have downloaded and compiled sphinxbase and sphinxtrain.

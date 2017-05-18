@@ -59,13 +59,9 @@ If you get an error such as: ''error while loading shared libraries: libpocketsp
 
 In MS Windows (TM), under MS Visual Studio 2010 (or newer - we test with Visual C++ 2010 Express):
 
-
 *  load sphinxbase.sln located in sphinxbase directory
-
 *  compile all the projects in SphinxBase (from ''sphinxbase.sln'')
-
 *  load ''pocketsphinx.sln'' in pocketsphinx directory
-
 *  compile all the projects in PocketSphinx
 
 MS Visual Studio will build the executables and libraries under ''.\bin\Release'' or ''.\bin\Debug'' (depending on the target you choose on MS Visual Studio). To run ''pocketsphinx_continuous.exe'', don't forget to copy sphinxbase.dll to the bin folder. Otherwise the executable will fail to find this library. Unlike on Linux, the path to the model is not preconfigured in Windows, so you have to specify pocketsphinx_continuous where to find the model with -hmm, -lm and -dict options. Change to pocketsphinx folder and run
