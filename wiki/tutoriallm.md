@@ -116,13 +116,13 @@ To use grammar in command line specify it with `-jsgf` option.
 
 In Python you can either specify options in configuration object or add a named search for a grammar:
 
- decoder.set_jsgf('grammar', jsgf_file)
- decoder.set_search('grammar')
+    decoder.set_jsgf('grammar', jsgf_file)
+    decoder.set_search('grammar')
  
 In Android
 
- recognizer.setJsgf('grammar', jsgfFile);
- recognizer.startListening('grammar')
+    recognizer.setJsgf('grammar', jsgfFile);
+    recognizer.startListening('grammar')
 
 Please not that `-jsgf` conflicts with `-kws` or `-jsgf`, you can not specify both. 
 
@@ -165,9 +165,9 @@ which builds ARPA models,  you can use it.
 Language model can be stored and loaded in three different format - text 
 [ARPA](sphinx4/standardgrammarformats) format, binary format BIN and
 binary DMP format. ARPA format takes more space but it is possible to
-edit it. ARPA files have ''.lm'' extension. Binary format takes
+edit it. ARPA files have ''.lm` extension. Binary format takes
 significantly less space and faster  to load. Binary files have
-''.lm.bin'' extension. It is also possible to  convert between formats.
+`.lm.bin` extension. It is also possible to  convert between formats.
 DMP format is obsolete and not recommended.
 
 ### Building a Statistical Language Model
@@ -177,7 +177,7 @@ DMP format is obsolete and not recommended.
 First of all you need to prepare a large collection of clean texts.
 Expand  abbreviations, convert numbers to words, clean non-word items.
 For example to  clean Wikipedia XML dump you can use special python
-scripts like [Wikiextractor] (https://github.com/attardi/wikiextractor).
+scripts like [Wikiextractor](https://github.com/attardi/wikiextractor).
 To clean HTML pages you can try 
 [BoilerPipe](http://code.google.com/p/boilerpipe) a nice package
 specifically created to  extract text from HTML
@@ -195,24 +195,6 @@ Language modeling for many languages like Mandarin is largely the same
 as in  English, with one addditional consideration, which is that the
 input text must  be word segmented. A segmentation tool and associated
 word list is provided to  accomplish this.
-
-### Using other Language Model Toolkits
-
-There are many toolkits that create ARPA n-gram language model from text files.
-
-Some toolkits you can try:
-
-* [ IRSLM ](https://sourceforge.net/projects/irstlm/ )
-
-* [ MITLM ](http://code.google.com/p/mitlm/ )
-
-* [ SRILM](http://www-speech.sri.com/projects/srilm/ )
-
-If you are training large vocabulary speech recognition system, the
-language  model training is outlined in a separate page 
-[tutoriallmadvanced](/wiki/tutoriallmadvanced).
-
-Once you created ARPA file you can convert the model to binary format if needed.
 
 ### ARPA model training with SRILM
 
@@ -250,10 +232,10 @@ sentence markers: `<s>` and `</s>`. Here's an example:
 
 
 ```	
-	<s> generally cloudy today with scattered outbreaks of rain and drizzle persistent and heavy at times </s>
-	<s> some dry intervals also with hazy sunshine especially in eastern parts in the morning </s>
-	<s> highest temperatures nine to thirteen Celsius in a light or moderate mainly east south east breeze </s>
-	<s> cloudy damp and misty today with spells of rain and drizzle in most places much of this rain will be light and patchy but heavier rain may develop in the west later </s>
+<s> generally cloudy today with scattered outbreaks of rain and drizzle persistent and heavy at times </s>
+<s> some dry intervals also with hazy sunshine especially in eastern parts in the morning </s>
+<s> highest temperatures nine to thirteen Celsius in a light or moderate mainly east south east breeze </s>
+<s> cloudy damp and misty today with spells of rain and drizzle in most places much of this rain will be light and patchy but heavier rain may develop in the west later </s>
 ```
 
 More data will generate better language models. The `weather.txt` file from 
@@ -307,12 +289,9 @@ creating a file called `corpus.txt`:
 	open music player
 
 
-Then go to the page http://www.speech.cs.cmu.edu/tools/lmtool-new.html.
-Simply  click on the "Browse..." button, select the `corpus.txt` file
+Then go to the [LMTool page](http://www.speech.cs.cmu.edu/tools/lmtool-new.html).
+Simply click on the "Browse..." button, select the `corpus.txt` file
 you created, then click "COMPILE KNOWLEDGE BASE".
-
-The legacy version is still available online also here: 
-http://www.speech.cs.cmu.edu/tools/lmtool.html
 
 You should see a page with some status messages, followed by a page
 entitled  "Sphinx knowledge base". This page will contain links
@@ -320,6 +299,22 @@ entitled "Dictionary" and "Language Model".  Download these files and
 make a note of their names (they should consist of a 4-digit number
 followed by  the extensions  `.dic` and `.lm`). You can now test
 your newly created language model with  PocketSphinx.
+
+### Using other Language Model Toolkits
+
+There are many toolkits that create ARPA n-gram language model from text files.
+
+Some toolkits you can try:
+
+* [ IRSLM ](https://sourceforge.net/projects/irstlm/ )
+
+* [ MITLM ](http://code.google.com/p/mitlm/ )
+
+If you are training large vocabulary speech recognition system, the
+language  model training is outlined in a separate page 
+[tutoriallmadvanced](/wiki/tutoriallmadvanced).
+
+Once you created ARPA file you can convert the model to binary format for faster loading.
 
 ### Converting model into binary format
 
@@ -339,8 +334,6 @@ file with `sphinx_lm_convert` command from sphinxbase:
 
 You can also convert old DMP models to bin format this way.
 
-## Using your language model
-
 This section will show you how to use, test, and improve the language model you 
 created.
 
@@ -349,7 +342,7 @@ created.
 If you have installed PocketSphinx, you will have a program called 
 `pocketsphinx_continuous` which can be run from the command-line to
 recognize speech. Assuming it is installed under  `/usr/local`, and your
-language model and dictionary are called ''8521.dic''  and `8521.lm` and
+language model and dictionary are called `8521.dic`  and `8521.lm` and
 placed in the current folder, try running the following  command:
 
 	
