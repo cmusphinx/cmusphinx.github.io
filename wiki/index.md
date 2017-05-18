@@ -5,12 +5,15 @@ title: Documentation
 # CMUSphinx Documentation
 
 
-This page contains collaboratively developed documentation for the CMU Sphinx speech recognition engines.
+This page contains collaboratively developed documentation for the CMU Sphinx 
+speech recognition engines.
 
 ## Beginner User Documentation
 
-This section contains links to documents which describe how to use Sphinx to recognize speech. 
-Currently, we have very little in the way of end-user tools, so it may be a bit sparse for the 
+This section contains links to documents which describe how to use Sphinx to 
+recognize speech. 
+Currently, we have very little in the way of end-user tools, so it may be a bit 
+sparse for the 
 forseeable future.
 
 
@@ -26,7 +29,8 @@ forseeable future.
      * [ Building the acoustic model](tutorialam )
      * [ Building a dictionary](tutorialdict)
      * [ Debugging speech recognition accuracy](tutorialtuning )
-     * [ PocketSphinx for pronunciation evaluation](pocketsphinx_pronunciation_evaluation )
+     * [ PocketSphinx for pronunciation 
+evaluation](pocketsphinx_pronunciation_evaluation )
 
 **You are in trouble - read the [FAQ](FAQ)**
 
@@ -37,18 +41,21 @@ See also some more docs:
 
 *  [ Download Details](Download ): How to obtain CMUSphinx packages
 
-*  [ How to get help and discuss things](Communicate ): How to get help and discuss things
+*  [ How to get help and discuss things](Communicate ): How to get help and 
+discuss things
 
 If you want to find out where CMUSphinx works, see 
 
 
-*  [Projects that use Sphinx](SphinxInAction): These projects, both commercial and free, use Sphinx in one form or another.
+*  [Projects that use Sphinx](SphinxInAction): These projects, both commercial 
+and free, use Sphinx in one form or another.
 
 ------------------------------------------------
 
 ## Advanced User Documentation
 
-These documents either describe some particular aspect of the Sphinx codebase in detail, or they serve as a
+These documents either describe some particular aspect of the Sphinx codebase 
+in detail, or they serve as a
 developer's guide to accomplishing some particular task.
 
 
@@ -56,19 +63,26 @@ developer's guide to accomplishing some particular task.
 
 *  [AsteriskDetails](AsteriskDetails): How to use pocketsphinx in Asterisk.
 
-*  [DecoderTuning](DecoderTuning): How to tune the decoder to be fast (or rather, not horribly slow)
+*  [DecoderTuning](DecoderTuning): How to tune the decoder to be fast (or 
+rather, not horribly slow)
 
-*  [PocketsphinxHandhelds](PocketsphinxHandhelds) Pocketsphinx optimizations for embedded devices, same as above for Pocketsphinx.
+*  [PocketsphinxHandhelds](PocketsphinxHandhelds) Pocketsphinx optimizations 
+for embedded devices, same as above for Pocketsphinx.
 
-*  [PhonemeRecognition](PhonemeRecognition): How to use pocketsphinx for phoneme recognition.
+*  [PhonemeRecognition](PhonemeRecognition): How to use pocketsphinx for 
+phoneme recognition.
 
-*  [SpeakerDiarization](SpeakerDiarization): Using LIUM tools for speech segmentation and speaker diarization
+*  [SpeakerDiarization](SpeakerDiarization): Using LIUM tools for speech 
+segmentation and speaker diarization
 
-*  [LDAMLLT](LDAMLLT): How to train acoustic models with LDA and MLLT feature transforms
+*  [LDAMLLT](LDAMLLT): How to train acoustic models with LDA and MLLT feature 
+transforms
 
-*  [GStreamer](GStreamer): How to use PocketSphinx with [GStreamer](http://gstreamer.freedesktop.org/) and [Python](http://python.org)
+*  [GStreamer](GStreamer): How to use PocketSphinx with 
+[GStreamer](http://gstreamer.freedesktop.org/) and [Python](http://python.org)
 
-*  [InstallingPythonStuff](InstallingPythonStuff): How to install Python and necessary modules for SphinxTrain development
+*  [InstallingPythonStuff](InstallingPythonStuff): How to install Python and 
+necessary modules for SphinxTrain development
 
 *  [MMIE_Train](MMIE_Train): How to perform MMIE training.
 
@@ -77,33 +91,42 @@ developer's guide to accomplishing some particular task.
 
 ### How To Contribute
 
-Please consider project ideas [ProjectIdeas](ProjectIdeas), some of them are easy, some harder. If you want to start work on any of them, please let us know.
+Please consider project ideas [ProjectIdeas](ProjectIdeas), some of them are 
+easy, some harder. If you want to start work on any of them, please let us know.
 
 ### Reference
 
-These documents describe the excruciating detail of APIs, or provide other useful background information for CMUSphinx developers.
+These documents describe the excruciating detail of APIs, or provide other 
+useful background information for CMUSphinx developers.
 
 
-*  [Doxygen documentation for PocketSphinx](http://cmusphinx.sourceforge.net/api/pocketsphinx/)
+*  [Doxygen documentation for 
+PocketSphinx](http://cmusphinx.sourceforge.net/api/pocketsphinx/)
 
-*  [Doxygen documentation for SphinxBase](http://cmusphinx.sourceforge.net/api/sphinxbase/)
+*  [Doxygen documentation for 
+SphinxBase](http://cmusphinx.sourceforge.net/api/sphinxbase/)
 
-*  [ePyDoc documentation for SphinxTrain Python Modules](http://cmusphinx.sourceforge.net/api/python/cmusphinx/)
+*  [ePyDoc documentation for SphinxTrain Python 
+Modules](http://cmusphinx.sourceforge.net/api/python/cmusphinx/)
 
-*  [JavaDocs for Sphinx4](http://cmusphinx.sourceforge.net/sphinx4/javadoc/index.html)
+*  [JavaDocs for 
+Sphinx4](http://cmusphinx.sourceforge.net/sphinx4/javadoc/index.html)
 
 ------------------------------------------------
 
 ## Developer Documentation
 
-This section contains various internal information for CMUSphinx developers. But we hope it will be still usable for you.
+This section contains various internal information for CMUSphinx developers. 
+But we hope it will be still usable for you.
 
 
 *  [Sphinx-4 Regression Tests](RegressionTests): How to run regression tests
 
-*  [SphinxTrainWalkthrough](SphinxTrainWalkthrough): An overview of the SphinxTrain source code for researchers and developers
+*  [SphinxTrainWalkthrough](SphinxTrainWalkthrough): An overview of the 
+SphinxTrain source code for researchers and developers
 
-*  [CMUCLMTK development](CMUCLMTKDevelopment): Development guide for the CMU-Cambridge Language Modeling Toolkit.
+*  [CMUCLMTK development](CMUCLMTKDevelopment): Development guide for the 
+CMU-Cambridge Language Modeling Toolkit.
 
 *  [CodingStyle](CodingStyle) for SphinxBase, SphinxThree, and SphinxTrain
 
@@ -113,7 +136,8 @@ This section contains various internal information for CMUSphinx developers. But
 
 *  [ Web Site Layout](WebResources ): How to organize information
 
-*  [ Sphinx4 Space](sphinx4/webhome ) : Information about sphinx4, design, code, performance, history.
+*  [ Sphinx4 Space](sphinx4/webhome ) : Information about sphinx4, design, 
+code, performance, history.
 
 ### File formats
 
@@ -131,7 +155,8 @@ Available data sources are covered on the page [SpeechData](SpeechData)
 
 ### Speech Recognition Theory
 
-This section tries to collect research ideas for specific problems in speech recognition
+This section tries to collect research ideas for specific problems in speech 
+recognition
 
 
 *  [ Lattices](asr/lattices )

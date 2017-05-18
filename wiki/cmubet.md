@@ -47,7 +47,8 @@ ZH	ʒ	seizure	S IY ZH ER`</code>`
 
 ### Eliminating dipthongs
 
-If you need to eliminate diphthongs (which you probably don't, unless you are using [diphones](diphones)) you can use this mapping:
+If you need to eliminate diphthongs (which you probably don't, unless you are 
+using [diphones](diphones)) you can use this mapping:
 
 `<code>`AW -> AA UH
 AY -> AA IY
@@ -56,5 +57,7 @@ EY -> EH IY (substitutes /ɛ/ for /e/)
 OW -> AO UH (substitutes /ɔ/ for /o/)
 OY -> AO IY`</code>`
 
-Those substitutions result in about 1,155 diphones, about [1,052 of which are present in the 4,800 most frequent spoken English words, but at vastly different frequencies.](diphones)
+Those substitutions result in about 1,155 diphones, about [1,052 of which are 
+present in the 4,800 most frequent spoken English words, but at vastly 
+different frequencies.](diphones)
 

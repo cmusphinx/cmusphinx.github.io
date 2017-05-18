@@ -66,7 +66,8 @@ Keyword lists are supported by pocketsphinx only, not by sphinx4.
 To use keyword list in command line specify it with `-kws` option. Also
 you can use a `-keyphrase` option to specify a single keyphrase.
 
-In Python you can either specify options in configuration object or add a named search for keyphrase:
+In Python you can either specify options in configuration object or add a named 
+search for keyphrase:
 
     decoder.set_kws('keypharse', kws_file)
     decoder.set_search('keyphrase')
@@ -76,7 +77,8 @@ In Android
     recognizer.setKws('keyphrase', kwsFile);
     recognizer.startListening('keyphrase')
 
-Please not that `-kws` conflicts with `-lm` or `-jsgf`, you can not specify both. 
+Please not that `-kws` conflicts with `-lm` or `-jsgf`, you can not specify 
+both. 
 
 ## Grammars
 
@@ -108,13 +110,15 @@ grammar hello;
 public <greet> = (good morning | hello) ( bhiksha | evandro | rita | will );
 ```
 
-For more information on JSGF format see the [full documentation on W3C](http://www.w3.org/TR/jsgf/)
+For more information on JSGF format see the [full documentation on 
+W3C](http://www.w3.org/TR/jsgf/)
 
 ### Using your grammar with PocketSphinx
 
 To use grammar in command line specify it with `-jsgf` option.
 
-In Python you can either specify options in configuration object or add a named search for a grammar:
+In Python you can either specify options in configuration object or add a named 
+search for a grammar:
 
     decoder.set_jsgf('grammar', jsgf_file)
     decoder.set_search('grammar')
@@ -124,7 +128,8 @@ In Android
     recognizer.setJsgf('grammar', jsgfFile);
     recognizer.startListening('grammar')
 
-Please not that `-jsgf` conflicts with `-kws` or `-jsgf`, you can not specify both. 
+Please not that `-jsgf` conflicts with `-kws` or `-jsgf`, you can not specify 
+both. 
 
 
 ## Language models
@@ -153,7 +158,8 @@ language model than old-fashioned VXML grammars.
 On the topic of design of the VUI interfaces you might be interested in
 the  following book: [ It's Better to Be a Good Machine Than a Bad
 Person: Speech  Recognition and Other Exotic User Interfaces at the
-Twilight of the Jetsonian  Age by Bruce Balentine](http://www.amazon.com/Better-Good-Machine-Than-Person/dp/1932558098
+Twilight of the Jetsonian  Age by Bruce 
+Balentine](http://www.amazon.com/Better-Good-Machine-Than-Person/dp/1932558098
 )
 
 There are many ways to build the statistical language models. When your
@@ -184,7 +190,8 @@ specifically created to  extract text from HTML
 
 For example on how to create language model from Wikipedia texts please
 see the [blog
-post](http://trulymadlywordly.blogspot.ru/2011/03/creating-text-corpus-from-wikipedia.html)
+post](http://trulymadlywordly.blogspot.ru/2011/03/creating-text-corpus-from-wiki
+pedia.html)
 
 Once you went through the language model process, please submit your langauge 
 model to CMUSphinx project, we'd be glad to share it!
@@ -232,10 +239,15 @@ sentence markers: `<s>` and `</s>`. Here's an example:
 
 
 ```	
-<s> generally cloudy today with scattered outbreaks of rain and drizzle persistent and heavy at times </s>
-<s> some dry intervals also with hazy sunshine especially in eastern parts in the morning </s>
-<s> highest temperatures nine to thirteen Celsius in a light or moderate mainly east south east breeze </s>
-<s> cloudy damp and misty today with spells of rain and drizzle in most places much of this rain will be light and patchy but heavier rain may develop in the west later </s>
+<s> generally cloudy today with scattered outbreaks of rain and drizzle 
+persistent and heavy at times </s>
+<s> some dry intervals also with hazy sunshine especially in eastern parts in 
+the morning </s>
+<s> highest temperatures nine to thirteen Celsius in a light or moderate mainly 
+east south east breeze </s>
+<s> cloudy damp and misty today with spells of rain and drizzle in most places 
+much of this rain will be light and patchy but heavier rain may develop in the 
+west later </s>
 ```
 
 More data will generate better language models. The `weather.txt` file from 
@@ -256,8 +268,10 @@ transcript that contain words that are not in your vocabulary file.
 
 5) Generate the arpa format language model with the commands:
 
-      text2idngram -vocab weather.vocab -idngram weather.idngram < weather.closed.txt
-      idngram2lm -vocab_type 0 -idngram weather.idngram -vocab weather.vocab -arpa weather.lm
+      text2idngram -vocab weather.vocab -idngram weather.idngram < 
+weather.closed.txt
+      idngram2lm -vocab_type 0 -idngram weather.idngram -vocab weather.vocab 
+-arpa weather.lm
 
 6) Generate the CMU binary form (BIN)
 
@@ -289,7 +303,8 @@ creating a file called `corpus.txt`:
 	open music player
 
 
-Then go to the [LMTool page](http://www.speech.cs.cmu.edu/tools/lmtool-new.html).
+Then go to the [LMTool 
+page](http://www.speech.cs.cmu.edu/tools/lmtool-new.html).
 Simply click on the "Browse..." button, select the `corpus.txt` file
 you created, then click "COMPILE KNOWLEDGE BASE".
 
@@ -314,7 +329,8 @@ If you are training large vocabulary speech recognition system, the
 language  model training is outlined in a separate page 
 [tutoriallmadvanced](/wiki/tutoriallmadvanced).
 
-Once you created ARPA file you can convert the model to binary format for faster loading.
+Once you created ARPA file you can convert the model to binary format for 
+faster loading.
 
 ### Converting model into binary format
 
@@ -354,7 +370,8 @@ acoustic  model. On Windows you also have to specify the acoustic model
 folder with  `-hmm` option
 
 	
-	bin/Release/pocketsphinx_continuous.exe -inmic yes -lm 8521.lm -dict 8521.dic -hmm model/en-us/en-us
+	bin/Release/pocketsphinx_continuous.exe -inmic yes -lm 8521.lm -dict 
+8521.dic -hmm model/en-us/en-us
 
 
 You will see a lot of diagnostic messages, followed by a pause, then 

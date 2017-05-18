@@ -3,8 +3,10 @@ layout: page
 ---
 # Website Layout
 
-We need to make sure our structure is maintainable and informative. That should be the ultimate goal. 
-To do that we need to spend efforts on organization of documentation, sources and supported information.
+We need to make sure our structure is maintainable and informative. That should 
+be the ultimate goal. 
+To do that we need to spend efforts on organization of documentation, sources 
+and supported information.
 
 The plan for web presence is the following:
 
@@ -16,14 +18,16 @@ The plan for web presence is the following:
 We need to do the following:
 
  1.  Ensure that our resources are consolidated and consistently organized
- 2.  Move all knowledge to wiki or to doxygen. Probably we need to create storage for random docs
+ 2.  Move all knowledge to wiki or to doxygen. Probably we need to create 
+storage for random docs
  3.  Optimize search
  4.  Reorganize wiki to have visible and usable structure
 
 The website contents are the following:
 
  1.  api - API documentation for pocketsphinx and sphinxbase
- 2.  doc - documentation folders from all sphinx packages, probably we need to merge that with wiki
+ 2.  doc - documentation folders from all sphinx packages, probably we need to 
+merge that with wiki
  3.  wiki - our wiki
  4.  wordpress - our CMS
  5.  sphinx4 - javadoc for sphinx4

@@ -1,9 +1,15 @@
 ---
 layout: page 
 ---
-A *diphone* is the last part of one phoneme followed by the first part of another. Either phoneme could be silence, and they can be the same phoneme. Diphthongs include diphones in them.
+A *diphone* is the last part of one phoneme followed by the first part of 
+another. Either phoneme could be silence, and they can be the same phoneme. 
+Diphthongs include diphones in them.
 
-[This list of the top 4,800 words by frequency in English speech](http://ucrel.lancs.ac.uk/bncfreq/lists/2_2_spokenvwritten.txt) was used with [CMUDICT](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) to create the following list of 1,052 diphones [without dipthongs](cmubet#eliminating dipthongs) by approximate prevalence.
+[This list of the top 4,800 words by frequency in English 
+speech](http://ucrel.lancs.ac.uk/bncfreq/lists/2_2_spokenvwritten.txt) was used 
+with [CMUDICT](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) to create the 
+following list of 1,052 diphones [without dipthongs](cmubet#eliminating 
+dipthongs) by approximate prevalence.
 
 {{ diphones.png }}
 

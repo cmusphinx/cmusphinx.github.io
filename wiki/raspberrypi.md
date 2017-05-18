@@ -1,7 +1,8 @@
 ---
 layout: page 
 ---
-Install is simple, you need to setup and properly configure alsa, then you can just build and run pocketsphinx
+Install is simple, you need to setup and properly configure alsa, then you can 
+just build and run pocketsphinx
 
 	
 	sudo apt-get update

@@ -16,7 +16,9 @@ CMUSphinx toolkit is your choice.
 This manual is intended for developers who need to apply speech
 technology in their applications, not for speech recognition researches.
 Its recommended to start with a textbook on speech technologies in other
-case. [ Spoken Language Processing by Acero, Huang and others](http://www.amazon.com/Spoken-Language-Processing-Algorithm-Development/dp/0130226165 ) is a good
+case. [ Spoken Language Processing by Acero, Huang and 
+others](http://www.amazon.com/Spoken-Language-Processing-Algorithm-Development/d
+p/0130226165 ) is a good
 choice for that.
 
 

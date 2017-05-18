@@ -19,7 +19,8 @@ http://cmusphinx.sourceforge.net/wiki/tutorialandroid
 
 ## Building on Raspberry Pi
 
-Build as usual, just make sure Alsa is configured properly to input audio from the microphone
+Build as usual, just make sure Alsa is configured properly to input audio from 
+the microphone
 
 ## Building on Windows Phone
 

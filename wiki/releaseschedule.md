@@ -5,9 +5,11 @@ layout: page
 
 CMUSphinx release:
 
-    * Tests in sphinxbase & pocketsphinx. Accuracy, speed and memory profiling in real-life situations for sphinx4 and pocketsphinx
+    * Tests in sphinxbase & pocketsphinx. Accuracy, speed and memory profiling 
+in real-life situations for sphinx4 and pocketsphinx
     * Batch accuracy tests on both
-    * Buffer for proper live CMN on stream start for sphinxbase, research on faster CMN
+    * Buffer for proper live CMN on stream start for sphinxbase, research on 
+faster CMN
     * GMM-based VAD included into decoder.
     * Alignment binary in pocketsphinx
     * Garbage loop for fsg mode and for lm, FSG confidence

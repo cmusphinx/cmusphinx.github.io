@@ -4,40 +4,72 @@ layout: page
 # MMIE Training in SphinxTrain
 
 
-Maximum Mutual Information Estimation (MMIE) training has been used to provide better performance than Maximum Likelihood Estimation (MLE) in speech recognition systems [1]. Naively applied, MMIE attempts to maximize the posterior probability of the correct word sequence given all possible word sequences. But this requires a prohibitive amount of computation to estimate confusable hypotheses and perform parameter estimation and so is impractical. This computational bottleneck can be eliminated by performing lattice-based MMIE training [2]. In such lattice-based training framework, the word lattice, which contains a set of word hypotheses with boundary times and transitions, is used as a compact representation of competing hypotheses [3]. And then parameter optimization is conducted using the extended Baum-Welch (EBW) algorithm [4]. 
+Maximum Mutual Information Estimation (MMIE) training has been used to provide 
+better performance than Maximum Likelihood Estimation (MLE) in speech 
+recognition systems [1]. Naively applied, MMIE attempts to maximize the 
+posterior probability of the correct word sequence given all possible word 
+sequences. But this requires a prohibitive amount of computation to estimate 
+confusable hypotheses and perform parameter estimation and so is impractical. 
+This computational bottleneck can be eliminated by performing lattice-based 
+MMIE training [2]. In such lattice-based training framework, the word lattice, 
+which contains a set of word hypotheses with boundary times and transitions, is 
+used as a compact representation of competing hypotheses [3]. And then 
+parameter optimization is conducted using the extended Baum-Welch (EBW) 
+algorithm [4]. 
 
-In SphinxTrain, we implemented the lattice-based MMIE training together with a posterior probability lattice pruning tool, which tries to get a better set of word lattice for MMIE training [5]. More details about the implementation of MMIE training in Sphinx can be found in our 2010 Sphinx Workshop paper [6]. By performing MMIE training, there is generally about 10% relative improvement on system accuracy.
+In SphinxTrain, we implemented the lattice-based MMIE training together with a 
+posterior probability lattice pruning tool, which tries to get a better set of 
+word lattice for MMIE training [5]. More details about the implementation of 
+MMIE training in Sphinx can be found in our 2010 Sphinx Workshop paper [6]. By 
+performing MMIE training, there is generally about 10% relative improvement on 
+system accuracy.
 
 
 ## Training data:
 
-MMIE training requires at least some amount of training data, such as **more than 10 hours** training speech. If there isn't enough training data, you might get good performance on the training data but bad performance on the testing data.
+MMIE training requires at least some amount of training data, such as **more 
+than 10 hours** training speech. If there isn't enough training data, you might 
+get good performance on the training data but bad performance on the testing 
+data.
 
 
 ## Before training:
 
-You need a well-trained context-dependent continuous model. It's better to finish the "50.cd_hmm_tied" training first. It probably also works for the context-independent model, but no test is done yet.
+You need a well-trained context-dependent continuous model. It's better to 
+finish the "50.cd_hmm_tied" training first. It probably also works for the 
+context-independent model, but no test is done yet.
 
-**CAUTION:** The training does NOT work for semi-continuous model! Sorry about that.
+**CAUTION:** The training does NOT work for semi-continuous model! Sorry about 
+that.
 
-In addition, you need to have the ''sphinxbase'' Python module and the SphinxBase shared library (''libsphinxbase.so.1'') installed or located somewhere where it can be found.  This can be achieved by setting ''PYTHONPATH'' and ''LD_LIBRARY_PATH'' to point to your compiled SphinxBase source tree:
+In addition, you need to have the ''sphinxbase'' Python module and the 
+SphinxBase shared library (''libsphinxbase.so.1'') installed or located 
+somewhere where it can be found.  This can be achieved by setting 
+''PYTHONPATH'' and ''LD_LIBRARY_PATH'' to point to your compiled SphinxBase 
+source tree:
 
 	
-	export SPHINXBASE=/path/to/sphinxbase # change this to your sphinxbase source tree
+	export SPHINXBASE=/path/to/sphinxbase # change this to your sphinxbase 
+source tree
 	export PYTHONPATH=$SPHINXBASE/python/build/lib.*
 	export LD_LIBRARY_PATH=$SPHINXBASE/src/libsphinxbase/.libs
 
 
-Finally the Sphinx3 programs ''sphinx3_decode'' and ''sphinx3_align'' should be copied to the ''bin'' directory inside your training setup.
+Finally the Sphinx3 programs ''sphinx3_decode'' and ''sphinx3_align'' should be 
+copied to the ''bin'' directory inside your training setup.
 
 
 ## A general MMIE training procedure:
 
 ### 60.lattice_generation:
 
-In this step, the system will generate the numerator and denominator lattices needed for MMIE training.
+In this step, the system will generate the numerator and denominator lattices 
+needed for MMIE training.
 
-Before this, you should specify where do you want to save the generated numerator and denominator lattices. You can add the following parameters into the training configuration file, otherwise generated lattices will be saved to default directories.
+Before this, you should specify where do you want to save the generated 
+numerator and denominator lattices. You can add the following parameters into 
+the training configuration file, otherwise generated lattices will be saved to 
+default directories.
 
 	
 	$CFG_NUMLAT_DIR = "numlat";
@@ -45,15 +77,31 @@ Before this, you should specify where do you want to save the generated numerato
 
 
 
-The numerator lattice is generated by performing force alignment on the training speech and its transcription. The default model used for force alignment is the well-trained context-dependent model. You can probably use the simple context-independent model to do that. No comparison of which model is better has been done yet.
+The numerator lattice is generated by performing force alignment on the 
+training speech and its transcription. The default model used for force 
+alignment is the well-trained context-dependent model. You can probably use the 
+simple context-independent model to do that. No comparison of which model is 
+better has been done yet.
 
-The denominator lattice is generated by decoding the training speech. Normally, a weak language model is used during decoding, such as a unigram or a bigram language model. In our experiments on the WSJ data set, we got better results when using a bigram language model during decoding. You can choose to use a unigram language model by setting –ugonly but not -bgonly in the sphinx3_decode script. To be noticed, even a bigram language model is used in decoding, during extended Baum-Welch, the unigram probability will still be used to compute the posterior probability for each word hypothesis. Also the language model should be large enough to cover all or most of the words in the training data. For example, to use a 64k word language model on a 20k vocabulary training data. To specify to use which language model, you need to add $CFG_LANGUAGEMODEL into your configuration file, such as
+The denominator lattice is generated by decoding the training speech. Normally, 
+a weak language model is used during decoding, such as a unigram or a bigram 
+language model. In our experiments on the WSJ data set, we got better results 
+when using a bigram language model during decoding. You can choose to use a 
+unigram language model by setting –ugonly but not -bgonly in the sphinx3_decode 
+script. To be noticed, even a bigram language model is used in decoding, during 
+extended Baum-Welch, the unigram probability will still be used to compute the 
+posterior probability for each word hypothesis. Also the language model should 
+be large enough to cover all or most of the words in the training data. For 
+example, to use a 64k word language model on a 20k vocabulary training data. To 
+specify to use which language model, you need to add $CFG_LANGUAGEMODEL into 
+your configuration file, such as
 
 	
 	$CFG_LANGUAGEMODEL = "wsj_64k.arpa.DMP";
 
 
-You also need to specify some decoding related variables in your configuration file. Those variables should be the same as what will be used in decoding.
+You also need to specify some decoding related variables in your configuration 
+file. Those variables should be the same as what will be used in decoding.
 
 	
 	$CFG_LANGUAGEWEIGHT = "11.5";
@@ -64,89 +112,187 @@ You also need to specify some decoding related variables in your configuration f
 
 ### 61.lattice_pruning (optional)
 
-In this step, posterior probability lattice pruning will be performed on denominator lattice. It tries to directly prune word hypotheses with low posterior probabilities and duplicate word hypotheses. There are two beam widths to control the density of pruned lattices. One is ABEAM, which controls arc pruning; while the other is NBEAM, which controls node pruning. In this step, the same language model used to generate denominator lattice will be used to assign language model score to each word hypothesis. However, only the unigram probability will be applied. We have verified that lattice pruning helps in the "CI" mode of training. Whether lattice pruning helps in the “rand” and “best” mode of training is still under investigated. The default value for ABEAM and NBEAM is 1e-50 and 1e-10. You can set your own beam widths in the configuration file as
+In this step, posterior probability lattice pruning will be performed on 
+denominator lattice. It tries to directly prune word hypotheses with low 
+posterior probabilities and duplicate word hypotheses. There are two beam 
+widths to control the density of pruned lattices. One is ABEAM, which controls 
+arc pruning; while the other is NBEAM, which controls node pruning. In this 
+step, the same language model used to generate denominator lattice will be used 
+to assign language model score to each word hypothesis. However, only the 
+unigram probability will be applied. We have verified that lattice pruning 
+helps in the "CI" mode of training. Whether lattice pruning helps in the “rand” 
+and “best” mode of training is still under investigated. The default value for 
+ABEAM and NBEAM is 1e-50 and 1e-10. You can set your own beam widths in the 
+configuration file as
 
 	
 	$CFG_ABEAM = "1e-50";
 	$CFG_NBEAM = "1e-10";
 
 
-You will also need to set where to save the pruned lattices, otherwise they are save to default directory “pruned_denlat”. You can add the following parameter
+You will also need to set where to save the pruned lattices, otherwise they are 
+save to default directory “pruned_denlat”. You can add the following parameter
 
 	
 	$CFG_PRUNED_DENLAT_DIR = "pruned_denlat";
 
 
-**CAUTION:** language model and lattice are case sensitive, make sure word entries in both file are in **UPPER** case!
+**CAUTION:** language model and lattice are case sensitive, make sure word 
+entries in both file are in **UPPER** case!
 ### 62.lattice_conversion
 
-In this step, both numerator and denominator lattices are converted into a simple format to simplify the implementation of extended Baum-Welch algorithm. And the numerator lattice will be added to the denominator lattice to make sure the correct hypothesis is always in the denominator lattice. Again, the same language model used in previous steps will be used to assign language model score to each word hypothesis. However, only the unigram probability will be applied. To be noticed, this step might take much longer time than previous steps. You need to specify the location to save your final lattices, in your configuration file, you can add
+In this step, both numerator and denominator lattices are converted into a 
+simple format to simplify the implementation of extended Baum-Welch algorithm. 
+And the numerator lattice will be added to the denominator lattice to make sure 
+the correct hypothesis is always in the denominator lattice. Again, the same 
+language model used in previous steps will be used to assign language model 
+score to each word hypothesis. However, only the unigram probability will be 
+applied. To be noticed, this step might take much longer time than previous 
+steps. You need to specify the location to save your final lattices, in your 
+configuration file, you can add
 
 	
 	$CFG_LATTICE_DIR = "lattice";
 
 
-**CAUTION:** language model and lattice are case sensitive, make sure word entries in both file are in **UPPER** case!
+**CAUTION:** language model and lattice are case sensitive, make sure word 
+entries in both file are in **UPPER** case!
 ### 65.mmie_train
 
-By now, you have already generated both numerator and denominator lattices. And you are good to run MMIE training. You will iteratively run the extend Baum-Welch algorithm to collect statistics and norm program to update model parameters. There are at least 3 different ways to get the surrounding context for a word hypothesis when calculating the acoustic score for it. 1) “CI” mode: just use context-independent model for boundary phonemes. 2) “rand” mode: most of time, context-dependent model is more favorable. However, for a word hypothesis, there are many different preceding and succeeding contexts, it will be very time consuming to try them all. A compromise is to randomly pick a preceding and succeeding hypothesis, then you can use context dependent triphone model for boundary phonemes. 3) “best” mode: try all possible combination of preceding and succeeding context, and then pick the best one, the one with highest likelihood. In our experiments, we got the best accuracy from the “best” mode MMIE training, but it also cost a very long time to train. On the other hand, the “CI” mode training runs the fastest, but it also has the worse performance. However, the “rand” mode training runs almost as fast as “CI” training, but got much better performance then it and just a little bit worse than “best” training. So in default, “rand” mode MMIE training is applied. To change it, you need to add the following parameter in your configuration file.
+By now, you have already generated both numerator and denominator lattices. And 
+you are good to run MMIE training. You will iteratively run the extend 
+Baum-Welch algorithm to collect statistics and norm program to update model 
+parameters. There are at least 3 different ways to get the surrounding context 
+for a word hypothesis when calculating the acoustic score for it. 1) “CI” mode: 
+just use context-independent model for boundary phonemes. 2) “rand” mode: most 
+of time, context-dependent model is more favorable. However, for a word 
+hypothesis, there are many different preceding and succeeding contexts, it will 
+be very time consuming to try them all. A compromise is to randomly pick a 
+preceding and succeeding hypothesis, then you can use context dependent 
+triphone model for boundary phonemes. 3) “best” mode: try all possible 
+combination of preceding and succeeding context, and then pick the best one, 
+the one with highest likelihood. In our experiments, we got the best accuracy 
+from the “best” mode MMIE training, but it also cost a very long time to train. 
+On the other hand, the “CI” mode training runs the fastest, but it also has the 
+worse performance. However, the “rand” mode training runs almost as fast as 
+“CI” training, but got much better performance then it and just a little bit 
+worse than “best” training. So in default, “rand” mode MMIE training is 
+applied. To change it, you need to add the following parameter in your 
+configuration file.
 
 	
 	$CFG_MMIE_TYPE = "best";
 
 
-There is another parameter that controls the speed of convergence during MMIE training. The bigger value it is, the slower the convergence. But if you use a very small value, you might not get the best results. In our experiments, we found a value of 3 or 3.5 is a very good try. You can set this constant in the configuration as
+There is another parameter that controls the speed of convergence during MMIE 
+training. The bigger value it is, the slower the convergence. But if you use a 
+very small value, you might not get the best results. In our experiments, we 
+found a value of 3 or 3.5 is a very good try. You can set this constant in the 
+configuration as
 
 	
 	$CFG_MMIE_CONSTE = "3.0";
 
 
-Normally, the training is converged in 3 or 4 iterations. So we set the maximum iterations of MMIE training as 5. In the configuration file, you need to add
+Normally, the training is converged in 3 or 4 iterations. So we set the maximum 
+iterations of MMIE training as 5. In the configuration file, you need to add
 
 	
 	$CFG_MMIE_MAX_ITERATIONS = 5;
 
 
-Our norm program supports both mean and variance parameters update. But we found, most of time, only updating mean parameters is already enough. So the default of MMIE training is just updating mean parameters. You can change this in the norm.pl script, but removing the commented out parameter.
+Our norm program supports both mean and variance parameters update. But we 
+found, most of time, only updating mean parameters is already enough. So the 
+default of MMIE training is just updating mean parameters. You can change this 
+in the norm.pl script, but removing the commented out parameter.
 
-At last, many people may ask how to know when to stop the training or how many iterations run is the best. There is no easy way to decide it before training. In stead, what you can do is you can split your training data into training and development data. And do a cross validation to decide how many iterations run you will need.
+At last, many people may ask how to know when to stop the training or how many 
+iterations run is the best. There is no easy way to decide it before training. 
+In stead, what you can do is you can split your training data into training and 
+development data. And do a cross validation to decide how many iterations run 
+you will need.
 ## How to tune your training:
 
 ### 1. Run MMIE in "best" mode
 
-As explained above, when perform MMIE training in “best” mode, the program will try all possible combination of preceding and succeeding context, and then pick the one with highest likelihood. This scheme of training requires more computation than the others, but it also achieves the best result. To do that, you need to change "$CFG_MMIE_TYPE" in the configuration file.
+As explained above, when perform MMIE training in “best” mode, the program will 
+try all possible combination of preceding and succeeding context, and then pick 
+the one with highest likelihood. This scheme of training requires more 
+computation than the others, but it also achieves the best result. To do that, 
+you need to change "$CFG_MMIE_TYPE" in the configuration file.
 
 ### 2. Tune ConstE and LanugageWeight
 
-The ConstE controls the speed of convergence during MMIE training. The bigger the value, the slower the convergence. If having as many as a few hundreds hours of training speech, you can try smaller values of ConstE, such as 1.5, 2 and 2.5. On the other side, if having less than 50 hours training speech, you should try ConstE as 3, 3.5 or even larger. Changing LanguageWeight a little bit can also affect the training result. But it's not very clear how to tune it. These two parameters are specified in the configuration file as "$CFG_MMIE_CONSTE" and "$CFG_LANGUAGEWEIGHT".
+The ConstE controls the speed of convergence during MMIE training. The bigger 
+the value, the slower the convergence. If having as many as a few hundreds 
+hours of training speech, you can try smaller values of ConstE, such as 1.5, 2 
+and 2.5. On the other side, if having less than 50 hours training speech, you 
+should try ConstE as 3, 3.5 or even larger. Changing LanguageWeight a little 
+bit can also affect the training result. But it's not very clear how to tune 
+it. These two parameters are specified in the configuration file as 
+"$CFG_MMIE_CONSTE" and "$CFG_LANGUAGEWEIGHT".
 
 ### 3. Use a Bigram language model to generate denominator lattice 
 
-The denominator lattice is generated by decoding the training speech. Normally, a weak language model is used during decoding, such as a Unigram or a Bigram language model. Most researchers indicated that a Unigram language model is used in their system when generating the denominator lattice. So the default setting is to use a Unigram language model. But there are also a number of systems where a Bigram language model is used. And another advantage of using a Bigram language model is that it's much faster to decode training speech. To use a Unigram or Bigram language model when generating denominator lattice, you can set either "–ugonly" or "-bgonly" in the *sphinx3_decode* script in __60.lattice_generation__.
+The denominator lattice is generated by decoding the training speech. Normally, 
+a weak language model is used during decoding, such as a Unigram or a Bigram 
+language model. Most researchers indicated that a Unigram language model is 
+used in their system when generating the denominator lattice. So the default 
+setting is to use a Unigram language model. But there are also a number of 
+systems where a Bigram language model is used. And another advantage of using a 
+Bigram language model is that it's much faster to decode training speech. To 
+use a Unigram or Bigram language model when generating denominator lattice, you 
+can set either "–ugonly" or "-bgonly" in the *sphinx3_decode* script in 
+__60.lattice_generation__.
 
 ### 4. Lattice Pruning
 
-In default, the denominator is extremely large to include as many competing word hypotheses as possible. However, this lattice may not be the best lattice for MMIE training. There are two lattice pruning methods:
+In default, the denominator is extremely large to include as many competing 
+word hypotheses as possible. However, this lattice may not be the best lattice 
+for MMIE training. There are two lattice pruning methods:
 
-*  Beam Pruning: Use a smaller beam width during decoding the training speech in __60.lattice_generation__. You can change the value of "$CFG_BEAMWIDTH" and "$CFG_WORDBEAM" in the configuration file.
+*  Beam Pruning: Use a smaller beam width during decoding the training speech 
+in __60.lattice_generation__. You can change the value of "$CFG_BEAMWIDTH" and 
+"$CFG_WORDBEAM" in the configuration file.
 
-*  Posterior Probability Pruning: It tries to directly prune word hypotheses with low posterior probabilities and duplicate word hypotheses. To perform posterior probability pruning, you just can run __61.lattice_pruning__ after __60.lattice_generation__. You can change the value of "$CFG_ABEAM" and "$CFG_NBEAM" in the configuration file to control the complexity of the pruned lattices.
+*  Posterior Probability Pruning: It tries to directly prune word hypotheses 
+with low posterior probabilities and duplicate word hypotheses. To perform 
+posterior probability pruning, you just can run __61.lattice_pruning__ after 
+__60.lattice_generation__. You can change the value of "$CFG_ABEAM" and 
+"$CFG_NBEAM" in the configuration file to control the complexity of the pruned 
+lattices.
 
 ### 5. Update both Mean and Variance parameters
 
-In our experiment, we found if the training data is less than 100 hours, then only updating mean parameters is already enough. However, our program supports updating both Mean and Variance parameters. So if you have a few hundreds hours training speech or you don't get much improvement from the default MMIE training, you can try to update both Mean and Variance parameters. To do that, you need to change the *norm.pl* script in __65.mmie_train__ by adding "-varfn".
+In our experiment, we found if the training data is less than 100 hours, then 
+only updating mean parameters is already enough. However, our program supports 
+updating both Mean and Variance parameters. So if you have a few hundreds hours 
+training speech or you don't get much improvement from the default MMIE 
+training, you can try to update both Mean and Variance parameters. To do that, 
+you need to change the *norm.pl* script in __65.mmie_train__ by adding "-varfn".
 
 ## Reference:
 
 
-[1] L. R. Bahl and P. F. Brown and P. C. de Souza and R.L. Mercer, “Maximum mutual information estimation of hidden Markov model parameter for speech recognition,” Proc. ICASSP-1986, pp. 49-52, 1986.
+[1] L. R. Bahl and P. F. Brown and P. C. de Souza and R.L. Mercer, “Maximum 
+mutual information estimation of hidden Markov model parameter for speech 
+recognition,” Proc. ICASSP-1986, pp. 49-52, 1986.
 
-[2] V. Valtchev and J. J. Odell and P. C.Woodland and S. J. Young, “MMIE training of large vocabulary speech recognition system,” Speech Communication, vol. 22, pp. 303-314, 1997.
+[2] V. Valtchev and J. J. Odell and P. C.Woodland and S. J. Young, “MMIE 
+training of large vocabulary speech recognition system,” Speech Communication, 
+vol. 22, pp. 303-314, 1997.
 
-[3] S. Ortmanns and H. Ney, “A word graph algorithms for large vocabulary continuous speech recognition,” Computer Speech and Language, vol. 11, pp. 43-72, 1997.
+[3] S. Ortmanns and H. Ney, “A word graph algorithms for large vocabulary 
+continuous speech recognition,” Computer Speech and Language, vol. 11, pp. 
+43-72, 1997.
 
-[4] P. S. Gopalakrishan and D. Kanevsky and A. Nadas and D. Nahamoo, “An inequality for rational functions with applications to some statistical estimation problems,” IEEE Transactions on Information Theory, vol. 37, pp. 107-113, 1991.
+[4] P. S. Gopalakrishan and D. Kanevsky and A. Nadas and D. Nahamoo, “An 
+inequality for rational functions with applications to some statistical 
+estimation problems,” IEEE Transactions on Information Theory, vol. 37, pp. 
+107-113, 1991.
 
-[5] Long Qin and Alex Rudnicky, “The effect of lattice pruning on MMIE training,” Proc. ICASSP-2010, pp. 4898-4901, Dallas, 2010.
+[5] Long Qin and Alex Rudnicky, “The effect of lattice pruning on MMIE 
+training,” Proc. ICASSP-2010, pp. 4898-4901, Dallas, 2010.
 
-[6] Long Qin and Alex Rudnicky, “Implementing and improving MMIE training in SphinxTrain” CMU Sphinx User and Developers Workshop 2010, Dallas, 2010.
+[6] Long Qin and Alex Rudnicky, “Implementing and improving MMIE training in 
+SphinxTrain” CMU Sphinx User and Developers Workshop 2010, Dallas, 2010.
