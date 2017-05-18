@@ -378,4 +378,4 @@ If the model is in resources you can reference it with resource: URL
 	configuration.setLanguageModelPath("resource:/com/example/8754.lm");
 
 
-See [Sphinx4 tutorial](tutorialsphinx4) for details.
+See [Sphinx4 tutorial](/wiki/tutorialsphinx4) for details.
