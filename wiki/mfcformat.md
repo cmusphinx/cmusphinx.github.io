@@ -8,13 +8,13 @@ during training and decoding
 we usually use static features like mel-cepstrum and dynamic features like 
 mel-cepstrum deltas or delta-deltas. On the filesystem we store only static 
 features and dynamic features are computed on the fly. The computatoin is 
-configured with the ''-feat'' option. For example ''-feat 1s_c_d_dd'' means to 
+configured with the `-feat` option. For example `-feat 1s_c_d_dd` means to 
 read the vector and compute deltas and delta-deltas and combine them with 
 1-stream feature vector. There are different types like 's2_4x' which means to 
 compute deltas, delta-deltas, delta-deltas of the second order and combine them 
 in a special 4-stream feature vector. If you need a specific feature 
 arrangement you can implement your own feature type in sphinxbase. If you want 
-to use features as is use ''1s_c'' feature type which means to read the vector 
+to use features as is use `1s_c` feature type which means to read the vector 
 unmodified.
 
 The file stores the values in binary format and each value is stored as a float 

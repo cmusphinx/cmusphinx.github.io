@@ -23,7 +23,7 @@ Now change this
 To
      options snd-usb-audio index=0
 
-if there is some other options ''snd-usb-audio index=1'', comment it out
+if there is some other options `snd-usb-audio index=1`, comment it out
 
      sudo reboot 
      cat /proc/asound/cards 

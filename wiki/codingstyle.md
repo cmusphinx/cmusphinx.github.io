@@ -32,7 +32,7 @@ Indentation is 4 spaces.  Not 4-space tabs, not sometimes 8-space tabs and
 sometimes 4 spaces.  4 spaces.  Nobody seems to be able to agree on what the 
 proper tab width is, disk space is cheap, and compression works.  So please set 
 your editor to use spaces and not tabs for indentation.  In Emacs, you can 
-accomplish this with ''M-x set-variable indent-tabs-mode nil'', or by adding 
+accomplish this with `M-x set-variable indent-tabs-mode nil`, or by adding 
 this to your .emacs file:
 
 	
@@ -52,7 +52,7 @@ There is a strong preference towards always using braces to enclose loop and
 conditional blocks.  This makes it easier to add things to them and prevents 
 ambiguous readings of code.  The opening  brace should **always** go on the 
 same line as the preceding conditional or loop statement.  In addition, we 
-typically put the ''else'' or ''else if'' keyword on a separate line from the 
+typically put the `else` or `else if` keyword on a separate line from the 
 preceding close bracket.  This makes it easier to re-arrange conditions with 
 cut and paste.  So, in summary, blocks should look like this:
 
@@ -69,7 +69,7 @@ cut and paste.  So, in summary, blocks should look like this:
 
 ### Functions
 
-Function ''declarations'' should have the return type on the same line as the 
+Function `declarations` should have the return type on the same line as the 
 function, like this:
 
 	
@@ -77,8 +77,8 @@ function, like this:
 
 Function definitions should have the return type on a separate line as the 
 function.  In addition, the opening brace for the function goes on a line by 
-itself.  This makes it easy to find function definitions by using ''grep 
-^function_name''.  Therefore, functions should look like this:
+itself.  This makes it easy to find function definitions by using `grep 
+^function_name`.  Therefore, functions should look like this:
 
 	
 	int
@@ -112,7 +112,7 @@ words.  Do **not** use [Hungarian
 notation](http://en.wikipedia.org/wiki/Hungarian_notation).  Although short 
 names are encouraged, try to give variables meaningful names.
 
-Boolean variables should be declared as ''int''.  For everything else, use the 
+Boolean variables should be declared as `int`.  For everything else, use the 
 typedefs in `<prim_type.h>` (from SphinxBase).
 
 ### Functions
@@ -124,8 +124,8 @@ putting "inline" comments on function arguments, and much of the SphinxThree
 code does this, it is very ugly and is thus discouraged.  Please document 
 whether a pointer argument is an input, output, or input-output argument.  For 
 output and input-output arguments, it is a good idea to encode this in the name 
-of the argument by prepending ''out_'', or ''inout_'' to its name.  Input 
-pointer arguments should also always be ''const'' unless there is some good 
+of the argument by prepending `out_`, or `inout_` to its name.  Input 
+pointer arguments should also always be `const` unless there is some good 
 reason for them not to be.  So, for example:
 
 	
@@ -145,7 +145,7 @@ reason for them not to be.  So, for example:
 Function names should also be lowercase, with underscores separating words.  If 
 a function can be thought of as a "method" on some type, then the first word in 
 the function name should indicate what sort of object it is associated with.  
-So, for example, if you have a type ''foo_t'', then its associated functions 
+So, for example, if you have a type `foo_t`, then its associated functions 
 should look like:
 
 	

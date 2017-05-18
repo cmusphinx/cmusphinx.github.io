@@ -17,7 +17,7 @@ stored by OS, in bin/x86-nt/ and bin/x86-linux/.
 
 
 Optionally you can use options to pass to autogen, for example 
-''--prefix=/somewhere''
+`--prefix=/somewhere`
 
 ### Configure and compile for Windows:
 

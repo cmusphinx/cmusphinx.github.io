@@ -108,7 +108,7 @@ The numbers of states, Gaussians, HMMs, and words per frame are directly
 related to the speed of the decoder.  If we reduce these, then we will make the 
 decoder faster.  Different tuning parameters have different effects on these.
 
-The ''-beam'' argument affects the number of HMMs active per frame, which 
+The `-beam` argument affects the number of HMMs active per frame, which 
 indirectly affects all of the other parameters.  If fewer HMMs are active, then 
 there will be fewer words which "survive" to their ends, fewer states will be 
 computed, and hence fewer densities will be computed.  This parameter is the 
@@ -118,15 +118,15 @@ parameters, as discussed below.
 
 In general, you will find that the beam can be narrowed a bit without reducing 
 accuracy.  You should narrow it only this far and no further.  Likewise with 
-''-wbeam'' which has similarly broad effects.  We usually set ''-wbeam'' a bit 
-narrower than ''-beam'' and leave it alone...  (actually ''-wbeam'' has 
+`-wbeam` which has similarly broad effects.  We usually set `-wbeam` a bit 
+narrower than `-beam` and leave it alone...  (actually `-wbeam` has 
 interactions with the language model weight which we won't discuss here)
 
 ## Reducing Gaussian computation
 
 Typically, Gaussian computation is the biggest chunk of time used by the 
 decoder.  Therefore we want to start by speeding things up at this level.  The 
-goal is to reduce the ''cdgau/fr'' number, that is, the number of Gaussians 
+goal is to reduce the `cdgau/fr` number, that is, the number of Gaussians 
 evaluated per frame.
 
 There are a few ways to do this but the most effective one implemented in 
@@ -135,11 +135,11 @@ a highly simplified version of the acoustic model and evaluating it first to
 determine which Gaussians are worth evaluating in their full form.  The 
 acoustic models on [the Sphinx Open Source Models 
 Page](http://www.speech.cs.cmu.edu/sphinx/models/) include pre-built subvector 
-quantized files which are called ''subvq'' in the acoustic model directory.  To 
-use this, you have to pass it to the decoder with the ''-subvq'' argument.  
+quantized files which are called `subvq` in the acoustic model directory.  To 
+use this, you have to pass it to the decoder with the `-subvq` argument.  
 This should immediately give you a speedup without much effect on accuracy.
 
-To speed things up further you can tighten the ''-subvqbeam'' parameter.  The 
+To speed things up further you can tighten the `-subvqbeam` parameter.  The 
 default value is 0.001, so you can try 0.01 or 0.005.
 
 ## Reducing GMM computation
@@ -147,30 +147,30 @@ default value is 0.001, so you can try 0.01 or 0.005.
 If you've already made the decoder fast enough for your taste, you can stop 
 now.  Otherwise, the next thing you can do is to reduce the number of Gaussian 
 mixture models (i.e. the number of tied states) evaluated at each frame.  This 
-is the ''cdsen/fr'' number in the ''SUMMARY'' line.
+is the `cdsen/fr` number in the `SUMMARY` line.
 
 There are two complimentary ways to do this.  The more intelligent of the two 
 is called ContextIndependentGmmSelection.  This means that the 
 context-independent phones' states are evaluated first and  for those which 
 don't score well, all context-dependent phones related to them are eliminated.  
-This can be done by tightening the ''-ci_pbeam'' argument.  The default value 
+This can be done by tightening the `-ci_pbeam` argument.  The default value 
 for it is so wide as to be completely ineffective, so you can try first 
 increasing it to 1e-10.
 
 The next way to reduce GMM computation is called AbsolutePruning and can be 
-achieved with the ''-maxcdsenpf'' argument.  Instead of computing all GMMs 
+achieved with the `-maxcdsenpf` argument.  Instead of computing all GMMs 
 which are considered "likely to succeed", this enforces a hard limit on how 
 many can be computed.  The best way to set this parameter is to look at the 
-''cdsen/fr'' number in the ''SUMMARY'' line, and set it to some number slightly 
-lower than that.  So for the example line above, we could put ''-maxcdsenpf 
-2000'' in the command-line.
+`cdsen/fr` number in the `SUMMARY` line, and set it to some number slightly 
+lower than that.  So for the example line above, we could put `-maxcdsenpf 
+2000` in the command-line.
 
 ## Reducing HMM computation and Search
 
 You can also apply AbsolutePruning to entire HMMs and words.  This is a 
-somewhat more precise version of ''-beam''.  Again, look at the ''hmm/fr'' and 
-''wd/fr'' numbers in the ''SUMMARY'' line and set ''-maxhmmpf'' and ''-maxwpf'' 
-to something smaller than them.  In the case of ''-maxwpf'' the hard limit is 
+somewhat more precise version of `-beam`.  Again, look at the `hmm/fr` and 
+`wd/fr` numbers in the `SUMMARY` line and set `-maxhmmpf` and `-maxwpf` 
+to something smaller than them.  In the case of `-maxwpf` the hard limit is 
 not particularly hard at all, so you can set it to something a lot smaller than 
 the number of words per frame.
 
@@ -183,7 +183,7 @@ work, but actually does, which is computing Gaussian scores at every Nth frame.
 speech sounds tend to be long and hence the acoustic characteristics of the 
 speech change slowly.
 
-Frame downsampling can be enabled with the ''-ds'' argument.  Try ''-ds 2'' at 
+Frame downsampling can be enabled with the `-ds` argument.  Try `-ds 2` at 
 first.  It's probably not a good idea to go higher than 3.
 
 ## Acknowledgements

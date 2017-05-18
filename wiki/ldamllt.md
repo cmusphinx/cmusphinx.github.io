@@ -37,7 +37,7 @@ First, you **need** to have the necessary [Python
 modules](InstallingPythonStuff) installed in order to do LDA and MLLT.  You 
 should (obviously) also have Python 2.3 or newer.  To make sure that you have 
 the necessary modules installed, make sure that you can run Python and load the 
-''numpy'' and ''scipy.optimize'' modules:
+`numpy` and `scipy.optimize` modules:
 
 	
 	dhuggins@lima:~$ python
@@ -63,13 +63,13 @@ do this make sure it contains two lines reading:
 	$CFG_LDA_DIMENSION = 32;
 
 
-You can adjust ''$CFG_LDA_DIMENSION'' if you like, though 32 seems to be a 
+You can adjust `$CFG_LDA_DIMENSION` if you like, though 32 seems to be a 
 nearly-optimal value for many data sets.
 
 ### Decoding with the MLLT model
 
 Models trained with LDA/MLLT have a file with feature transform called 
-''feature_transform'' in the model folder. This file will be used automatically 
+`feature_transform` in the model folder. This file will be used automatically 
 by the sphinx4 and pocketsphinx decoders. There is no need to perform any 
 specific adjustment except you should probably experiment with the optimal 
 language weight since language weight depends on the transform.

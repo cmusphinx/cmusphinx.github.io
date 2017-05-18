@@ -43,27 +43,27 @@ see the following two main folders:
      pocketsphinx-X.x
 
 On step one, build and install SphinxBase. Change current directory to 
-''sphinxbase'' folder. If you downloaded directly from the repository, you need 
-to do this at least once to generate the ''configure'' file:
+`sphinxbase` folder. If you downloaded directly from the repository, you need 
+to do this at least once to generate the `configure` file:
 
      % ./autogen.sh
 
-if you downloaded the release version, or ran ''autogen.sh'' at least once, 
+if you downloaded the release version, or ran `autogen.sh` at least once, 
 then compile and install:
 
      % ./configure
      % make
      % make install
 
-The last step might require root permissions so it might be ''sudo make 
-install''. If you want to use fixed-point arithmetic, you must configure 
+The last step might require root permissions so it might be `sudo make 
+install`. If you want to use fixed-point arithmetic, you must configure 
 SphinxBase with the --enable-fixed option. You can also set installation prefix 
-with ''--prefix''. You can also configure with or without SWIG python support.
+with `--prefix`. You can also configure with or without SWIG python support.
 
-The sphinxbase will be installed in ''/usr/local/'' folder by default. Not 
+The sphinxbase will be installed in `/usr/local/` folder by default. Not 
 every system loads libraries from this folder automatically. To load them you 
 need to configure the path to look for shared libaries. It can be done either 
-in the file ''/etc/ld.so.conf'' or with exporting environment variables:
+in the file `/etc/ld.so.conf` or with exporting environment variables:
 
      export LD_LIBRARY_PATH=/usr/local/lib
      export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
@@ -77,11 +77,11 @@ Then change to pocketsphinx folder and perform the same steps
     % make
     % make install
 
-To test installation, run '''pocketsphinx_continuous -inmic yes''' and check 
+To test installation, run `'pocketsphinx_continuous -inmic yes`' and check 
 that it recognizes words you are saying to the microphone.
 
-If you get an error such as: ''error while loading shared libraries: 
-libpocketsphinx.so.3'', you may want to check your linker configuration with 
+If you get an error such as: `error while loading shared libraries: 
+libpocketsphinx.so.3`, you may want to check your linker configuration with 
 LD_LIBRARY_PATH environment variable described above.
 
 ### Windows
@@ -90,13 +90,13 @@ In MS Windows (TM), under MS Visual Studio 2010 (or newer - we test with Visual
 C++ 2010 Express):
 
 *  load sphinxbase.sln located in sphinxbase directory
-*  compile all the projects in SphinxBase (from ''sphinxbase.sln'')
-*  load ''pocketsphinx.sln'' in pocketsphinx directory
+*  compile all the projects in SphinxBase (from `sphinxbase.sln`)
+*  load `pocketsphinx.sln` in pocketsphinx directory
 *  compile all the projects in PocketSphinx
 
 MS Visual Studio will build the executables and libraries under 
-''.\bin\Release'' or ''.\bin\Debug'' (depending on the target you choose on MS 
-Visual Studio). To run ''pocketsphinx_continuous.exe'', don't forget to copy 
+`.\bin\Release` or `.\bin\Debug` (depending on the target you choose on MS 
+Visual Studio). To run `pocketsphinx_continuous.exe`, don't forget to copy 
 sphinxbase.dll to the bin folder. Otherwise the executable will fail to find 
 this library. Unlike on Linux, the path to the model is not preconfigured in 
 Windows, so you have to specify pocketsphinx_continuous where to find the model 
@@ -134,11 +134,11 @@ http://cmusphinx.sourceforge.net/api/pocketsphinx/
 There are few key things you need to know on how to use the API:
 
  1.  Command-line parsing is done externally (in `<cmd_ln.h>`)
- 2.  Everything takes a ''ps_decoder_t *'' as the first argument.
+ 2.  Everything takes a `ps_decoder_t *` as the first argument.
 
 To illustrate the new API, we will step through a simple "hello world" example. 
  This example is somewhat specific to Unix in the locations of files and the 
-compilation process.  We will create a C source file called ''hello_ps.c''.  To 
+compilation process.  We will create a C source file called `hello_ps.c`.  To 
 compile it (on Unix), use this command:
 
 	
@@ -150,8 +150,8 @@ compile it (on Unix), use this command:
 Please note that compilation errors here mean that you didn't carefully read 
 the tutorial and didn't follow the installation guide above. For example 
 pocketsphinx needs to be properly installed to be available through pkg-config 
-system. To check that pocketsphinx is installed properly, just run ''pkg-config 
---cflags --libs pocketsphinx sphinxbase'' from the command line and see that 
+system. To check that pocketsphinx is installed properly, just run `pkg-config 
+--cflags --libs pocketsphinx sphinxbase` from the command line and see that 
 output looks like
 
 	
@@ -163,7 +163,7 @@ output looks like
 ### Initialization
 
 The first thing we need to do is to create a configuration object, which for 
-historical reasons is called ''cmd_ln_t''.  Along with the general boilerplate 
+historical reasons is called `cmd_ln_t`.  Along with the general boilerplate 
 for our C program, we will do it like this:
 
 	
@@ -185,16 +185,16 @@ for our C program, we will do it like this:
 	}
 
 
-The ''cmd_ln_init()'' function takes a variable number of null-terminated 
+The `cmd_ln_init()` function takes a variable number of null-terminated 
 string arguments, followed by NULL.  The first argument is any previous 
-''cmd_ln_t *'' which is to be updated.  The second argument is an array of 
+`cmd_ln_t *` which is to be updated.  The second argument is an array of 
 argument definitions - the standard set can be obtained by calling 
-''ps_args()''.  The third argument is a flag telling the argument parser to be 
-"strict" - if this is ''TRUE'', then duplicate arguments or unknown arguments 
+`ps_args()`.  The third argument is a flag telling the argument parser to be 
+"strict" - if this is `TRUE`, then duplicate arguments or unknown arguments 
 will cause parsing to fail.
 
-The ''MODELDIR'' macro is defined on the GCC command-line by using 
-''pkg-config'' to obtain the ''modeldir'' variable from PocketSphinx 
+The `MODELDIR` macro is defined on the GCC command-line by using 
+`pkg-config` to obtain the `modeldir` variable from PocketSphinx 
 configuration.  On Windows, you can simply add a preprocessor definition to the 
 code, such as this:
 
@@ -216,20 +216,20 @@ ourselves to decoding audio files.  The "turtle" language model recognizes a
 very simple "robot control" language, which recognizes phrases such as "go 
 forward ten meters".  In fact, there is an audio file helpfully included in the 
 PocketSphinx source code which contains this very sentence.  You can find it in 
-''test/data/goforward.raw''.  Copy it to the current directory.  If you want to 
+`test/data/goforward.raw`.  Copy it to the current directory.  If you want to 
 create your own version of it, it needs to be a single-channel (monaural), 
 little-endian, unheadered 16-bit signed PCM audio file sampled at 16000 Hz.
 
 Main pocketsphinx use case is to read audio data in blocks of memory from 
 somewhere and feed them to the decoder. To do that we first open the file and 
-start decoding of the utterance using ''ps_start_utt()'':
+start decoding of the utterance using `ps_start_utt()`:
 
 	
 	        rv = ps_start_utt(ps);
 
 
 We will then read 512 samples at a time from the file, and feed them to the 
-decoder using ''ps_process_raw()'':
+decoder using `ps_process_raw()`:
 
 	
 	        int16 buf[512];
@@ -239,7 +239,7 @@ decoder using ''ps_process_raw()'':
 	            ps_process_raw(ps, buf, nsamp, FALSE, FALSE);
 	        }
 
-Then we will need to mark the end of the utterance using ''ps_end_utt()'':
+Then we will need to mark the end of the utterance using `ps_end_utt()`:
 
 	
 	        rv = ps_end_utt(ps);
@@ -257,8 +257,8 @@ result.
 
 ### Cleaning up
 
-To clean up, simply call ''ps_free()'' on the object that was returned by 
-''ps_init()''.  Free the configuration object with cmd_ln_free_r.
+To clean up, simply call `ps_free()` on the object that was returned by 
+`ps_init()`.  Free the configuration object with cmd_ln_free_r.
 
 ### Code listing
 

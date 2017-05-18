@@ -171,7 +171,7 @@ which builds ARPA models,  you can use it.
 Language model can be stored and loaded in three different format - text 
 [ARPA](sphinx4/standardgrammarformats) format, binary format BIN and
 binary DMP format. ARPA format takes more space but it is possible to
-edit it. ARPA files have ''.lm` extension. Binary format takes
+edit it. ARPA files have `.lm` extension. Binary format takes
 significantly less space and faster  to load. Binary files have
 `.lm.bin` extension. It is also possible to  convert between formats.
 DMP format is obsolete and not recommended.

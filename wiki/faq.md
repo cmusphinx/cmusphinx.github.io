@@ -18,7 +18,7 @@ You do not need to play with unknown values, the **first thing you should do is
 to collect a database of test samples** and measure the recognition accuracy. 
 You need to dump speech utterances into wav files, write the reference text 
 file and use decoder to decode it. Then calculate WER using the 
-''word_align.pl'' tool from Sphinxtrain. Test database size depends on the 
+`word_align.pl` tool from Sphinxtrain. Test database size depends on the 
 accuracy but usually it's enough to have 10 minutes of transcribed audio to 
 test recognizer accuracy reliably. The process is described in 
 [tutorialtuning](tutorialtuning).
@@ -92,8 +92,8 @@ pocketsphinx recording silence. The reasons for that are:
 
 *  Pocketsphinx is decoding from a wrong device. Try to check log for the 
 warning `<code>`
-     ''Warning: Could not find Mic element'' 
-`</code>` (try to change device with ''-adcdev'' option)
+     `Warning: Could not find Mic element` 
+`</code>` (try to change device with `-adcdev` option)
 *  Recording volume is too low (try to increase recording level in volume 
 settings)
 *  Microphone is broken (test that other programs can record)
@@ -357,12 +357,12 @@ and en-us-8khz generic model for 8khz bandwidth.
 
 CMUSphinx decoders do not include format converters, they have no idea how to 
 decode encoded audio. Before processing audio must be converted to PCM format. 
-Recommended format is ''16khz 16bit little-endian mono''. If you are decoding 
-telephone quality audio you can also decode ''8khz 16bit little-endian mono'', 
+Recommended format is `16khz 16bit little-endian mono`. If you are decoding 
+telephone quality audio you can also decode `8khz 16bit little-endian mono`, 
 but you usually need to reconfigure the decoder to input 8khz audio. For 
-example, pocketsphinx has ''-samprate 8000'' option in configuration.
+example, pocketsphinx has `-samprate 8000` option in configuration.
 
-You can find out file format using ''soxi'' command or ''file'' command.
+You can find out file format using `soxi` command or `file` command.
 
 You can convert your encoded audio into required format with ffmpeg or with 
 other specialized decoder:

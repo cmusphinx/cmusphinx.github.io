@@ -30,7 +30,7 @@ need to fix sample rate of the source with resampling (only if its rate is
 higher than that of the training data). You should not upsample a file and 
 decode it with acoustic models trained on higher sampling rate audio. Audio 
 file format (sampling rate, number of channels) can be verified using below 
-command ''sox --i /path/to/audio/file''. Find more information here: [ What is 
+command `sox --i /path/to/audio/file`. Find more information here: [ What is 
 sample 
 rate](http://cmusphinx.sourceforge.net/wiki/faq#qwhat_is_sample_rate_and_how_doe
 s_it_affect_accuracy ) 
@@ -53,14 +53,14 @@ To test the recognition you need to configure the decoding with the required
 paramters, in particular, you need to have a language model `<your.lm>`. For 
 more details see [tutoriallm](tutoriallm).
 
-Create fileids file ''test.fileids'':
+Create fileids file `test.fileids`:
 
 	
 	test1
 	test2
 
 
-Create transcription file ''test.transcription'':
+Create transcription file `test.transcription`:
 
 	
 	some text (test1)
@@ -93,9 +93,9 @@ Now, let's run the decoder:
 	word_align.pl test.transcription test.hyp
 
 
-''word_align.pl'' script is a part of sphinxtrain distribution
+`word_align.pl` script is a part of sphinxtrain distribution
 
-Make sure to add ''-samprate 8000'' to the above command if you are decoding 
+Make sure to add `-samprate 8000` to the above command if you are decoding 
 8kHz files!
 
 The script word-align.pl from Sphinxtrain will report you the exact error rate 
@@ -117,4 +117,4 @@ this:
 	INFO: batch.c(763): 2484510: 0.03 xRT (CPU), 0.03 xRT (elapsed)
 
 
-here ''0.03xRT'' is a decoding speed.
+here `0.03xRT` is a decoding speed.

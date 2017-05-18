@@ -239,7 +239,7 @@ Don't just answer these questions, use your imagination and try to be clear.
 Don't forget to show enthusiasm.
 
 It is never too early to start working on your SoC application!  Note that 
-SoC's positions are '''extremely''' competitive.  There were several projects 
+SoC's positions are **extremely** competitive.  There were several projects 
 that were on the cusp of being accepted but were not.  Make sure you research 
 the potential projects and write up a strong application.  Your SoC application 
 should be specific to your project.  Potential SoC applicants may also want to 

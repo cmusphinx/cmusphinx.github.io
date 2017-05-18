@@ -202,8 +202,8 @@ It's important that each line starts with `<s>` and ends with `</s>` followed
 by id in parentheses. Also note that parenthesis contains only the file, 
 without speaker_n directory. It's critical to have exact match between fileids 
 file and the transcription file. The number of lines in both should be 
-identical. Last part of the file id ''(speaker1/**file_1**)'' and the utterance 
-id ''file_1'' must be the same on each line.
+identical. Last part of the file id `(speaker1/**file_1**)` and the utterance 
+id `file_1` must be the same on each line.
 
 Below is an example of **incorrect** fileids file for the above transcription 
 file. If you follow it, you will get an error as discussed 
@@ -352,8 +352,8 @@ The following external packages are also required:
 
 *  python, for example ActivePython on Windows
 
-In addition, if you download packages with a ''.gz'' suffix, you will need 
-''gunzip'' or the equivalent to unpack them.
+In addition, if you download packages with a `.gz` suffix, you will need 
+`gunzip` or the equivalent to unpack them.
 
 Install the perl and python packages somewhere in your executable path, if they 
 are not already there.
@@ -366,7 +366,7 @@ use ActivePerl.
 For download instructions, see [Download 
 page](http://cmusphinx.sourceforge.net/wiki/download/). 
 Basically you need to put everything into single root folder, unzip and untar 
-them, and run ''configure'' and ''make'' and ''make install'' in each package 
+them, and run `configure` and `make` and `make install` in each package 
 folder. Put the database folder into this root folder as well. By the time you 
 finish this, you will have a tutorial directory with the following contents
 
@@ -383,7 +383,7 @@ finish this, you will have a tutorial directory with the following contents
 
 
 
-You will need to install software as an administrator ''root''. After you 
+You will need to install software as an administrator `root`. After you 
 installed the software you may need to update the system configuration so the 
 system will be able to find the dynamic libraries. For example
 
@@ -394,8 +394,8 @@ system will be able to find the dynamic libraries. For example
 
 
 If you don't want to install into system path, you may install in your home 
-folder. In that case you can append the following option to ''autogen.sh'' 
-script or to the ''configure'' script
+folder. In that case you can append the following option to `autogen.sh` 
+script or to the `configure` script
 
 	
 	--prefix=/home/user/local
@@ -403,8 +403,8 @@ script or to the ''configure'' script
 
 Obvsiously the folder can be an arbitrary folder but remember to update the 
 environment configuration after that. If you will find that your binaries fail 
-to load dynamic libraries, something like ''failed to open libsphinx.so.0 no 
-such file or directory'' it means that you didn't configure the environment 
+to load dynamic libraries, something like `failed to open libsphinx.so.0 no 
+such file or directory` it means that you didn't configure the environment 
 properly.
 
 ## Setting up the training scripts
@@ -450,7 +450,7 @@ look like this:
 
 After setup, we need to edit the configuration files in etc folder, there are 
 many variables but to get started we need
-to change only a few. First of all find the file ''etc/sphinx_train.cfg''
+to change only a few. First of all find the file `etc/sphinx_train.cfg`
 
 ### Setup the format of database audio
 
@@ -460,7 +460,7 @@ to change only a few. First of all find the file ''etc/sphinx_train.cfg''
 	$CFG_WAVFILE_TYPE = 'nist'; # one of nist, mswav, raw
 
 
-If you recorded MSWav, change ''sph'' to ''wav'' here and ''nist'' to ''mswav''.
+If you recorded MSWav, change `sph` to `wav` here and `nist` to `mswav`.
 
 
 	
@@ -621,7 +621,7 @@ CPU during training.
 
 ### Configure decoding parameters
 
-Open ''etc/sphinx_train.cfg'', make sure the following is properly configured:
+Open `etc/sphinx_train.cfg`, make sure the following is properly configured:
 
 	
 	$DEC_CFG_DICTIONARY     = "$CFG_BASE_DIR/etc/$CFG_DB_NAME.dic";
@@ -696,11 +696,11 @@ complete.
 ## Training Internals
 
 This section describes what happens during the training. In the scripts 
-directory (''./scripts_pl''), there are several directories numbered 
+directory (`./scripts_pl`), there are several directories numbered 
 sequentially from 00 through 99. Each directory either has a directory named 
-''slave*.pl'' or it has a single file with extension ''.pl''. The script 
+`slave*.pl` or it has a single file with extension `.pl`. The script 
 sequentially goes through the directories and executes either the the 
-''slave*.pl'' or the single ''.pl'' file, as below. 
+`slave*.pl` or the single `.pl` file, as below. 
 
 	
 	perl scripts_pl/000.comp_feat/slave_feat.pl
@@ -745,7 +745,7 @@ semi-continuous models.
 If you execute these steps while creating continuous models, the scripts will 
 benignly do nothing. 
 
-On the stage ''000.comp_feat'' the feature feles are extracted. The system does 
+On the stage `000.comp_feat` the feature feles are extracted. The system does 
 not directly work with acoustic signals. The signals are first transformed into 
 a  sequence of feature vectors, which are used in place of the actual acoustic 
 signals.
@@ -764,23 +764,23 @@ technique instead, and compute features
 other than MFCCs. CMUSphinx can use features of any type or dimensionality. The 
 format of the features is described on the page [ MFC Format ](mfcformat ).
 
-Once the jobs launched from ''20.ci_hmm'' have run to completion, you will have 
+Once the jobs launched from `20.ci_hmm` have run to completion, you will have 
 trained the Context-Independent 
 (CI) models for the sub-word units in your dictionary. 
 
-When the jobs launched from the ''30.cd_hmm_untied'' 
+When the jobs launched from the `30.cd_hmm_untied` 
 directory run to completion, you will have trained the models for 
 Context-Dependent sub-word units 
 (triphones) with untied states. These are called CD-untied models and are 
 necessary for building decision 
 trees in order to tie states. 
 
-The jobs in ''40.buildtrees'' will build decision trees for each state of 
+The jobs in `40.buildtrees` will build decision trees for each state of 
 each sub-word unit. 
 
-The jobs in ''45.prunetree'' will prune the decision trees and tie the states. 
+The jobs in `45.prunetree` will prune the decision trees and tie the states. 
 
-Following this, the jobs in ''50.cd-hmm_tied'' will train the final models for 
+Following this, the jobs in `50.cd-hmm_tied` will train the final models for 
 the triphones in 
 your training corpus. These are called CD-tied models. The CD-tied models are 
 trained in many 
@@ -806,22 +806,22 @@ rate.
 Transformational matrices might help the training and recognition process in 
 some circumstances.
 
-The following steps will run if you specify ''$CFG_LDA_MLLT = 'yes';'' in the 
-file ''sphinx_train.cfg''.
+The following steps will run if you specify `$CFG_LDA_MLLT = 'yes';` in the 
+file `sphinx_train.cfg`.
 If you specify 'no', the default, the steps will do nothing. Step 
-''01.lda_train'' will estimate LDA matrix and
-step ''02.mllt_train'' will estimate MLLT matrix.
+`01.lda_train` will estimate LDA matrix and
+step `02.mllt_train` will estimate MLLT matrix.
 
 The perl scripts, in turn, set up and run python modules.  The end product for 
-these steps is a file, ''feature_transform'',  in your ''model_parameters'' 
+these steps is a file, `feature_transform`,  in your `model_parameters` 
 directory. For details see [ldamllt](ldamllt)
 
 ### MMIE Training (advanced)
 
-Finally, one more step will run if you specify MMIE training with ''$CFG_MMIE = 
-"yes";''.
-Default is ''"no"''. This will run steps ''60.lattice_generation'', 
-''61.lattice_pruning'', ''62.lattice_conversion'' and ''65.mmie_train''. For 
+Finally, one more step will run if you specify MMIE training with `$CFG_MMIE = 
+"yes";`.
+Default is `"no"`. This will run steps `60.lattice_generation`, 
+`61.lattice_pruning`, `62.lattice_conversion` and `65.mmie_train`. For 
 details see [mmie_train](mmie_train).
 ## Testing
 
@@ -839,7 +839,7 @@ You can restart decoding with the following command:
 
 This command will start a decoding process using the acoustic model  you 
 trained  and the language model you 
-configured in the ''etc/sphinx_train.cfg'' file. 
+configured in the `etc/sphinx_train.cfg` file. 
 
 	
 	MODULE: DECODE Decoding using models previously trained
@@ -862,9 +862,9 @@ On an4 data you should get something like:
 
 You can find exact details of the decoding, like alignment with reference 
 transcription, speed
- and result for each file, in ''result'' folder which will be created after 
+ and result for each file, in `result` folder which will be created after 
 decoding. Look into the file
-''an4.align'':
+`an4.align`:
 
 	
 	p   I   T      t   s   b   u   r   g   H      (MMXG-CEN5-MMXG-B)
@@ -940,10 +940,10 @@ See [Sphinx4 tutorial](tutorialsphinx4) for details.
 
 Troubleshooting is not rocket science. For all issues you may blame yourself. 
 You are most 
-likely the reason of failure. **Carefully** read the messages in the ''logdir'' 
+likely the reason of failure. **Carefully** read the messages in the `logdir` 
 folder that contains
 detailed log of actions performed for each. In addition, messages are copied to 
-the file, ''your_project_name.html'', which you can read in a browser.
+the file, `your_project_name.html`, which you can read in a browser.
 
 There are many well-working proven methods to solve issues. For example, try to 
 reduce the 
@@ -983,7 +983,7 @@ least once.
 ##### WARNING: CTL file, audio file name.mfc, does not exist, or is empty.
 
 The .mfc files are the feature files converted from the input audio files on 
-stage ''000.comp_feats''. Did you skip this step? Did you add new audio files 
+stage `000.comp_feats`. Did you skip this step? Did you add new audio files 
 without converting them? The training process expects a feature file to be 
 there, and it isn't.
 
@@ -1019,14 +1019,14 @@ database.
 
 This error occurs because the decoder did not run properly after training. 
 First check if the correct executable (**psdecode_batch** if the decoding 
-script being used is ''psdecode.pl'' as set by ''$DEC_CFG_SCRIPT'' variable in 
-''sphinx_train.cfg'') is present in ''PATH''. On Linux run 
+script being used is `psdecode.pl` as set by `$DEC_CFG_SCRIPT` variable in 
+`sphinx_train.cfg`) is present in `PATH`. On Linux run 
 
 	
 	which pocketsphinx_batch
 
 
-and see if it is located. If it is not, you need to set the ''PATH'' variable 
+and see if it is located. If it is not, you need to set the `PATH` variable 
 properly. Similarly on Windows, run 
 
 	
@@ -1034,7 +1034,7 @@ properly. Similarly on Windows, run
 
 
 If the path to decoding executable is set properly, read the log files at 
-''logdir/decode/'' to find out other reasons behind the error.
+`logdir/decode/` to find out other reasons behind the error.
 
 ##### To ask for help
 

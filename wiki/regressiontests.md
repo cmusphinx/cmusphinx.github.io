@@ -70,7 +70,7 @@ First, get the CVS data.
 regressionResults
 
 
-About once a year, clean the main ''regression.log'' file from old results. For 
+About once a year, clean the main `regression.log` file from old results. For 
 example, for year 2010, you do the following.
 
 `<file bash cleanup.sh>`
@@ -82,10 +82,10 @@ cvs add regression.2010.log
 cvs co -m "update files" 
 `</file>`
 
-If the machine you are using for tests is not already in the ''regression.log'' 
-file, you will have to update both ''regression.log'' and ''regression.system'' 
+If the machine you are using for tests is not already in the `regression.log` 
+file, you will have to update both `regression.log` and `regression.system` 
 (or only the latter if it is time for the annual cleanup). You will have to add 
-a line contaning, in this order, as detailed in ''regression.header'':
+a line contaning, in this order, as detailed in `regression.header`:
 
  1.  the string "system" literally
  2.  machine name
@@ -96,33 +96,33 @@ a line contaning, in this order, as detailed in ''regression.header'':
  7.  architecture
  8.  OS
 
-For example, this line was added for the machine ''filbert'':
+For example, this line was added for the machine `filbert`:
 
 	
 	system|filbert|8|4096|2660|15904|x86_64|Linux|
 
 
 In Linux, the information about CPU speed, memory, etc can be found in either 
-''/proc/meminfo'' or ''/proc/cpuinfo''.
+`/proc/meminfo` or `/proc/cpuinfo`.
 
 ### Data
 
 The tests assume that the data (audio, acoustic models) used are available 
-under ''/lab'', and the environment variable ''$SF_ROOT'' points to the root of 
+under `/lab`, and the environment variable `$SF_ROOT` points to the root of 
 a working copy of the sphinx4 code. 
 
-At CMU, the data are available from the ''robust'' account at ''~robust/lab''. 
+At CMU, the data are available from the `robust` account at `~robust/lab`. 
 Create the link:
     ln -s ~robust/lab /lab
 
 ### Final steps
 
-Create the variable ''SF_ROOT'' pointing to the working copy of the repository. 
-If the Sphinx-4 working copy is located at ''~/SourceForge'', add this to your 
-''~/.profile'' file, or create it if it does not exist:
+Create the variable `SF_ROOT` pointing to the working copy of the repository. 
+If the Sphinx-4 working copy is located at `~/SourceForge`, add this to your 
+`~/.profile` file, or create it if it does not exist:
     export SF_ROOT=${HOME}/SourceForge
 
-With these in place, install the crontab below. Beware that cron uses ''bash'' 
+With these in place, install the crontab below. Beware that cron uses `bash` 
 regardless of your choice of shell.
     crontab regression_crontab
 

@@ -10,42 +10,42 @@ How do I make it fast?
 The default settings are not enough to achieve sub-realtime performance on most 
 tasks. Here are some command-line flags you should experiment with:
 
-''-beam, -pbeam, -wbeam''
+`-beam, -pbeam, -wbeam`
 
 Main parameters to configure search width and thus accuracy-performance balance.
 
-''-ds''
+`-ds`
 
 This is the dsratio. In most cases -ds 2 gives the best performance, though 
 accuracy suffers a bit. (Frame GMM computation downsampling ratio) 
 Thus lower should be better and higher should be less accurate.
 
-''-topn''
+`-topn`
 
 The default value is 4, the fastest value is 2, but accuracy can suffer a bit 
 depending on your acoustic model.
 
-''-lpbeam''
+`-lpbeam`
 
 This beam is quite important for performance, however the default setting is 
 pretty narrow already.  Run pocketsphinx_batch with no arguments to see what it 
 is.
 
-''-lponlybeam''
+`-lponlybeam`
 
-Likewise here as with ''-lpbeam''.  If you are finding it hard to get enough 
+Likewise here as with `-lpbeam`.  If you are finding it hard to get enough 
 accuracy, you can widen these beams.
 
-''-maxwpf''
+`-maxwpf`
 
 This can be set quite low and still give you reasonable performance - try 5.
 
-''-maxhmmpf''
+`-maxhmmpf`
 
 Depending on the acoustic and language model this can be very helpful.  Try 
 3000.
 
-''-pl_window''
+`-pl_window`
 
 Phonetic lookahead is a specific technique which is used to speedup decoding by 
 reducing the amount of computation. Basically everything is decoded with 

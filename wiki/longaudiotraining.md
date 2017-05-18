@@ -173,7 +173,7 @@ only the backtracking had to be changed. It was modified in the similar way as
 backward update.
 
 Although the segment size and thus checkpoints count can be set arbitrarily, 
-the most reasonable value for both is ''sqrt(T)'', where ''T'' is the length of 
+the most reasonable value for both is `sqrt(T)`, where `T` is the length of 
 the observation sequence (this is with the respect to the memory demands). This 
 in theory reduces the asymptotic space complexity of the three algorithms to 
 the square root function of observation sequence length. In reality the savings 
@@ -188,10 +188,10 @@ because every alpha value is essentially computed twice.
 The modification was tested on two training databases - *An4*, representing a 
 short training recordings (few seconds) and *Rita*, consisting of one long (5+ 
 minutes recording). The memory consumption was measured by Unix command 
-''time'' with verbose (''-v'') option.
+`time` with verbose (`-v`) option.
 
 The test shows, that the Baum-Welch step is by far the most memory-intensive 
-among the all training steps as defined in ''scripts_pl'' directory (peaks 
+among the all training steps as defined in `scripts_pl` directory (peaks 
 between the steps 20. and 55.):
 
 {{:wiki:long-training:modules-an4.png?400}}{{:wiki:long-training:modules-rita.pn

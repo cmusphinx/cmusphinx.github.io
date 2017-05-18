@@ -76,7 +76,7 @@ PocketSphinx (FIXME: and Sphinx4 too?), by passing %%--sOutputFormat ctl%%.  In
 theory it also supports Transcriber XML, but I haven't figured out how to make 
 that work yet.
 
-Here's a little script that will turn ''ctl'' format output files into label 
+Here's a little script that will turn `ctl` format output files into label 
 files for Audacity:
 
 	
@@ -92,7 +92,7 @@ files for Audacity:
 	}
 
 
-And, here's one that will turn the output ''hyp'' files from PocketSphinx into 
+And, here's one that will turn the output `hyp` files from PocketSphinx into 
 label files, for transcription fixing:
 
 	

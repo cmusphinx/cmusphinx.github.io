@@ -31,12 +31,12 @@ cd test/regression
 ./test-lm.sh`</code>`
 
 If you don't have root privileges on the machine where you're installing, you 
-can skip the ''sudo apt-get'' command and instead make a new local directory, 
-e.g. ''mkdir $HOME/pocketsphinx'' and then use `./autogen.sh 
---prefix=$HOME/pocketsphinx --without-python` for *both* of the ''autogen'' 
-commands, and omit the ''sudo'' prefix when executing the two ''make install'' 
+can skip the `sudo apt-get` command and instead make a new local directory, 
+e.g. `mkdir $HOME/pocketsphinx` and then use `./autogen.sh 
+--prefix=$HOME/pocketsphinx --without-python` for *both* of the `autogen` 
+commands, and omit the `sudo` prefix when executing the two `make install` 
 commands. Executable binaries will be installed to the bin subdirectory, e.g. 
-''~/pocketsphinx/bin/pocketsphinx_continuous'' 
+`~/pocketsphinx/bin/pocketsphinx_continuous` 
 
 If you are on MacOSX, you will need to [install autoconf, automake, and 
 libtool](http://munchpress.com/installing-autoconf-automake-libtool-on-mac-osx-m
@@ -168,9 +168,9 @@ Note that the production for the covering phonemes neighboring /S/ is coded as
 grammar word;
 public `<wholeutt>` = sil with [ sil ];`</file>`
 
-For multiple words use something like ''public `<wholeutt>` = sil dance [ sil ] 
-with [ sil ] toy [ sil ];'' on the final line. Similarly for the phoneme files, 
-the ''public'' production should just include more phonemes with [ optional ] 
+For multiple words use something like `public `<wholeutt>` = sil dance [ sil ] 
+with [ sil ] toy [ sil ];` on the final line. Similarly for the phoneme files, 
+the `public` production should just include more phonemes with [ optional ] 
 sil-ence inserted between the adjacent words.
 ### Running PocketSphinx
 
@@ -264,15 +264,15 @@ the acoustic score for the whole word.
 Note that acoustic scores are given in log-probabilities, so they are negative 
 numbers, with larger numbers (e.g. negative numbers closer to zero) 
 corresponding to greater confidence that the phoneme or word was pronounced 
-when ''-bestpath no'' is used.
+when `-bestpath no` is used.
 
-Make sure you use ''-bestpath no'' on zero perplexity phoneme alignment and 
-word alignment FSGs, but ''-bestpath yes'' on the higher perplexity neighboring 
+Make sure you use `-bestpath no` on zero perplexity phoneme alignment and 
+word alignment FSGs, but `-bestpath yes` on the higher perplexity neighboring 
 phoneme grammar, and do not depend on the resulting acoustic scores from those 
 high perplexity FSGs because they do not correlate to confidence.
 
 Often, mispronunciations and ordinary background noise will result in missing 
-scores, superfluous entries in the backtrace tables (e.g. "''(NULL)''" as 
+scores, superfluous entries in the backtrace tables (e.g. "`(NULL)`" as 
 above), multiple output tables per invocation, and other confounding factors, 
 all of which you will need to experiment with to be able to successfully parse 
 the output. 
@@ -310,10 +310,10 @@ and durations of the same phoneme from identical words in different contexts.
 
 How best to use the non-quantitative neighboring phoneme data is an exciting 
 open question in machine learning. Please don't use the acoustic scores from 
-''-bestpath yes'' neighboring phoneme finite state grammars, but you might want 
-to experiment with ''-bestpath no'' scores from such grammars when their output 
+`-bestpath yes` neighboring phoneme finite state grammars, but you might want 
+to experiment with `-bestpath no` scores from such grammars when their output 
 is locally similar (same previous, current, and subsequent phonemes) to that of 
-the ''-bestpath yes'' results. Please share what you learn.
+the `-bestpath yes` results. Please share what you learn.
 ### Examples
 
 //Note: These examples make heavy use of the AWK programming language ([man 
@@ -565,7 +565,7 @@ the References below.
 If you encounter the "Final result does not match the grammar" error, first, 
 check to see that you're using `<ss>` instead of the start symbol `<s>` in the 
 neighbor phoneme recognition JSGF files. If that's not the problem, try making 
-the ''-wbeam'' and/or ''-beam'' parameters smaller (smaller values mean a wider 
+the `-wbeam` and/or `-beam` parameters smaller (smaller values mean a wider 
 search beam.)
 
 
@@ -576,7 +576,7 @@ in this case): Try 1e-56
 *  -beam (default 1e-48) Beam width applied to every frame in Viterbi search: 
 Try 1e-57
 
-I.e., try ''-wbeam 1e-56 -beam 1e-57'' on the ''pocketsphinx_continious'' 
+I.e., try `-wbeam 1e-56 -beam 1e-57` on the `pocketsphinx_continious` 
 command lines. Thanks to Pavel Denisov for those values. These are specified in 
 base-10 exponent scientific notation, but they will be reported by pocketsphinx 
 as negative integer logarithm probability state transition pruning thresholds 

@@ -42,10 +42,10 @@ context-independent model, but no test is done yet.
 **CAUTION:** The training does NOT work for semi-continuous model! Sorry about 
 that.
 
-In addition, you need to have the ''sphinxbase'' Python module and the 
-SphinxBase shared library (''libsphinxbase.so.1'') installed or located 
+In addition, you need to have the `sphinxbase` Python module and the 
+SphinxBase shared library (`libsphinxbase.so.1`) installed or located 
 somewhere where it can be found.  This can be achieved by setting 
-''PYTHONPATH'' and ''LD_LIBRARY_PATH'' to point to your compiled SphinxBase 
+`PYTHONPATH` and `LD_LIBRARY_PATH` to point to your compiled SphinxBase 
 source tree:
 
 	
@@ -55,8 +55,8 @@ source tree
 	export LD_LIBRARY_PATH=$SPHINXBASE/src/libsphinxbase/.libs
 
 
-Finally the Sphinx3 programs ''sphinx3_decode'' and ''sphinx3_align'' should be 
-copied to the ''bin'' directory inside your training setup.
+Finally the Sphinx3 programs `sphinx3_decode` and `sphinx3_align` should be 
+copied to the `bin` directory inside your training setup.
 
 
 ## A general MMIE training procedure:

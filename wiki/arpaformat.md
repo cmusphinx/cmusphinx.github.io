@@ -47,22 +47,22 @@ calculated from the language model as follows:
 word_{N-1} | word_{N-2}, ...., word_1 )
 
 
-If the sequence ''( word_{N-1}, word_{N-2}, ...., word_1 )'' is also not 
-listed, then the term ''backoff-weight( word_{N-1} | word_{N-2}, ...., word_1 
-)'' gets replaced with ''1.0'' and the recursion continues so. 
+If the sequence `( word_{N-1}, word_{N-2}, ...., word_1 )` is also not 
+listed, then the term `backoff-weight( word_{N-1} | word_{N-2}, ...., word_1 
+)` gets replaced with `1.0` and the recursion continues so. 
 
 The following is a **random** example we constructed of a 2-gram LM with toy 
 vocabulary. This is an example of a standard ARPA format LM. The format is 
-simply ''P(N-gram sequence) sequence BP(N-gram sequence)''
+simply `P(N-gram sequence) sequence BP(N-gram sequence)`
 These (the numbers associated with unigrams and bigrams in the example  below)  
 are actual probabilities. 
-The format of "sequence" is ''A B C D := D'' after ''C'' after ''B'' after 
-''A'' (as spoken or written in the language)
+The format of "sequence" is `A B C D := D` after `C` after `B` after 
+`A` (as spoken or written in the language)
 
 So if you don't see the sequence "wood pittsburgh", you can get its probability 
 by reading off 
 
-''P(pittsburgh|wood)= P(pittsburgh) * BWt(wood).''
+`P(pittsburgh|wood)= P(pittsburgh) * BWt(wood).`
 
 	
 	

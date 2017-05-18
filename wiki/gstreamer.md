@@ -62,7 +62,7 @@ You also should see the following line in configuration script output:
 
 
 After installation you should make sure that GStreamer is able to find the 
-pocketsphinx plugin.  If you have installed pocketsphinx in ''/usr/local'', 
+pocketsphinx plugin.  If you have installed pocketsphinx in `/usr/local`, 
 then you may have to set the following environment variable:
 
 	
@@ -70,16 +70,16 @@ then you may have to set the following environment variable:
 
 
 If you have installed pocketsphinx under a different prefix, you will also need 
-to set the ''LD_LIBRARY_PATH'' variable.  If your installation prefix is 
-''$psprefix'', then you would want to set these variables.
+to set the `LD_LIBRARY_PATH` variable.  If your installation prefix is 
+`$psprefix`, then you would want to set these variables.
 
 	
 	export LD_LIBRARY_PATH=$psprefix/lib
 	export GST_PLUGIN_PATH=$psprefix/lib/gstreamer-1.0
 
 
-To verify that GStreamer can find the plugin, run ''gst-inspect-1.0 
-pocketsphinx''.  You should get a large amount of output, ending with something 
+To verify that GStreamer can find the plugin, run `gst-inspect-1.0 
+pocketsphinx`.  You should get a large amount of output, ending with something 
 like this:
 
 	
@@ -96,7 +96,7 @@ If you instead see something like this:
 
 and all above environmental variables are properly set, it's quite possible 
 that you haven't properly compiled the GStreamer plugin as part of pocketsphinx 
-build, you can check the ''config.log'' in pocketsphinx and build log for 
+build, you can check the `config.log` in pocketsphinx and build log for 
 details.
 ## Background Reading
 
@@ -139,9 +139,9 @@ We will start by creating a Python class representing our demo application:
 	gtk.main()
 
 
-Now let's fill in the ''init_gui'' method.  We are going to create a window 
-with a ''gtk.VBox'' in it, holding a ''gtk.TextView'' (with associated 
-''gtk.TextBuffer'') and a ''gtk.ToggleButton''.
+Now let's fill in the `init_gui` method.  We are going to create a window 
+with a `gtk.VBox` in it, holding a `gtk.TextView` (with associated 
+`gtk.TextBuffer`) and a `gtk.ToggleButton`.
 
 	
 	    def init_gui(self):
@@ -179,15 +179,15 @@ program:
 	Gst.init(None)
 
 
-Now, we will fill in the ''gst.init'' method, which initializes a GStreamer 
+Now, we will fill in the `gst.init` method, which initializes a GStreamer 
 pipeline that will do speech recognition for us.
 
 ## Creating the pipeline
 
-For simplicity we are creating it using the ''gst.parse_launch'' function, 
+For simplicity we are creating it using the `gst.parse_launch` function, 
 which reads a  textual description and creates a pipeline from it.  If you are 
-not running GNOME, you may need to change ''gconfaudiosrc'' to a different 
-source element, such as ''alsasrc'' or ''osssrc''.
+not running GNOME, you may need to change `gconfaudiosrc` to a different 
+source element, such as `alsasrc` or `osssrc`.
 
 	
 	        self.pipeline = gst.parse_launch('autoaudiosrc ! audioconvert ! 
@@ -197,8 +197,8 @@ fakesink')
 
 
 This pipeline consists of an audio source, followed by conversion and 
-resampling (the ''pocketsphinx'' element currently requires 16kHz, 16-bit PCM 
-audio), followed by recognition.  The ''fakesink'' element discards the output 
+resampling (the `pocketsphinx` element currently requires 16kHz, 16-bit PCM 
+audio), followed by recognition.  The `fakesink` element discards the output 
 of the speech recognition element (more on this below). There used to be vader 
 element before to do voice activity detection, now voice activity is detected 
 inside decoder for best accuracy.
@@ -210,8 +210,8 @@ paused, and is set to play (i.e. start recognition) when the user presses the
 "Speak" button.  Once a final recognition result is retrieved we will put it 
 back in paused mode and wait for another button press.  If the user presses the 
 button in the middle of recognition, it will halt speech recognition 
-immediately.  We will implement this using the ''button_clicked'' method which 
-was connected to the button's signal in ''init_gui'':
+immediately.  We will implement this using the `button_clicked` method which 
+was connected to the button's signal in `init_gui`:
 
 	
 	    def button_clicked(self, button):
@@ -226,7 +226,7 @@ was connected to the button's signal in ''init_gui'':
 
 ## The 'pocketsphinx' element
 
-The ''pocketsphinx'' element functions as a filter - it takes audio data as 
+The `pocketsphinx` element functions as a filter - it takes audio data as 
 input and produces text as output.  This makes sense in the GStreamer 
 framework, where data flows from a source to a sink, and is potentially useful 
 for captioning or other multimedia applications.  However, due to the fact that 
@@ -239,8 +239,8 @@ In practice, we want to treat the speech recognizer more like an input device
 in GUI programming, which emits a stream of messages that can be subscribed to 
 and interpreted by a controller object.  Fortunately, GStreamer allows us to do 
 (almost) exactly this, using the same mechanism used for GTK+ widgets.  So, we 
-are going to connect methods in ''DemoApp'' to the messages emitted by the 
-''pocketsphinx'' element:
+are going to connect methods in `DemoApp` to the messages emitted by the 
+`pocketsphinx` element:
 
 	
 	        bus = self.pipeline.get_bus()
@@ -265,7 +265,7 @@ msg.get_structure().get_value('confidence'))
 self.partial_result(msg.get_structure().get_value('hypothesis'))
 
 
-Now, the methods ''partial_result'' and ''final_result'' will be called 
+Now, the methods `partial_result` and `final_result` will be called 
 whenever a partial or complete utterance is decoded.
 
 ## Updating the text buffer
@@ -302,17 +302,17 @@ Sometimes you might want to configure the decoder to improve accuracy, improve
 speed of decoding or run some specific mode.
 You can configure many of pocketsphinx options with gstreamer properties since 
 we mapped gstreamer properties to pocketsphinx configuration. Not every 
-property is supported, for example, you won't be able to set ''-topn'' and 
+property is supported, for example, you won't be able to set `-topn` and 
 similar exotic configurations. But major configuration options are supported.
 
-You can get a list of properties supported with ''gst-inspect-1.0 
-pocketsphinx''.
+You can get a list of properties supported with `gst-inspect-1.0 
+pocketsphinx`.
 
 For example, to use your improved language model with GStreamer, you just have 
-to set the ''lm'' and ''dict'' properties on the ''pocketsphinx'' element.  So, 
+to set the `lm` and `dict` properties on the `pocketsphinx` element.  So, 
 if your language model is in /home/user/mylanguagemodel.lm and the associated 
 dictionary is /home/user/mylanguagemodel.dic, you would add these lines to the 
-''init_gst'' method.
+`init_gst` method.
 
 	
 	        asr = self.pipeline.get_by_name('asr'); # We previously 

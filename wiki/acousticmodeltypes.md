@@ -25,7 +25,7 @@ almost the same as accuracy of continuous model.
 In modern packages of pocketsphinx and sphinx4 PTM models are used by default.
 
 To understand the model type you need to look in feat.params file inside the 
-model. PTM models have ''-model ptm'' there. Continuous model have ''-feat 
-1s_c_d_dd''. You can also infer the type from the model name, semi-continuous 
+model. PTM models have `-model ptm` there. Continuous model have `-feat 
+1s_c_d_dd`. You can also infer the type from the model name, semi-continuous 
 models usually have "semi" in the name.
 

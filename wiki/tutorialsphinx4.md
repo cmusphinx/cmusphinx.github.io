@@ -29,7 +29,7 @@ The easiest way to use modern sphinx4 is to use modern build tools like [
 Apache Maven](http://maven.apache.org/ref/3.1.0/ ) or [ 
 Gradle](http://gradle.org). Sphinx-4 is available as a maven package in [ 
 Sonatype OSS repository](https://oss.sonatype.org/ ). To use sphinx4 in your 
-maven project specify this repository in your ''pom.xml'':
+maven project specify this repository in your `pom.xml`:
 
 	:::xml
 	`<project>`
@@ -47,7 +47,7 @@ maven project specify this repository in your ''pom.xml'':
 	`</project>`
 
 
-Then add ''sphinx4-core'' to the project dependencies:
+Then add `sphinx4-core` to the project dependencies:
 
 	:::xml
 	`<dependency>`
@@ -57,7 +57,7 @@ Then add ''sphinx4-core'' to the project dependencies:
 	`</dependency>`
 
 
-Add ''sphinx4-data'' to dependencies as well if you want to use default 
+Add `sphinx4-data` to dependencies as well if you want to use default 
 acoustic and language models:
 
 	:::xml
@@ -68,7 +68,7 @@ acoustic and language models:
 	`</dependency>`
 
 
-In gradle you need to following lines in ''build.gradle''
+In gradle you need to following lines in `build.gradle`
 
 	:::javascript
 	repositories {

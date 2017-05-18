@@ -21,27 +21,27 @@ The acoustic model is usually a folder with the following contents. Some of the
 files could be missing:
 
 
-*  ''feat.params'' – feature extraction parameters, a list of options used to 
+*  `feat.params` – feature extraction parameters, a list of options used to 
 configure feature extractoion.
 
-*  ''mdef'' – the definition of mapping between the triphone contexts to GMM 
+*  `mdef` – the definition of mapping between the triphone contexts to GMM 
 ids (senones)
 
-*  ''means'' – gaussian codebook means
+*  `means` – gaussian codebook means
 
-*  ''variances'' – gaussian codebook variances
+*  `variances` – gaussian codebook variances
 
-*  ''mixture_weights'' – mixtures for gaussians (could be missing if sendump is 
+*  `mixture_weights` – mixtures for gaussians (could be missing if sendump is 
 present)
 
-*  ''sendump'' – compressed and quantized mixtures (could replace 
+*  `sendump` – compressed and quantized mixtures (could replace 
 mixture_weights)
 
-*  ''feature_transform'' – feature transformation matrix
+*  `feature_transform` – feature transformation matrix
 
-*  ''noisedict'' – the dictionary for filler words
+*  `noisedict` – the dictionary for filler words
 
-*  ''transition_matrices''– HMM transition matrices
+*  `transition_matrices`– HMM transition matrices
 
 Binary files usually consist of the header which points to the number of 
 streams and data dimensions and then the raw float data. Last value is usually 

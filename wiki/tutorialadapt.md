@@ -65,7 +65,7 @@ In case you are adapting to a single speaker you can record the adaptation data
 yourself. This is unfortunately a bit more complicated than it ought to be.  
 Basically, you need to record a single audio file for each sentence in the 
 adaptation corpus, naming the files according to the names listed in 
-''arctic20.transcription'' and ''arctic20.fileids''.  In addition, you will 
+`arctic20.transcription` and `arctic20.fileids`.  In addition, you will 
 **NEED TO MAKE SURE THAT YOU RECORD AT A SAMPLING RATE OF 16 KHZ (or 8 kHz if 
 you adapt a telephone model) IN MONO WITH SINGLE CHANNEL.**
 
@@ -102,8 +102,8 @@ them to improve the recognizer accuracy by means of adaptation.
 
 First we will copy the default acoustic model from PocketSphinx into the 
 current directory in order to work on it. Assuming that you installed 
-PocketSphinx under ''/usr/local'', the acoustic model directory is 
-''/usr/local/share/pocketsphinx/model/en-us/en-us''.  Copy this directory to 
+PocketSphinx under `/usr/local`, the acoustic model directory is 
+`/usr/local/share/pocketsphinx/model/en-us/en-us`.  Copy this directory to 
 your working directory:
 
 	
@@ -121,11 +121,11 @@ Lets also copy the dictionary and the lm for the testing
 
 In order to run the adaptation tools, you must generate a set of acoustic model 
 feature files from these WAV audio recordings.  This can be done with the 
-''sphinx_fe'' tool from SphinxBase.  It is imperative that you make sure you 
+`sphinx_fe` tool from SphinxBase.  It is imperative that you make sure you 
 are using the same acoustic parameters to extract these features as were used 
 to train the standard acoustic model.  Since PocketSphinx 0.4, these are stored 
-in a file called ''feat.params'' in the acoustic model directory.  You can 
-simply add it to the command line for ''sphinx_fe'', like this:
+in a file called `feat.params` in the acoustic model directory.  You can 
+simply add it to the command line for `sphinx_fe`, like this:
 
 	
 	sphinx_fe -argfile en-us/feat.params \
@@ -166,8 +166,8 @@ wnload )
 Make sure you are using the full model with the mixture_weights file present.
 
 If mdef file inside the model is converted to binary, you will also need to 
-convert the ''mdef'' file from the acoustic model to the plain text format used 
-by the SphinxTrain tools.  To do this, use the ''pocketsphinx_mdef_convert'' 
+convert the `mdef` file from the acoustic model to the plain text format used 
+by the SphinxTrain tools.  To do this, use the `pocketsphinx_mdef_convert` 
 program:
 
 	
@@ -179,11 +179,11 @@ In downloads the mdef is already in the text form.
 ### Accumulating observation counts
 
 The next step in adaptation is to collect statistics from the adaptation data.  
-This is done using the ''bw'' program from SphinxTrain.  You should be able to 
-find ''bw'' tool in a sphinxtrain installation in a folder 
-''/usr/local/libexec/sphinxtrain'' (or under other prefix on Linux) or in 
-''bin\Release'' (in sphinxtrain directory on Windows).  Copy it to the working 
-directory along with the ''map_adapt'' and ''mk_s2sendump'' programs. 
+This is done using the `bw` program from SphinxTrain.  You should be able to 
+find `bw` tool in a sphinxtrain installation in a folder 
+`/usr/local/libexec/sphinxtrain` (or under other prefix on Linux) or in 
+`bin\Release` (in sphinxtrain directory on Windows).  Copy it to the working 
+directory along with the `map_adapt` and `mk_s2sendump` programs. 
 
 Now, to collect statistics, run:
 
@@ -204,22 +204,22 @@ Now, to collect statistics, run:
 	
 
 
-Make sure the arguments in ''bw'' command should match the parameters in 
-''feat.params'' file inside the acoustic model folder. Please note that not all 
-the parameters from ''feat.param'' are supported by ''bw'', only a few of them. 
-''bw'' for example doesn't suppport ''upperf'' or other feature extraction 
+Make sure the arguments in `bw` command should match the parameters in 
+`feat.params` file inside the acoustic model folder. Please note that not all 
+the parameters from `feat.param` are supported by `bw`, only a few of them. 
+`bw` for example doesn't suppport `upperf` or other feature extraction 
 params. You only need to use parameters which are accepted, other parameters 
-from ''feat.params'' should be skipped. 
+from `feat.params` should be skipped. 
 
-For example, for continuous model you don't need to include the ''svspec'' 
-option. Instead, you need to use just ''-ts2cbfn .cont.'' For semi-continuous 
-models use ''-ts2cbfn .semi.'' If model has `feature_transform` file like en-us 
-continuous model, you need to add ''-lda feature_transform'' argument to bw, 
+For example, for continuous model you don't need to include the `svspec` 
+option. Instead, you need to use just `-ts2cbfn .cont.` For semi-continuous 
+models use `-ts2cbfn .semi.` If model has `feature_transform` file like en-us 
+continuous model, you need to add `-lda feature_transform` argument to bw, 
 otherwise it will not work properly.
 
-Sometimes if you miss the file ''noisedict'' you also need an extra step, copy 
-the ''fillerdict'' file into the directory that you choose in the ''hmmdir'' 
-parameter, renaming it to ''noisedict''.
+Sometimes if you miss the file `noisedict` you also need an extra step, copy 
+the `fillerdict` file into the directory that you choose in the `hmmdir` 
+parameter, renaming it to `noisedict`.
 
 ### Creating transformation with MLLR
 
@@ -243,8 +243,8 @@ program:
 	    -outmllrfn mllr_matrix -accumdir .
 
 
-This command will create an adaptation data file called ''mllr_matrix''. Now, 
-if you wish to decode with the adapted model, simply add ''-mllr mllr_matrix'' 
+This command will create an adaptation data file called `mllr_matrix`. Now, 
+if you wish to decode with the adapted model, simply add `-mllr mllr_matrix` 
 (or whatever the path to the mllr_matrix file you created is) to your 
 pocketsphinx command line.
 
@@ -258,7 +258,7 @@ with adapted model files:
 	
 	cp -a en-us en-us-adapt
 
-To do adaptation, use the ''map_adapt'' program:
+To do adaptation, use the `map_adapt` program:
 
 	
 	./map_adapt \
@@ -278,8 +278,8 @@ To do adaptation, use the ''map_adapt'' program:
 ### Recreating the adapted sendump file
 
 If you want to save space for the model you can use sendump file supported by 
-pocketsphinx. For sphinx4 you don't need that. To recreate the ''sendump'' file 
-from the updated ''mixture_weights'' file:
+pocketsphinx. For sphinx4 you don't need that. To recreate the `sendump` file 
+from the updated `mixture_weights` file:
 
 	
 	./mk_s2sendump \
@@ -290,7 +290,7 @@ from the updated ''mixture_weights'' file:
 
 
 Congratulations!  You now have an adapted acoustic model!  You can delete the 
-files ''en-us-adapt/mixture_weights'' and ''en-us-adapt/mdef.txt'' to save 
+files `en-us-adapt/mixture_weights` and `en-us-adapt/mdef.txt` to save 
 space if you like, because they are not used by the decoder.
 
 ## Other acoustic models 
@@ -335,14 +335,14 @@ You need only that folder. The model should have the following files:
 Depending on the type of the model you trained. 
 
 To use the model in pocketsphinx, simply put the model files to the resources 
-of your application. Then point to it with the ''-hmm'' option:
+of your application. Then point to it with the `-hmm` option:
 
 	
 	pocketsphinx_continuous -hmm `<your_new_model_folder>` -lm `<your_lm>` 
 -dict `<your_dict>` -infile test.wav
 
 
-Or with ''-hmm'' engine configuration option through ''cmd_ln_init'' function. 
+Or with `-hmm` engine configuration option through `cmd_ln_init` function. 
 Alternatively you can replace the old model files with the new ones.
 
 To use the trained model in sphinx4, you need to update the model location in 

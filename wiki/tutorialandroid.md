@@ -87,18 +87,18 @@ android:name="android.permission.WRITE_EXTERNAL_STORAGE" />`
 ### Including resource files
 
 The standard way to ship resource files with your application in Android is to 
-put them in ''assets/'' directory of your project. But in order to make them 
+put them in `assets/` directory of your project. But in order to make them 
 available for pocketsphinx files should have physical path, as long as they are 
 within .apk they don't have one. Assets class from pocketsphinx-android 
 provides a method to automatically copy asset files to external storage of the 
-target device. ''edu.cmu.pocketsphinx.Assets#syncAssets'' synchronizes 
-resources reading items from ''assets.lst'' file located on the top 
-''assets/''. Before copying it matches MD5 checksums of an asset and a file on 
+target device. `edu.cmu.pocketsphinx.Assets#syncAssets` synchronizes 
+resources reading items from `assets.lst` file located on the top 
+`assets/`. Before copying it matches MD5 checksums of an asset and a file on 
 external storage with the same name if such exists. It only does actualy 
 copying if there is incomplete information (no file on external storage, no any 
 of two .md5 files)  or there is hash mismatch. PocketSphinxAndroidDemo contains 
-''ant'' script that generates ''assets.lst'' as well as ''.md5'' files, look 
-for ''assets.xml''. 
+`ant` script that generates `assets.lst` as well as `.md5` files, look 
+for `assets.xml`. 
 
 Please note that if ant build script doesn't run properly in your build 
 process, assets might be out of sync. Make sure that script runs or create md5 
@@ -106,9 +106,9 @@ files and assets.lst yourself.
 
 To integrate assets sync in your application do the following
 
- 1.  Copy ''app/asset.xml'' build file from demo application into your 
-application into same folder ''app''.
- 2.  Edit ''app/build.gradle'' build file to run ''assets.xml'', just as in 
+ 1.  Copy `app/asset.xml` build file from demo application into your 
+application into same folder `app`.
+ 2.  Edit `app/build.gradle` build file to run `assets.xml`, just as in 
 android demo:
 
 	
@@ -127,9 +127,9 @@ into classes and functions working with them are turned into methods of the
 corresponding classes. So if you are familiar with pocketsphinx you should feel 
 comfortable with pocketsphinx-android too.
 
-''SpeechRecognizer'' is the main class to access decoder functionality. It is 
-created with the help of ''SpeechRecognizerSetup'' builder. 
-''SpeechRecognizerBuilder'' allows to configure main properties as well as 
+`SpeechRecognizer` is the main class to access decoder functionality. It is 
+created with the help of `SpeechRecognizerSetup` builder. 
+`SpeechRecognizerBuilder` allows to configure main properties as well as 
 other parameters of teh decoder. The parameters keys and values are the same as 
 those are passed in command-line to pocketsphinx binaries. Read [ 
 more](pocketsphinxhandhelds ) about tweaking pocketsphinx performance.
@@ -170,13 +170,13 @@ with
 	recognizer.startListening(searchName);
 
 
-You will get notified on speech end event in ''onEndOfSpeech'' callback of the 
+You will get notified on speech end event in `onEndOfSpeech` callback of the 
 recognizer listener. Then you could call
-''recognizer.stop'' or ''recognizer.cancel()''. Latter will cancel the 
+`recognizer.stop` or `recognizer.cancel()`. Latter will cancel the 
 recognition, former will cause the final result
-be passed you in ''onResult'' callback.
+be passed you in `onResult` callback.
 
-During the recognition you will get partial results in ''onPartialResult'' 
+During the recognition you will get partial results in `onPartialResult` 
 callback.
 
 You can also access other Pocketsphinx method wrapped with Java classes in 
@@ -218,11 +218,11 @@ the following command to checkout from repository:
         git clone http://github.com/cmupshinx/pocketsphinx-android
 
 After arragement of the files you need to update the file
-''local.properties'' in the project root and define the following
+`local.properties` in the project root and define the following
 properties:
 
-*  ''sdk.dir'' - path to Android SDK
-*  ''ndk.dir'' - path to Android NDK
+*  `sdk.dir` - path to Android SDK
+*  `ndk.dir` - path to Android NDK
 
 For example:
 
@@ -231,6 +231,6 @@ For example:
 	ndk.dir=/home/user/local/android-ndk-r9d
 
 
-After everything is set, run ''gradle build''. It will create 
+After everything is set, run `gradle build`. It will create 
 pocketsphinx-android-5prealpha-debug.aar and 
 pocketsphinx-android-5prealpha-release.aar in build/outputs/aar.
