@@ -18,17 +18,13 @@ list
 We recommend you to use the latest available releases:
 
   * 
-[sphinxbase-5prealpha](http://sourceforge.net/projects/cmusphinx/files/sphinxbas
-e/5prealpha)
+[sphinxbase-5prealpha](http://sourceforge.net/projects/cmusphinx/files/sphinxbase/5prealpha)
   * 
-[pocketsphinx-5prealpha](http://sourceforge.net/projects/cmusphinx/files/pockets
-phinx/5prealpha)
+[pocketsphinx-5prealpha](http://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha)
   * 
-[sphinxtrain-5prealpha](http://sourceforge.net/projects/cmusphinx/files/sphinxtr
-ain/5prealpha)
+[sphinxtrain-5prealpha](http://sourceforge.net/projects/cmusphinx/files/sphinxtrain/5prealpha)
   * 
-[sphinx4-5prealpha](http://sourceforge.net/projects/cmusphinx/files/sphinx4/5pre
-alpha)
+[sphinx4-5prealpha](http://sourceforge.net/projects/cmusphinx/files/sphinx4/5prealpha)
 
 If you want to try bleeding edge version, pull the latest code from
 Github. Then compile packages from the source code, but remember that
@@ -37,8 +33,7 @@ there is no guarantee they will be stable.
 [http://github.com/cmusphinx](http://github.com/cmusphinx)
 
 Older releases and files could be found on SourceForge 
-[http://sourceforge.net/projects/cmusphinx/files/](http://sourceforge.net/projec
-ts/cmusphinx/files/)
+[http://sourceforge.net/projects/cmusphinx/files/](http://sourceforge.net/projects/cmusphinx/files/)
 
 We do not maintain distribution-specific packages yet, but help to update them 
 is truely appreciated. Some distributions already include CMUSphinx packages:
@@ -53,10 +48,7 @@ collect the best models
 available at our download page. We hope you'll be able to find the best model 
 for your language there:
 
-[Download 
-models](https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Langua
-ge%20Models/)
+[Download models](https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/)
 
 We are also planning to use bittorrent tracker to distribute the models
-but we are not there yet, if you are willing to help, please [contact
-us](mailto:cmusphinx-devel@lists.sourceforge.net)
+but we are not there yet, if you are willing to help, please [contact us](mailto:cmusphinx-devel@lists.sourceforge.net)
