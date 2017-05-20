@@ -37,17 +37,17 @@ evaluation](pocketsphinx_pronunciation_evaluation )
 See also some more docs:
 
 
-*  [ Decoder Versions](Versions ): Description of the software packages
+*  [ Decoder Versions](versions ): Description of the software packages
 
-*  [ Download Details](Download ): How to obtain CMUSphinx packages
+*  [ Download Details](download ): How to obtain CMUSphinx packages
 
-*  [ How to get help and discuss things](Communicate ): How to get help and 
+*  [ How to get help and discuss things](communicate ): How to get help and 
 discuss things
 
 If you want to find out where CMUSphinx works, see 
 
 
-*  [Projects that use Sphinx](SphinxInAction): These projects, both commercial 
+*  [Projects that use Sphinx](sphinxinaction): These projects, both commercial 
 and free, use Sphinx in one form or another.
 
 ------------------------------------------------
@@ -59,39 +59,39 @@ in detail, or they serve as a
 developer's guide to accomplishing some particular task.
 
 
-*  [Building](Building): Building Pocketsphinx on various platforms
+*  [Building](building): Building Pocketsphinx on various platforms
 
-*  [AsteriskDetails](AsteriskDetails): How to use pocketsphinx in Asterisk.
+*  [AsteriskDetails](asteriskdetails): How to use pocketsphinx in Asterisk.
 
-*  [DecoderTuning](DecoderTuning): How to tune the decoder to be fast (or 
+*  [DecoderTuning](decodertuning): How to tune the decoder to be fast (or 
 rather, not horribly slow)
 
-*  [PocketsphinxHandhelds](PocketsphinxHandhelds) Pocketsphinx optimizations 
+*  [PocketsphinxHandhelds](pocketsphinxhandhelds) Pocketsphinx optimizations 
 for embedded devices, same as above for Pocketsphinx.
 
-*  [PhonemeRecognition](PhonemeRecognition): How to use pocketsphinx for 
+*  [PhonemeRecognition](phonemerecognition): How to use pocketsphinx for 
 phoneme recognition.
 
-*  [SpeakerDiarization](SpeakerDiarization): Using LIUM tools for speech 
+*  [SpeakerDiarization](speakerdiarization): Using LIUM tools for speech 
 segmentation and speaker diarization
 
-*  [LDAMLLT](LDAMLLT): How to train acoustic models with LDA and MLLT feature 
+*  [LDAMLLT](ldamllt): How to train acoustic models with LDA and MLLT feature 
 transforms
 
-*  [GStreamer](GStreamer): How to use PocketSphinx with 
+*  [GStreamer](gstreamer): How to use PocketSphinx with 
 [GStreamer](http://gstreamer.freedesktop.org/) and [Python](http://python.org)
 
-*  [InstallingPythonStuff](InstallingPythonStuff): How to install Python and 
+*  [InstallingPythonStuff](installingpythonstuff): How to install Python and 
 necessary modules for SphinxTrain development
 
-*  [MMIE_Train](MMIE_Train): How to perform MMIE training.
+*  [MMIE_Train](mmie_train): How to perform MMIE training.
 
-*  [ Installing on Raspberry Pi](RaspberryPi )
+*  [ Installing on Raspberry Pi](raspberrypi )
 
 
 ### How To Contribute
 
-Please consider project ideas [ProjectIdeas](ProjectIdeas), some of them are 
+Please consider project ideas [ProjectIdeas](projectideas), some of them are 
 easy, some harder. If you want to start work on any of them, please let us know.
 
 ### Reference
@@ -120,21 +120,21 @@ This section contains various internal information for CMUSphinx developers.
 But we hope it will be still usable for you.
 
 
-*  [Sphinx-4 Regression Tests](RegressionTests): How to run regression tests
+*  [Sphinx-4 Regression Tests](regressiontests): How to run regression tests
 
-*  [SphinxTrainWalkthrough](SphinxTrainWalkthrough): An overview of the 
+*  [SphinxTrainWalkthrough](sphinxtrainwalkthrough): An overview of the 
 SphinxTrain source code for researchers and developers
 
-*  [CMUCLMTK development](CMUCLMTKDevelopment): Development guide for the 
+*  [CMUCLMTK development](cmuclmtkdevelopment): Development guide for the 
 CMU-Cambridge Language Modeling Toolkit.
 
-*  [CodingStyle](CodingStyle) for SphinxBase, SphinxThree, and SphinxTrain
+*  [CodingStyle](codingstyle) for SphinxBase, SphinxThree, and SphinxTrain
 
-*  [ReleaseSchedule](ReleaseSchedule): Plans for upcoming releases of Sphinx
+*  [ReleaseSchedule](releaseschedule): Plans for upcoming releases of Sphinx
 
-*  [ Release Check List](ReleaseProcess ): How to make a release
+*  [ Release Check List](releaseprocess ): How to make a release
 
-*  [ Web Site Layout](WebResources ): How to organize information
+*  [ Web Site Layout](webresources ): How to organize information
 
 *  [ Sphinx4 Space](sphinx4/webhome ) : Information about sphinx4, design, 
 code, performance, history.
@@ -142,16 +142,16 @@ code, performance, history.
 ### File formats
 
 
-*  [AcousticModelTypes](AcousticModelTypes)
+*  [AcousticModelTypes](acousticmodeltypes)
 
-*  [AcousticModelFormat](AcousticModelFormat)
+*  [AcousticModelFormat](acousticmodelformat)
 
-*  [MFCFormat](MFCFormat)
+*  [MFCFormat](mfcformat)
 
 *  [arpaformat](arpaformat)
 ### Data sources
 
-Available data sources are covered on the page [SpeechData](SpeechData)
+Available data sources are covered on the page [SpeechData](speechdata)
 
 ### Speech Recognition Theory
 
