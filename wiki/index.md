@@ -17,7 +17,7 @@ sparse for the
 forseeable future.
 
 
-*  [Tutorial](Tutorial): Getting started with CMUSphinx for developers
+*  [Tutorial](tutorial): Getting started with CMUSphinx for developers
      * [ Basic concepts of speech](tutorialconcepts )
      * [ Overview of the CMUSphinx toolkit](tutorialoverview )
      * [ Before you start](tutorialbeforestart )
@@ -32,7 +32,7 @@ forseeable future.
      * [ PocketSphinx for pronunciation 
 evaluation](pocketsphinx_pronunciation_evaluation )
 
-**You are in trouble - read the [FAQ](FAQ)**
+**You are in trouble - read the [FAQ](faq)**
 
 See also some more docs:
 
