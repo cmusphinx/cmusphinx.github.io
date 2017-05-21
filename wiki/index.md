@@ -107,10 +107,10 @@ PocketSphinx](http://cmusphinx.github.io/doc/pocketsphinx/)
 SphinxBase](http://cmusphinx.github.io/doc/sphinxbase/)
 
 *  [ePyDoc documentation for SphinxTrain Python 
-Modules](http://cmusphinx.github.io/doc/python/cmusphinx/)
+Modules](http://cmusphinx.github.io/doc/python/)
 
 *  [JavaDocs for 
-Sphinx4](http://cmusphinx.github.io/sphinx4/javadoc/index.html)
+Sphinx4](http://cmusphinx.github.io/doc/sphinx4/javadoc/index.html)
 
 ------------------------------------------------
 
