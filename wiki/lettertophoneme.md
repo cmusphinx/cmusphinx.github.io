@@ -192,4 +192,4 @@ Library](http://www.openfst.org/twiki/bin/view/GRM/NGramLibrary )
 
 
 [17] [ Porting openFST to java: Part 
-2](http://cmusphinx.sourceforge.net/2012/05/porting-openfst-to-java-part-2/ )
+2](http://cmusphinx.github.io/2012/05/porting-openfst-to-java-part-2/ )

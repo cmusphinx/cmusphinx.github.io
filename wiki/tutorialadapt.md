@@ -50,9 +50,9 @@ effect, here are the first 20 sentences from ARCTIC, a fileids file, and a
 transcription file
 
 
-*  [arctic20.fileids](http://cmusphinx.sourceforge.net/data/arctic20.fileids)
+*  [arctic20.fileids](http://cmusphinx.github.io/data/arctic20.fileids)
 *  
-[arctic20.transcription](http://cmusphinx.sourceforge.net/data/arctic20.transcri
+[arctic20.transcription](http://cmusphinx.github.io/data/arctic20.transcri
 ption)
 
 The sections below will refer to these files, so it would be a good idea to 

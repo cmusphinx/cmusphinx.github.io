@@ -263,7 +263,7 @@ features.
 18. Proofread project documentation with mentor review.
 
 19. Update the wiki at 
-http://cmusphinx.sourceforge.net/wiki/faq#qhow_to_implement_pronunciation_evalua
+http://cmusphinx.github.io/wiki/faq#qhow_to_implement_pronunciation_evalua
 tion with the project description, pointing to the project documentation and 
 including source code download instructions.
 

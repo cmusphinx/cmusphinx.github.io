@@ -37,7 +37,7 @@ the Java(tm) programming language.
 It's best for implementation of complex server or cloud-based system with deep 
 interaction with NLP modules, web services and cloud computing. For further 
 detail, please check the [ Sphinx-4 
-page](http://cmusphinx.sourceforge.net/sphinx4 ).
+page](http://cmusphinx.github.io/sphinx4 ).
 
 **Sphinx-3**
 

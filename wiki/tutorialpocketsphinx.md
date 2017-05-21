@@ -127,7 +127,7 @@ the same process.
 significant reduction in memory consumption.
 
 Reference documentation for the new API is available at 
-http://cmusphinx.sourceforge.net/api/pocketsphinx/
+http://cmusphinx.github.io/doc/pocketsphinx/
 
 ## Basic Usage (hello world)
 

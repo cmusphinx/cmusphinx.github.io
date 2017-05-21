@@ -591,10 +591,10 @@ line search parameters. [Here is a paper describing a different approach to
 obtaining difficult alignments of longer 
 utterances.](http://www.danielpovey.com/files/2015_icassp_librispeech.pdf) 
 Please see also: 
-http://cmusphinx.sourceforge.net/2014/07/long-audio-aligner-landed-in-trunk/
+http://cmusphinx.github.io/2014/07/long-audio-aligner-landed-in-trunk/
 
 Remember that [PocketSphinx has an 
-API](http://cmusphinx.sourceforge.net/doc/pocketsphinx/) because you have the 
+API](http://cmusphinx.github.io/doc/pocketsphinx/) because you have the 
 source code and you can modify it to do what you want it to do, so you can 
 program it in C which is much faster than bash and AWK.
 ### PocketSphinx.js
@@ -643,7 +643,7 @@ Conference (Antwerp, Belgium: CALL 2014.)
 http://talknicer.com/Salsman-CALL-2014.pdf
 
 CMUSphinx PocketSphinx tutorial: 
-http://cmusphinx.sourceforge.net/wiki/tutorialpocketsphinx
+http://cmusphinx.github.io/wiki/tutorialpocketsphinx
 
 Huggins-Daines, David, *et al.* (2006) "Pocketsphinx: A free, real-time 
 continuous speech recognition system for hand-held devices." Proceedings of the 
@@ -651,7 +651,7 @@ IEEE International Conference on Acoustics, Speech and Signal Processing
 (ICASSP) vol. 1: https://www.cs.cmu.edu/~awb/papers/ICASSP2006/0100185.pdf
 
 PocketSphinx source code: 
-http://cmusphinx.sourceforge.net/doc/pocketsphinx/files.html
+http://cmusphinx.github.io/doc/pocketsphinx/files.html
 
 Russell et al. (November 1992) “Children's speech training aid,” U.S. Patent 
 5,679,001 (expired; originally issued in U.K. as “Speech training aid.”) 

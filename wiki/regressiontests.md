@@ -26,7 +26,7 @@ The regression test main script does a fresh download of the code from the
 Sphinx-4 repository (currently, a svn repository at http://sourceforge.net). 
 The script runs tests, and raw result numbers are stored at a cvs repository at 
 sourceforge.net. The script also creates HTML reports (//cf.// tests running on 
-[filbert](http://cmusphinx.sourceforge.net/regression_report_filbert.html)) and 
+[filbert](http://cmusphinx.github.io/regression_report_filbert.html)) and 
 sends email reports to the cmusphinx-results mailing list. Check the main 
 [mailing list](http://sourceforge.net/mail/?group_id=1904) page for the archive 
 or to subscribe/unsubscribe.

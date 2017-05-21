@@ -10,7 +10,7 @@ and supported information.
 
 The plan for web presence is the following:
 
- 1.  Main entry point - cmusphinx.sourceforge.net with wordpress and news feed
+ 1.  Main entry point - cmusphinx.github.io with wordpress and news feed
  2.  Wiki as a knowledge base + doxygen generated pages from source code
  3.  Sourceforge as development central with VCS/Forums/Issue Tracking
  4.  Future - Hudson with continuous integration

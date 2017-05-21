@@ -10,7 +10,7 @@ supervised training mode, in which large quantities of audio data along with
 it's transcribed data provides statistical information about features 
 corresponding to individual phones. CMUSphinx wiki describes a supervised 
 training procedure in detail 
-[here](http://cmusphinx.sourceforge.net/wiki/tutorialam). In supervised 
+[here](http://cmusphinx.github.io/wiki/tutorialam). In supervised 
 training, the quality of resulting model is depends on the size of corpus and 
 extent to which it describes speech of the target language ( to be extensive, 
 the corpus should contain utterances containing most of the words from target 

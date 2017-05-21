@@ -364,7 +364,7 @@ You can also use a Windows system for training, in that case we recommend to
 use ActivePerl.
 
 For download instructions, see [Download 
-page](http://cmusphinx.sourceforge.net/wiki/download/). 
+page](http://cmusphinx.github.io/wiki/download/). 
 Basically you need to put everything into single root folder, unzip and untar 
 them, and run `configure` and `make` and `make install` in each package 
 folder. Put the database folder into this root folder as well. By the time you 

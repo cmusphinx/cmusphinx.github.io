@@ -15,7 +15,7 @@ http://www.politepix.com/openears/
 
 See the corresponding part of the tutorial
 
-http://cmusphinx.sourceforge.net/wiki/tutorialandroid
+http://cmusphinx.github.io/wiki/tutorialandroid
 
 ## Building on Raspberry Pi
 

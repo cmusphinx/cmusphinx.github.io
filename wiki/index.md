@@ -101,16 +101,16 @@ useful background information for CMUSphinx developers.
 
 
 *  [Doxygen documentation for 
-PocketSphinx](http://cmusphinx.sourceforge.net/api/pocketsphinx/)
+PocketSphinx](http://cmusphinx.github.io/doc/pocketsphinx/)
 
 *  [Doxygen documentation for 
-SphinxBase](http://cmusphinx.sourceforge.net/api/sphinxbase/)
+SphinxBase](http://cmusphinx.github.io/doc/sphinxbase/)
 
 *  [ePyDoc documentation for SphinxTrain Python 
-Modules](http://cmusphinx.sourceforge.net/api/python/cmusphinx/)
+Modules](http://cmusphinx.github.io/doc/python/cmusphinx/)
 
 *  [JavaDocs for 
-Sphinx4](http://cmusphinx.sourceforge.net/sphinx4/javadoc/index.html)
+Sphinx4](http://cmusphinx.github.io/sphinx4/javadoc/index.html)
 
 ------------------------------------------------
 

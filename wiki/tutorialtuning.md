@@ -32,7 +32,7 @@ decode it with acoustic models trained on higher sampling rate audio. Audio
 file format (sampling rate, number of channels) can be verified using below 
 command `sox --i /path/to/audio/file`. Find more information here: [ What is 
 sample 
-rate](http://cmusphinx.sourceforge.net/wiki/faq#qwhat_is_sample_rate_and_how_doe
+rate](http://cmusphinx.github.io/wiki/faq#qwhat_is_sample_rate_and_how_doe
 s_it_affect_accuracy ) 
 
 *  The mismatch of the acoustic model. To verify this hypothesis you need to 

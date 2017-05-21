@@ -38,7 +38,7 @@ Probably you should take it on.
 The following resources are the main ones for CMUSphinx developers:
 
 
-*  [ Website](http://cmusphinx.sourceforge.net )
+*  [ Website](http://cmusphinx.github.io )
 *  [ Forum](https://sourceforge.net/projects/cmusphinx/forums)
 *  [ Mailing list](https://sourceforge.net/mail/?group_id=1904 )
 *  [ Download page](https://sourceforge.net/projects/cmusphinx/files/ )
