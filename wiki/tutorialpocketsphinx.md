@@ -2,6 +2,10 @@
 layout: page 
 title: Pocketsphinx Tutorial
 ---
+
+* auto-gen TOC:
+{:toc}
+
 # Building application with pocketsphinx
 
 ## Installation

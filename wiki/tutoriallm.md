@@ -15,7 +15,8 @@ There are several types of models - keyword lists, grammars and
 statistical language models, phonetic language models. They have
 different capabilities and performance properties. You can chose any
 decoding mode according to your needs and you can even switch between
-modes in runtime. See [
+modes in runtime. See [Pocketsphinx
+tutorial](/wiki/tutorialpocketsphinx/#searches) for details.
 
 ## Keyword lists
 

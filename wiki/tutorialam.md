@@ -10,38 +10,31 @@ title: Training Acoustic Model
 
 ## Introduction
 
-CMUSphinx project comes with several high-quality acoustic models. There are US 
-English acoustic
-models for microphone and broadcast speech as well as a model for speech over a 
-telephone. You can also use French or Chinese
-models trained on a huge amount of acoustic data. Those models were carefully 
-optimized to achieve
-best recognition performance and work well for almost all applications. We 
-spent years
-of our experience to make them perfect. Most command-and-control apps could use 
-them directly 
-as well as large vocabulary applications. 
+CMUSphinx project comes with several high-quality acoustic models. There
+are US  English acoustic models for microphone and broadcast speech as
+well as a model for speech over a  telephone. You can also use French or
+Chinese models trained on a huge amount of acoustic data. Those models
+were carefully  optimized to achieve best recognition performance and
+work well for almost all applications. We  spent years of our experience
+to make them perfect. Most command-and-control apps could use  them
+directly  as well as large vocabulary applications. 
 
-Besides models, CMUSphinx provides ways for adaptation which is sufficient for 
-most cases when more
-accuracy is required. Adaptation is known to work well when you are using 
-different recording environments 
-(close-distance or far microphone or telephone channel), or when a slightly 
-different accent is present (UK English or even
-Indian English) or even another language. Adaptation, for example, works well 
-if you need to quickly
-add support for some new language just by mapping acoustic model phoneset to 
-target phoneset with
-the dictionary.
+Besides models, CMUSphinx provides ways for adaptation which is
+sufficient for  most cases when more accuracy is required. Adaptation is
+known to work well when you are using  different recording environments 
+(close-distance or far microphone or telephone channel), or when a
+slightly  different accent is present (UK English or even Indian
+English) or even another language. Adaptation, for example, works well 
+if you need to quickly add support for some new language just by mapping
+acoustic model phoneset to  target phoneset with the dictionary.
 
-There are, however, applications where the current models won't work. For 
-example, handwriting recognition
-or dictation support for another language. In these cases, you will need to 
-train your own model and this tutorial will show you how to do that for the 
-CMUSphinx speech recognition engine. Before starting with 
-training make sure you are familar with concepts, prepared the language model 
-and you indeed 
-need to train the model and have resources to do that.
+There are, however, applications where the current models won't work.
+For  example, handwriting recognition or dictation support for another
+language. In these cases, you will need to  train your own model and
+this tutorial will show you how to do that for the  CMUSphinx speech
+recognition engine. Before starting with  training make sure you are
+familar with concepts, prepared the language model  and you indeed  need
+to train the model and have resources to do that.
 
 ### When you need to train
 
