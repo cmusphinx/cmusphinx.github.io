@@ -406,3 +406,40 @@ that. Usually 500-1000 words is enough to cover most practical situations.
 
 To train a language model you need texts from your domain (words and 
 expressions). Language model training is described in [tutorial](tutoriallm).
+
+## Q: What do CMN values in pocketsphinx output represent
+
+```
+INFO: cmn_live.c(120): Update from < 40.00 3.00 -1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 >
+INFO: cmn_live.c(138): Update to < 18.15 -10.38 4.88 -7.93 3.09 -0.89 0.93 -1.01 6.29 5.90 -0.71 -4.73 -1.29 >
+```
+
+To model the speech more accurately CMUSphinx applies volume
+normalization. Basically audio level is reduced to a certain standard
+value with the certain scale. This process is called 'cepstral mean
+normalization'. Note that not just the whole level is adjusted, we also
+adjust the level in the individual frequency bands. It helps to deal
+with so-called channel distortion when level is raised for high
+frequencies by means of some filter.
+
+The normalization is performed during decoding in live mode and starts
+from initial value. If the initial value is not well fit, the accuracy
+for first utterance will be lower than expected. For the second
+utterance the value should reflect proper signal level.
+
+During training the normalization is performed in batch mode, means the
+whole utterance is normalized at once. This is better approach for
+longer utterances, but for short utterances it might fail to properly
+estimate the signal level. 
+
+If signal level changes quickly it is hard for decoder to adapt, you
+have to wait few seconds. For example if you move away from the
+microphone it might affect the decoder accuracy. In the future we also
+might want to refactor the input pipeline to estimate CMN more reliably
+for example, to wait few first seconds until CMN is properly estimated
+instead of relying on the initial value.
+
+Unusual CMN values help to identify the problems with the speech like
+input data byte order problems. In this particular example value of C0
+18.5 is pretty low it means that recorded sound is very quiet. Proper
+signal level should be  values are around 40.0
