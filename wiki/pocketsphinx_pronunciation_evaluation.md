@@ -321,7 +321,7 @@ page](https://linux.die.net/man/1/awk); [GNU awk
 manual](https://www.gnu.org/software/gawk/manual/)) along with [various bash 
 shell and associated unix commands.](http://explainshell.com/)//
 
-The file http://talknicer.com/wyn.tar.gz has the .wav audio, script, and data 
+The file [wyn.tar.gz](https://github.com/brijmohan/iremedy/raw/gh-pages/wyn.tar.gz) has the .wav audio, script, and data 
 files below. It's based on 80 audio utterances named **wyn01.wav** through 
 **wyn80.wav** of students asked to pronounce the words "What's your name?" with 
 varying degrees of success, from silence through intelligible pronunciation. 
