@@ -3,10 +3,9 @@ layout: page
 ---
 # Website Layout
 
-We need to make sure our structure is maintainable and informative. That should 
-be the ultimate goal. 
-To do that we need to spend efforts on organization of documentation, sources 
-and supported information.
+We need to make sure our structure is maintainable and informative. That
+should  be the ultimate goal.  To do that we need to spend efforts on
+organization of documentation, sources  and supported information.
 
 The plan for web presence is the following:
 
@@ -25,13 +24,9 @@ storage for random docs
 
 The website contents are the following:
 
- 1.  api - API documentation for pocketsphinx and sphinxbase
- 2.  doc - documentation folders from all sphinx packages, probably we need to 
-merge that with wiki
- 3.  wiki - our wiki
- 4.  wordpress - our CMS
- 5.  sphinx4 - javadoc for sphinx4
- 6.  old - various old data, losely organized, we need to remove this one day
+ 1.  doc - API documentation for pocketsphinx and sphinxbase and sphinx4
+ 2.  wiki - our wiki
+ 3. _pages - blog posts
 
 And the following files 
 
@@ -41,5 +36,5 @@ And the following files
 
 ## Powered by Logo
 
-{{:wiki:poweredbycmusphinx.svg| SVG Variant}}
+![SVG Variant](/data/poweredbycmusphinx.svg)
 

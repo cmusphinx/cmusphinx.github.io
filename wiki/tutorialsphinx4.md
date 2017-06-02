@@ -97,11 +97,11 @@ manually together with dependencies (which we try to keep small) and include
 them into your project. You need sphinx4-core jar and sphinx4-data jar if you 
 are going to use US English acoustic model. See below
 
-{{:sphinx4-download.png|Sphinx4 jar download}}
+![Sphinx4 jar download]{/data/sphinx4-download.png}
 
 Here is for example how to include jars into eclipse:
 
-{{http://i.stack.imgur.com/A6xgq.png|Include Jar into Eclipse project}}
+![Include Jar into Eclipse project]{/data/sphinx4-eclipse-include-jar.png}
 
 ## Basic Usage
 

@@ -11,7 +11,7 @@ with [CMUDICT](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) to create the
 following list of 1,052 diphones [without dipthongs](cmubet#eliminating 
 dipthongs) by approximate prevalence.
 
-{{ diphones.png }}
+![diphones](/data/diphones.png)
 
 UH_R 2.376%,
 AH_N 2.083%,

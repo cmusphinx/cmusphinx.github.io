@@ -344,8 +344,7 @@ editor like Wavesurfer. You'll see dark spectrum only up to 4khz if audio is
 8khz. If your audio was recorded from telephone source or was compressed by 
 voip codec most likely it has only 8khz bandwidth.
 
-{{:8khzbandwidth.png| 8khz bandwidth audio spectrum sampled at 16khz in 
-Wavesurfer}}
+![8khz bandwidth audio spectrum sampled at 16khz in Wavesurfer](/data/8khzbandwidth.png)
 
 So first you need to do the following: make sure that frontend sample rate 
 matches the sample rate of the audio. And then make sure that bandwidth of the 

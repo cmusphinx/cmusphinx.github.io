@@ -194,14 +194,15 @@ The test shows, that the Baum-Welch step is by far the most memory-intensive
 among the all training steps as defined in `scripts_pl` directory (peaks 
 between the steps 20. and 55.):
 
-{{:wiki:long-training:modules-an4.png?400}}{{:wiki:long-training:modules-rita.pn
-g?400}}
+![modules-an4](/data/long-training/modules-an4.png)
+![modules-rita](/data/long-training/modules-rita.png)
 
 The pictures show also the resulting improvement in the Baum-Welch memory 
 demands. (The memory demands of other steps were unaffected.) Here are more 
 detailed pictures:
 
-{{:wiki:long-training:graf_1.png?400}}{{:wiki:long-training:graf_5.png?400}}
+![graf_1](/data/long-training/graf_1.png)
+![graf_5](/data/long-training/graf_5.png)
 
 They clearly show the small improvement in the training on short audio (an4) 
 but a huge improvement in the training on long audio (Rita). The actual 

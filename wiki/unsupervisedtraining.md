@@ -35,4 +35,4 @@ base language to the phones of the target language based on their similarity.
 of base and target languages.
 ## Experiments to study effect of error in training data
 
-{{:plot.png|}}
+![plot](/data/plot.png)

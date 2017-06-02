@@ -277,7 +277,7 @@ the output.
 
 ### Performing pronunciation assessment
 
-{{ pron-eval-2.png}}
+![evaluation](/data/pron-eval-2.png)
 
 You can use logistic regression, for example to predict the percentage of 
 transcriptionists who were able to successfully type the word "with" after 
@@ -402,7 +402,7 @@ standard scores:
 
 Here is a graphical depiction of all that data:
 
-{{ wyn.png }}
+![wyn](/data/wyn.png)
 
 The standard scores are suitable for aggregation with simple arithmetic means, 
 and can be used along with the neighboring phoneme symbols (from the 
