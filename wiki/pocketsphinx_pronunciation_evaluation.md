@@ -1,8 +1,6 @@
 ---
 layout: page 
 ---
-##  PocketSphinx for Pronunciation Evaluation 
-
 *This is a short tutorial with references by James Salsman (jim at talknicer dot com.)*
 
 ### Installation and testing
@@ -42,7 +40,7 @@ If you are on MacOSX, you will need to [install autoconf, automake, and libtool]
 
 Then, create these files with which to test pronunciation assessment:
 
-** phonemes.dict ** - use a tab instead of spaces for each of the [CMUBET](CMUBET):
+**phonemes.dict** - use a tab instead of spaces for each of the [CMUBET](CMUBET):
 
     aa	AA
     ae	AE
@@ -86,7 +84,7 @@ Then, create these files with which to test pronunciation assessment:
     z	Z
     zh	ZH
 
-** words.dict ** - Again, the first whitespace on each line should be one tab; include SILence:
+**words.dict** - Again, the first whitespace on each line should be one tab; include SILence:
 
     dance	D AE N S
     sil	SIL
@@ -98,19 +96,19 @@ Add as many more words from
 the [CMUBET](CMUBET) as you need. Just make sure SIL is in there as "sil".
 
 Then make an audio recording of one of those words, such as "with," spoken in a 
-sound file called e.g. ** with.wav ** at 16,000 samples per second with 16 bits 
+sound file called e.g. **with.wav** at 16,000 samples per second with 16 bits 
 per sample and 1 monophonic channel. 
 
 Here are the JSGF format finite state grammar (FSG) files for pronunciation 
 assessment of that single word "with":
 
-** with-align.jsgf ** is for forced alignment of phonemes:
+**with-align.jsgf** is for forced alignment of phonemes:
 
     #JSGF V1.0;
     grammar forcing;
     public <with> = sil w ih dh [ sil ];
 
-** with-neighbors.jsgf ** identifies whether the expected phonemes are 
+**with-neighbors.jsgf** identifies whether the expected phonemes are 
 recognized as more or less likely to have been pronounced than their nearest 
 covering physicologically neighboring phonemes as defined by incremental 
 displacements of the vocal tract components:
@@ -162,7 +160,7 @@ Note that the production for the covering phonemes neighboring /S/ is coded as
 `<ss>` to avoid ambiguity with the start token `<s>`, which is why /S/ is under 
 's' and 'ss' in the phonemes.dict file above.
 
-** with-word.jsgf ** performs whole word alignment:
+**with-word.jsgf** performs whole word alignment:
 
     #JSGF V1.0;
     grammar word;
