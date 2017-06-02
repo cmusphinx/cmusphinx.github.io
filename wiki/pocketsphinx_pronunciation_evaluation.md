@@ -1,6 +1,9 @@
 ---
 layout: page 
 ---
+
+#### Pocketsphinx for Pronunication Evaluation
+
 *This is a short tutorial with references by James Salsman (jim at talknicer dot com.)*
 
 ### Installation and testing
@@ -380,7 +383,7 @@ The output file from that command looks like this:
 We can use the lines in that file with good data (and therefore a space) to 
 produce means and standard deviations, and thereby standard scores, like this:
 
-    grep ' ' normalign.txt | awk '{if (!mnf || NF`<mnf) {mnf=NF}; for (f=1; f<NF; f++) {i[NR,f]=$f; if ((f-1) % 3) {m[f]+=$f; d[f]=$f-a[f]; a[f]+=d[f]/NR; m2[f]+=d[f]*($f-a[f])}}; i[NR,0]=$NF} END {print "Means and standard deviations of acoustic scores and durations for each phoneme:"; for (f=1; f<mnf; f++) {if ((f-1) % 3) {printf "%5.3f %5.3f ", m[f]/NR, sqrt(m2[f]/NR)} else {printf "%s ", $f}}; print "\n\nStandard scores of acoustic scores and durations for each scored utterance:"; for (r=1; r<=NR; r++) {for (f=1; f<mnf; f++) {if ((f-1) % 3) {printf "%+6.3f ", (i[r,f]-(m[f]/NR))/sqrt(m2[f]/NR)} else {printf "%s ", i[r,f]}}; print i[r,0]}}' >` standards.txt
+    grep ' ' normalign.txt | awk '{if (!mnf || NF<mnf) {mnf=NF}; for (f=1; f<NF; f++) {i[NR,f]=$f; if ((f-1) % 3) {m[f]+=$f; d[f]=$f-a[f]; a[f]+=d[f]/NR; m2[f]+=d[f]*($f-a[f])}}; i[NR,0]=$NF} END {print "Means and standard deviations of acoustic scores and durations for each phoneme:"; for (f=1; f<mnf; f++) {if ((f-1) % 3) {printf "%5.3f %5.3f ", m[f]/NR, sqrt(m2[f]/NR)} else {printf "%s ", $f}}; print "\n\nStandard scores of acoustic scores and durations for each scored utterance:"; for (r=1; r<=NR; r++) {for (f=1; f<mnf; f++) {if ((f-1) % 3) {printf "%+6.3f ", (i[r,f]-(m[f]/NR))/sqrt(m2[f]/NR)} else {printf "%s ", i[r,f]}}; print i[r,0]}}' >` standards.txt
 
 The output of that lengthy AWK command produces means, standard deviations, and 
 standard scores:
@@ -450,7 +453,7 @@ matched the expected phonemes in each utterance:
     7 wyn48.wav-neighbors.txt
     7 wyn51.wav-neighbors.txt
     7 wyn53.wav-neighbors.txt
-    8 wyn29.wav-neighbors.txt`</file>`
+    8 wyn29.wav-neighbors.txt
 
 This method is also easily validated by ear, as **wyn61.wav** is not just poor 
 pronunciation, but a different word entirely from the expected phrase, and 
