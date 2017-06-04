@@ -96,7 +96,7 @@ Then, create these files with which to test pronunciation assessment:
 
 Add as many more words from 
 [CMUDICT](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) or make them up from 
-the [CMUBET](CMUBET) as you need. Just make sure SIL is in there as "sil".
+the [CMUBET](https://cmusphinx.github.io/wiki/cmubet/) as you need. Just make sure SIL is in there as "sil".
 
 Then make an audio recording of one of those words, such as "with," spoken in a 
 sound file called e.g. **with.wav** at 16,000 samples per second with 16 bits 
@@ -206,7 +206,7 @@ is a single command line with line breaks for clarity:
     pocketsphinx_continuous
         -infile with.wav
         -jsgf with-word.jsgf
-        -dict phonemes.dict
+        -dict words.dict
         -backtrace yes
         -fsgusefiller no
         -bestpath no 
