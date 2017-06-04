@@ -226,7 +226,7 @@ After training it is worth to test the perplexity of the model on the test data
 
 ### ARPA model training with CMUCLMTK
 
-You need to download and install cmuclmtk. See [download](download) for details.
+You need to download and install cmuclmtk. See [download](/wiki/download) for details.
 
 The process for creating a language model is as follows:
 
