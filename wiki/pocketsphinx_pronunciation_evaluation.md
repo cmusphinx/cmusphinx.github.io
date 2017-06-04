@@ -43,7 +43,7 @@ If you are on MacOSX, you will need to [install autoconf, automake, and libtool]
 
 Then, create these files with which to test pronunciation assessment:
 
-**phonemes.dict** - use a tab instead of spaces for each of the [CMUBET](CMUBET):
+**phonemes.dict** - use a tab instead of spaces for each of the [CMUBET](/wiki/cmubet):
 
     aa	AA
     ae	AE
@@ -96,7 +96,7 @@ Then, create these files with which to test pronunciation assessment:
 
 Add as many more words from 
 [CMUDICT](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) or make them up from 
-the [CMUBET](https://cmusphinx.github.io/wiki/cmubet/) as you need. Just make sure SIL is in there as "sil".
+the [CMUBET](/wiki/cmubet) as you need. Just make sure SIL is in there as "sil".
 
 Then make an audio recording of one of those words, such as "with," spoken in a 
 sound file called e.g. **with.wav** at 16,000 samples per second with 16 bits 
