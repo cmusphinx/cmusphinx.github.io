@@ -1,0 +1,47 @@
+---
+layout: post
+status: publish
+published: true
+title: GSOC 2017 Project Overview - Computer Assisted Learning Including Speaking Skills
+author:
+  display_name: Sahith Dambekodi
+  email: sahithdn@gmail.com
+author_email: sahithdn@gmail.com
+date: '2017-06-05 23:06:38 +0200'
+date_gmt: '2017-06-05 20:06:38 +0200'
+---
+<p>Hi everyone! My name’s Sahith Dambekodi and I’m a second year undergrad student at <a href="http://www.bits-pilani.ac.in/Goa/">BITS Pilani K.K. Birla Goa Campus</a>.  I’m pursuing a major in Electrical and Electronics engineering. This is my blog for Google Summer of Code 2017!</p>
+
+<p>My initial foray into open source began mainly with general purpose machine learning libraries like scikit-learn and tensorflow. I had heard about Google Summer Of Code through my peers and I was intrigued  by the possibilities of coding an entire summer about something I was genuinely interested in. This led me to <a href="https://cmusphinx.github.io"> CMUSphinx</a>, which is an open source speech recognition system for mobile and server applications. Its an offline system which is useful in applications where internet isn’t reliable. PocketSphinx is a version of the system built to run on smaller devices like mobile phones. I submitted my proposal to the organization and was very excited when it got selected.</p>
+
+<p>What I am going to be working on in the summer is part of a larger project whose main aim is Intelligibility Remediation for non-native speakers of English. This is going to extend to a bigger Computer Assisted Pronunciation Training system. Many of these types of systems today have bottlenecks and limitations as they are still heavily dependent on human intervention.</p>
+
+<p> On to the basic crux of the system itself. We will use Wikiversity and Wiktionary to add structure, flexibility and increase the size of the learning audience. Users will be able to register on the sites and track their progress while allowing the system to provide higher quality feedback. These courses will be integrated with Twine, a software from <a href="http://twinery.org/">twinery.org</a>, to create branching scenario assignments in the instructional ecosystem.</p>
+
+<img src="../../../data/call-week-1/Sahith-blog2.jpeg"  style="width:1000px;height:500px;">
+
+<p>These are the main milestones that the project hopes to complete:</p>
+<ol>
+<li><b>Twine System/Integration:</b> A Twine system will be incorporated, tested for its stability and integrated with an OAuth registration system like Moodle, Wikimedia Tool Labs LDAP authentication etc. The user’s progress can be tracked using D3.js for attractive visualizations. Twine story will be displayed with multimedia graphic, video, sound, or audiovisual presentations.
+
+</li>
+<li><b>Audio Recorder:</b> Create a system that records the audio. The audio is then transcribed and stored e.g. via forms such as <a href="http://talknicer.com/recdemo">http://talknicer.com/recdemo</a> and <a href="https://snd96.github.io/pocketsphinx-scores/live.html">https://snd96.github.io/pocketsphinx-scores/live.html</a> and <a href="https://jsalsman.github.io/transcriber-qualification/">https://jsalsman.github.io/transcriber-qualification</a> and <a href="http://talknicer.com/d/index.cgi?addphrase">http://talknicer.com/d/index.cgi?addphrase</a> among others. Exemplar and non-exemplar audio recordings will be associated with several transcription attempts from both L1 and L2 transcriptionists.
+
+</li>
+<li><b>Speech Processing:</b> Using the recordings, process the data to get speech recognition results.
+
+</li>
+<li><b>Motivation System:</b> To keep the user engaged and to prevent boredom or complacency, implement a system which measures the motivation of the user (du Boulay, B., & del Soldato, B.,(2016). <a href="http://users.sussex.ac.uk/~bend/papers/motivation-revised2.pdf">Implementation of Motivational Tactics)</a>. The user’s motivation to learn will be quantified based on 3 variables:
+<ul>
+<li><b>Effort (e)</b> can be defined as the learner’s perseverance to solve a difficult problem. </li>
+<li><b>Confidence (c)</b> can be measured using the number of skips that learner choose to do and the amount of help requested by them.</li>
+<li><b>Independence (i)</b> is measured by the amount of help requested from the systems. </li>
+</ul>
+</li>
+<li><b>Community Features:</b> If time allows, the motivation system detailed above could also be gamified; i.e. the user’s progress can be made in the form of a role-playing game. A community feature can also be built on this like the formation of a study group.</li>
+</ol>
+
+<p>To start out with, initial questions and scenarios will be designed to instruct how to use one of last year’s GSOC projects, the <a href="http://users.sussex.ac.uk/~bend/papers/motivation-revised2.pdf">“Accuracy Review of Wikipedias in Flask” system</a> . These questions will be written in Twine format and displayed to the user for interactive assessment and instruction. These scenarios will require the user to speak into the browser microphone and <a href="https://github.com/syl22-00/pocketsphinx.js">Pocketpshinx.js</a> will help identify the words being spoken. </p>
+<p>I’m happy to have James Salsman as my mentor for this project along with the community from CMUSphinx. Looking forward to a productive summer ahead! </p>
+
+
