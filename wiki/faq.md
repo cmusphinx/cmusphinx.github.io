@@ -386,8 +386,7 @@ Android NDK, you can use OpenSL ES library or any other framework.
 There is also libad library which works on Linux/Windows/Mac, but it is very 
 limited and we are not going to extend it into other platforms.
 
-## Q: Can I run large vocabulary speech recognition on mobile device / 
-Raspberry PI
+## Q: Can I run large vocabulary speech recognition on mobile device / Raspberry PI
 
 No, you can't. The CPU is too slow for large vocabulary speech recognition. 
 Phone CPU is usually 9 times slower than desktop. Speech recognition with 
