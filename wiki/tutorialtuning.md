@@ -85,7 +85,7 @@ Now, let's run the decoder:
 	 -cepdir wav \
 	 -cepext .wav \
 	 -ctl test.fileids \
-	 -lm `<your.lm, for example en-us.lm.dmp from pocketsphinx>` \
+	 -lm `<your.lm, for example en-us.lm.bin from pocketsphinx>` \
 	 -dict `<your.dic, for example cmudict-en-us.dict from pocketsphinx>` \
 	 -hmm `<your_hmm, for example en-us>` \
 	 -hyp test.hyp
