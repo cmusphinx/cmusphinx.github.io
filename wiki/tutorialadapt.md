@@ -114,7 +114,7 @@ Lets also copy the dictionary and the lm for the testing
 
 	
 	cp -a /usr/local/share/pocketsphinx/model/en-us/cmudict-en-us.dict .
-	cp -a /usr/local/share/pocketsphinx/model/en-us/en-us.lm.dmp .
+	cp -a /usr/local/share/pocketsphinx/model/en-us/en-us.lm.bin .
 
 
 ### Generating acoustic feature files
@@ -148,7 +148,7 @@ You should now have the following files in your working directory:
 	arctic20.fileids
 	arctic20.transcription
 	cmudict-en-us.dict
-	en-us.lm.dmp
+	en-us.lm.bin
 
 
 ### Converting the sendump and mdef files
