@@ -30,7 +30,7 @@ higher than that of the training data). You should not upsample a file and
 decode it with acoustic models trained on higher sampling rate audio. Audio 
 file format (sampling rate, number of channels) can be verified using below 
 command `sox --i /path/to/audio/file`. Find more information here: 
-[What is sample rate](/wiki/faq#qwhat_is_sample_rate_and_how_does_it_affect_accuracy) 
+[What is sample rate](/wiki/faq#q-what-is-sample-rate-and-how-does-it-affect-accuracy) 
 
 * The mismatch of the acoustic model. To verify this hypothesis you need to 
 construct a language model from the test database text. Such language model 
