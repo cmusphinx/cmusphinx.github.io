@@ -17,18 +17,10 @@ To cleanup, here is the list:
 
 We recommend that you use the latest available releases:
 
-*  [ 
-sphinxbase-5prealpha](https://sourceforge.net/projects/cmusphinx/files/sphinxbas
-e/5prealpha)
-*  [ 
-pocketsphinx-5prealpha](https://sourceforge.net/projects/cmusphinx/files/pockets
-phinx/5prealpha )
-*  [ 
-sphinx4-5prealpha](https://sourceforge.net/projects/cmusphinx/files/sphinx4/5pre
-alpha )
-*  [ 
-sphinxtrain-5prealpha](https://sourceforge.net/projects/cmusphinx/files/sphinxtr
-ain/5prealpha/ )
+*  [ sphinxbase-5prealpha](https://sourceforge.net/projects/cmusphinx/files/sphinxbase/5prealpha)
+*  [ pocketsphinx-5prealpha](https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha )
+*  [ sphinx4-5prealpha](https://sourceforge.net/projects/cmusphinx/files/sphinx4/5prealpha )
+*  [ sphinxtrain-5prealpha](https://sourceforge.net/projects/cmusphinx/files/sphinxtrain/5prealpha/ )
 
 Of course, many things are missing. Things like building a phonetic model 
 capable of handling an infinite vocabulary, postprocessing of the decoding 
