@@ -21,7 +21,7 @@ file and use decoder to decode it. Then calculate WER using the
 `word_align.pl` tool from Sphinxtrain. Test database size depends on the 
 accuracy but usually it's enough to have 10 minutes of transcribed audio to 
 test recognizer accuracy reliably. The process is described in 
-[tutorialtuning](tutorialtuning).
+[tutorialtuning](/wiki/tutorialtuning).
 
 ## Q: How to do the noise reduction
 
@@ -111,7 +111,7 @@ steps:
 
 *  Data collection (you can collect audiobooks with text transcriptoin from 
 project like librivox, transcribed podcasts, or setup web data collection. You 
-can also try to contribute to [ Voxforge](http://voxforge.org ). You can start 
+can also try to contribute to [Voxforge](http://voxforge.org ). You can start 
 very quickly with just few hours of transcribed data.
 *  Data cleanup
 *  Model training 
