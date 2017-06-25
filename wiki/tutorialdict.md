@@ -26,7 +26,7 @@ There are various phonesets to represent phones like IPA or SAMPA, CMUSphinx
 does not yet require you to use any well-known phoneset, moreover, it prefers 
 to use letter-only phone names without special symbols. This requirement 
 simplifies some processing algorithms, for example, you can create files with 
-phone names.
+phone names as part of the filenames without violation of the OS filename requirements.
 
 Dictionary should contain all the words you are interested in, otherwise 
 recognizer will not be able to recognize them. However, it is not sufficient to 
