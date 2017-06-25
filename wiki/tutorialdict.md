@@ -61,9 +61,7 @@ implemented in Tensorflow framework and provides a state of the art accuracy of
 conversion.
 
 An English model 2-layer LSTM with 256 hidden units is [available for 
-download]( 
-https://sourceforge.net/projects/cmusphinx/files/G2P%20Models/g2p-seq2seq-cmudic
-t.tar.gz/download ) on cmusphinx website. Unpack the model after download. It 
+download](https://sourceforge.net/projects/cmusphinx/files/G2P%20Models/g2p-seq2seq-cmudict.tar.gz/download) on cmusphinx website. Unpack the model after download. It 
 is trained on CMU English dictionary. Read my lips - this model works only for 
 English. For other languages you need to bootstrap dictionary first as 
 described below and then use G2P tool to extend it.
@@ -107,7 +105,7 @@ enough.
 You can crawl Wiktionary to get mapping for significant amount of words covered 
 there.
 
-You can use TTS tools like from [ OpenMary ](http://mary.dfki.de/ ) written in 
+You can use TTS tools like from [OpenMary](http://mary.dfki.de/) written in 
 Java or from [Espeak](http://espeak.sourceforge.net) written in C to create the 
 phonetic dictionary for the languages they support.
 
