@@ -2,11 +2,8 @@
 layout: page 
 title: Sphinx4 tutorial
 ---
-# Sphinx-4 Application Programmer's Guide
 
-WARNING: THIS TUTORIAL DESCRIBES SPHINX4 API FROM THE PRE-ALPHA RELEASE:
-
-https://sourceforge.net/projects/cmusphinx/files/sphinx4/5prealpha/
+WARNING: THIS TUTORIAL DESCRIBES SPHINX4 API FROM THE [5 PRE-ALPHA RELEASE](https://sourceforge.net/projects/cmusphinx/files/sphinx4/5prealpha/)
 
 **The API described here is not supported in earlier versions**
 
