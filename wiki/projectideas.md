@@ -104,7 +104,7 @@ For the best accuracy we need to introduce neural network based acoustic model
 
 Medium
 
-**Skills ** 
+**Skills** 
 
 C, Python, Tensorflow or other DNN toolkit
 
@@ -116,7 +116,7 @@ Same as above, but more heavyweight models for large vocabulary sphinx4 decoder
 
 Medium
 
-**Skills ** 
+**Skills** 
 
 C, Python, Java, Deeplearning4j, Tensorflow or other DNN toolkit
 
@@ -224,7 +224,7 @@ training tutorial).
 The project can use BOINC for the grid middleware or some Java analog of BOINC 
 if you prefer to code in Java. We prefer Java.
 
-**Resources ** 
+**Resources** 
 
 A server for grid experiments will be provided
 
@@ -260,7 +260,7 @@ possible. You need to distribute evaluation data on the grid and just select
 the best parameters possible. You can start from existing model approximation 
 and try to improve it.
 
-**Resources ** 
+**Resources** 
 
 A server for grid experiments will be provided
 
