@@ -189,7 +189,7 @@ target task correctly.
 
 The following characteristics are used:
 
-** Word error rate.** Let we have original text and recognition text of length 
+**Word error rate.** Let we have original text and recognition text of length 
 of *N* words. From them the *I* words were inserted *D* words were deleted and 
 *S* words were substituted Word error rate is
 

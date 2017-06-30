@@ -50,26 +50,26 @@ other language (e.g., Kannada or Tamil) along with crowdsourcing transcription
 and exemplar pronunciation infrastructure, and sufficiency index statistics for 
 the number of transcripts and exemplar utterances provided per target phrase. 
 
-** Mentors **
+**Mentors**
 
 James Salsman (GSoC 2012 mentor) jim at talknicer dot com
 
 Srikanth Ronanki (GSoC 2012 student) srikanth dot 143 dot iiit at gmail dot com
 
-** Interested student(s) email James Salsman if you are interested **
+**Interested student(s) email James Salsman if you are interested**
 
 Balaji VenkataRamanan - full-time Ph.D. scholar at Christ University, 
 Bangalore, India - balajiv211 at yahoo dot com
 
-** Complexity **
+**Complexity**
 
 Medium
 
-** Skills **
+**Skills**
 
 C (PocketSphinx) and Python (2012 GSoC pronunciation assessment project)
 
-** PLEASE SEE 
+**PLEASE SEE 
 [pocketsphinx_pronunciation_evaluation](pocketsphinx_pronunciation_evaluation) 
 **
 ## Diphone alignment and acoustic scores
@@ -80,19 +80,19 @@ for phonemes as well as diphones. (A diphone is the second half of one phoneme,
 other than a dipthong or other composite, followed by the first half of 
 another. There are about 1,400 diphones in Basic English.)
 
-** Complexity **
+**Complexity**
 
 Easy
 
-** Skills **
+**Skills**
 
 C
 
-** Possible mentors **
+**Possible mentors**
 
 James Salsman - jim at talknicer dot com 
 
-** Interested potential students **
+**Interested potential students**
 
 Email James Salsman to add your name here.
 
@@ -100,11 +100,11 @@ Email James Salsman to add your name here.
 
 For the best accuracy we need to introduce neural network based acoustic model
 
-** Complexity **
+**Complexity**
 
 Medium
 
-** Skills ** 
+**Skills ** 
 
 C, Python, Tensorflow or other DNN toolkit
 
@@ -112,11 +112,11 @@ C, Python, Tensorflow or other DNN toolkit
 
 Same as above, but more heavyweight models for large vocabulary sphinx4 decoder
 
-** Complexity **
+**Complexity**
 
 Medium
 
-** Skills ** 
+**Skills ** 
 
 C, Python, Java, Deeplearning4j, Tensorflow or other DNN toolkit
 
@@ -130,7 +130,7 @@ project. And it's all open source.
 ROS has support for pocketsphinx, but it is very initial stage. A full-scale 
 support for recent features would be very welcome.
 
-** Complexity **
+**Complexity**
 
 Easy
 
@@ -138,7 +138,7 @@ Easy
 
 C, Python
 
-** Note **
+**Note**
 
 http://www.ros.org
 http://wiki.ros.org/pocketsphinx
@@ -150,7 +150,7 @@ and very complex to install. It would be nice to enable full pocketsphinx
 support in UniMRCP to enable IVR developers use accurate and open source speech 
 recognition.
 
-** Complexity **
+**Complexity**
 
 Easy
 
@@ -158,7 +158,7 @@ Easy
 
 C
 
-** Note **
+**Note**
 
 https://code.google.com/p/unimrcp/wiki/PocketSphinxPlugin
 
@@ -169,7 +169,7 @@ to decode the speech, we also need to understand who said what. Beside
 biometrics speaker identification is important for speech recognition itself 
 because it enables better adaptation.
 
-** Complexity **
+**Complexity**
 
 Medium
 
@@ -177,7 +177,7 @@ Medium
 
 C, Java
 
-** Note **
+**Note**
 
 There are many publications about speaker identification, it's probably better 
 to start with a book
@@ -193,7 +193,7 @@ training tool in Java to be used instead of CMUCLMTK. That should support
 variety of unformatted text inputs and provide competitive language model for 
 further use in our decoders.
 
-** Complexity **
+**Complexity**
 
 Medium
 
@@ -201,7 +201,7 @@ Medium
 
 Java
 
-** Note **
+**Note**
 
 The best toolkit nowdays is SRILM, http://www.speech.sri.com/projects/srilm/, 
 we can take a lot of ideas from it. Language models and training algorithms are 
@@ -224,18 +224,18 @@ training tutorial).
 The project can use BOINC for the grid middleware or some Java analog of BOINC 
 if you prefer to code in Java. We prefer Java.
 
-** Resources ** 
+**Resources ** 
 
 A server for grid experiments will be provided
 
-** Expected results **
+**Expected results**
 
 Training process can submit bw task and features for it to the grid and train 
 the acoustic model this way.
 
 The setup and code is well documented in the project wiki
 
-** Complexity **
+**Complexity**
 
 Easy
 
@@ -243,7 +243,7 @@ Easy
 
 C, Java
 
-** Note **
+**Note**
 
 [ BOINC Project ](http://boinc.berkeley.edu/ )
 
@@ -260,24 +260,24 @@ possible. You need to distribute evaluation data on the grid and just select
 the best parameters possible. You can start from existing model approximation 
 and try to improve it.
 
-** Resources ** 
+**Resources ** 
 
 A server for grid experiments will be provided
 
-** Expected results **
+**Expected results**
 
 The setup is in place and the model training is running. The model demonstrates 
 reasonable improvement over baseline on our task.
 
-** Complexity **
+**Complexity**
 
 Hard
 
-** Skills **
+**Skills**
 
 C, Java, Optimization methods
 
-** Note **
+**Note**
 
 [ BOINC Project ](http://boinc.berkeley.edu/ )
 
@@ -300,20 +300,20 @@ You need to write a code to parse existing Wiktionary pronunciations and create
 the dictionary for many langauges. It's not that trivial task as it might seem 
 as the code has to work for many Wikipedia languages.
 
-** Expected results **
+**Expected results**
 
 Phonetic dictionaries for 10 languages are collected from Wikipedia. The tool 
 is documented and is easy to use to discover pronunciations for the new words.
 
-** Complexity **
+**Complexity**
 
 Easy
 
-** Skills **
+**Skills**
 
 Python
 
-** Note **
+**Note**
 
 http://en.wiktionary.org/wiki/Wiktionary:Main_Page
 
@@ -324,19 +324,19 @@ the huge databases. Sphinx4 implements java training already, but this training
 is not parallel. The port of the Java trainer to support training from Hadoop 
 would allow us to scale significantly beyond the simple training setups.
 
-** Expected results **
+**Expected results**
 
 Train Sphinxtrain acoustic models using Hadoop framework
 
-** Complexity **
+**Complexity**
 
 Easy
 
-** Skills **
+**Skills**
 
 Java, Hadoop
 
-** Notes **
+**Notes**
 
 [ Apache Mahout, machine learning using Hadoop ](http://mahout.apache.org/ )
 [ Apache Hadoop ](http://hadoop.apache.org/ )
@@ -353,19 +353,19 @@ the engine and suggest help on the model issues. The goal is to implement an
 advanced WER scoring tool which is both able to process large files and at the 
 same time has extensive reporting functionality like NIST sclite toolkit.
 
-** Expected results **
+**Expected results**
 
 Advanced error scoring tool implemented
 
-** Complexity **
+**Complexity**
 
 Easy
 
-** Skills **
+**Skills**
 
 Java, C, Python
 
-** Notes **
+**Notes**
 
 [ SCLite scoring tool 
 ](http://www1.icsi.berkeley.edu/Speech/docs/sctk-1.2/sclite.htm )
@@ -378,19 +378,19 @@ progressing well, and it's fast enough to handle many tasks in better than real
 time on low-end semi-loaded laptops, and probably tablets. It won't be long 
 before it's a viable fully client-side solution on phones.
 
-** Expected results **
+**Expected results**
 
 Support the existing code base with examples and cookbook-style solutions.
 
-** Complexity **
+**Complexity**
 
 Easy to medium
 
-** Skills **
+**Skills**
 
 JavsScript (including WebRTC GetUserMedia), C, possibly Adobe Flash Actionscript
 
-** Contact **
+**Contact**
 
 jim at talknicer dot com
 
@@ -428,21 +428,21 @@ using [canvas-based](http://www.kevs3d.co.uk/dev/phoria/test0r.html) Phoria
 [including translucence](http://www.kevs3d.co.uk/dev/phoria/test1t.html) like a 
 3D version of [this thing.](http://smu-facweb.smu.ca/~s0949176/sammy/)
 
-** Expected results **
+**Expected results**
 
 We can embed such interactive JavaScript animations wherever we have difficult 
 tongue position diagrams, among many other places, e.g. at 
 https://en.wikipedia.org/wiki/Diphthong#Closing.2C_opening.2C_and_centering
 
-** Complexity **
+**Complexity**
 
 Medium
 
-** Skills **
+**Skills**
 
 JavsScript
 
-** Contact **
+**Contact**
 
 jim at talknicer dot com
 
@@ -453,7 +453,7 @@ Please see also http://dood.al/pinktrombone/
 We would like to make a general, open-source computer aided instruction which 
 can teach speaking skills along with reading, listening, and writing.
 
-** Expected results **
+**Expected results**
 
 [Accomplish these 
 tasks](https://drive.google.com/file/d/0B73LgocyHQnfU2F6NVhHRzFNWTA/view) to 
@@ -465,17 +465,17 @@ system](https://priyankamandikal.github.io/posts/gsoc-2016-project-overview/)
 to provide default instructional content questions while allowing voice 
 response of phrases describing the approach to each question?
 
-** Complexity **
+**Complexity**
 
 Hard
 
-** Skills **
+**Skills**
 
 JavsScript, Python, Android and iOS microphone input integration with 
 Javascript, possibly Adobe Flash ActionScript. Please consider integration with 
 Moodle in your project proposal.
 
-** Contact **
+**Contact**
 
 jim at talknicer dot com
 
