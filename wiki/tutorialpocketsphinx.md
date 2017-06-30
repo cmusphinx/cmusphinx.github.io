@@ -345,7 +345,7 @@ for the user.
 
 There are different possible search modes:
    - keyword - efficiently looks for keyphrase and ignores other speech. allows 
-to configure detection threshold.`</li>`
+to configure detection threshold.
    - grammar - recognizes speech according to JSGF grammar. Unlike keyphrase 
 grammar search doesn't ignore words which are not in grammar but tries to 
 recognize them.
