@@ -303,7 +303,7 @@ phone for silence:
 
 *Language model file (your_db.lm.DMP) * should be in ARPA format or in DMP 
 format. Find our more about language models on [Language Model training 
-chapter](tutoriallm).
+chapter](/wiki/tutoriallm).
 
 *Filler dictionary (your_db.filler) * contains filler phones (not-covered by 
 language model non-linguistic sounds like breath, hmm or laugh). It can contain 
@@ -483,7 +483,7 @@ $CFG_DB_NAME variable is the name of your project itself.
 
 ### Configure model type and model parameters
 
-To select acoustic model type see [acousticmodeltypes](acousticmodeltypes)
+To select acoustic model type see [acousticmodeltypes](/wiki/acousticmodeltypes)
 
 	
 	$CFG_HMM_TYPE = '.cont.'; # Sphinx4, Pocketsphinx
@@ -875,7 +875,7 @@ Accuracy = 100.00%
 	TOTAL Insertions: 48 Deletions: 15 Substitutions: 171
 
 
-For description of WER see our [Basic concepts of speech](tutorialconcepts) 
+For description of WER see our [Basic concepts of speech](/wiki/tutorialconcepts) 
 chapter.
 
 ## Using the model
@@ -927,7 +927,7 @@ If the model is in resources you can reference it with resource: URL
 configuration.setAcousticModelPath("resource:/com/example/db.cd_cont_200");
 
 
-See [Sphinx4 tutorial](tutorialsphinx4) for details.
+See [Sphinx4 tutorial](/wiki/tutorialsphinx4) for details.
 
 ## Troubleshooting
 
