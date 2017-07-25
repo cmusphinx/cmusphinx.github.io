@@ -34,26 +34,24 @@ legal or medical  transcriptions. If you consider voicemails, note that
 the language there is way more restricted than general language. It's
 actually a very small vocabulary with specialized sequence of terms:
 
-
-*  *It's Sandy. Let's meet tomorrow*
-
-*  *Hi. That's Joe, I'm going to sell you that car*
+  * It's Sandy. Let's meet tomorrow
+  * Hi. That's Joe, I'm going to sell you that car
 
 There will be a lot of names and that's a problem, but you'll never find
-a voicemail about quantum physics and that's a very good thing.
-The recognizer will use the restrictions you provided with the language
+a voicemail about quantum physics and that's a very good thing. The
+recognizer will use the restrictions you provided with the language
 model to improve accuracy of the result.
 
 You'll have to build a language model for your domain, but that's not as
-complicated as you might think. Don't afraid as well, if you'll cover the
-60k most common words in English; the accuracy will be the same as with 
-120k words. For other languages with rich morphology the situation is
-different, but also solvable with morphology-based subwords. Also, you
-have to build a  post-processing system, adaptation system and
+complicated as you might think. Don't afraid as well, if you'll cover
+the 60k most common words in English; the accuracy will be the same as
+with  120k words. For other languages with rich morphology the situation
+is different, but also solvable with morphology-based subwords. Also,
+you have to build a  post-processing system, adaptation system and
 user-identification system.
 
-For **recognition on an embedded processor,** there are two ways to consider
-- recognition on the server and recognition on the device. The former is
+For **recognition on an embedded processor,** there are two ways to
+consider - recognition on the server and recognition on the device. The former is
 more popular now days because it lets you use the power and flexibility of
 the cloud computations.
 
@@ -70,7 +68,7 @@ intelligent assistants instead.
 
 For **intelligent assistants** you need not just the recognition, but also 
 intent parsing and database knowledge. For more detail on how to implement this 
-you can check [ Lucida ](https://github.com/claritylab/ ) powered by 
+you can check [Lucida](https://github.com/claritylab/ ) powered by 
 [OpenEphyra](https://github.com/TScottJ/OpenEphyra). Dialog systems will 
 require user feedback framework as well.
 
@@ -144,10 +142,8 @@ out yourself if you are going to continue with Java, C or any of
 scripting languages CMUSphinx supports. The rule to choose between 
 sphinx4 or pocketsphinx is the following:
 
-
-*  Need speed or portability -> use pocketsphinx
-
-*  Need flexibility and managability -> use sphinx4
+  * Need speed or portability -> use pocketsphinx
+  * Need flexibility and managability -> use sphinx4
 
 Although people often ask what is more accurate sphinx4 or pocketsphinx,
 you shouldn't bother with this question at all. Accuracy is **not** the
@@ -177,6 +173,5 @@ you'll need to run complex scripts using perl of python. On Windows it
 might be problematic.
 
 Got it? Let's start! Next section will describe the process of creation
-the sample application either with [ sphinx4](tuturialsphinx4 ) or [ 
-pocketsphinx](tutorialpocketsphinx ). 
-Choose the right one.
+the sample application either with [sphinx4](/wiki/tutorialsphinx4) or 
+[pocketsphinx](/wiki/tutorialpocketsphinx).  Choose the right one.
