@@ -66,6 +66,15 @@ You can also add AAR to your project in command line as described in
 [stackoverflow answer](http://stackoverflow.com/questions/21882804/adding-local-aar-files-to-my
 -gradle-build).
 
+Once the AAR is imported into the project as a module, make sure it is listed as a dependency of
+a main module in app/build.gradle:
+
+```
+dependencies {
+    compile project(':aars')
+}
+```
+
 ### Setting permissions
 
 To store asset files your application should have WRITE_EXTERNAL_STORAGE 
