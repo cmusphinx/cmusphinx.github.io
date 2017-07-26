@@ -92,16 +92,16 @@ copying it matches MD5 checksums of an asset and a file on  external
 storage with the same name if such exists. It only does actualy  copying
 if there is incomplete information (no file on external storage, no any 
 of two .md5 files)  or there is hash mismatch. PocketSphinxAndroidDemo
-contains  `ant` script that generates `assets.lst` as well as `.md5`
+contains `ant` script that generates `assets.lst` as well as `.md5`
 files, look  for `assets.xml`. 
 
 Please note that if ant build script doesn't run properly in your build 
-process, assets might be out of sync. Make sure that script runs or create md5 
-files and assets.lst yourself.
+process, assets might be out of sync. Make sure that script runs or
+create md5 files and assets.lst yourself.
 
 To integrate assets sync in your application do the following
 
-  1. Copy `app/asset.xml` build file from demo application into your 
+  1. Copy `models/assets.xml` build file from demo application into your 
 application into same folder `app`.
   1. Edit `app/build.gradle` build file to run `assets.xml`, just as in 
 android demo:
@@ -112,7 +112,7 @@ preBuild.dependsOn(list, checksum)
 clean.dependsOn(clean_assets)
 ```
 
-That should do the trick
+That should do the trick. You can verify that `assets.lst` file was created and md5 files are updated.
 
 ### Sample application
 
