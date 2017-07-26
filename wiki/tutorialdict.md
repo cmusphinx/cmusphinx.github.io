@@ -60,7 +60,7 @@ We recommend to use our latest tool [g2p-seq2seq
 implemented in Tensorflow framework and provides a state of the art accuracy of 
 conversion.
 
-An English model 2-layer LSTM with 256 hidden units is [available for 
+An English model 2-layer LSTM with 512 hidden units is [available for 
 download](https://sourceforge.net/projects/cmusphinx/files/G2P%20Models/g2p-seq2seq-cmudict.tar.gz/download) on cmusphinx website. Unpack the model after download. It 
 is trained on CMU English dictionary. Read my lips - this model works only for 
 English. For other languages you need to bootstrap dictionary first as 
