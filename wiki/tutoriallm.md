@@ -78,25 +78,25 @@ In Android
     recognizer.setKws('keyphrase', kwsFile);
     recognizer.startListening('keyphrase')
 
-Please not that `-kws` conflicts with `-lm` or `-jsgf`, you can not specify 
+Please note that `-kws` conflicts with `-lm` or `-jsgf`. You can not specify 
 both. 
 
 ## Grammars
 
-Grammars describe very simple type of the language for command and control, and 
-they are usually written by hand or generated automatically within the code. 
+Grammars describe a very simple type of the language for command and control.
+They are usually written by hand or generated automatically within the code. 
 Grammars usually do not have probabilities for word sequences, but some 
-elements might be weighed. Grammars could be created with JSGF format and 
+elements might be weighed. Grammars can be created with JSGF format and 
 usually have extension like .gram or .jsgf. 
 
-Grammars allow to specify possible inputs very precisely, for example,
-that certain word might be repeated only two or three times. However,
+Grammars allow you to specify possible inputs very precisely, for example,
+that a certain word might be repeated only two or three times. However,
 this strictness might be harmful if your user accidentally skips the
-words which grammar requires. In that case whole recognition will fail.
+words which the grammar requires. In that case whole recognition will fail.
 For that reason it is better to make grammars more relaxed, instead of
-phrases list just the bag of words allowing arbitrary order. Avoid very
+phrases, list just the bag of words allowing arbitrary order. Avoid very
 complex grammars with many rules and cases, it just slows the
-recognizer, you can use simple rules instead. In the past grammars
+recognizer, you can use simple rules instead. In the past, grammars
 required a lot of effort to tune them, to assign variants properly and
 so on. The big VXML consulting industry was about that.
 
@@ -129,7 +129,7 @@ In Android
     recognizer.setJsgf('grammar', jsgfFile);
     recognizer.startListening('grammar')
 
-Please not that `-jsgf` conflicts with `-kws` or `-jsgf`, you can not specify 
+Please note that `-jsgf` conflicts with `-kws` or `-jsgf`. You can not specify 
 both. 
 
 
@@ -137,23 +137,23 @@ both.
 
 Statistical language models describe more complex language. They contain 
 probabilities of the words and word combinations. Those probabilities
-are  estimated from a sample data and automatically have some
-flexibility. For  example, every combination from the vocabulary is
-possible, though probability  of such combination might vary. For
+are  estimated from sample data and automatically have some
+flexibility. For example, every combination from the vocabulary is
+possible, though probability of each combination will vary. For
 example if you create statistical language  model from a list of words
-it will still allow to decode word combinations  though it might not be
+it will still allow to decode word combinations though it might not be
 your intent.
 
 Overall, statistical language models are recommended for free-form input
-where user could say anything in a natural language and they require
-way less engineering effort than grammars, you just list the possible
+where user could say anything in a natural language. They require
+way less engineering effort than grammars. You just list the possible
 sentences. For example, you might list numbers like "twenty one" and
-"thirty three" and  statistical language model will allow "thirty one"
-with certain probability as  well.
+"thirty three" and statistical language model will allow "thirty one"
+with certain probability as well.
 
 Overall, modern speech recognition interfaces tend to be more natural and avoid 
-command-and-control style of previous generation. For that reason most 
-interface designers prefer natural language recognition with statistical 
+command-and-control style of the previous generation. For that reason most 
+interface designers prefer natural language recognition with a statistical 
 language model than old-fashioned VXML grammars.
 
 On the topic of design of the VUI interfaces you might be interested in
@@ -164,16 +164,16 @@ Balentine](http://www.amazon.com/Better-Good-Machine-Than-Person/dp/1932558098
 )
 
 There are many ways to build the statistical language models. When your
-data  set is large, there is sense to use CMU language modeling toolkit.
+data  set is large, it makes sense to use CMU language modeling toolkit.
 When a model  is small, you can use an online quick web service. When
 you need specific  options or you just want to use your favorite toolkit
 which builds ARPA models,  you can use it.
 
-Language model can be stored and loaded in three different format - text 
-[ARPA](sphinx4/standardgrammarformats) format, binary format BIN and
-binary DMP format. ARPA format takes more space but it is possible to
-edit it. ARPA files have `.lm` extension. Binary format takes
-significantly less space and faster  to load. Binary files have
+Language model can be stored and loaded in three different formats - text 
+[ARPA](sphinx4/standardgrammarformats) format, binary BIN format and
+binary DMP format. The ARPA format takes more space but it is possible to
+edit it. ARPA files have `.lm` extension. Binary formats take
+significantly less space and load faster. Binary files have
 `.lm.bin` extension. It is also possible to  convert between formats.
 DMP format is obsolete and not recommended.
 
@@ -183,21 +183,21 @@ DMP format is obsolete and not recommended.
 
 First of all you need to prepare a large collection of clean texts.
 Expand  abbreviations, convert numbers to words, clean non-word items.
-For example to  clean Wikipedia XML dump you can use special python
+For example to  clean Wikipedia XML dumps you can use special python
 scripts like [Wikiextractor](https://github.com/attardi/wikiextractor).
 To clean HTML pages you can try 
-[BoilerPipe](http://code.google.com/p/boilerpipe) a nice package
-specifically created to  extract text from HTML
+[BoilerPipe](http://code.google.com/p/boilerpipe).  It's a nice package
+specifically created to  extract text from HTML.
 
-For example on how to create language model from Wikipedia texts please
-see the [blog
+For an example on how to create a language model from Wikipedia text, please
+see this [blog
 post](http://trulymadlywordly.blogspot.ru/2011/03/creating-text-corpus-from-wiki
-pedia.html)
+pedia.html).
 
-Once you went through the language model process, please submit your langauge 
-model to CMUSphinx project, we'd be glad to share it!
+Once you have gone through the language model process, please submit your langauge 
+model to CMUSphinx project.  We'd be glad to share it!
 
-Movie subtitles are good source for spoken language.
+Movie subtitles are a good source for spoken language.
 
 Language modeling for many languages like Mandarin is largely the same
 as in  English, with one addditional consideration, which is that the
@@ -206,7 +206,7 @@ word list is provided to  accomplish this.
 
 ### ARPA model training with SRILM
 
-Training with SRILM is easy, that's why we recommend it. Morever, SRILM is the 
+Training with SRILM is easy.  That's why we recommend it. Morever, SRILM is the 
 most advanced toolkit up to date. To train the model you can use the following 
 command:
 	
@@ -218,7 +218,7 @@ You can prune the model afterwards to reduce the size of the model
     ngram -lm your.lm -prune 1e-8 -write-lm your-pruned.lm
 
 
-After training it is worth to test the perplexity of the model on the test data
+After training it is worth it to test the perplexity of the model on the test data
 
 	
     ngram -lm your.lm -ppl test-text.txt
@@ -283,7 +283,7 @@ weather.closed.txt
 ### Building a simple language model using web service
 
 If your language is English and text is small it's sometimes more convenient to 
-use web service to build it. Language models built in this way are quite 
+use a web service to build it. Language models built in this way are quite 
 functional for simple command and control tasks. First of all you need to 
 create a corpus.
 
@@ -326,11 +326,11 @@ Some toolkits you can try:
 
 * [ MITLM ](http://code.google.com/p/mitlm/ )
 
-If you are training large vocabulary speech recognition system, the
+If you are training a large vocabulary speech recognition system, the
 language  model training is outlined in a separate page 
 [tutoriallmadvanced](/wiki/tutoriallmadvanced).
 
-Once you created ARPA file you can convert the model to binary format for 
+Once you have created an ARPA file you can convert the model to binary format for 
 faster loading.
 
 ### Converting model into binary format
