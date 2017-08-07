@@ -16,8 +16,8 @@ both of these - in fact it is not very useful to do one without the other.
 ### Getting Started
 
 First, download the LIUM_spkDiarization .jar file from 
-http://liumtools.univ-lemans.fr//index.php?option=com_content&task=blogcategory&
-id=32&Itemid=60.  Running it without arguments will print out a summary of its 
+<http://liumtools.univ-lemans.fr//index.php?option=com_content&task=blogcategory&id=32&Itemid=60>.
+Running it without arguments will print out a summary of its
 options, which looks like this:
 
 `<file>`

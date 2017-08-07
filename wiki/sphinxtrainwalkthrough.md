@@ -36,7 +36,7 @@ the source directory (provided that you have first installed
 	>>>
 
 Some automatically-generated (and incomplete) documentation on the Python 
-modules can be found at http://lima.lti.cs.cmu.edu/pydoc/SphinxTrain/
+modules can be found at <http://lima.lti.cs.cmu.edu/pydoc/SphinxTrain/>
 
 ### Header Files
 

@@ -514,7 +514,7 @@ line search parameters. [Here is a paper describing a different approach to
 obtaining difficult alignments of longer 
 utterances.](http://www.danielpovey.com/files/2015_icassp_librispeech.pdf) 
 Please see also: 
-http://cmusphinx.github.io/2014/07/long-audio-aligner-landed-in-trunk/
+<http://cmusphinx.github.io/2014/07/long-audio-aligner-landed-in-trunk/>
 
 Remember that [PocketSphinx has an 
 API](http://cmusphinx.github.io/doc/pocketsphinx/) because you have the 
@@ -527,9 +527,9 @@ Two prospective student applicants (so far) for the 2017 Google Summer of Code
 ported the "What's your name" examples above to 
 [pocketsphinx.js:](https://github.com/syl22-00/pocketsphinx.js)
 
-*  https://github.com/brijmohan/iremedy ([live demo](https://brijmohan.github.io/iremedy/index.html))
+*  <https://github.com/brijmohan/iremedy> ([live demo](https://brijmohan.github.io/iremedy/index.html))
 
-*  https://github.com/SND96/pocketsphinx-scores ([live demo](https://snd96.github.io/pocketsphinx-scores/live.html))
+*  <https://github.com/SND96/pocketsphinx-scores> ([live demo](https://snd96.github.io/pocketsphinx-scores/live.html))
 
 Those require Chrome or Firefox with WebRTC (GetUserMedia) microphone audio 
 input permission.
@@ -540,65 +540,64 @@ Loukina, *et al.* (September 2015) “Pronunciation accuracy and intelligibility
 of non-native speech,” in InterSpeech-2015, the Proceedings of the Sixteenth 
 Annual Conference of the International Speech Communication Association 
 (Dresden, Germany: Educational Testing Service.) 
-http://www.oeft.com/su/pdf/interspeech2015b.pdf
+<http://www.oeft.com/su/pdf/interspeech2015b.pdf>
 
 Kibishi, et al. (May 2014) “A statistical method of evaluating the 
 pronunciation proficiency/intelligibility of English presentations by Japanese 
 speakers,” ReCALL (European Association for Computer Assisted Language 
 Learning.) doi:10.1017/S0958344014000251. 
-http://www.slp.ics.tut.ac.jp/Material_for_Our_Studies/Papers/shiryou_last/e2014-
-Paper-01.pdf
+<http://www.slp.ics.tut.ac.jp/Material_for_Our_Studies/Papers/shiryou_last/e2014-Paper-01.pdf>
 
 Ronanki, Salsman, and Bo (December 2012) “Automatic Pronunciation Evaluation 
 And Mispronunciation Detection Using CMUSphinx,” in the Proceedings of the 24th 
 International Conference on Computational Linguistics (Mumbai, India: COLING 
-2012) pp. 61-67: http://www.aclweb.org/anthology/W12-5808 Source code 
+2012) pp. 61-67: <http://www.aclweb.org/anthology/W12-5808> Source code
 repository: 
-https://sourceforge.net/p/cmusphinx/code/HEAD/tree/branches/speecheval/ Blog: 
-http://pronunciationeval.blogspot.com/
+<https://sourceforge.net/p/cmusphinx/code/HEAD/tree/branches/speecheval/> Blog:
+<http://pronunciationeval.blogspot.com/>
 
 Salsman, J. (July 2014) “Development challenges in automatic speech recognition 
 for computer assisted pronunciation teaching and language learning” in 
 Proceedings of the Research Challenges in Computer Aided Language Learning 
 Conference (Antwerp, Belgium: CALL 2014.) 
-http://talknicer.com/Salsman-CALL-2014.pdf
+<http://talknicer.com/Salsman-CALL-2014.pdf>
 
 CMUSphinx PocketSphinx tutorial: 
-http://cmusphinx.github.io/wiki/tutorialpocketsphinx
+<https://cmusphinx.github.io/wiki/tutorialpocketsphinx>
 
 Huggins-Daines, David, *et al.* (2006) "Pocketsphinx: A free, real-time 
 continuous speech recognition system for hand-held devices." Proceedings of the 
 IEEE International Conference on Acoustics, Speech and Signal Processing 
-(ICASSP) vol. 1: https://www.cs.cmu.edu/~awb/papers/ICASSP2006/0100185.pdf
+(ICASSP) vol. 1: <https://www.cs.cmu.edu/~awb/papers/ICASSP2006/0100185.pdf>
 
 PocketSphinx source code: 
-http://cmusphinx.github.io/doc/pocketsphinx/files.html
+<https://cmusphinx.github.io/doc/pocketsphinx/files.html>
 
 Russell et al. (November 1992) “Children's speech training aid,” U.S. Patent 
 5,679,001 (expired; originally issued in U.K. as “Speech training aid.”) 
-https://www.google.com/patents/US5679001
+<https://www.google.com/patents/US5679001>
 
 *Proceedings of the International Symposium on Automatic Detection of Errors in 
 Pronunciation Training,* June 6–8, 2012, KTH, Stockholm, Sweden. 
-http://www.speech.kth.se/isadept/ISADEPT-proceedings.pdf
+<http://www.speech.kth.se/isadept/ISADEPT-proceedings.pdf>
 
 *Proceedings of the Workshop on Speech and Language Technology in Education,* 
 September 4–5, 2015 (Satellite Workshop of Interspeech 2015 and the ISCA 
 Special Interest Group SLaTE) Leipzig, Germany. 
-https://www.slate2015.org/files/SLaTE2015-Proceedings.pdf
+<https://www.slate2015.org/files/SLaTE2015-Proceedings.pdf>
 
 Chen and Li (2016) "Computer-assisted pronunciation training: From 
 pronunciation scoring towards spoken language learning" *Proceedings of the 
 2016 Asian-Pacific Signal and Information Processing Association (APSIPA) 
 Annual Summit and Conference:* 
-http://www.apsipa.org/proceedings_2016/HTML/paper2016/227.pdf
+<http://www.apsipa.org/proceedings_2016/HTML/paper2016/227.pdf>
 
 Computer-Assisted Pronunciation Teaching Bibliography: 
-http://liceu.uab.es/~joaquim/applied_linguistics/L2_phonetics/CALL_Pron_Bib.html
+<http://liceu.uab.es/~joaquim/applied_linguistics/L2_phonetics/CALL_Pron_Bib.html>
 
 Panayotov, V., *et al.* (2015) ["LIBRISPEECH: An ASR Corpus Based on Public
 Domain Audio Books"](http://www.danielpovey.com/files/2015_icassp_librispeech.pdf) 
-http://www.danielpovey.com/files/2015_icassp_librispeech.pdf
+<http://www.danielpovey.com/files/2015_icassp_librispeech.pdf>
 
 Hui Jiang (2005) ["Confidence measures for speech recognition: A 
 survey,"](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A45729E2ECDD6F9FA3BFE8BBDEDDDE15?doi=10.1.1.93.6890&rep=rep1&type=pdf) 
@@ -607,7 +606,7 @@ survey,"](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A45729E2ECDD6
 ### Draft GSoC 2017 proposal
 
 Please see 
-https://en.wiktionary.org/wiki/Wiktionary:Grease_pit/2017/March#Please_comment_on_adding_pronunciation_assessment for a mocked-up example.
+<https://en.wiktionary.org/wiki/Wiktionary:Grease_pit/2017/March#Please_comment_on_adding_pronunciation_assessment> for a mocked-up example.
 
 #### Goals
 

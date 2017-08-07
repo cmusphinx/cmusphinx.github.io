@@ -774,8 +774,9 @@ product for  these steps is a file, `feature_transform`,  in your
 Finally, one more step will run if you specify MMIE training with
 `$CFG_MMIE =  "yes";`. Default is `"no"`. This will run steps
 `60.lattice_generation`, `61.lattice_pruning`, `62.lattice_conversion`
-and `65.mmie_train`. For  details see [mmie_train](mmie_train). ##
-Testing
+and `65.mmie_train`. For  details see [mmie_train](/wiki/mmie_train).
+
+## Testing
 
 It's *critical* to test the quality of the trained database in order to 
 select best parameters, understand how application performs and optimize

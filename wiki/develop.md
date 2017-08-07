@@ -23,12 +23,12 @@ Alternatively, get latest code from github
 
 ## Read Documentation
 
-http://cmusphinx.github.io/wiki - Our wiki
+<http://cmusphinx.github.io/wiki> - Our wiki
 
-http://cmusphinx.github.io/doc/pocketsphinx - Pocketsphinx Doxygen 
+<http://cmusphinx.github.io/doc/pocketsphinx> - Pocketsphinx Doxygen
 Documentation
 
-http://cmusphinx.github.io/doc/sphinx4 - Sphinx4 Javadoc
+<http://cmusphinx.github.io/doc/sphinx4> - Sphinx4 Javadoc
 
 ##  Fix a bug 
 

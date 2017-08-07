@@ -73,11 +73,11 @@ the task.
 ## Related Sources
 
 
-*  [1] http://developer.nvidia.com/what-cuda
+*  [1] <http://developer.nvidia.com/what-cuda>
 
-*  [2] http://liuchuan.org/pub/cuHMM.pdf
+*  [2] <http://liuchuan.org/pub/cuHMM.pdf>
 
-*  [3] http://www.cse.ucsc.edu/research/compbio/papers/samspace.pdf
+*  [3] <http://www.cse.ucsc.edu/research/compbio/papers/samspace.pdf>
 
 ## Work Update
 
@@ -214,6 +214,6 @@ Note: The computation on long audio files kept failing due to alignment error.
 Because of that the subsequent steps were skipped (or also failed) and the 
 values measured for these modules are not representative. The problem with long 
 audio alignment is addressed by a separate project (see 
-[longaudioalignment](longaudioalignment)).
+[longaudioalignment](/wiki/longaudioalignment)).
 
 --- //[Michal Krajňanský](michal.krajnansky@gmail.com) 2011/07/13 10:26//

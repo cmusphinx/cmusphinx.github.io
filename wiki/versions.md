@@ -69,5 +69,5 @@ at the online documentation.
 
 **Other Decoders**
 
-For competition with other decoders see [competition](competition)
+For competition with other decoders see [competition](/wiki/competition)
 
