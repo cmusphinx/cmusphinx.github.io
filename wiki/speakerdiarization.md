@@ -20,48 +20,38 @@ http://liumtools.univ-lemans.fr//index.php?option=com_content&task=blogcategory&
 id=32&Itemid=60.  Running it without arguments will print out a summary of its 
 options, which looks like this:
 
-`<file>`
+```
 dhuggins@lima-2:~/Projects/PyCon/freelt$ ../tools/LIUM_SpkDiarization-3.1.jar 
 info[info] 	 ====================================================== 
 info[program] 	 name = Diarization
 info[info] 	 ------------------------------------------------------ 
 info[show] 	 [options] show
 info[ParameterFeature-Input] 	 --fInputMask 	 Features input mask = %s.mfcc
-info[ParameterFeature-Input] 	 --fInputDesc 	 Features info 
-(type[,s:e:ds:de:dds:dde,dim,c:r:wSize:method]) = 
-audio2sphinx,1:1:0:0:0:0,13,0:0:0:0
-info[ParameterFeature-Input] 	 	 type [sphinx,spro4,gztxt,audio2sphinx] 
-= audio2sphinx (4)
-info[ParameterFeature-Input] 	 	 static [0=not present,1=present ,3=to 
-be removed] = 1
+info[ParameterFeature-Input] 	 --fInputDesc 	 Features info (type[,s:e:ds:de:dds:dde,dim,c:r:wSize:method]) = audio2sphinx,1:1:0:0:0:0,13,0:0:0:0
+info[ParameterFeature-Input] 	 	 type [sphinx,spro4,gztxt,audio2sphinx] = audio2sphinx (4)
+info[ParameterFeature-Input] 	 	 static [0=not present,1=present ,3=to be removed] = 1
 info[ParameterFeature-Input] 	 	 energy [0,1,3] = 1
 info[ParameterFeature-Input] 	 	 delta [0,1,2=computed on the fly,3] = 0
-info[ParameterFeature-Input] 	 	 delta energy [0,1,2=computed on the 
-fly,3] = 0
+info[ParameterFeature-Input] 	 	 delta energy [0,1,2=computed on the fly,3] = 0
 info[ParameterFeature-Input] 	 	 delta delta [0,1,2,3] = 0
 info[ParameterFeature-Input] 	 	 delta delta energy [0,1,2,3] = 0
 info[ParameterFeature-Input] 	 	 file dim = 13
 info[ParameterFeature-Input] 	 	 normalization, center [0,1] = 0
 info[ParameterFeature-Input] 	 	 normalization, reduce [0,1] = 0
 info[ParameterFeature-Input] 	 	 normalization, window size = 0
-info[ParameterFeature-Input] 	 	 normalization, method [0 (segment), 1 
-(cluster), 2 (sliding), 3 (warping)] =0
+info[ParameterFeature-Input] 	 	 normalization, method [0 (segment), 1 (cluster), 2 (sliding), 3 (warping)] =0
 info[info] 	 ------------------------------------------------------ 
-info[ParameterSegmentationFile-Input] 	 --sInputMask 	 Output segmentation 
-mask = %s.in.seg
-info[ParameterSegmentationFile-Input] 	 --sInputFormat 	 Output 
-segmentation format = seg,ISO-8859-1
-info[ParameterSegmentationFile-Output] 	 --sOutputMask 	 Output segmentation 
-mask = %s.out.seg
-info[ParameterSegmentationFile-Output] 	 --sOutputFormat 	 Output 
-segmentation format = seg,ISO-8859-1
+info[ParameterSegmentationFile-Input] 	 --sInputMask 	 Output segmentation mask = %s.in.seg
+info[ParameterSegmentationFile-Input] 	 --sInputFormat 	 Output segmentation format = seg,ISO-8859-1
+info[ParameterSegmentationFile-Output] 	 --sOutputMask 	 Output segmentation mask = %s.out.seg
+info[ParameterSegmentationFile-Output] 	 --sOutputFormat 	 Output segmentation format = seg,ISO-8859-1
 info[info] 	 ------------------------------------------------------ 
 info[ParameterSystem] 	 --system = current
 info[ParameterSystem] 	 --doCEClustering = false
 info[ParameterSystem] 	 --saveAllStep = false
 info[ParameterSystem] 	 --loadInputSegmentation = false
 info[info] 	 ------------------------------------------------------ 
-`</file>`
+```
 
 The LIUM segmentation tool can take a variety of file types as input.  By 
 default, it is assumed that the input is audio - this can be a WAV file, 

@@ -81,11 +81,15 @@ To compile the project install ant and be sure to set the required enviroment
 variables.
 Then type the following:
 
+```
 ant
+```
 
 To postprocess text use the postprocess.sh script:
 
+```
 sh ./postprocessing.sh -input_text path_to_file -lm path_to_lm
+```
 
 ## Results
 
