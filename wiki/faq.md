@@ -89,14 +89,9 @@ recognition result.
 If continuous is showing READY and doesn't react to your speech it means that 
 pocketsphinx recording silence. The reasons for that are:
 
-
-*  Pocketsphinx is decoding from a wrong device. Try to check log for the 
-warning `<code>`
-     `Warning: Could not find Mic element` 
-`</code>` (try to change device with `-adcdev` option)
-*  Recording volume is too low (try to increase recording level in volume 
-settings)
-*  Microphone is broken (test that other programs can record)
+  *  Pocketsphinx is decoding from a wrong device. Try to check log for the warning `Warning: Could not find Mic element` (try to change device with `-adcdev` option)
+  *  Recording volume is too low (try to increase recording level in volume settings)
+  *  Microphone is broken (test that other programs can record)
 
 ## Q: Which languages are supported
 
