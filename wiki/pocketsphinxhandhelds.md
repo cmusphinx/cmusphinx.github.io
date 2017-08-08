@@ -52,8 +52,8 @@ reducing the amount of computation. Basically everything is decoded with
 phonetic decoder first and then detailed search is restricted by the results of 
 the fast phonetic search. It's also called "Fast match". For details and 
 evaluations see the chapter "4.5 Phonetic Fast Match" in 
-[[http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.72.3560 | Efficient
-Algorithms for Speech Recognition Mosur K. Ravishankar]]
+[Efficient Algorithms for Speech Recognition Mosur K. Ravishankar](
+http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.72.3560)
 
 pl_window specifies lookahead distance in frames. Typical values are from 0 
 (don't use lookahead) to 10 (decode 10 frames ahead). Bigger values give faster 

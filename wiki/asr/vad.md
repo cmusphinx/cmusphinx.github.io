@@ -50,13 +50,12 @@ particular tuning of the computational expenses.
 
 This ends into fusion of the various systems, like the one available here:
 
-https://github.com/mvansegbroeck/vad
+<https://github.com/mvansegbroeck/vad>
 
 One of the modern fast VADs available in public is VAD from WebRTC codec, it 
 incorporates almost all the features existing:
 
-https://code.google.com/p/webrtc/source/browse/trunk/#trunk%2Fwebrtc%2Fcommon_au
-dio%2Fvad
+<https://code.google.com/p/webrtc/source/browse/trunk/#trunk%2Fwebrtc%2Fcommon_audio%2Fvad>
 
 and it's pretty reliable.
 

@@ -11,7 +11,7 @@ title: Pocketsphinx on Android
 ## Introduction
 
 Current tutorial describes a most recent version available on
-[GitHub](http///github.com/cmusphinx/pocketsphinx-android-demo).
+[GitHub](https://github.com/cmusphinx/pocketsphinx-android-demo).
 
 ## PocketSphinx Android demo
 

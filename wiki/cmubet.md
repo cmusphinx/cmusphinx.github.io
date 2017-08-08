@@ -49,7 +49,7 @@ layout: page
 ### Eliminating dipthongs
 
 If you need to eliminate diphthongs (which you probably don't, unless you are 
-using [diphones](diphones)) you can use this mapping:
+using [diphones](/wiki/diphones)) you can use this mapping:
 
     AW -> AA UH
     AY -> AA IY
@@ -60,5 +60,5 @@ using [diphones](diphones)) you can use this mapping:
 
 Those substitutions result in about 1,155 diphones, about [1,052 of which are 
 present in the 4,800 most frequent spoken English words, but at vastly 
-different frequencies.](diphones)
+different frequencies.](/wiki/diphones)
 

@@ -4,7 +4,7 @@ layout: page
 # Letter to Phoneme Conversion in CMU Sphinx-4
 
 Project progress will be also available at my personal blog at: 
-http://jsalatas.ictpro.gr/category/projects/gsoc-2012/
+<http://jsalatas.ictpro.gr/category/projects/gsoc-2012/>
 
 ## Abstract
 
@@ -150,10 +150,10 @@ Technologies (ACL-08: HLT), pp.905-913, Columbus, OH, June 2008.
 Conversion”, Speech Communication, Volume 50, Issue 5, pp. 434-451, May 2008.
 
 
-[7] http://code.google.com/p/phonetisaurus/
+[7] <http://code.google.com/p/phonetisaurus/>
 
 
-[8] http://www-i6.informatik.rwth-aachen.de/web/Software/g2p.html
+[8] <http://www-i6.informatik.rwth-aachen.de/web/Software/g2p.html>
 
 
 [9] D. Jouvet, D. Fohr, I. Illina, "Evaluating Grapheme-to-Phoneme Converters 
@@ -161,20 +161,20 @@ in Automatic Speech Recognition Context", IEE International Conference on
 Acoustics, 2012
 
 
-[10] CRF Project Page, http://crf.sourceforge.net/
+[10] CRF Project Page, <http://crf.sourceforge.net/>
 
  
 
-[11] OpenFST Library, http://www.openfst.org/twiki/bin/view/FST/WebHome
+[11] OpenFST Library, <http://www.openfst.org/twiki/bin/view/FST/WebHome>
 
  
 
 [12] Javadoc for package marytts.fst, 
-http://mary.dfki.de/javadoc/4.0.0/marytts/fst/package-summary.html
+<http://mary.dfki.de/javadoc/4.0.0/marytts/fst/package-summary.html>
 
  
 
-[13] The MARY Text-to-Speech System, http://mary.dfki.de/
+[13] The MARY Text-to-Speech System, <http://mary.dfki.de/>
 
  
 

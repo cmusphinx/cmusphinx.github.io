@@ -15,7 +15,7 @@ Goodman](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.23.892 )
 A lastest trend is discriminative language models and recurrent neural-network 
 language models
 
-http://www.fit.vutbr.cz/~imikolov/rnnlm/
+<http://www.fit.vutbr.cz/~imikolov/rnnlm/>
 
 They demonstrate a good performance and a lot of interest is devoted to them.
 

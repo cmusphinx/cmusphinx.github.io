@@ -28,7 +28,7 @@ to the particular speaker.
 
 The methods of adaptation are a bit different between PocketSphinx and Sphinx4 
 due to the different types of acoustic models used. For more technical 
-information on that see [acousticmodeltypes](acousticmodeltypes).
+information on that see [acousticmodeltypes](/wiki/acousticmodeltypes).
 
 ##  Creating an adaptation corpus 
 
@@ -305,9 +305,9 @@ After you have done the adaptation, it's critical to test the adaptation
 quality. To do that you need to setup the database similar to the one used for 
 adaptation. To test the adaptation you need to configure the decoding with the 
 required paramters, in particular, you need to have a language model 
-`<your.lm>`. For more details see  [tutoriallm](tutoriallm). The detailed 
+`<your.lm>`. For more details see  [tutoriallm](/wiki/tutoriallm). The detailed
 process of testing the model is covered in [other part of the 
-tutorial](tutorialtuning). 
+tutorial](/wiki/tutorialtuning).
 
 You can try to run decoder on the original acoustic model and on new acoustic 
 model to estimate the improvement.

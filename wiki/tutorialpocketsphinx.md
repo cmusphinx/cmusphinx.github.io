@@ -18,7 +18,7 @@ Linux, Windows, on MacOS, iPhone and Android.
 
 First of all, download the released packages pocketsphinx and sphinxbase from 
 project downloads, checkout them from subversion or github. For more details 
-see [ download page](download ).
+see [ download page](/wiki/download ).
 
 Unpack them into same directory. On Windows, you will need to rename 
 'sphinxbase-X.Y' (where X.Y is the SphinxBase version number) to simply
@@ -131,7 +131,7 @@ the same process.
 significant reduction in memory consumption.
 
 Reference documentation for the new API is available at 
-http://cmusphinx.github.io/doc/pocketsphinx/
+<https://cmusphinx.github.io/doc/pocketsphinx/>
 
 ## Basic Usage (hello world)
 

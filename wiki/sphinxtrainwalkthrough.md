@@ -36,7 +36,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 Some automatically-generated (and incomplete) documentation on the Python 
-modules can be found at http://lima.lti.cs.cmu.edu/pydoc/SphinxTrain/
+modules can be found at <http://lima.lti.cs.cmu.edu/pydoc/SphinxTrain/>
 
 ### Header Files
 

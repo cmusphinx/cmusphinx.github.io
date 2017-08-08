@@ -76,7 +76,7 @@ What relationships can be considered:
 --Java code to use WordNet--
 
 see repository below: 
-http://code.google.com/p/cmusphinx-gsoc2012/source/browse/#svn%2Ftrunk
+<http://code.google.com/p/cmusphinx-gsoc2012/source/browse/#svn%2Ftrunk>
  
 2) Method 2: Co-Occurring
 
@@ -197,10 +197,10 @@ used (see basic concepts in speech).
 - install required software: Jave SE, Ant, subversion
 - checkout Sphinx4 from SVN using Eclipse: File -> New Project -> SVN (Checkout 
 Project from SVN) -> Create a new repository location 
-(https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/trunk/sphinx4) -> 
+(<https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/trunk/sphinx4>) ->
 Finish
 - Setup JSAPI 1.0, see [sphinx4/doc/jsapi_setup.html]
-- setup build.xml, see http://www.lilwondermat.com/chatter/downloads/eclipse.pdf
+- setup build.xml, see <http://www.lilwondermat.com/chatter/downloads/eclipse.pdf>
 - setup demo debug and test: Project -> Properties -> Jave Build Path -> Source 
 -> sphinx4/src/apps (Double click Included: All) -> Add Multiple (select edu 
 subfold) in Inclusion patterns
@@ -284,8 +284,7 @@ Mathematics and Its Applications Workshop, 2000
 analysis. Discourse Processes, 25, 259–284, 1998
 
 [5] Latent Semantic Analysis (LSA) Tutorial, 
-http://www.puffinwarellc.com/index.php/news-and-articles/articles/33-latent-sema
-ntic-analysis-tutorial.html
+<http://www.puffinwarellc.com/index.php/news-and-articles/articles/33-latent-semantic-analysis-tutorial.html>
 
 [6] H. Erdogan, R. Sarikaya, S. F. Chen, Y. Gao, and M. Picheny,  Using 
 semantic analysis to improve speech recognition performance,  Comput. Speech 
