@@ -4,6 +4,10 @@ layout: page
 
 #### Pocketsphinx for Pronunication Evaluation
 
+**UPDATE: please see [this paper](https://github.com/jsalsman/featex/raw/master/Spoken-English-Intelligibility-Remediation.pdf) for a far superior method developed during the 2017 Google Summer of Code superceding all of the below.**
+
+----
+
 *This is a short tutorial with references by James Salsman (jim at talknicer dot com.)*
 
 ### Installation and testing
@@ -383,7 +387,7 @@ The output file from that command looks like this:
 We can use the lines in that file with good data (and therefore a space) to 
 produce means and standard deviations, and thereby standard scores, like this:
 
-    grep ' ' normalign.txt | awk '{if (!mnf || NF<mnf) {mnf=NF}; for (f=1; f<NF; f++) {i[NR,f]=$f; if ((f-1) % 3) {m[f]+=$f; d[f]=$f-a[f]; a[f]+=d[f]/NR; m2[f]+=d[f]*($f-a[f])}}; i[NR,0]=$NF} END {print "Means and standard deviations of acoustic scores and durations for each phoneme:"; for (f=1; f<mnf; f++) {if ((f-1) % 3) {printf "%5.3f %5.3f ", m[f]/NR, sqrt(m2[f]/NR)} else {printf "%s ", $f}}; print "\n\nStandard scores of acoustic scores and durations for each scored utterance:"; for (r=1; r<=NR; r++) {for (f=1; f<mnf; f++) {if ((f-1) % 3) {printf "%+6.3f ", (i[r,f]-(m[f]/NR))/sqrt(m2[f]/NR)} else {printf "%s ", i[r,f]}}; print i[r,0]}}' >` standards.txt
+    grep ' ' normalign.txt | awk '{if (!mnf || NF<mnf) {mnf=NF}; for (f=1; f<NF; f++) {i[NR,f]=$f; if ((f-1) % 3) {m[f]+=$f; d[f]=$f-a[f]; a[f]+=d[f]/NR; m2[f]+=d[f]*($f-a[f])}}; i[NR,0]=$NF} END {print "Means and standard deviations of acoustic scores and durations for each phoneme:"; for (f=1; f<mnf; f++) {if ((f-1) % 3) {printf "%5.3f %5.3f ", m[f]/NR, sqrt(m2[f]/NR)} else {printf "%s ", $f}}; print "\n\nStandard scores of acoustic scores and durations for each scored utterance:"; for (r=1; r<=NR; r++) {for (f=1; f<mnf; f++) {if ((f-1) % 3) {printf "%+6.3f ", (i[r,f]-(m[f]/NR))/sqrt(m2[f]/NR)} else {printf "%s ", i[r,f]}}; print i[r,0]}}' > standards.txt
 
 The output of that lengthy AWK command produces means, standard deviations, and 
 standard scores:
@@ -506,7 +510,7 @@ base-10 exponent scientific notation, but they will be reported by pocketsphinx
 as negative integer logarithm probability state transition pruning thresholds 
 thusly:
 
-    INFO: fsg_search.c(227): FSG(beam: -1282, pbeam: -1080, wbeam: -1260; wip: -26, pip: 0)`
+    INFO: fsg_search.c(227): FSG(beam: -1282, pbeam: -1080, wbeam: -1260; wip: -26, pip: 0)
 
 [Here is the beginnings of an optimization 
 task](http://talknicer.com/hmpaiyf.tar.gz) for setting those and other command 
