@@ -151,7 +151,7 @@ displacements of the vocal tract components:
     <oy> = oy | ao | iy | ay;
     <p> = p | t | b | hh;
     <r> = r | y | l;
-    <ss> = sh | s | z | th;
+    <s> = sh | s | z | th;
     <sh> = sh | s | zh | ch;
     <t> = t | ch | k | d | p | hh;
     <th> = th | s | dh | f | hh;
