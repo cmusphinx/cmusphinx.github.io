@@ -1,177 +1,184 @@
 ---
-layout: page 
+layout: page
 title: Before you start
 ---
-# Before you start
 
-Before you start the development of the speech application, you need to
-consider several important points. They will define the way you'll
-implement the application.
+---
 
-##  Algorithms
+* auto-gen TOC:
+{:toc}
 
-Speech technology puts several important limits on the way it's possible
-to implement the application. For example, as noted above it is
+---
 
-**impossible** to recognize any known word of the language. You need
-to consider the ways to overcome such limitations. Such ways are known 
-for most types of applications out there and described later in
+Before you start developing a speech application, you need to
+consider several important points. They will define the way you will
+implement your application.
+
+## Algorithms
+
+Speech technology sets several important limits to the way you implement an
+application. For example, as noted before, it is *impossible* to recognize *any*
+known word of the language.
+You need to consider ways to overcome such limitations. Such ways are known
+for most types of applications out there and will be described later in the
 tutorial. To follow them, you sometimes need to rethink how your
 application will behave and interact with the user.
 
-Although we try to provide important examples, we obviously can't cover
+Although we try to provide important examples, we obviously can’t cover
 everything. There is no utterance verification or speaker identification
-example yet, though they could be created later. Most algorithms are widely 
-covered in scientific literature, and some of them are explained in tutorial 
-later in the section. Moreover, new methods to solve old problems raise each 
-year.
+example yet, though they could be created later. Most algorithms are widely
+covered in scientific literature and some of them are explained later in the
+tutorial. Moreover, new methods to solve old problems raise each year.
 
-To name several common applications and the way to approach them:
+Let’s go through a list of several common applications and how to approach them:
 
-**Generic dictation** is never so generic. You need to find out a domain
-you'll recognize which can be dialogs, readings, meetings, voicemails,
-legal or medical  transcriptions. If you consider voicemails, note that
-the language there is way more restricted than general language. It's
-actually a very small vocabulary with specialized sequence of terms:
+**Generic dictation** is never as generic as its name says. You need to
+determine a domain to recognize which can be e.g. dialogs, readings, meetings,
+voicemails, legal or medical transcriptions. If you consider voicemails, note
+that the language in this domain is way more restricted than general language.
+It’s actually a very small vocabulary with specialized sequences of terms:
 
-  * It's Sandy. Let's meet tomorrow
-  * Hi. That's Joe, I'm going to sell you that car
+  * It’s Sandy. Let’s meet tomorrow
+  * Hi. That’s Joe, I’m going to sell you that car
 
-There will be a lot of names and that's a problem, but you'll never find
-a voicemail about quantum physics and that's a very good thing. The
-recognizer will use the restrictions you provided with the language
-model to improve accuracy of the result.
+There will be a lot of names, which is certainly a problem, but you’ll never
+find a voicemail about quantum physics – and that’s a very good thing. The
+recognizer will use the restrictions you provided with the language model in
+order to improve the accuracy of the result.
 
-You'll have to build a language model for your domain, but that's not as
-complicated as you might think. Don't afraid as well, if you'll cover
+You’ll have to build a language model for your domain, but that’s not as
+complicated as you might think. It doesn’t matter, if you only covered
 the 60k most common words in English; the accuracy will be the same as
-with  120k words. For other languages with rich morphology the situation
-is different, but also solvable with morphology-based subwords. Also,
-you have to build a  post-processing system, adaptation system and
-user-identification system.
+if you considered 120k words. For other languages with rich morphology the
+situation is different, but also solvable with morphology-based subwords. Also,
+you have to build a post-processing system, an adaptation system and
+a user-identification system.
 
 For **recognition on an embedded processor,** there are two ways to
-consider - recognition on the server and recognition on the device. The former is
-more popular now days because it lets you use the power and flexibility of
-the cloud computations.
+consider – recognition on the server and recognition on the device. The former
+is more popular nowadays because it leverages the power and flexibility of
+cloud computing.
 
 **Language learning** will require you to build a framework for tracking
-incorrect pronunciations. That will include generation of incorrect
-pronunciations and scoring them.
+incorrect pronunciations. That will include the generation and scoring of
+incorrect pronunciations.
 
 For **command and control,** it was popular to use a finite state grammar for a
-long time. Unfortunately, we could not recommend that to you now days. It's
-way better to employ a medium vocabulary recognizer with semantic analysis
-framework on the top to improve user experience and let him use more or
-less natural language. In short, don't build command and control, build 
+long time. However, we do not recommend this approach nowadays. It’s
+way better to employ a medium vocabulary recognizer with a semantic analysis
+framework on top to improve the users’ experience and let them use more or
+less natural language. In short, don’t build command and control, build
 intelligent assistants instead.
 
-For **intelligent assistants** you need not just the recognition, but also 
-intent parsing and database knowledge. For more detail on how to implement this 
-you can check [Lucida](https://github.com/claritylab/ ) powered by 
-[OpenEphyra](https://github.com/TScottJ/OpenEphyra). Dialog systems will 
-require user feedback framework as well.
+For **intelligent assistants** you do not only need the recognition, but also
+intent parsing and database knowledge. For more details on how to implement this
+you can check [Lucida](https://github.com/claritylab/ ) powered by
+[OpenEphyra](https://github.com/TScottJ/OpenEphyra). Dialog systems will
+require a framework for user feedback as well.
 
-**Voice search, semantic analysis and translation** will need to be build on
-the top of the lattices generated by engine. You need to take lattices
-with confidence scores and feed them into the upper levels like
+**Voice search, semantic analysis and translation** will need to be built on
+top of the lattices generated by an engine. You need to take lattices
+with confidence scores and feed them into the upper levels like a
 translation engine.
 
 For open vocabulary recognition like **name and places recognition,** you
 will need a subword language model.
 
 **Text alignment,** like captions synchronization, will require you to build
-a specialized language model from reference text to restrict the search.
+a specialized language model from a reference text to restrict the search.
 
-## Existing accuracy figures
+## Existing accuracy results
 
-For most tasks above there are published accuracy results. You can find
-them if you'll identify the task. Those results could be useful
-or not useful in terms of accuracy for your users. You might count
-that you'll jump over the figures, but it's unlikely that it will be done
-quickly.
+For most tasks above there are published accuracy results. You can look into
+them if you identify the task. Those results can or cannot be useful in terms of
+accuracy for your users. I might be that your accuracy results appear to be
+better than the ones from the publications. However, this might be unlikely and
+might not be as easy to achieve as it seems at first.
 
-For example, the broadcast news recognition task is done with 20-25%
-accuracy. If it's not enough for your application, you probably need to
-consider modification of the application. You might add hand-correction
-step or preliminary adaptation step to improve accuracy. If accuracy
-will not be sufficient after that, probably it's better to think if you
-need speech at all. There are other more reliable interfaces you could
-use. 
+Let’s for instance consider a broadcast news recognition system which has an
+accuracy of 20-25%. If this is not enough for your application, you probably
+need to consider modifying the application. You might add a manual correction
+step or a preliminary adaptation step to improve accuracy. If the accuracy
+will not be sufficient afterwards, then it’s probably better to think about
+whether you need speech at all. There are other, more reliable, interfaces you
+could use.
 
-For example, though ASR-based IVR systems are fancy and handy, many
+For instance, though ASR-based IVR systems are fancy and handy, many
 people still prefer communication with DTMF systems or web-based forms
 or just email to contact the company. Remember that you need an
-effective interface, not modest one.
+effective interface, not a modest one.
 
 ## Resources
 
-Next issue you need to consider, is the availability of the speech
+Another problem you need to consider is the availability of speech
 material for training, testing and optimizing the system. You need to
 find out which resources are available to you.
 
 The **testing set** is a critical issue for any speech recognition
 application. The testing set should be representative enough
-acoustically and terms of language. But the test set shouldn't necessary
-be large, you can spend 10 minutes to create a good one. It might be a
-sample recordings you could do yourself.
+acoustically and in terms of the language. On the other hand, the test set
+doesn’t necessarily need be large, you can spend ten minutes to create a good
+one. It might be a couple of recordings you could do yourself.
 
-For training set and models you should check the resources that are
+For the training set and the models you should check the resources that are
 already present. The increasing interest in speech technology makes
-people  contribute by creation of models for their native languages. In
-general, you'll have to collect audio material for specified language.
-Actually it's not so complicated thing to do. Audio books, movies and
-podcasts provide enough recordings to build very good acoustic model
-with little effort.
+people contribute by creating models for their native languages. In
+general, you’ll have to collect audio material for a specified language.
+Actually it’s not that complicated. Audio books, movies and podcasts provide
+enough recordings to build a very good acoustic model with little effort.
 
-To build a phonetic dictionary you can use existing TTS synthesizer
-which nowdays cover a lot of languages. Also you can boostrap dictionary
+To build a phonetic dictionary you can use one of the existing TTS synthesizers
+which nowadays cover a lot of languages. You can also boostrap a dictionary
 by hand and then extend it with machine learning tools.
 
-For language models you'll have to find a lot of texts for your domain.
+For language models you’ll have to find a lot of texts for your domain.
 It might be textbooks, already transcribed recordings or some other
 sources like website contents crawled on the web.
 
 ## Technologies
 
-Third thing to consider is the set of particular technologies you will 
-build on. Although CMUSphinx tries to provide more or less complete 
-program suite for development of speech applications, you'll sometimes
+A third thing to consider is the set of particular technologies you will
+build on. Although CMUSphinx tries to provide a more or less complete
+programming suite for developing speech applications, you’ll sometimes
 need to use other packages/programming languages/tools. You need to find
-out yourself if you are going to continue with Java, C or any of
-scripting languages CMUSphinx supports. The rule to choose between 
-sphinx4 or pocketsphinx is the following:
+out yourself if you need to continue with Java, C or any of the scripting
+languages CMUSphinx supports. A simple rule to choose between sphinx4 and
+pocketsphinx is the following:
 
-  * Need speed or portability -> use pocketsphinx
-  * Need flexibility and managability -> use sphinx4
+  * If you need *speed or portability* ⇢ use pocketsphinx
+  * If you need *flexibility and managability* ⇢ use sphinx4
 
-Although people often ask what is more accurate sphinx4 or pocketsphinx,
-you shouldn't bother with this question at all. Accuracy is **not** the
-argument here. Both sphinx4 and pocketsphinx provide acceptable accuracy
-and even then it depends on many factors, not just the engine. The thing
-is that engine is just a part of the system which should include many
-more components. If we are talking about large vocabulary decoder, there
-must be diarization framework, adaptation framework and postprocessing
-framework. They all need to cooperate somehow. Flexibility of sphinx4
-allows you to build such a system quickly. It's easy to embed sphinx4
-into flash server like red5 to provide web-based recognition, it's easy
+Although people often ask whether sphinx4 or pocketsphinx is more accurate,
+you shouldn’t bother with this question at all. Accuracy is *not* the
+argument here. Both sphinx4 and pocketsphinx provide sufficient accuracy
+and even then it depends on many factors, not just the engine. The point
+is that the engine is just a part of the system which should include many
+more components. If we are talking about a large vocabulary decoder, there
+must be a diarization framework, an adaptation framework and a postprocessing
+framework. They all need to cooperate somehow. The flexibility of sphinx4
+allows you to build such a system quickly. It’s easy to embed sphinx4
+into a flash server like red5 to provide web-based recognition. It’s easy
 to manage many sphinx4 instances doing large-scale decoding on a
 cluster.
 
 On the other side, if your system needs to be efficient and reasonably
-accurate, if you are running on embedded device or you are interested in
-using recognizer with some exotic language like Erlang, pocketsphinx is
-your choice. It's very hard to integrate Java with other languages not
-supported by JVM pocketsphinx is way better here.
+accurate, if you are running on embedded device or if you are interested in
+using a recognizer with some exotic language like Erlang, then pocketsphinx is
+your choice. It’s very hard to integrate Java with other languages that are not
+supported by the JVM – pocketsphinx is way better in this case.
 
-Next example of what you need to consider a development platform choice.
-If you are bound to some, that's an easy question for you. If you can
-choose, we highly recommend you to use GNU/Linux as  a development
-platform. We can help you with Windows or Mac issues but there are no
-guarantees, our main development platform is Linux. For many tasks
-you'll need to run complex scripts using perl of python. On Windows it
-might be problematic.
+Last, you need to choose your development platform.
+If you are bound to a specific one, that’s an easy task for you. If you can
+choose, we highly recommend to use GNU/Linux as your development platform. We
+can help you with Windows or Mac issues but there are no guarantees – our main
+development platform is Linux. For many tasks you’ll need to run complex scripts
+using Perl or Python. On Windows it might be problematic.
 
-Got it? Let's start! Next section will describe the process of creation
-the sample application either with [sphinx4](/wiki/tutorialsphinx4) or 
-[pocketsphinx](/wiki/tutorialpocketsphinx).  Choose the right one.
+Alright, let’s start! The next sections will describe the process of creating
+a sample application with either [sphinx4](/wiki/tutorialsphinx4) or
+[pocketsphinx](/wiki/tutorialpocketsphinx). Choose the one that fits for you.
+
+<span class="post-bottom-nav">
+  [Overview of the CMUSphinx toolkit](/wiki/tutorialoverview)
+  [Building an application with sphinx4](/wiki/tutorialsphinx4)
+</span>

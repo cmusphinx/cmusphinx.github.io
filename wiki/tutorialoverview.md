@@ -1,13 +1,12 @@
 ---
-layout: page 
-title: Overview
+layout: page
+title: Overview of the CMUSphinx toolkit
 ---
-# Overview of CMUSphinx toolkit
 
-CMUSphinx toolkit is a leading speech recognition toolkit with various tools 
-used to build speech applications. CMU Sphinx toolkit has a number of packages 
-for different tasks and applications. It’s sometimes confusing what to choose. 
-To cleanup, here is the list:
+The CMUSphinx toolkit is a leading speech recognition toolkit with various tools
+used to build speech applications. CMUSphinx contains a number of packages
+for different tasks and applications. Sometimes, it’s confusing what to choose.
+To shed some light on the parts of the toolkit, here is a list:
 
 * Pocketsphinx — lightweight recognizer library written in C.
 * Sphinxbase — support library required by Pocketsphinx
@@ -34,3 +33,8 @@ The following resources are the main ones for CMUSphinx developers:
 * [Download page](https://sourceforge.net/projects/cmusphinx/files)
 * [Github](https://github.com/cmusphinx)
 * [Telegram Chat](https://t.me/cmusphinx)
+
+<span class="post-bottom-nav">
+  [Basic concepts of speech recognition](/wiki/tutorialconcepts)
+  [Before you start](/wiki/tutorialbeforestart/)
+</span>

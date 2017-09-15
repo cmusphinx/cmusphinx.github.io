@@ -46,3 +46,21 @@
 .related-post-title {
   border-bottom: thin solid #f3f3f3;
 }
+
+.post-bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+
+  a:nth-of-type(1) {
+    &:before {
+      content: "⇠ ";
+    }
+  }
+
+  a:nth-of-type(2) {
+    &:after {
+      content: " ⇢";
+    }
+  }
+}
