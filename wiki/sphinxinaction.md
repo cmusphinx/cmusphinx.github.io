@@ -117,10 +117,10 @@ sphinx4 applied for MaxMSP.
 SphinxSpeech](https://forge.openinterface.org/projects/sphinxspeech/ ) - 
 OpenInterface project using Sphinx.
 
-*  https://github.com/alumae/ruby-pocketsphinx-server - HTTP server 
+*  <https://github.com/alumae/ruby-pocketsphinx-server> - HTTP server
 transcribing requests in Ruby
 
-*  https://github.com/watsonbox/pocketsphinx-ruby - pocketsphinx Ruby bindings 
+*  <https://github.com/watsonbox/pocketsphinx-ruby> - pocketsphinx Ruby bindings
 created with FFI
 
 ## Art Installations
@@ -134,5 +134,5 @@ for talks in public places
 
 ## Interoperation with other engines
 
-http://sourceforge.net/projects/srmc/ Speech Recognition Model Conversion (See 
+<http://sourceforge.net/projects/srmc/> Speech Recognition Model Conversion (See
 also htk2s3conv in our sources).

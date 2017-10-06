@@ -34,7 +34,7 @@ process for you.
 ### Required software components
 
 First, you **need** to have the necessary [Python 
-modules](InstallingPythonStuff) installed in order to do LDA and MLLT.  You 
+modules](/wiki/InstallingPythonStuff) installed in order to do LDA and MLLT.  You
 should (obviously) also have Python 2.3 or newer.  To make sure that you have 
 the necessary modules installed, make sure that you can run Python and load the 
 `numpy` and `scipy.optimize` modules:

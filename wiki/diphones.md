@@ -8,8 +8,8 @@ Diphthongs include diphones in them.
 [This list of the top 4,800 words by frequency in English 
 speech](http://ucrel.lancs.ac.uk/bncfreq/lists/2_2_spokenvwritten.txt) was used 
 with [CMUDICT](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) to create the 
-following list of 1,052 diphones [without dipthongs](cmubet#eliminating 
-dipthongs) by approximate prevalence.
+following list of 1,052 diphones [without dipthongs](/wiki/cmubet#eliminating-dipthongs)
+by approximate prevalence.
 
 ![diphones](/data/diphones.png)
 

@@ -13,7 +13,7 @@ to build the language model for that domain yourself. You can mix that specific
 domain with generic domain to get some fallback, but specific domain is still 
 needed. Generic language models are created from large texts.
 
-The language modeling toolkit is http://www.speech.sri.com/projects/srilm, it 
+The language modeling toolkit is <http://www.speech.sri.com/projects/srilm>, it
 contains most tools for language modeling. In modern systems there is a lot of 
 success with neural-network based RNNLM language models. Those are supported in 
 rnnlm toolkit.

@@ -41,40 +41,13 @@ for which we don't have a well trained acoustic and language models.
 
 ## Literature Survey
 
-Algorithms for alignment 
- | S.No | Algorithm                           | Link to paper                   
-                                                                                
-                                       | Author     | Live Alignment | Precise 
-| Error Recovery | Memory Efficient | Disfluency correction | ASR required | 
- | ---- | ---------                           | -------------                   
-                                                                                
-                                       | ------     | -------------- | ------- 
-| -------------- | ---------------- | --------------------- | ------------ | 
- | 1    | "FST Aligner"                       | 
-[http://www.sls.csail.mit.edu/sls/publications/2006/IS061258.pdf](http://www.sls
-.csail.mit.edu/sls/publications/2006/IS061258.pdf)                     | Hazen  
-    | No             | Yes     | Yes            | No               | No         
-           | Yes          | 
- | 2    | "FST Aligner with disfluency model" | 
-[http://www.cs.columbia.edu/~julia/papers/liu03.pdf](http://www.cs.columbia.edu/
-~julia/papers/liu03.pdf)                                               | Liu    
-    | No             | Yes     | No             | No               | Yes        
-           | Yes          | 
- | 3    | "Anchor Points"                     | 
-[http://www.isca-speech.org/archive/archive_papers/icslp_1998/i98_0068.pdf](http
-://www.isca-speech.org/archive/archive_papers/icslp_1998/i98_0068.pdf) | Moreno 
-    | No             | No      | Yes            | No               | No         
-           | Yes          | 
- | 4    | "Viterbi Alignment"                 | 
-[http://www.cs.cmu.edu/~skishore/ksp_phdthesis.pdf](http://www.cs.cmu.edu/~skish
-ore/ksp_phdthesis.pdf)                                                 | 
-Kishore P. | Yes            | No      | No             | Yes              | No  
-                  | No           | 
- | 5    | "Partial Traceback"                 | 
-[http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1171441](http://ieeexplore
-.ieee.org/xpls/abs_all.jsp?arnumber=1171441)                           | 
-P.F.Brown  | Yes            | No      | No             | Yes              | No  
-                  | Yes          | 
+| S.No | Algorithm | Link to paper  | Author     | Live Alignment | Precise | Error Recovery | MemoryEfficient | Disfluency correction | ASR required | 
+ | ---- | ---------                           | -------------                                                                                                                                          | ------     | -------------- | ------- | -------------- | ---------------- | --------------------- | ------------ | 
+ | 1    | "FST Aligner"                       | [http://www.sls.csail.mit.edu/sls/publications/2006/IS061258.pdf](http://www.sls.csail.mit.edu/sls/publications/2006/IS061258.pdf)                     | Hazen      | No             | Yes     | Yes            | No               | No                    | Yes          | 
+ | 2    | "FST Aligner with disfluency model" | [http://www.cs.columbia.edu/~julia/papers/liu03.pdf](http://www.cs.columbia.edu/~julia/papers/liu03.pdf)                                               | Liu        | No             | Yes     | No             | No               | Yes                   | Yes          | 
+ | 3    | "Anchor Points"                     | [http://www.isca-speech.org/archive/archive_papers/icslp_1998/i98_0068.pdf](http://www.isca-speech.org/archive/archive_papers/icslp_1998/i98_0068.pdf) | Moreno     | No             | No      | Yes            | No               | No                    | Yes          | 
+ | 4    | "Viterbi Alignment"                 | [http://www.cs.cmu.edu/~skishore/ksp_phdthesis.pdf](http://www.cs.cmu.edu/~skishore/ksp_phdthesis.pdf)                                                 | Kishore P. | Yes            | No      | No             | Yes              | No                    | No           | 
+ | 5    | "Partial Traceback"                 | [http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1171441](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1171441)                           | P.F.Brown  | Yes            | No      | No             | Yes              | No                    | Yes          | 
 
 We model the speech input as a Hidden Markov Model i.e. the states of speech 
 follow a Markov model which is unknown (hidden), and the sequence of observed 

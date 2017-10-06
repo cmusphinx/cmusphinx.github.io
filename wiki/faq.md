@@ -19,7 +19,7 @@ file and use decoder to decode it. Then calculate WER using the
 `word_align.pl` tool from Sphinxtrain. Test database size depends on the 
 accuracy but usually it's enough to have 10 minutes of transcribed audio to 
 test recognizer accuracy reliably. The process is described in 
-[tutorialtuning](tutorialtuning).
+[tutorialtuning](/wiki/tutorialtuning).
 
 ## Q: How to do the noise reduction
 
@@ -87,14 +87,9 @@ recognition result.
 If continuous is showing READY and doesn't react to your speech it means that 
 pocketsphinx recording silence. The reasons for that are:
 
-
-*  Pocketsphinx is decoding from a wrong device. Try to check log for the 
-warning `<code>`
-     `Warning: Could not find Mic element` 
-`</code>` (try to change device with `-adcdev` option)
-*  Recording volume is too low (try to increase recording level in volume 
-settings)
-*  Microphone is broken (test that other programs can record)
+  *  Pocketsphinx is decoding from a wrong device. Try to check log for the warning `Warning: Could not find Mic element` (try to change device with `-adcdev` option)
+  *  Recording volume is too low (try to increase recording level in volume settings)
+  *  Microphone is broken (test that other programs can record)
 
 ## Q: Which languages are supported
 
@@ -109,7 +104,7 @@ steps:
 
 *  Data collection (you can collect audiobooks with text transcriptoin from 
 project like librivox, transcribed podcasts, or setup web data collection. You 
-can also try to contribute to [ Voxforge](http://voxforge.org ). You can start 
+can also try to contribute to [Voxforge](http://voxforge.org ). You can start 
 very quickly with just few hours of transcribed data.
 *  Data cleanup
 *  Model training 
@@ -181,15 +176,18 @@ recognize a single keyphrase you can run decoder in "keyphrase search" mode.
 
 From command line try:
 
-pocketsphinx_continuous -infile file.wav -keyphrase "oh mighty computer" 
--kws_threshold 1e-20
+```
+pocketsphinx_continuous -infile file.wav -keyphrase "oh mighty computer" -kws_threshold 1e-20
+```
 
 From the code:
 
-       ps_set_keyphrase(ps, "keyphrase_search", "oh mighty computer");
-       ps_set_search(ps, "keyphrase_search);
-       ps_start_utt();
-       /* process data */
+```
+ps_set_keyphrase(ps, "keyphrase_search", "oh mighty computer");
+ps_set_search(ps, "keyphrase_search);
+ps_start_utt();
+/* process data */
+```
 
 You can also find examples for Python and Android/Java in our sources. 
 
@@ -203,13 +201,17 @@ short phrases are easily confused.
 You can also search for multiple keyphrase, create a file keyphrase.list like 
 this:
 
-        oh mighty computer /1e-40/
-        hello world /1e-30/
-        other_phrase /other_phrase_threshold/
+```
+oh mighty computer /1e-40/
+hello world /1e-30/
+other_phrase /other_phrase_threshold/
+```
 
 And use it in decoder with -kws configuration option.
 
-        pocketsphinx_continuous -inmic yes -kws keyphrase_list
+```
+pocketsphinx_continuous -inmic yes -kws keyphrase_list
+```
 
 This feature is not yet implemented in sphinx4 decoder.
 ## Q: How to evaluate pronunciation
@@ -221,48 +223,35 @@ Please see
 
 The stack trace is usually the following:
 
-	
-	INFO: fe_interface.c(289): You are using internal mechanism to generate 
-the seed.
-	INFO: feat.c(289): Initializing feature stream to type: '1s_c_d_dd', 
-ceplen=13,CMN='current', VARNORM='no', AGC='none'
-	INFO: cmn.c(142): mean[0]= 12.00, mean[1..12]= 0.0
-	INFO: acmod.c(153): Reading linear feature trasformation from 
-acoustic/feature.transform
-	INFO: mdef.c(520): Reading model definition: acoustic/mdef
-	INFO: bin_mdef.c(173): Allocation 104810 * 8 bytes (818 KiB) for CD tree
-	INFO: tmat.c(205): Reading HMM transition probability matrices:
-	acoustic/transition_matrices (After it I have crash)
-	
-	Stack trace:
-	ntdll.dll!774f8db9()    
-	        [Frames below may be incorrect and/or missing, no symbols 
-loaded for
-	ntdll.dll]
-	        ntdll.dll!774f8cc8()    
-	>       msvcr100.dll!_lock_file(_iobuf * pf)  Line 236 + 0xa bytes      
-C
-	        msvcr100.dll!fgets(char * string, int count, _iobuf * str)  
-Line 71 + 0x6
-	bytes   C
-	        sphinxbase.dll!002319ef()       
-	        msvcr100.dll!_unlock(int locknum)  Line 375     C
-	        msvcr100.dll!_unlock_file(_iobuf * pf)  Line 313 + 0xe bytes    
-C
-	        msvcr100.dll!fread_s(void * buffer, unsigned int bufferSize, 
-unsigned int
-	elementSize, unsigned int count, _iobuf * stream)  Line 113 + 0x8 bytes 
-C
-	        msvcr100.dll!fread(void * buffer, unsigned int elementSize, 
-unsigned int count,
-	_iobuf * stream)  Line 303 + 0x13 bytes C
-	        sphinxbase.dll!00231743()       
-	        sphinxbase.dll!00231cbf()       
+```
+INFO: fe_interface.c(289): You are using internal mechanism to generate the seed.
+INFO: feat.c(289): Initializing feature stream to type: '1s_c_d_dd', ceplen=13,CMN='current', VARNORM='no', AGC='none'
+INFO: cmn.c(142): mean[0]= 12.00, mean[1..12]= 0.0
+INFO: acmod.c(153): Reading linear feature trasformation from acoustic/feature.transform
+INFO: mdef.c(520): Reading model definition: acoustic/mdef
+INFO: bin_mdef.c(173): Allocation 104810 * 8 bytes (818 KiB) for CD tree
+INFO: tmat.c(205): Reading HMM transition probability matrices: acoustic/transition_matrices (After it I have crash)
 
+Stack trace:
+ntdll.dll!774f8db9()    
+        [Frames below may be incorrect and/or missing, no symbols loaded for ntdll.dll]
+        ntdll.dll!774f8cc8()    
+>       msvcr100.dll!_lock_file(_iobuf * pf)  Line 236 + 0xa bytes      C
+        msvcr100.dll!fgets(char * string, int count, _iobuf * str)  Line 71 + 0x6 bytes   C
+        sphinxbase.dll!002319ef()       
+        msvcr100.dll!_unlock(int locknum)  Line 375     C
+        msvcr100.dll!_unlock_file(_iobuf * pf)  Line 313 + 0xe bytes    C
+        msvcr100.dll!fread_s(void * buffer, unsigned int bufferSize, unsigned int elementSize, unsigned int count, _iobuf * stream)  Line 113 + 0x8 bytes C
+        msvcr100.dll!fread(void * buffer, unsigned int elementSize, unsigned int count, _iobuf * stream)  Line 303 + 0x13 bytes C
+        sphinxbase.dll!00231743()       
+        sphinxbase.dll!00231cbf()       
+```
 
 sphinxbase was compiled iwth MultiThreadedDLL runtime, see in vcxproj
 
-` `<RuntimeLibrary>`MultiThreadedDLL`</RuntimeLibrary>`
+```
+<RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+```
 
 If you don't compile your project with similar setting it will crash. Use 
 proper runtime library or recompile sphinxbase
@@ -327,10 +316,10 @@ frequency bandwidth. Sample rate - the rate of samples in the recording. Sample
 rate 16000 means that there are 16000 samples collected every second. You can 
 resample audio with sox or with ffmpeg:
 
-	
-	sox file.wav -r 16000 file-16000.wav
-	ffmpeg file.mp3 -ar 16000 file-16000.wav
-
+```
+sox file.wav -r 16000 file-16000.wav
+ffmpeg file.mp3 -ar 16000 file-16000.wav
+```
 
 Then there is a bandwidth - the range of frequencies included in the audio, it 
 doesn't change with sample rate. If audio had frequencies up to 8khz only no 
@@ -364,7 +353,9 @@ You can find out file format using `soxi` command or `file` command.
 You can convert your encoded audio into required format with ffmpeg or with 
 other specialized decoder:
 
-     ffmpeg -i file.mp3 -ar 16000 -ac 1 file.wav
+```
+ffmpeg -i file.mp3 -ar 16000 -ac 1 file.wav
+```
 
 If you are writing software you might want to integrate the format converter 
 like ffmpeg/avconv as a separate library.
@@ -384,8 +375,7 @@ Android NDK, you can use OpenSL ES library or any other framework.
 There is also libad library which works on Linux/Windows/Mac, but it is very 
 limited and we are not going to extend it into other platforms.
 
-## Q: Can I run large vocabulary speech recognition on mobile device / 
-Raspberry PI
+## Q: Can I run large vocabulary speech recognition on mobile device / Raspberry PI
 
 No, you can't. The CPU is too slow for large vocabulary speech recognition. 
 Phone CPU is usually 9 times slower than desktop. Speech recognition with 

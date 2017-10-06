@@ -67,7 +67,7 @@ for live applications. You
 can find further documentation about Sphinx-2 in the release documentation, or 
 at the online documentation.
 
-** Other Decoders **
+**Other Decoders**
 
-For competition with other decoders see [competition](competition)
+For competition with other decoders see [competition](/wiki/competition)
 

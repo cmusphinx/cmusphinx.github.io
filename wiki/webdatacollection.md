@@ -108,7 +108,7 @@ language models for continuous speech recognition of SMS text messages”. In:
 Proceedings of the 12th Conference of the European Chapter of the Association 
 for Computational Linguistics. EACL ’09. Athens, Greece: Association for 
 Computational Linguistics, 2009, pp. 157–165. url: 
-http://dl.acm.org/citation.cfm?id=1609067.1609084.
+<http://dl.acm.org/citation.cfm?id=1609067.1609084>.
 
 [3] Xiaojin Zhu and Ronald Rosenfeld. “Improving Trigram Language Modeling with 
 the World Wide Web”. In: Acoustics, Speech, and Signal Processing, 2001. 

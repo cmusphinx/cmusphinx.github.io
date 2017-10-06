@@ -74,17 +74,21 @@ chuckled Billy Waldon `<PERIOD>`  He wants to show them where they get off
 ## Usage
 
 The project is available for download at 
-https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/ppf.
+<https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/ppf>.
 
 To compile the project install ant and be sure to set the required enviroment 
 variables.
 Then type the following:
 
+```
 ant
+```
 
 To postprocess text use the postprocess.sh script:
 
+```
 sh ./postprocessing.sh -input_text path_to_file -lm path_to_lm
+```
 
 ## Results
 
@@ -122,10 +126,9 @@ MISSING FROM OUTPUT: 10802
 
  1.  [SENTENCE SEGMENTATION AND PUNCTUATION RECOVERY FOR SPOKEN LANGUAGE 
 TRANSLATION](http://www.cs.cmu.edu/~ianlane/pub/PAULIK-icassp08.pdf)
- 2.  
-[[http://peer.ccsd.cnrs.fr/docs/00/49/92/19/PDF/PEER_stage2_10.1016%252Fj.specom
-.2008.05.008.pdf|Recovering Capitalization and Punctuation
-Marks for Automatic Speech Recognition]]
+ 2.  [Recovering Capitalization and PunctuationMarks for Automatic Speech
+Recognition](http://peer.ccsd.cnrs.fr/docs/00/49/92/19/PDF/PEER_stage2_10.
+1016%252Fj.specom.2008.05.008.pdf)
  1.  [RESTORING PUNCTUATION AND CAPITALIZATION IN TRANSCRIBED 
 SPEECH](https://www.dropbox.com/s/2bwk2rf0xluziyj/RESTORING%20PUNCTUATION%20AND%
 20CAPITALIZATION%20IN%20TRANSCRIBED%20SPEECH.pdf)

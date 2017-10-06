@@ -3,7 +3,7 @@ layout: page
 title: About CMUSphinx
 ---
 
-CMUSphinx http://cmusphinx.github.io collects over 20 years of the CMU 
+[CMUSphinx](https://cmusphinx.github.io) collects over 20 years of the CMU
 research. All advantages are hard to list, but just to name a few:
 
 *  State of art speech recognition algorithms for efficient speech recognition. 

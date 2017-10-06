@@ -56,28 +56,27 @@ the task.
 ## Project Schedule
 
  1.  Implementation of SphinxTrain speedup and memory optimizations
+   * implement reduced memory HMM training and classification algorithms
 
-    * implement reduced memory HMM training and classification algorithms
  2.  Porting SphinxTrain algorithms to CUDA
+   * port the forward algorithm to CUDA
+   * port the Viterbi algorithm to CUDA
+   * port the Baum-Welch algorithm to CUDA
+   * evaluate the resulting speedup and memory requirements
 
-    * port the forward algorithm to CUDA
-    * port the Viterbi algorithm to CUDA
-    * port the Baum-Welch algorithm to CUDA
-    * evaluate the resulting speedup and memory requirements
  3.  Enable SphinxTrain to process long input audio files
-
-    * modify training scripts to handle long input audio files
-    * modify feature extraction to use text alignment markup
-    * modify training database format
+   * modify training scripts to handle long input audio files
+   * modify feature extraction to use text alignment markup
+   * modify training database format
 
 ## Related Sources
 
 
-*  [1] http://developer.nvidia.com/what-cuda
+*  [1] <http://developer.nvidia.com/what-cuda>
 
-*  [2] http://liuchuan.org/pub/cuHMM.pdf
+*  [2] <http://liuchuan.org/pub/cuHMM.pdf>
 
-*  [3] http://www.cse.ucsc.edu/research/compbio/papers/samspace.pdf
+*  [3] <http://www.cse.ucsc.edu/research/compbio/papers/samspace.pdf>
 
 ## Work Update
 
@@ -94,8 +93,8 @@ baum-welch step due to unsuccessful word lookup in lexicon. This was caused by
 sentence and the word truncation at an arbitrary limit of 8192 characters. 
 First change commited was the fix for the sentence-length problem. As the 
 source of limitations was identified the *read_line* function. The modification 
-got rid of the *read_line* function making use of the *lineiter_** set of 
-functions from *sphinxbase*. *lineiter_** interface was modified to provide 
+got rid of the *read_line* function making use of the *lineiter_\** set of
+functions from *sphinxbase*. *lineiter_\** interface was modified to provide
 original *read_line* functions such as comments skipping and whitespace 
 trimming.
 
@@ -214,6 +213,6 @@ Note: The computation on long audio files kept failing due to alignment error.
 Because of that the subsequent steps were skipped (or also failed) and the 
 values measured for these modules are not representative. The problem with long 
 audio alignment is addressed by a separate project (see 
-[longaudioalignment](longaudioalignment)).
+[longaudioalignment](/wiki/longaudioalignment)).
 
 --- //[Michal Krajňanský](michal.krajnansky@gmail.com) 2011/07/13 10:26//

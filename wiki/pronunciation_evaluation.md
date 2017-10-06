@@ -133,8 +133,8 @@ https://code.google.com/p/wami-recorder/ is okay.
 
 ## Title
 
-** Web-Based Pronunciation Evaluation Using Acoustic, Duration and Phonological 
-Scoring with CMU Sphinx3 **
+**Web-Based Pronunciation Evaluation Using Acoustic, Duration and Phonological 
+Scoring with CMU Sphinx3**
 
 [Accepted GSoC 2012 Project 
 Proposal](http://www.google-melange.com/gsoc/proposal/review/google/gsoc2012/ron
@@ -300,9 +300,9 @@ permits, get a head start on the milestones below.
 
 ## Title
 
-** Mobile Pronunciation Evaluation for Language Learning Using Edit Distance 
+**Mobile Pronunciation Evaluation for Language Learning Using Edit Distance 
 Scoring with CMU Sphinx3, Copious Speech Data Collection, and a Game-Based 
-Interface ** 
+Interface** 
 
 [Accepted GSoC 2012 project 
 proposal](http://www.google-melange.com/gsoc/proposal/review/google/gsoc2012/tro
