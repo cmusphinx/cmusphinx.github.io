@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: MFC files
 ---
-# MFC files
 
 CMUSphinx stores features in files with the extension .mfc. Please note that 
 during training and decoding

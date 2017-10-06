@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Google Summer of Code Applications
 ---
-# Google Summer of Code Applications
 
 Please see [projectideas](projectideas), 
 [summerofcodestudents](summerofcodestudents), [develop](develop), 

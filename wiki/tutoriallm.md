@@ -6,7 +6,6 @@ title: Building language model
 * auto-gen TOC:
 {:toc}
 
-# Building Language Model
 
 Language model is an important component of the configuration which
 tells the decoder which sequence of words are possible to recognize.

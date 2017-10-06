@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: CMUBET phoneme codes
 ---
-## CMUBET phoneme codes
 
     CMUBET   IPA   Example   Translation
     ------   ---   -------   -----------

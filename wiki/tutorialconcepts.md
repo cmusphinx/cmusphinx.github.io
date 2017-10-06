@@ -2,7 +2,6 @@
 layout: page 
 title: Basic consepts of speech recognition
 ---
-# Basic concepts of speech
 
 Speech is a complex phenomenon. People rarely understand how is it produced and 
 perceived. The naive perception is often that speech is built with words, and 

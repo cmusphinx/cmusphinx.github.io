@@ -1,7 +1,7 @@
 ---
-layout: page 
+layout: page
+title: Join Our Community
 ---
-# Join Our Community
 
 Do you have trouble and need help or you've got a wonderful idea? We are 
 willing to help.

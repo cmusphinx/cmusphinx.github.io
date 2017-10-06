@@ -1,8 +1,7 @@
 ---
 layout: page 
+title: MMIE Training in SphinxTrain
 ---
-# MMIE Training in SphinxTrain
-
 
 Maximum Mutual Information Estimation (MMIE) training has been used to provide 
 better performance than Maximum Likelihood Estimation (MLE) in speech 

@@ -1,8 +1,7 @@
 ---
 layout: page 
+title: Semantic Language model
 ---
-# Semantic Language model
-
 
 ## Abstract
 

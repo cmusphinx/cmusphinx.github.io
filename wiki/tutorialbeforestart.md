@@ -2,7 +2,6 @@
 layout: page 
 title: Before you start
 ---
-# Before you start
 
 Before you start the development of the speech application, you need to
 consider several important points. They will define the way you'll

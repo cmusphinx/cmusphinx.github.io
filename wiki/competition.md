@@ -1,7 +1,7 @@
 ---
-layout: page 
+layout: page
+title: Competition with CMUSphinx
 ---
-# Competition with CMUSphinx
 
 There are many excellent recognizers available. This page helps you to choose 
 between them and compare them with CMUSphinx decoders.

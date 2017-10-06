@@ -2,8 +2,6 @@
 layout: page 
 title: Acoustic Model Format
 ---
-# Acoustic Model Format
-
 
 The structure of acoustic model is simple:
 

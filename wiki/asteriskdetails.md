@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Integrating CMUSphinx with Telephony Servers - Asterisk and Freeswitch
 ---
-## Integrating CMUSphinx with Telephony Servers - Asterisk and Freeswitch
 
 Pocketsphinx and Asterisk integration is as simple as it never was! Just use 
 MRCP server. There are two of them:

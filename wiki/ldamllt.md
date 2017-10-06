@@ -1,7 +1,7 @@
 ---
-layout: page 
+layout: page
+title: Training an acoustic model with LDA and MLLT feature transforms
 ---
-## Training an acoustic model with LDA and MLLT feature transforms
 
 Attention!  This feature is for models trained on a single-stream features (for 
 example, continuous models) For semi-continuous models this feature is not 

@@ -2,7 +2,6 @@
 layout: page 
 title: Building phonetic dictionary
 ---
-# Building phonetic dictionary
 
 ### Introduction
 

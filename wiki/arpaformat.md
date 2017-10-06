@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: ARPA Language models
 ---
-## ARPA Language models
 
 Statistical language describe probabilities of the texts, they are trained on 
 large corpora of text data. They can be stored in various text and binary 

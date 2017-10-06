@@ -1,8 +1,7 @@
 ---
 layout: page 
-title: Overview
+title: Overview of CMUSphinx toolkit
 ---
-# Overview of CMUSphinx toolkit
 
 CMUSphinx toolkit is a leading speech recognition toolkit with various tools 
 used to build speech applications. CMU Sphinx toolkit has a number of packages 

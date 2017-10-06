@@ -1,8 +1,7 @@
 ---
 layout: page 
-title: Phoneme Recognition
+title: Phoneme Recognition (caveat emptor)
 ---
-## Phoneme Recognition (caveat emptor)
 
 Frequently, people want to use Sphinx to do phoneme recognition.  In other 
 words, they would like to convert speech to a stream of phonemes rather than 

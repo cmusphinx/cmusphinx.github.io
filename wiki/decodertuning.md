@@ -1,7 +1,7 @@
 ---
-layout: page 
+layout: page
+title: The Incomplete Guide to Sphinx-3 Performance Tuning
 ---
-## The Incomplete Guide to Sphinx-3 Performance Tuning
 
 The [Continuous Density Acoustic 
 Models](http://www.speech.cs.cmu.edu/sphinx/models/) used in SphinxThree have 

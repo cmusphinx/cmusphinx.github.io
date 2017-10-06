@@ -2,7 +2,6 @@
 layout: page 
 title: Tuning speech recognition accuracy
 ---
-# Tuning speech recognition accuracy
 
 Speech recognition accuracy is not always great.
 

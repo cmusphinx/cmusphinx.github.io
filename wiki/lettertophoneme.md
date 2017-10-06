@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Letter to Phoneme Conversion in CMU Sphinx-4
 ---
-# Letter to Phoneme Conversion in CMU Sphinx-4
 
 Project progress will be also available at my personal blog at: 
 http://jsalatas.ictpro.gr/category/projects/gsoc-2012/

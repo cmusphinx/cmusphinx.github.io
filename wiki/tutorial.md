@@ -1,8 +1,7 @@
 ---
 layout: page 
-title: Tutorial For Developers
+title: CMUSphinx Tutorial For Developers
 ---
-# CMUSphinx Tutorial For Developers
 
 ## Introduction
 

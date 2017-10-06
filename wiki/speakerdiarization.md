@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Segmentation and Diarization using LIUM tools
 ---
-## Segmentation and Diarization using LIUM tools
 
 LIUM has released a free system for speaker diarization and segmentation, which 
 integrates well with Sphinx.  This tool is essential if you are trying to do 

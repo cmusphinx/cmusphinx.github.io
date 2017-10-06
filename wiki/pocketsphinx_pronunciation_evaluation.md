@@ -1,8 +1,7 @@
 ---
 layout: page 
+title: Pocketsphinx for Pronunication Evaluation
 ---
-
-#### Pocketsphinx for Pronunication Evaluation
 
 *This is a short tutorial with references by James Salsman (jim at talknicer dot com.)*
 

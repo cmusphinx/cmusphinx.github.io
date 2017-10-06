@@ -1,7 +1,7 @@
 ---
-layout: page 
+layout: page
+title: CMUCLMTK Development
 ---
-# CMUCLMTK Development
 
 ### Check out the code:
 

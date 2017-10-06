@@ -1,9 +1,7 @@
 ---
 layout: page 
-title: Documentation
+title: CMUSphinx Documentation
 ---
-# CMUSphinx Documentation
-
 
 This page contains collaboratively developed documentation for the CMU Sphinx 
 speech recognition engines.

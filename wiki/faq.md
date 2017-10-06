@@ -1,12 +1,10 @@
 ---
 layout: page 
-title: Frequently Asked Questions
+title: Frequently Asked Questions (FAQ)
 ---
 
 * auto-gen TOC:
 {:toc}
-
-# Frequenty Asked Questions (FAQ)
 
 ## Q: Why my accuracy is poor
 
