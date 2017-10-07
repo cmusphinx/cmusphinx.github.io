@@ -1,9 +1,8 @@
 ---
 layout: page
-title: Downloads
+title: CMU Sphinx Downloads
 ---
 
-# CMU Sphinx Downloads
 ## Software
 
 CMU Sphinx toolkit has a number of packages for different tasks and 

@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Website Layout
 ---
-# Website Layout
 
 We need to make sure our structure is maintainable and informative. That
 should  be the ultimate goal.  To do that we need to spend efforts on

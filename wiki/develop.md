@@ -1,7 +1,7 @@
 ---
-layout: page 
+layout: page
+title: Development with CMUSphinx
 ---
-#  Development with CMUSphinx 
 
 Development of speech recognition applications is an enjoyable, even if hard, 
 task.

@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Web Data Collection for Language Modelling
 ---
-# Web Data Collection for Language Modelling
 
 ## Project Details
 

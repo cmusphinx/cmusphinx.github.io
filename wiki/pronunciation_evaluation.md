@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Pronunciation evaluation for GSoC 2012
 ---
-# Pronunciation evaluation for GSoC 2012
 
 Introductory conference paper: 
 https://docs.google.com/open?id=0B73LgocyHQnfS0g5ZEw1aFNKT2s

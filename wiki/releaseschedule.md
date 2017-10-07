@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Upcoming CMU Sphinx Software Releases
 ---
-## Upcoming CMU Sphinx Software Releases
 
 CMUSphinx release:
 

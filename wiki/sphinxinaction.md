@@ -1,7 +1,7 @@
 ---
 layout: page 
+tile: The following projects use Sphinx 
 ---
-#  The following projects use Sphinx 
 
 **Know any other projects that use Sphinx? Please add them!**
 ## Telephony

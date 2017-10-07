@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Release Check List
 ---
-# Release Check List
 
 Check list for releasing CMUSphinx packages
 

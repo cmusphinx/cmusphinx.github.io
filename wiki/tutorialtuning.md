@@ -2,7 +2,6 @@
 layout: page
 title: Tuning speech recognition accuracy
 ---
-
 ---
 * auto-gen TOC:
 {:toc}

@@ -1,8 +1,7 @@
 ---
 layout: page 
+title: Pocketsphinx for Pronunication Evaluation
 ---
-
-#### Pocketsphinx for Pronunication Evaluation
 
 **UPDATE: please see [this paper](https://github.com/jsalsman/featex/raw/master/Spoken-English-Intelligibility-Remediation.pdf) for a far superior method developed during the 2017 Google Summer of Code superceding all of the below.**
 

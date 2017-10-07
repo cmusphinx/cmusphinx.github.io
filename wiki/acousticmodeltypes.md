@@ -2,7 +2,6 @@
 layout: page 
 title: Acoustic Model Types
 ---
-# Acoustic Model Types
 
 CMUSphinx supports different types of the acoustic models: continuous, 
 semi-continuous and phonetically tied (PTM). 

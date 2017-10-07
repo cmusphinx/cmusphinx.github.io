@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Project Ideas 
 ---
-#  Project Ideas 
 
 Note to students: Google Summer of Code proposals are closed. 
 

@@ -1,8 +1,7 @@
 ---
 layout: page 
-title: About
+title: About CMUSphinx
 ---
-# About CMUSphinx
 
 [CMUSphinx](https://cmusphinx.github.io) collects over 20 years of the CMU
 research. All advantages are hard to list, but just to name a few:

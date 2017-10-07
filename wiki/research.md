@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Research Using CMUSphinx
 ---
-# Research Using CMUSphinx
 
 CMU Sphinx Toolkit is actively used in speech recognition research. To note 
 some, here is the list of publications it's worth to mention

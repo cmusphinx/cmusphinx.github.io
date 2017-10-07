@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Versions Of Decoders
 ---
-# Versions Of Decoders
 
 Over the years many different versions of decoders were created. They aren’t 
 compatible as a code, consider 

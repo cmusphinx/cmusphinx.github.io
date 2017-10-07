@@ -1,7 +1,7 @@
 ---
-layout: page 
+layout: page
+title: Installing SciPy for Sphinxtrain
 ---
-# Installing SciPy for Sphinxtrain
 
 This page details the things you need to install on Windows, Linux, and Mac OS 
 X in order to do Python development with SphinxTrain.

@@ -1,8 +1,7 @@
 ---
 layout: page 
+title: Building on Mobile 
 ---
-# Building on Mobile 
-
 
 ## Building on Iphone
 

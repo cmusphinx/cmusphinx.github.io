@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Summer Of Code 2017 Organization Application
 ---
-# Summer Of Code 2017 Organization Application
 
 This is the plan for our application to the Google Summer of Code 2017
 

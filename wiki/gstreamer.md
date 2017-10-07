@@ -1,7 +1,7 @@
 ---
-layout: page 
+layout: page
+title: Using PocketSphinx with GStreamer and Python 
 ---
-#  Using PocketSphinx with GStreamer and Python 
 
 PocketSphinx supports for the [GStreamer](http://gstreamer.freedesktop.org/) 
 streaming media framework.  What this means is that the PocketSphinx decoder 

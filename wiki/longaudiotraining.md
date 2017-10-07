@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Training Acoustic Models On long Audio Files
 ---
-# Training Acoustic Models On long Audio Files
 
 ## Abstract
 

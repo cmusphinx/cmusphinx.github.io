@@ -1,7 +1,7 @@
 ---
 layout: page 
+title: Performance Regression Tests
 ---
-# Performance Regression Tests
 
 This page describes the available regression tests, how to set them up if you 
 have the data, and the length of time to run each test. The page also describes 
