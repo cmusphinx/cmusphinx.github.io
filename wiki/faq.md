@@ -110,7 +110,7 @@ very quickly with just few hours of transcribed data.
 *  Model training 
 *  Testing
 
-Most steps are described in [tutorial](tutorial)
+Most steps are described in [tutorial](/wiki/tutorial)
 ## Q: I have an issue with CMUSphinx and need help
 
 When you report about problem always provide the following information:
