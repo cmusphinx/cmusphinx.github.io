@@ -71,7 +71,7 @@ In Python you can either specify options in the configuration object or add a
 named search for a keyphrase:
 
 ```python
-decoder.set_kws('keypharse', kws_file)
+decoder.set_kws('keyphrase', kws_file)
 decoder.set_search('keyphrase')
 ```
 
