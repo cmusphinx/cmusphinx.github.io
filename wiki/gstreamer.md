@@ -405,7 +405,7 @@ class DemoApp(object):
             self.pipeline.set_state(gst.State.PAUSED)
             self.button.set_active(False)
         elif msg.get_structure().get_value('hypothesis'):
-            self.partial_result(msg.get_structure().get_value('hypothesis')
+            self.partial_result(msg.get_structure().get_value('hypothesis'))
 
     def partial_result(self, hyp):
         """Delete any previous selection, insert text and select it."""
