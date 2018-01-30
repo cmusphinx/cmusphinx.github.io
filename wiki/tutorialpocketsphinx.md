@@ -101,8 +101,8 @@ libpocketsphinx.so.3`, you may want to check your linker configuration of the
 
 ### Windows
 
-In MS Windows, under MS Visual Studio 2010 (or newer – we test with Visual
-C++ 2010 Express):
+In MS Windows, under MS Visual Studio 2012 (or newer – we test with Visual
+C++ 2012 Express):
 
   *  load `sphinxbase.sln` in the sphinxbase directory
   *  compile all the projects in SphinxBase (from `sphinxbase.sln`)
