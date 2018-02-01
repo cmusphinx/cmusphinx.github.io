@@ -430,3 +430,34 @@ Unusual CMN values help to identify the problems with the speech like
 input data byte order problems. In this particular example value of C0
 18.5 is pretty low it means that recorded sound is very quiet. Proper
 signal level should be  values are around 40.0
+
+## Q: How can I parse NLU input to perform actions
+
+There are number of solutions here depending on the complexity of the
+input and the variety of cases.
+
+Simple commands could be parsed by comparing the result as a string to a fixed template. Something simple like this:
+
+```
+if hyp == 'up':
+   do_go_up()
+elif hyp == 'down':
+   do_go_down
+```
+
+For more advanced command parsing you can use regular expressions to
+extract entities and custom code to parse more complex things like
+numbers. See an example on
+[Stackoverflow](https://stackoverflow.com/questions/40777155/regular-expression-parse-string).
+
+There are more advanced NLU libraries for intent parsing which can be
+trained from sample, for example check [RASA
+NLU](https://github.com/RasaHQ/rasa_nlu). Many such libraries are based
+on Spacy toolkit.
+
+In the end you can train an deep learning neural network to map input
+directly to action, see for example
+[DialogStateTracking](https://github.com/voicy-ai/DialogStateTracking).
+Deep neural network can  also provide you more natural behavior and
+create you natural language outputs.
+
