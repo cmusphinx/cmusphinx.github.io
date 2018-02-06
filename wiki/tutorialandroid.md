@@ -224,9 +224,9 @@ so you need to make sure you are using the latest versions. You can use the
 following commands to checkout the repositories:
 
 ```bash
-git clone https://github.com/cmupshinx/sphinxbase
-git clone https://github.com/cmupshinx/pocketsphinx
-git clone https://github.com/cmupshinx/pocketsphinx-android
+git clone https://github.com/cmusphinx/sphinxbase
+git clone https://github.com/cmusphinx/pocketsphinx
+git clone https://github.com/cmusphinx/pocketsphinx-android
 ```
 
 After arranging the directories you need to update the file `local.properties`
