@@ -217,7 +217,7 @@ This feature is not yet implemented in sphinx4 decoder.
 ## Q: How to evaluate pronunciation
 
 Please see 
-[pocketsphinx_pronunciation_evaluation](pocketsphinx_pronunciation_evaluation).
+[pocketsphinx_pronunciation_evaluation](https://cmusphinx.github.io/wiki/pocketsphinx_pronunciation_evaluation/).
 
 ## Q: Pocketsphinx crashes on Windows in _lock_file
 
