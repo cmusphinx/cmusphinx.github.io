@@ -55,9 +55,11 @@ This ends into fusion of the various systems, like the one available here:
 One of the modern fast VADs available in public is VAD from WebRTC codec, it 
 incorporates almost all the features existing:
 
-<https://code.google.com/p/webrtc/source/browse/trunk/#trunk%2Fwebrtc%2Fcommon_audio%2Fvad>
+<https://chromium.googlesource.com/external/webrtc/+/master/common_audio/vad/>
 
-and it's pretty reliable.
+and it's pretty reliable. Python interface to the WebRTC VAD can be found at
+
+<https://github.com/wiseman/py-webrtcvad/>
 
 The major issue with VAD is that speech signal is considered alone and the 
 methods for arbitrary audio signal recognition are in a pretty initial stage. 
