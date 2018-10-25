@@ -26,7 +26,7 @@ is also coming out soon.
 Phoneme recognition is implemented as a separate search module like FSG or LM 
 but it requires specific phone language model to understand possible phone 
 frequencies. The model for US English is available in pocketsphinx 
-distribution, it's `pocketsphinx/model/en-us/en-us-phone.lm.dmp`. Phoneme 
+distribution, it's `pocketsphinx/model/en-us/en-us-phone.lm.bin`. Phoneme 
 recognition is enabled with `-allphone phonetic.lm`.
 
 For other languages you need a phonetic language model for your phoneset, steps 
