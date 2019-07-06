@@ -322,6 +322,10 @@ function. Alternatively, you can replace the old model files with the new ones.
 To use the trained model in Sphinx4, you need to update the model location in
 the code.
 
+## Shortcuts
+Remembering and typing in all of the above commands can be a headache, but thankfully someone else has compiled them into a single useful Bash script with a few extra features to help cut down on manual command entering. Checkout this GitHub repository:  https://github.com/ExpandingDev/SphinxTrainingHelper
+Be sure to read the README in the repository for instructions on how to use the script.
+
 ## Troubleshooting
 
 If the adaptation didn’t improve your results, first test the accuracy and make
