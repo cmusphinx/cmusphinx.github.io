@@ -318,7 +318,7 @@ resample audio with sox or with ffmpeg:
 
 ```
 sox file.wav -r 16000 file-16000.wav
-ffmpeg file.mp3 -ar 16000 file-16000.wav
+ffmpeg -i file.mp3 -ar 16000 file-16000.wav
 ```
 
 Then there is a bandwidth - the range of frequencies included in the audio, it 
