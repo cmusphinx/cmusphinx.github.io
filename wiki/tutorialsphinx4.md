@@ -247,7 +247,7 @@ A `SpeechAligner` time-aligns text with audio speech.
 
 ```java
 SpeechAligner aligner = new SpeechAligner(configuration);
-recognizer.align(new URL("101-42.wav"), "one oh one four two");
+aligner.align(new URL("101-42.wav"), "one oh one four two");
 ```
 
 ### SpeechResult
