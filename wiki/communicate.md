@@ -47,7 +47,7 @@ el))
 
 ### Discuss real-time
 
-There is active [Telegram group ](https://t.me/cmusphinx )
+There is active [Telegram group ](https://t.me/speech_recognition_help)
 
 ### Get commercial support, post job, discuss business opportunity
 

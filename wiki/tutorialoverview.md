@@ -32,7 +32,7 @@ The following resources are the main ones for CMUSphinx developers:
 * [Mailing list](https://sourceforge.net/mail/?group_id=1904)
 * [Download page](https://sourceforge.net/projects/cmusphinx/files)
 * [Github](https://github.com/cmusphinx)
-* [Telegram Chat](https://t.me/cmusphinx)
+* [Telegram Chat](https://t.me/speech_recognition_help)
 
 <span class="post-bottom-nav">
   [Basic concepts of speech recognition](/wiki/tutorialconcepts)
