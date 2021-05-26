@@ -95,7 +95,7 @@ pocketsphinx recording silence. The reasons for that are:
 
 CMUSphinx itself is language-independent, you can recognize any language. 
 However, it requires an acoustic model and a language model. We provide 
-prebuilt language models for many languages (Enlish, Chinese, French, Spanish, 
+prebuilt language models for many languages (English, Chinese, French, Spanish, 
 German, Russian, etc) in download section.
 ## Q: How to add support for a new language
 
