@@ -300,18 +300,20 @@ transcriptions:
 +noise+ ++noise++
 ```
 
-The sample database for training is available at [an4 database NIST's
-Sphere audio (.sph) format](http://www.speech.cs.cmu.edu/databases/an4/an4_sphere.tar.gz), You can use this database in the following sections. If you want to play with a
-large example, download the [TED-LIUM](http://www-lium.univ-lemans.fr/en/content/ted-lium-corpus) English
-acoustic database. It contains about 200 hours of audio recordings at present.
+The sample database for training is available on GitHub at
+[https://github.com/cmusphinx/an4](https://github.com/cmusphinx/an4).
+You can use this database in the following sections. If you want to
+play with a large example, download the
+[TED-LIUM](http://www-lium.univ-lemans.fr/en/content/ted-lium-corpus)
+English acoustic database. It contains about 200 hours of audio
+recordings at present.
 
 ## Compilation of the required packages
 
 The following packages are required for training:
 
-* sphinxbase-5prealpha
-* sphinxtrain-5prealpha
-* pocketsphinx-5prealpha
+* sphinxbase
+* pocketsphinx
 
 The following external packages are also required:
 
@@ -421,15 +423,6 @@ few. First of all, find the file `etc/sphinx_train.cfg`.
 ### Setting up the format of database audio
 
 In `etc/sphinx_train.cfg` you should see the following configurations:
-
-```
-$CFG_WAVFILES_DIR = "$CFG_BASE_DIR/wav";
-$CFG_WAVFILE_EXTENSION = 'sph';
-$CFG_WAVFILE_TYPE = 'nist'; # one of nist, mswav, raw
-```
-
-If you recorded audio in WAV format, change `sph` to `wav` here and `nist` to
-`mswav`:
 
 ```
 $CFG_WAVFILES_DIR = "$CFG_BASE_DIR/wav";
