@@ -69,7 +69,7 @@ permalink:    /:year/:month/:title/
 paginate:     4
 sass:
   style: compressed
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
 exclude: [vendor]
