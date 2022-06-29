@@ -1,0 +1,54 @@
+---
+layout: post
+status: publish
+published: true
+title: CMUSphinx Maintenance Restarted
+author:
+  display_name: David Huggins-Daines
+  email: dhdaines@gmail.com
+author_email: dhdaines@gmail.com
+excerpt_separator: <!--more-->
+---
+
+<p>
+  Thank you to all of the contributors who have keept CMUSphinx alive
+  over the last decade, in particular to Nickolay Shmyrev and the
+  whole team at Alpha Cephei.  As you may have noticed, active
+  development has mostly ceased over the last few years, and the
+  technological foundation of CMUSphinx has become quite antiquated.
+</p>
+<p>
+  For state-of-the-art speech recognition the Alpha Cephei team is now
+  working exclusively
+  on <a href="https://github.com/alphacep/vosk-api">Vosk</a>, and
+  there are a number of other open source options,
+  notably <a href="https://github.com/julius-speech/julius">Julius</a>,
+  <a href="https://github.com/TensorSpeech/TensorFlowASR">TensorFlowASR</a>,
+  <a href="https://github.com/mozilla/DeepSpeech">DeepSpeech</a> and
+  of course <a href="https://kaldi-asr.org/">Kaldi</a>.
+</p>
+<p>
+  Nonetheless, there are still many people using CMUSphinx and
+  PocketSphinx in particular, so there is some value in maintaining
+  (if not actually developing) it.  Its users frequently
+  encounter difficulties due to the build system, which could be
+  corrected by modernizing the codebase slightly.  Due to the eternal
+  "pre-alpha" status of the system, there are also many problems of
+  portability and stability that should be adressed.
+</p>
+<p>
+  For this reason, we are preparing a true release of PocketSphinx,
+  with a focus on a modern build system with no external dependencies,
+  and a stable, documented, and easy to use API in C and Python.  In
+  addition, SphinxTrain will either continue to be maintained or will
+  simply be integrated into PocketSphinx.
+</p>
+<p>
+  Finally, SourceForge is no longer a viable option for hosting.  From
+  now on, the <a href="http://github.com/cmusphinx">GitHub Project</a>
+  is the official home of CMUSphinx, and we will soon migrate all the
+  other downloads (models, etc) and close the SourceForge site.
+</p>
+
+<!--more-->
+
