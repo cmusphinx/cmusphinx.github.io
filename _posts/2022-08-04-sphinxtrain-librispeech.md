@@ -254,16 +254,6 @@ supports rescoring with larger and more accurate language models
 On the other hand, SphinxTrain is easier to use than the Kaldi
 training scripts ;-)
 
-All that said, the [wav2vec
-approach](https://ai.facebook.com/blog/wav2vec-20-learning-the-structure-of-speech-from-raw-audio/)
-is perhaps the most interesting at the moment, as instead of trying to
-optimize an end-to-end system (which by design can only really work on
-the language/task for which it was trained), it attempts to learn
-universally useful *features* which can then be reused for just about
-any language.  It also gives state-of-the-art results which appear to
-actually be *useful* since they hold up when trained on a relatively
-small amount of data.  Of course, you still need a big GPU to do this.
-
 You should, therefore, probably not use CMU Sphinx.
 
 ## Saving the training setup
