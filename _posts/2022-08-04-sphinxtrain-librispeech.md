@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Training CMU Sphinx with LibriSpeech
 author:
   display_name: David Huggins-Daines
