@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: false
+published: true
 title: Training CMU Sphinx with LibriSpeech
 author:
   display_name: David Huggins-Daines
@@ -10,7 +10,7 @@ author_email: dhdaines@gmail.com
 excerpt_separator: <!--more-->
 ---
 
-**TL;DR: Training is easy and automated, but the accuracy is
+**TL;DR: Training is fast, easy and automated, but the accuracy is
 atrocious.  You should not use CMU Sphinx for speech recognition.**
 
 The simplest way to train a CMU Sphinx model is using a single machine
@@ -157,14 +157,15 @@ Now set up the training directory and get a few extra files:
     wget https://www.openslr.org/resources/11/3-gram.pruned.1e-7.arpa.gz
     wget https://www.openslr.org/resources/11/librispeech-lexicon.txt
 
-Edit a few things in `sphinx_train.cfg`:
+Edit a few things in `sphinx_train.cfg`.  It is *not* recommended to
+train PTM models for this amount of data, as the training is quite
+slow, probably unnecessarily so.
 
     $CFG_WAVFILE_EXTENSION = 'flac';
     $CFG_WAVFILE_TYPE = 'sox';
-    $CFG_HMM_TYPE  = '.ptm.';
-    $CFG_INITIAL_NUM_DENSITIES = 128; # line 137, under "elsif... ptm"
-    $CFG_FINAL_NUM_DENSITIES = 128;
-    $CFG_N_TIED_STATES = 5000;
+    $CFG_HMM_TYPE  = '.cont.';
+    $CFG_FINAL_NUM_DENSITIES = 16;
+    $CFG_N_TIED_STATES = 4000;
     $CFG_NPART = 16;
     $CFG_QUEUE_TYPE = "Queue::POSIX";
     $CFG_G2P_MODEL= 'yes';
@@ -225,9 +226,9 @@ can be seen:
     docker run -v $PWD:/st -v /data/librispeech/LibriSpeech:/st/wav \
         dhdaines/sphinxtrain run
 
-This will likely take around 12 hours and cost a few dollars.  You
-should obtain a word error rate of around 24.5%, which, it should be
-said, is pretty terrible.  For comparison, a [Kaldi
+This should take about 2 hours including decoding.  You should obtain
+a word error rate of around 20%, which, it should be said, is pretty
+terrible.  For comparison, a [Kaldi
 baseline](https://github.com/kaldi-asr/kaldi/blob/master/egs/librispeech/s5/RESULTS)
 with this training set and language model gives 11.69%, the best Kaldi
 system with this language model (but trained on the full 960 hours of
@@ -240,12 +241,9 @@ somewhere under 2%.
 
 **What's missing from CMU Sphinx?** Well, it should be noted that what
 we've done here is the degree zero of automatic speech recognition,
-using strictly 20th-century technology.  The model is also quite
-small, with only 5000 tied states ("leaves" in Kaldi terminology)
-sharing 5120 total Gaussians, whereas the Kaldi baseline (the 11.69%
-above) uses 4200 states and 40000 Gaussians.  Kaldi is more parameter
-efficient, though, as it allows a different number of Gaussians for
-each phone, and its baseline model already includes speaker-adaptive
+using strictly 20th-century technology.  Kaldi is more parameter
+efficient, as it allows a different number of Gaussians for each
+phone, and its baseline model already includes speaker-adaptive
 training and feature-space speaker adaptation, which make a big
 difference.  The Kaldi decoder is also faster and more accurate and
 supports rescoring with larger and more accurate language models
