@@ -10,8 +10,9 @@ author_email: dhdaines@gmail.com
 excerpt_separator: <!--more-->
 ---
 
-**TL;DR: Training is fast, easy and automated, but the accuracy is
-atrocious.  You should not use CMU Sphinx for speech recognition.**
+**TL;DR: Training is fast, easy and automated, but the accuracy is not
+good.  You should not use CMU Sphinx for large-vocabulary continuous
+speech recognition.**
 
 The simplest way to train a CMU Sphinx model is using a single machine
 with multiple CPUs.  It may not be as cost-effective as a cluster, but
@@ -227,8 +228,8 @@ can be seen:
         dhdaines/sphinxtrain run
 
 This should take about 2 hours including decoding.  You should obtain
-a word error rate of around 20%, which, it should be said, is pretty
-terrible.  For comparison, a [Kaldi
+a word error rate of approximately 18.5%, which, it should be said, is
+pretty terrible.  For comparison, a [Kaldi
 baseline](https://github.com/kaldi-asr/kaldi/blob/master/egs/librispeech/s5/RESULTS)
 with this training set and language model gives 11.69%, the best Kaldi
 system with this language model (but trained on the full 960 hours of
