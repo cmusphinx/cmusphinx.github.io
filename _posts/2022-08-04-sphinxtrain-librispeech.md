@@ -227,9 +227,10 @@ can be seen:
     docker run -v $PWD:/st -v /data/librispeech/LibriSpeech:/st/wav \
         dhdaines/sphinxtrain run
 
-This should take about 2 hours including decoding.  You should obtain
-a word error rate of approximately 18.5%, which, it should be said, is
-pretty terrible.  For comparison, a [Kaldi
+This should take about 5 hours including decoding (actually the
+training only takes an hour and a half...)  You should obtain a word
+error rate of approximately 18.5%, which, it should be said, is pretty
+terrible.  For comparison, a [Kaldi
 baseline](https://github.com/kaldi-asr/kaldi/blob/master/egs/librispeech/s5/RESULTS)
 with this training set and language model gives 11.69%, the best Kaldi
 system with this language model (but trained on the full 960 hours of
