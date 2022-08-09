@@ -5,12 +5,16 @@ title: CMUSphinx Tutorial For Developers
 
 ## Introduction
 
-This tutorial is going to describe some applications of the CMUSphinx toolkit.
-Such applications could include voice control of your desktop, various
-automotive devices and intelligent houses. Other possible applications are
-speech transcription, closed captioning, speech translation, voice
-search and language learning. If you want to create one of them,
-the CMUSphinx toolkit is your choice.
+This tutorial is going to describe some applications of the CMUSphinx
+toolkit.  Such applications could include voice control of mobile,
+desktop or automotive applications, language learning, speech
+transcription, closed captioning, speech translation, or voice search.
+While all of these applications are possible with CMUSphinx, modern
+toolkits such as [Kaldi](https://kaldi-asr.org/),
+[Coqui](https://coqui.ai/),
+[NeMo](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/stable/asr/intro.html),
+[Wav2vec2](https://ai.facebook.com/blog/wav2vec-20-learning-the-structure-of-speech-from-raw-audio/),
+etc, etc, will perform much, much better on larger vocabulary tasks.
 
 The tutorial is intended for developers who need to apply speech
 technology in their applications, not for speech recognition researchers.
