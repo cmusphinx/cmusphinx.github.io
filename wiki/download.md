@@ -33,6 +33,3 @@ the best model for your language there:
 [Download models](https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/)
 
 (note: we will be moving away from SourceForge soon).
-
-We are also planning to use bittorrent tracker to distribute the models
-but we are not there yet, if you are willing to help, please [contact us](mailto:cmusphinx-devel@lists.sourceforge.net)
