@@ -3,6 +3,10 @@ layout: page
 title: Phoneme Recognition (caveat emptor)
 ---
 
+> **Caution!**  
+  This tutorial describes pocketsphinx [5 pre-alpha release](https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/).
+  It is not up-to-date with the current development version and will be updated soon.
+
 Frequently, people want to use Sphinx to do phoneme recognition.  In other 
 words, they would like to convert speech to a stream of phonemes rather than 
 words.  This is possible, although the results can be disappointing.  The 

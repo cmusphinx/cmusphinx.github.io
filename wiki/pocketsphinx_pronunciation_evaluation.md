@@ -7,6 +7,10 @@ title: Pocketsphinx for Pronunication Evaluation
 
 ----
 
+> **Caution!**  
+  This tutorial describes pocketsphinx [5 pre-alpha release](https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/).
+  It is not up-to-date with the current development version and will be updated soon.
+
 *This is a short tutorial with references by James Salsman (jim at talknicer dot com.)*
 
 ### Installation and testing

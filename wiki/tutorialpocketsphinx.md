@@ -9,8 +9,8 @@ title: Building an application with PocketSphinx
 ---
 
 > **Caution!**  
-  This tutorial describes pocketsphinx [5 pre-alpha release](https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/).  
-  It is not going to work for older versions.
+  This tutorial describes pocketsphinx [5 pre-alpha release](https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/).
+  It is not up-to-date with the current development version and will be updated soon.
 
 ## Installation
 

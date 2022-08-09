@@ -1,6 +1,11 @@
 ---
 layout: page 
 ---
+
+> **Caution!**  
+  This tutorial describes pocketsphinx [5 pre-alpha release](https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/).
+  It is not up-to-date with the current development version and will be updated soon.
+
 Install is simple, you need to setup and properly configure alsa, then you can 
 just build and run pocketsphinx
 
