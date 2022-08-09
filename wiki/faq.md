@@ -21,7 +21,26 @@ accuracy but usually it's enough to have 10 minutes of transcribed audio to
 test recognizer accuracy reliably. The process is described in 
 [tutorialtuning](/wiki/tutorialtuning).
 
-## Q: How to do the noise reduction
+## Q: What happened to `pocketsphinx_continuous.exe`?
+
+The `pocketsphinx_continuous` program was always more of an example
+than a real tool, and did not work properly most of the time.  In
+particular, microphone access was very difficult to ensure on all
+platforms, and the speech/non-speech detecton (voice activity
+detection) was not robust or robustly implemented.
+
+It is recommended that you use an external library for microphone
+access.  Voice activity detection will be reimplemented soon using the
+free and widely used WebRTC implementation, and something like
+`pocketsphinx_continuous` which simply reads audio from standard input
+(so you can pipe to it from `sox` for instance) will likely reappear.
+
+It appears that many people used `pocketsphinx_continuous` for *batch*
+recognition, due to its simpler command-line interface when compared
+to `pocketsphinx_batch`.  The next release will provide an alternative
+program for those who simply want to recognize an audio file.
+
+## Q: How to do noise reduction
 
 There are multiple levels to fight with noise and corruption of the audio. 
 Noise cancellation algorithm modify the audio itself, feature denoising can 
@@ -81,15 +100,6 @@ Keyword spotting mode is not implemented in sphinx4.
 
 In large vocabulary decoding mode sphinx4 should return proper confidence for 
 recognition result.
-
-## Q: pocketsphinx_continuous stuck in READY, nothing is recognized
-
-If continuous is showing READY and doesn't react to your speech it means that 
-pocketsphinx recording silence. The reasons for that are:
-
-  *  Pocketsphinx is decoding from a wrong device. Try to check log for the warning `Warning: Could not find Mic element` (try to change device with `-adcdev` option)
-  *  Recording volume is too low (try to increase recording level in volume settings)
-  *  Microphone is broken (test that other programs can record)
 
 ## Q: Which languages are supported
 
@@ -169,51 +179,6 @@ robustness to noise because it tracks and subtracts stable noise component in
 mel filter energy domain.
 
 
-## Q: How to implement "Hot word listening"
-
-CMUSphinx implements keyphrase spotting mode in pocketsphinx decoder. To 
-recognize a single keyphrase you can run decoder in "keyphrase search" mode.
-
-From command line try:
-
-```
-pocketsphinx_continuous -infile file.wav -keyphrase "oh mighty computer" -kws_threshold 1e-20
-```
-
-From the code:
-
-```
-ps_set_keyphrase(ps, "keyphrase_search", "oh mighty computer");
-ps_set_search(ps, "keyphrase_search);
-ps_start_utt();
-/* process data */
-```
-
-You can also find examples for Python and Android/Java in our sources. 
-
-Threshold must be tuned for every keyphrase on a test data to get the right 
-balance missed detections and false alarms. You can try values like 1e-5 to 
-1e-50.
-
-For the best accuracy it is better to have keyphrase with 3-4 syllables. Too 
-short phrases are easily confused.
-
-You can also search for multiple keyphrase, create a file keyphrase.list like 
-this:
-
-```
-oh mighty computer /1e-40/
-hello world /1e-30/
-other_phrase /other_phrase_threshold/
-```
-
-And use it in decoder with -kws configuration option.
-
-```
-pocketsphinx_continuous -inmic yes -kws keyphrase_list
-```
-
-This feature is not yet implemented in sphinx4 decoder.
 ## Q: How to evaluate pronunciation
 
 Please see 
@@ -255,52 +220,6 @@ sphinxbase was compiled iwth MultiThreadedDLL runtime, see in vcxproj
 
 If you don't compile your project with similar setting it will crash. Use 
 proper runtime library or recompile sphinxbase
-
-
-## Q: Failed to open audio device(/dev/dsp): No such file or directory
-
-Device file /dev/dsp is missing because OSS support is not enabled in the 
-kernel. You can either compile pocketsphinx with ALSA support by installing 
-alsa development headers from a package libasound2 or alsa-devel and 
-recompiling or you can install oss-compat package to enable OSS support.
-
-The installation process is not an issue if you understand the complexity of 
-audio subsystems in Linux. The audio subsystem is complex unfortunately, but 
-once you get it things will be easier.
-Historically, audio subsystem is pretty fragmented. It includes the following 
-major frameworks:
-
-
-*  Old Unix-like DSP framework – everything is handled by the kernel-space 
-driver. Applications interact with /dev/dsp device to produce and record audio
-
-*  ALSA – newer audio subsystem, partially in kernel but also has userspace 
-library libasound. ALSA also provides DSP compatibliity layer through 
-snd_pcm_oss driver which creates /dev/dsp device and emulates audio
-
-*  Pulseaudio – even newer system which works on the top of libasound ALSA 
-library but provides a sound server to centralize all the processing. To 
-communicate with the library it also provides libpulse library which must be 
-used by applications to record sound
-
-*  Jack – another sound server, also works on the top of ALSA, provides anoher 
-library libjack. Similar to Pulseaudio there are others not very popular 
-frameworks, but sphinxbase doesn’t support them. Example are ESD (old GNOME 
-sound server), ARTS (old KDE sound server), Portaudio (portable library usable 
-across Windows, Linux and Mac).
-
-The recommended audio framework on Ubuntu is pulseaudio.
-
-Sphinxbase and pocketsphinx support all the frameworks and automatically 
-selects the one you need in compile time. The highest priority is in pulseaudio 
-framework. Before you install sphinxbase you need to decide which framework to 
-use. You need to setup the development part of the corresponding framework 
-after that.
-
-For example, it’s recommended to install libpulse-dev package to provide access 
-to pulseaudio and after that sphinxbase will automatically work with 
-Pulseaudio. Once you work with pulseaudio you do not need other frameworks.
-On embedded device try to configure alsa.
 
 ## Q: What is sample rate and how does it affect accuracy
 
@@ -359,21 +278,6 @@ ffmpeg -i file.mp3 -ar 16000 -ac 1 file.wav
 
 If you are writing software you might want to integrate the format converter 
 like ffmpeg/avconv as a separate library.
-
-## Q: How to record sound for pocketsphinx from microphone on my platform
-
-Sound recording is pretty unique in various software platforms. For example, 
-Android uses Java Audio Recorder. Python bindings use PyAudio. On Windows we 
-record with WinMM API, on Windows Phones there is another API. All those APIs 
-are not compatible with each other.
-
-For that reason there is no standard audio recording framework in 
-pocketsphinx/sphinxbase. You have to record audio with the platform API and 
-just pass the data into decoder. For example, if you want to record audio in 
-Android NDK, you can use OpenSL ES library or any other framework.
-
-There is also libad library which works on Linux/Windows/Mac, but it is very 
-limited and we are not going to extend it into other platforms.
 
 ## Q: Can I run large vocabulary speech recognition on mobile device / Raspberry PI
 
