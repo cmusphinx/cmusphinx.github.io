@@ -24,7 +24,7 @@ It's good for desktop applications, command and control and dictation where
 fast response and low resource
 consumption are the goals.
 
-Also it includes support for embedded devices with fixed-point ariphmetics and 
+Also it includes support for embedded devices with fixed-point arithmetics and 
 is successfully used on 
 IPhone, Nokia Maemon devices and on Windows Mobile. You can find further 
 documentation about PocketSphinx 
@@ -66,8 +66,3 @@ Sphinx-3 or Sphinx-4, it runs at real time, and therefore it is a good choice
 for live applications. You 
 can find further documentation about Sphinx-2 in the release documentation, or 
 at the online documentation.
-
-**Other Decoders**
-
-For competition with other decoders see [competition](/wiki/competition)
-
