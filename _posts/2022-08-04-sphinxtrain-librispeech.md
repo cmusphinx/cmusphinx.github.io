@@ -204,8 +204,8 @@ Finally pull the Docker image we'll use for training:
 ## Running training
 
 We can now run training!  Let's resize the VM to 16 CPUs (you can use
-more if you want, and it will be faster, though certain stages of
-training won't use them all):
+more if you want, but remember to set `$CFG_NPART` to at least the
+number of CPUs - also, certain stages of training won't use them all):
 
     az vm resize --resource-group librispeech-100 --name compute \
         --size Standard_F16s_v2
