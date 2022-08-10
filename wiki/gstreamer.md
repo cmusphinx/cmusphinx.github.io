@@ -190,11 +190,8 @@ not running GNOME, you may need to change `gconfaudiosrc` to a different
 source element, such as `alsasrc` or `osssrc`.
 
 	
-	        self.pipeline = gst.parse_launch('autoaudiosrc ! audioconvert ! 
-audioresample '
-	                                         + '! pocketsphinx name=asr ! 
-fakesink')
-
+    self.pipeline = gst.parse_launch('autoaudiosrc ! audioconvert ! '
+                   'audioresample ! pocketsphinx name=asr ! fakesink')
 
 This pipeline consists of an audio source, followed by conversion and 
 resampling (the `pocketsphinx` element currently requires 16kHz, 16-bit PCM 
@@ -312,21 +309,17 @@ if your language model is in /home/user/mylanguagemodel.lm and the associated
 dictionary is /home/user/mylanguagemodel.dic, you would add these lines to the 
 `init_gst` method.
 
-	
-	        asr = self.pipeline.get_by_name('asr'); # We previously 
-assigned pocketsphinx element a name asr
-	        asr.set_property('lm', '/home/user/mylanguagemodel.lm')
-	        asr.set_property('dict', '/home/user/mylanguagemodel.dic')
+    # We previously assigned pocketsphinx element a name asr
+    asr = self.pipeline.get_by_name('asr');
+    asr.set_property('lm', '/home/user/mylanguagemodel.lm')
+    asr.set_property('dict', '/home/user/mylanguagemodel.dic')
 
 
 You can also set properties directly in initialization pipeline:
 
 	
-	        self.pipeline = gst.parse_launch('autoaudiosrc ! audioconvert ! 
-audioresample '
-	                                        + '! pocketsphinx name=asr 
-beam=1e-20 ! fakesink')
-
+    self.pipeline = gst.parse_launch('autoaudiosrc ! audioconvert ! audioresample '
+                                     '! pocketsphinx name=asr beam=1e-20 ! fakesink')
 
 Properties are applied when pipeline starts, so you can reconfigure several 
 times without any problem. On the other hand, you won't see the effect of the 
@@ -334,9 +327,9 @@ property set until you start the pipeline.
 
 ## Code Listing
 
-You can [download the Python code for this 
-example](http://svn.code.sf.net/p/cmusphinx/code/trunk/pocketsphinx/src/gst-plug
-in/livedemo.py).  A complete code listing follows:
+You can [download the Python code for this
+example](http://svn.code.sf.net/p/cmusphinx/code/trunk/pocketsphinx/src/gst-plugin/livedemo.py).
+A complete code listing follows:
 
 ```
 from gi import pygtkcompat
