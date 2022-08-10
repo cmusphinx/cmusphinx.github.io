@@ -2,6 +2,12 @@
 layout: page 
 title: Large scale language model
 ---
+
+> **Caution!**
+  This tutorial is out of date.  We recommend using [KenLM](https://github.com/kpu/kenlm)
+  as it is free software unlike SRILM.  It is also faster.
+
+
 ## Building a large scale language model for domain-specific transcription
 
 Language model describes the probabilities of the sequences of words in the 
