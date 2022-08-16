@@ -10,9 +10,9 @@ author_email: dhdaines@gmail.com
 excerpt_separator: <!--more-->
 ---
 
-**TL;DR: Training is fast, easy and automated, but the accuracy is not
-good.  You should not use CMU Sphinx for large-vocabulary continuous
-speech recognition.**
+**Executive Summary: Training is fast, easy and automated, but the
+accuracy is not good.  You should not use CMU Sphinx for
+large-vocabulary continuous speech recognition.**
 
 The simplest way to train a CMU Sphinx model is using a single machine
 with multiple CPUs.  It may not be as cost-effective as a cluster, but
