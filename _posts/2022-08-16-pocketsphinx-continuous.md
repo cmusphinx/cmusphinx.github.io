@@ -40,7 +40,7 @@ the touchscreen is in your T\*sla, I don't want you touching it), it
 is nonetheless an audio application.  But it is very much *not* like
 your typical audio application.
 
-If you, as an ASR researcher, try to [read
+If you, as a speech developer/user/ordinary human being, try to [read
 the](https://jackaudio.org/api/)
 [documentation](https://docs.microsoft.com/en-us/windows/win32/xaudio2/xaudio2-introduction)
 [for
@@ -65,18 +65,18 @@ you punch in the bass track, same thing (though I hope your bass
 doesn't sound like the boss monster's head exploding).  As a
 consequence, audio APIs do singularly un-useful things like making you
 run your processing code in a separate real-time thread and only ever
-feeding it 128 samples at a time.  (ASR uses frames that are generally
-at least 400 samples long)
+feeding it 128 samples at a time.  (Speech processing uses frames that
+are generally at least 400 samples long)
 
-By contrast, while some ASR applications like spoken dialogue care
-deeply about latency, and while it's obviously good to have ASR that
-runs faster than real-time and gives incremental recognition results,
-by far the largest contributor to latency in these systems is
-endpointing - i.e. *deciding when the user has finally stopped
-speaking*, and this latency is at least two orders of magnitude
-greater than what game and music developers are worried about.  Also,
-endpointing (and ASR in general) is a language processing rather than
-an audio processing task.
+By contrast, while some speech applications like spoken dialogue care
+deeply about latency, and while it's obviously good to have speech
+recognition that runs faster than real-time and gives incremental
+recognition results, by far the largest contributor to latency in
+these systems is endpointing - i.e. *deciding when the user has
+finally stopped speaking*, and this latency is at least two orders of
+magnitude greater than what game and music developers are worried
+about.  Also, endpointing (and speech processing in general) is a
+language processing rather than an audio processing task.
 
 All this is to say that handling audio input in a speech recognition
 engine is super annoying and should be avoided if possible,
