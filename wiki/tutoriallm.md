@@ -319,7 +319,8 @@ There are many toolkits that create an ARPA n-gram language model from text file
 
 Some toolkits you can try:
 
-* [ IRSLM ](https://sourceforge.net/projects/irstlm/ )
+* [ KenLM ](https://kheafield.com/code/kenlm/)
+* [ IRSTLM ](https://sourceforge.net/projects/irstlm/ )
 * [ MITLM ](http://code.google.com/p/mitlm/ )
 
 If you are training a large vocabulary speech recognition system, the
