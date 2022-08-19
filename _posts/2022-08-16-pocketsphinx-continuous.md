@@ -174,7 +174,8 @@ main(int argc, char *argv[])
     #define SOXCMD "sox -q -r %d -c 1 -b 16 -e signed-integer -d -t raw -"
     len = snprintf(NULL, 0, SOXCMD,
                    (int)cmd_ln_float_r(config, "-samprate"));
-    soxcmd = malloc(len + 1);
+    if ((soxcmd = malloc(len + 1)) == NULL)
+        E_FATAL_SYSTEM("Failed to allocate string");
     if (signal(SIGINT, catch_sig) == SIG_ERR)
         E_FATAL_SYSTEM("Failed to set SIGINT handler");
     if (snprintf(soxcmd, len + 1, SOXCMD,
