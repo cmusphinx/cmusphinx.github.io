@@ -186,7 +186,8 @@ main(int argc, char *argv[])
     free(soxcmd);
     ps_start_utt(decoder);
     while (!global_done) {
-        len = fread(buf, sizeof(buf[0]), BUFLEN, sox);
+        if ((len = fread(buf, sizeof(buf[0]), BUFLEN, sox)) == 0)
+            break;
         if (ps_process_raw(decoder, buf, len, FALSE, FALSE) < 0)
             E_FATAL("ps_process_raw() failed\n");
     }
