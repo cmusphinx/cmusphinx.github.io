@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['doublecomplex_780',['doublecomplex',['../structdoublecomplex.html',1,'']]]
+  ['doublecomplex_785',['doublecomplex',['../structdoublecomplex.html',1,'']]]
 ];

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc1</span>
+   &#160;<span id="projectnumber">5.0.0rc2</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -64,6 +64,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -85,11 +86,23 @@ $(function() {
 </div>
 <p><a href="pocketsphinx_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a7658781195017983d7e97661c38166a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a7658781195017983d7e97661c38166a1">ps_config_parse_args</a>(argc,  argv)&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#aa5a3a9e49198d8fd0dd3424fb880b6b6">cmd_ln_parse_r</a>(NULL, <a class="el" href="pocketsphinx_8h.html#aeb0d15726f63f122798d58e4e2ae0846">ps_args</a>(), argc, argv, FALSE)</td></tr>
+<tr class="separator:a7658781195017983d7e97661c38166a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26b464413b891f509f3e17a74af816b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a26b464413b891f509f3e17a74af816b1">ps_config_retain</a>(config)&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#a975f5bf7b6f4fc95f426d1979281f73b">cmd_ln_retain</a>(config)</td></tr>
+<tr class="separator:a26b464413b891f509f3e17a74af816b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b08d281f85e800a0088e0cd85d4758"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ad1b08d281f85e800a0088e0cd85d4758">ps_config_free</a>(config)&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#a26707fc85e87d8999e368a680e7873cd">cmd_ln_free_r</a>(config)</td></tr>
+<tr class="separator:ad1b08d281f85e800a0088e0cd85d4758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ac6ba825b5a9e1c9003b257221eb6e055"><td class="memItemLeft" align="right" valign="top"><a id="ac6ba825b5a9e1c9003b257221eb6e055"></a>
 typedef struct ps_decoder_s&#160;</td><td class="memItemRight" valign="bottom"><b>ps_decoder_t</b></td></tr>
 <tr class="separator:ac6ba825b5a9e1c9003b257221eb6e055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a689111af4bbe76465dda7c7b90874d69"><td class="memItemLeft" align="right" valign="top"><a id="a689111af4bbe76465dda7c7b90874d69"></a>
+typedef struct <a class="el" href="structcmd__ln__s.html">cmd_ln_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ps_config_t</b></td></tr>
+<tr class="separator:a689111af4bbe76465dda7c7b90874d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73090e41024a1f07f5552b83ac7e0993"><td class="memItemLeft" align="right" valign="top"><a id="a73090e41024a1f07f5552b83ac7e0993"></a>
 typedef struct ps_astar_s&#160;</td><td class="memItemRight" valign="bottom"><b>ps_nbest_t</b></td></tr>
 <tr class="separator:a73090e41024a1f07f5552b83ac7e0993"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,14 +112,16 @@ typedef struct ps_seg_s&#160;</td><td class="memItemRight" valign="bottom"><b>ps
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a887e4cdcbef98d5594458c5934cc9471"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a887e4cdcbef98d5594458c5934cc9471">ps_default_search_args</a> (<a class="el" href="structcmd__ln__t.html">cmd_ln_t</a> *)</td></tr>
-<tr class="separator:a887e4cdcbef98d5594458c5934cc9471"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad033da98d0f7785d6ab89a41dac3cc7c"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ad033da98d0f7785d6ab89a41dac3cc7c">ps_init</a> (<a class="el" href="structcmd__ln__t.html">cmd_ln_t</a> *config)</td></tr>
-<tr class="separator:ad033da98d0f7785d6ab89a41dac3cc7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a391679e7edb0de1e324aa302ee820287"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a391679e7edb0de1e324aa302ee820287">ps_reinit</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="structcmd__ln__t.html">cmd_ln_t</a> *config)</td></tr>
-<tr class="separator:a391679e7edb0de1e324aa302ee820287"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f1b0b44f977ec29100fe342bb84271d"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a7f1b0b44f977ec29100fe342bb84271d">ps_reinit_feat</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="structcmd__ln__t.html">cmd_ln_t</a> *config)</td></tr>
-<tr class="separator:a7f1b0b44f977ec29100fe342bb84271d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d646a38b30b7d776701f4de3600bab2"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a9d646a38b30b7d776701f4de3600bab2">ps_default_search_args</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *)</td></tr>
+<tr class="separator:a9d646a38b30b7d776701f4de3600bab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0015dc196b0db36326bdf37c4a6eb78e"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a0015dc196b0db36326bdf37c4a6eb78e">ps_default_modeldir</a> (void)</td></tr>
+<tr class="separator:a0015dc196b0db36326bdf37c4a6eb78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac26f7cefd786aafc8c239b709b0a6c39"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ac26f7cefd786aafc8c239b709b0a6c39">ps_init</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
+<tr class="separator:ac26f7cefd786aafc8c239b709b0a6c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a335c6650fa98985b5687fde408ef0a"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a7a335c6650fa98985b5687fde408ef0a">ps_reinit</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
+<tr class="separator:a7a335c6650fa98985b5687fde408ef0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad950da65e86a4611c93e3ad765ad22e6"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ad950da65e86a4611c93e3ad765ad22e6">ps_reinit_feat</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
+<tr class="separator:ad950da65e86a4611c93e3ad765ad22e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7ff79b3e31792552968e510040d8eae"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ab7ff79b3e31792552968e510040d8eae">ps_get_cmn</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, int update)</td></tr>
 <tr class="separator:ab7ff79b3e31792552968e510040d8eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae74f202f105207d5c499280ab187081f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ae74f202f105207d5c499280ab187081f">ps_set_cmn</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *<a class="el" href="cmn_8h.html#accf10de8ef4d98b4bf591529cf16565e">cmn</a>)</td></tr>
@@ -117,8 +132,8 @@ Functions</h2></td></tr>
 <tr class="separator:a8d912ce9a5fea61b7b10db1750531c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8fd9b79ae9f87703af3f4755b3ab567"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ad8fd9b79ae9f87703af3f4755b3ab567">ps_free</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
 <tr class="separator:ad8fd9b79ae9f87703af3f4755b3ab567"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb9256d8f7217a1e929509090df1f35b"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structcmd__ln__t.html">cmd_ln_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#abb9256d8f7217a1e929509090df1f35b">ps_get_config</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
-<tr class="separator:abb9256d8f7217a1e929509090df1f35b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a264be647c21fcefa26c9a3ee03399d9a"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a264be647c21fcefa26c9a3ee03399d9a">ps_get_config</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:a264be647c21fcefa26c9a3ee03399d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a249cfc383b7d9111a28b550945a606b5"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a249cfc383b7d9111a28b550945a606b5">ps_get_logmath</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
 <tr class="separator:a249cfc383b7d9111a28b550945a606b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6237e2822756f230b88019b533a28724"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="fe_8h.html#a680a1df9d1dac86083625506cd434eaf">fe_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a6237e2822756f230b88019b533a28724">ps_get_fe</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
@@ -188,7 +203,75 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main header file for the PocketSphinx decoder. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ad1b08d281f85e800a0088e0cd85d4758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b08d281f85e800a0088e0cd85d4758">&#9670;&nbsp;</a></span>ps_config_free</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ps_config_free</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">config</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#a26707fc85e87d8999e368a680e7873cd">cmd_ln_free_r</a>(config)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Releases a configuration object. </p>
+
+</div>
+</div>
+<a id="a7658781195017983d7e97661c38166a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7658781195017983d7e97661c38166a1">&#9670;&nbsp;</a></span>ps_config_parse_args</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ps_config_parse_args</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">argc, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">argv&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#aa5a3a9e49198d8fd0dd3424fb880b6b6">cmd_ln_parse_r</a>(NULL, <a class="el" href="pocketsphinx_8h.html#aeb0d15726f63f122798d58e4e2ae0846">ps_args</a>(), argc, argv, FALSE)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Parses arguments from the command-line into a configuration. </p>
+
+</div>
+</div>
+<a id="a26b464413b891f509f3e17a74af816b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26b464413b891f509f3e17a74af816b1">&#9670;&nbsp;</a></span>ps_config_retain</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ps_config_retain</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">config</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#a975f5bf7b6f4fc95f426d1979281f73b">cmd_ln_retain</a>(config)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retains a pointer to a configuration object. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a5f3c4fcdbef34915c4e785ac9a1c6005"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5f3c4fcdbef34915c4e785ac9a1c6005">&#9670;&nbsp;</a></span>ps_add_word()</h2>
 
@@ -255,7 +338,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the argument definitions used in <a class="el" href="pocketsphinx_8h.html#ad033da98d0f7785d6ab89a41dac3cc7c">ps_init()</a>.</p>
+<p>Returns the argument definitions used in <a class="el" href="pocketsphinx_8h.html#ac26f7cefd786aafc8c239b709b0a6c39">ps_init()</a>.</p>
 <p>This is here to avoid exporting global data, which is problematic on Win32 and Symbian (and possibly other platforms). </p>
 
 </div>
@@ -342,8 +425,28 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a887e4cdcbef98d5594458c5934cc9471"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a887e4cdcbef98d5594458c5934cc9471">&#9670;&nbsp;</a></span>ps_default_search_args()</h2>
+<a id="a0015dc196b0db36326bdf37c4a6eb78e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0015dc196b0db36326bdf37c4a6eb78e">&#9670;&nbsp;</a></span>ps_default_modeldir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT char* ps_default_modeldir </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gets the system default model directory, if any exists.</p>
+<dl class="section return"><dt>Returns</dt><dd>system model directory defined at compile time, or NULL if not defined (usually in a relocatable installation such as a Python module). </dd></dl>
+
+</div>
+</div>
+<a id="a9d646a38b30b7d776701f4de3600bab2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d646a38b30b7d776701f4de3600bab2">&#9670;&nbsp;</a></span>ps_default_search_args()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,7 +454,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">POCKETSPHINX_EXPORT void ps_default_search_args </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structcmd__ln__t.html">cmd_ln_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -502,14 +605,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abb9256d8f7217a1e929509090df1f35b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb9256d8f7217a1e929509090df1f35b">&#9670;&nbsp;</a></span>ps_get_config()</h2>
+<a id="a264be647c21fcefa26c9a3ee03399d9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a264be647c21fcefa26c9a3ee03399d9a">&#9670;&nbsp;</a></span>ps_get_config()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structcmd__ln__t.html">cmd_ln_t</a>* ps_get_config </td>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a>* ps_get_config </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
           <td class="paramname"><em>ps</em></td><td>)</td>
@@ -777,8 +880,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad033da98d0f7785d6ab89a41dac3cc7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad033da98d0f7785d6ab89a41dac3cc7c">&#9670;&nbsp;</a></span>ps_init()</h2>
+<a id="ac26f7cefd786aafc8c239b709b0a6c39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac26f7cefd786aafc8c239b709b0a6c39">&#9670;&nbsp;</a></span>ps_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -786,7 +889,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__decoder__t.html">ps_decoder_t</a>* ps_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structcmd__ln__t.html">cmd_ln_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
           <td class="paramname"><em>config</em></td><td>)</td>
           <td></td>
         </tr>
@@ -796,7 +899,7 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>The decoder retains ownership of the pointer <code>config</code>, so if you are not going to use it elsewhere, you can free it.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">config</td><td>a command-line structure, as created by <a class="el" href="cmd__ln_8h.html#aa5a3a9e49198d8fd0dd3424fb880b6b6">cmd_ln_parse_r()</a> or <a class="el" href="cmd__ln_8h.html#a57f54649952a07b8bef888af4e416550">cmd_ln_parse_file_r()</a>. If NULL, the decoder will be allocated but not initialized. You can proceed to initialize it with <a class="el" href="pocketsphinx_8h.html#a391679e7edb0de1e324aa302ee820287">ps_reinit()</a>. </td></tr>
+    <tr><td class="paramname">config</td><td>a command-line structure, as created by <a class="el" href="cmd__ln_8h.html#aa5a3a9e49198d8fd0dd3424fb880b6b6">cmd_ln_parse_r()</a> or <a class="el" href="cmd__ln_8h.html#a57f54649952a07b8bef888af4e416550">cmd_ln_parse_file_r()</a>. If NULL, the decoder will be allocated but not initialized. You can proceed to initialize it with <a class="el" href="pocketsphinx_8h.html#a7a335c6650fa98985b5687fde408ef0a">ps_reinit()</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1143,8 +1246,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a391679e7edb0de1e324aa302ee820287"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a391679e7edb0de1e324aa302ee820287">&#9670;&nbsp;</a></span>ps_reinit()</h2>
+<a id="a7a335c6650fa98985b5687fde408ef0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a335c6650fa98985b5687fde408ef0a">&#9670;&nbsp;</a></span>ps_reinit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1158,7 +1261,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structcmd__ln__t.html">cmd_ln_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
           <td class="paramname"><em>config</em>&#160;</td>
         </tr>
         <tr>
@@ -1172,7 +1275,7 @@ Functions</h2></td></tr>
 <p>This function allows you to switch the acoustic model, dictionary, or other configuration without creating an entirely new decoding object.</p>
 <dl class="section note"><dt>Note</dt><dd>Since the acoustic model will be reloaded, changes made to feature extraction parameters may be overridden if a <code>feat.params</code> file is present. </dd>
 <dd>
-Any searches created with <a class="el" href="search_8h.html#a4072a93e8ce9a4229d17c9bce6ad1083">ps_set_search()</a> or words added to the dictionary with <a class="el" href="pocketsphinx_8h.html#a5f3c4fcdbef34915c4e785ac9a1c6005">ps_add_word()</a> will also be lost. To avoid this you can use <a class="el" href="pocketsphinx_8h.html#a7f1b0b44f977ec29100fe342bb84271d">ps_reinit_feat()</a>. </dd>
+Any searches created with <a class="el" href="search_8h.html#a4072a93e8ce9a4229d17c9bce6ad1083">ps_set_search()</a> or words added to the dictionary with <a class="el" href="pocketsphinx_8h.html#a5f3c4fcdbef34915c4e785ac9a1c6005">ps_add_word()</a> will also be lost. To avoid this you can use <a class="el" href="pocketsphinx_8h.html#ad950da65e86a4611c93e3ad765ad22e6">ps_reinit_feat()</a>. </dd>
 <dd>
 The decoder retains ownership of the pointer <code>config</code>, so you should free it when no longer used.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1186,8 +1289,8 @@ The decoder retains ownership of the pointer <code>config</code>, so you should 
 
 </div>
 </div>
-<a id="a7f1b0b44f977ec29100fe342bb84271d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f1b0b44f977ec29100fe342bb84271d">&#9670;&nbsp;</a></span>ps_reinit_feat()</h2>
+<a id="ad950da65e86a4611c93e3ad765ad22e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad950da65e86a4611c93e3ad765ad22e6">&#9670;&nbsp;</a></span>ps_reinit_feat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1201,7 +1304,7 @@ The decoder retains ownership of the pointer <code>config</code>, so you should 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structcmd__ln__t.html">cmd_ln_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
           <td class="paramname"><em>config</em>&#160;</td>
         </tr>
         <tr>
@@ -1508,7 +1611,7 @@ The decoder retains ownership of the pointer <code>config</code>, so you should 
       </table>
 </div><div class="memdoc">
 <p>Set the current cepstral mean from a string.</p>
-<p>This does the same thing as setting <code>-cmninit</code> and running <code><a class="el" href="pocketsphinx_8h.html#a7f1b0b44f977ec29100fe342bb84271d">ps_reinit_feat()</a></code> but is more efficient, and can also be done in the middle of an utterance if you like.</p>
+<p>This does the same thing as setting <code>-cmninit</code> and running <code><a class="el" href="pocketsphinx_8h.html#ad950da65e86a4611c93e3ad765ad22e6">ps_reinit_feat()</a></code> but is more efficient, and can also be done in the middle of an utterance if you like.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ps</td><td>Decoder </td></tr>
