@@ -203,9 +203,10 @@ Using the Library</h1>
 <div class="line">    <span class="keywordflow">while</span> (!global_done) {</div>
 <div class="line">        <span class="keyword">const</span> int16 *speech;</div>
 <div class="line">        <span class="keywordtype">int</span> prev_in_speech = <a class="code" href="endpointer_8h.html#adac16cf29e75f65ec68957daaaa2d467">ps_endpointer_in_speech</a>(ep);</div>
-<div class="line">        <span class="keywordtype">size_t</span> end_samples;</div>
-<div class="line">        <span class="keywordflow">if</span> (fread(frame, <span class="keyword">sizeof</span>(frame[0]), frame_size, sox) != frame_size) {</div>
-<div class="line">            <span class="keywordflow">if</span> (frame_size &gt; 0) {</div>
+<div class="line">        <span class="keywordtype">size_t</span> len, end_samples;</div>
+<div class="line">        <span class="keywordflow">if</span> ((len = fread(frame, <span class="keyword">sizeof</span>(frame[0]),</div>
+<div class="line">                         frame_size, sox)) != frame_size) {</div>
+<div class="line">            <span class="keywordflow">if</span> (len &gt; 0) {</div>
 <div class="line">                speech = <a class="code" href="endpointer_8h.html#a3caea346c074d981e1800a02b368707d">ps_endpointer_end_stream</a>(ep, frame,</div>
 <div class="line">                                                  frame_size,</div>
 <div class="line">                                                  &amp;end_samples);</div>
@@ -250,7 +251,7 @@ Why are there no frequently asked questions?</h2>
 <p>I'm glad you asked! There will be some soon.</p>
 <h1><a class="anchor" id="thanks_sec"></a>
 Acknowledgements</h1>
-<p>PocketSphinx is largely based on the previous Sphinx-II and Sphinx-III systems, developed by a large number of contributors at Carnegie Mellon University. For some time afterwards, it was maintained by Nickolay Shmyrev and others at Alpha Cephei, Inc. See the <code>AUTHORS</code> file for a list of contributors. </p>
+<p>PocketSphinx was originally released by David Huggins-Daines, but is largely based on the previous Sphinx-II and Sphinx-III systems, developed by a large number of contributors at Carnegie Mellon University, and released as open source under a BSD-like license thanks to Kevin Lenzo. For some time, it was maintained by Nickolay Shmyrev and others at Alpha Cephei, Inc. See the <code>AUTHORS</code> file for a list of contributors. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <div class="ttc" id="apocketsphinx_8h_html_ac26f7cefd786aafc8c239b709b0a6c39"><div class="ttname"><a href="pocketsphinx_8h.html#ac26f7cefd786aafc8c239b709b0a6c39">ps_init</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_decoder_t * ps_init(ps_config_t *config)</div></div>
