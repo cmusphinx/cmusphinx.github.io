@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc2</span>
+   &#160;<span id="projectnumber">5.0.0rc3</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -68,8 +68,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>David Huggins-Daines <a href="#" onclick="location.href='mai'+'lto:'+'dhd'+'ai'+'nes'+'@g'+'mai'+'l.'+'com'; return false;">dhdai<span style="display: none;">.nosp@m.</span>nes@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>5.0.0rc2 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>August 26, 2022</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>5.0.0rc3 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>September 7, 2022</dd></dl>
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
 <p>This is the documentation for the PocketSphinx speech recognition engine. The main API calls are documented in &lt;<a class="el" href="pocketsphinx_8h.html">pocketsphinx.h</a>&gt;.</p>
@@ -88,197 +88,33 @@ Unix-like systems</h2>
 </pre><p>Now you can compile and run the tests, and install the code: </p><pre class="fragment">cmake --build build
 cmake --build build --target check
 cmake --build build --target install
-</pre><p>By default CMake will try to install things in <code>/usr/local</code>, which you might not have access to. If you want to install somewhere else you need to set <code>CMAKE_INSTALL_PREFIX</code> <em>when running cmake for the first time</em>: </p><pre class="fragment">cmake -S . -B build -DCMAKE_INSTALL_PREFIX=$HOME/.local
+</pre><p>By default CMake will try to install things in <code>/usr/local</code>, which you might not have access to. If you want to install somewhere else you need to set <code>CMAKE_INSTALL_PREFIX</code> <em>when running cmake for the first time</em>, for example: </p><pre class="fragment">cmake -S . -B build -DCMAKE_INSTALL_PREFIX=$HOME/.local
 </pre><p>In this case you may also need to set the <code>LD_LIBRARY_PATH</code> environment variable so that the PocketSphinx library can be found: </p><pre class="fragment">export LD_LIBRARY_PATH=$HOME/.local/lib
 </pre><h2><a class="anchor" id="windows_install"></a>
 Windows</h2>
-<p>On Windows, the process is similar, but you will need to tell CMake what build tool you are using with the <code>-G</code> option, and there are many of them. The build is known to work with <code>nmake</code> but it is easiest just to use Visual Studio Code. Once built, you will find the DLL and EXE files in <code>build\Debug</code> or <code>build\Release</code> depending on your build type. If the EXE files do not run, you need to ensure that <code>pocketsphinx.dll</code> is located in the same directory as them.</p>
+<p>On Windows, the process is similar, but you will need to tell CMake what build tool you are using with the <code>-G</code> option, and there are many of them. The build is known to work with <code>nmake</code> but it is easiest just to use Visual Studio Code, which should automatically detect and offer to run the build when you add the source directory to your list of directories. Once built, you will find the DLL and EXE files in <code>build\Debug</code> or <code>build\Release</code> depending on your build type. If the EXE files do not run, you need to ensure that <code>pocketsphinx.dll</code> is located in the same directory as them.</p>
 <h1><a class="anchor" id="programming_sec"></a>
 Using the Library</h1>
-<p>The Python interface is documented at <a href="http://pocketsphinx5.readthedocs.io/">http://pocketsphinx5.readthedocs.io/</a>. Here is a full example, which will be explained in more detail soon:</p>
-<div class="fragment"><div class="line"><span class="comment">#!/usr/bin/env python3</span></div>
-<div class="line"><span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="stringliteral">Recognize live speech from the default audio device.</span></div>
-<div class="line"><span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="comment"># MIT license (c) 2022, see LICENSE for more information.</span></div>
-<div class="line"><span class="comment"># Author: David Huggins-Daines &lt;dhdaines@gmail.com&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">from</span> pocketsphinx5 <span class="keyword">import</span> Endpointer, Decoder, set_loglevel</div>
-<div class="line"><span class="keyword">import</span> subprocess</div>
-<div class="line"><span class="keyword">import</span> sys</div>
-<div class="line"><span class="keyword">import</span> os</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">def </span>main():</div>
-<div class="line">    set_loglevel(<span class="stringliteral">&quot;INFO&quot;</span>)</div>
-<div class="line">    ep = Endpointer()</div>
-<div class="line">    decoder = Decoder(</div>
-<div class="line">        samprate=ep.sample_rate,</div>
-<div class="line">    )</div>
-<div class="line">    soxcmd = f<span class="stringliteral">&quot;sox -q -r {ep.sample_rate} -c 1 -b 16 -e signed-integer -d -t raw -&quot;</span></div>
-<div class="line">    sox = subprocess.Popen(soxcmd.split(), stdout=subprocess.PIPE)</div>
-<div class="line">    <span class="keywordflow">while</span> <span class="keyword">True</span>:</div>
-<div class="line">        frame = sox.stdout.read(ep.frame_bytes)</div>
-<div class="line">        prev_in_speech = ep.in_speech</div>
-<div class="line">        speech = ep.process(frame)</div>
-<div class="line">        <span class="keywordflow">if</span> speech <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line">            <span class="keywordflow">if</span> <span class="keywordflow">not</span> prev_in_speech:</div>
-<div class="line">                print(<span class="stringliteral">&quot;Speech start at %.2f&quot;</span> % (ep.speech_start), file=sys.stderr)</div>
-<div class="line">                decoder.start_utt()</div>
-<div class="line">            decoder.process_raw(speech)</div>
-<div class="line">            hyp = decoder.hyp()</div>
-<div class="line">            <span class="keywordflow">if</span> hyp <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line">                print(<span class="stringliteral">&quot;PARTIAL RESULT:&quot;</span>, hyp.hypstr, file=sys.stderr)</div>
-<div class="line">            <span class="keywordflow">if</span> <span class="keywordflow">not</span> ep.in_speech:</div>
-<div class="line">                print(<span class="stringliteral">&quot;Speech end at %.2f&quot;</span> % (ep.speech_end), file=sys.stderr)</div>
-<div class="line">                decoder.end_utt()</div>
-<div class="line">                print(decoder.hyp().hypstr)</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"><span class="keywordflow">try</span>:</div>
-<div class="line">    main()</div>
-<div class="line"><span class="keywordflow">except</span> KeyboardInterrupt:</div>
-<div class="line">    <span class="keywordflow">pass</span></div>
-</div><!-- fragment --><p>Here is a complete example of using the C programming interface, which will be explained in more detail soon:</p>
-<div class="fragment"><div class="line"><span class="comment">/* Example of simple PocketSphinx speech segmentation.</span></div>
-<div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> * MIT license (c) 2022, see LICENSE for more information.</span></div>
-<div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> * Author: David Huggins-Daines &lt;dhdaines@gmail.com&gt;</span></div>
-<div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="pocketsphinx_8h.html">pocketsphinx.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;signal.h&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> global_done = 0;</div>
-<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line">catch_sig(<span class="keywordtype">int</span> signum)</div>
-<div class="line">{</div>
-<div class="line">    global_done = 1;</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">static</span> FILE *</div>
-<div class="line">popen_sox(<span class="keywordtype">int</span> sample_rate)</div>
-<div class="line">{</div>
-<div class="line">    <span class="keywordtype">char</span> *soxcmd;</div>
-<div class="line">    <span class="keywordtype">size_t</span> len;</div>
-<div class="line">    FILE *sox;</div>
-<div class="line"><span class="preprocessor">    #define SOXCMD &quot;sox -q -r %d -c 1 -b 16 -e signed-integer -d -t raw -&quot;</span></div>
-<div class="line">    len = snprintf(NULL, 0, SOXCMD, sample_rate);</div>
-<div class="line">    <span class="keywordflow">if</span> ((soxcmd = malloc(len + 1)) == NULL)</div>
-<div class="line">        <a class="code" href="err_8h.html#acc9aaeb2e0eb21f964913c14403d6795">E_FATAL_SYSTEM</a>(<span class="stringliteral">&quot;Failed to allocate string&quot;</span>);</div>
-<div class="line">    <span class="keywordflow">if</span> (snprintf(soxcmd, len + 1, SOXCMD, sample_rate) != len)</div>
-<div class="line">        <a class="code" href="err_8h.html#acc9aaeb2e0eb21f964913c14403d6795">E_FATAL_SYSTEM</a>(<span class="stringliteral">&quot;snprintf() failed&quot;</span>);</div>
-<div class="line">    <span class="keywordflow">if</span> ((sox = popen(soxcmd, <span class="stringliteral">&quot;r&quot;</span>)) == NULL)</div>
-<div class="line">        <a class="code" href="err_8h.html#acc9aaeb2e0eb21f964913c14403d6795">E_FATAL_SYSTEM</a>(<span class="stringliteral">&quot;Failed to popen(%s)&quot;</span>, soxcmd);</div>
-<div class="line">    free(soxcmd);</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">return</span> sox;</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span></div>
-<div class="line">main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
-<div class="line">{</div>
-<div class="line">    <a class="code" href="structps__decoder__t.html">ps_decoder_t</a> *decoder;</div>
-<div class="line">    <a class="code" href="structps__endpointer__t.html">ps_endpointer_t</a> *ep;</div>
-<div class="line">    <a class="code" href="structcmd__ln__t.html">cmd_ln_t</a> *config;</div>
-<div class="line">    FILE *sox;</div>
-<div class="line">    <span class="keywordtype">short</span> *frame;</div>
-<div class="line">    <span class="keywordtype">size_t</span> frame_size;</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> ((config = <a class="code" href="cmd__ln_8h.html#aa5a3a9e49198d8fd0dd3424fb880b6b6">cmd_ln_parse_r</a>(NULL, <a class="code" href="pocketsphinx_8h.html#aeb0d15726f63f122798d58e4e2ae0846">ps_args</a>(), argc, argv, FALSE)) == NULL)</div>
-<div class="line">        <a class="code" href="err_8h.html#abaacffc3c0f14e4dd180b1e38c62c5a0">E_FATAL</a>(<span class="stringliteral">&quot;Command line parse failed\n&quot;</span>);</div>
-<div class="line">    <a class="code" href="pocketsphinx_8h.html#a9d646a38b30b7d776701f4de3600bab2">ps_default_search_args</a>(config);</div>
-<div class="line">    <span class="keywordflow">if</span> ((decoder = <a class="code" href="pocketsphinx_8h.html#ac26f7cefd786aafc8c239b709b0a6c39">ps_init</a>(config)) == NULL)</div>
-<div class="line">        <a class="code" href="err_8h.html#abaacffc3c0f14e4dd180b1e38c62c5a0">E_FATAL</a>(<span class="stringliteral">&quot;PocketSphinx decoder init failed\n&quot;</span>);</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> ((ep = <a class="code" href="endpointer_8h.html#a948bd22b903aaf5a32e012de8d7fd7ca">ps_endpointer_init</a>(0, 0.0, 0, 0, 0)) == NULL)</div>
-<div class="line">        <a class="code" href="err_8h.html#abaacffc3c0f14e4dd180b1e38c62c5a0">E_FATAL</a>(<span class="stringliteral">&quot;PocketSphinx endpointer init failed\n&quot;</span>);</div>
-<div class="line">    sox = popen_sox(<a class="code" href="endpointer_8h.html#a1b52b6d6bf58004f463ad01697b1076f">ps_endpointer_sample_rate</a>(ep));</div>
-<div class="line">    frame_size = <a class="code" href="endpointer_8h.html#aaa16760235cea4c0a06db70c907bc576">ps_endpointer_frame_size</a>(ep);</div>
-<div class="line">    <span class="keywordflow">if</span> ((frame = malloc(frame_size * <span class="keyword">sizeof</span>(frame[0]))) == NULL)</div>
-<div class="line">        <a class="code" href="err_8h.html#acc9aaeb2e0eb21f964913c14403d6795">E_FATAL_SYSTEM</a>(<span class="stringliteral">&quot;Failed to allocate frame&quot;</span>);</div>
-<div class="line">    <span class="keywordflow">if</span> (signal(SIGINT, catch_sig) == SIG_ERR)</div>
-<div class="line">        <a class="code" href="err_8h.html#acc9aaeb2e0eb21f964913c14403d6795">E_FATAL_SYSTEM</a>(<span class="stringliteral">&quot;Failed to set SIGINT handler&quot;</span>);</div>
-<div class="line">    <span class="keywordflow">while</span> (!global_done) {</div>
-<div class="line">        <span class="keyword">const</span> int16 *speech;</div>
-<div class="line">        <span class="keywordtype">int</span> prev_in_speech = <a class="code" href="endpointer_8h.html#adac16cf29e75f65ec68957daaaa2d467">ps_endpointer_in_speech</a>(ep);</div>
-<div class="line">        <span class="keywordtype">size_t</span> len, end_samples;</div>
-<div class="line">        <span class="keywordflow">if</span> ((len = fread(frame, <span class="keyword">sizeof</span>(frame[0]),</div>
-<div class="line">                         frame_size, sox)) != frame_size) {</div>
-<div class="line">            <span class="keywordflow">if</span> (len &gt; 0) {</div>
-<div class="line">                speech = <a class="code" href="endpointer_8h.html#a3caea346c074d981e1800a02b368707d">ps_endpointer_end_stream</a>(ep, frame,</div>
-<div class="line">                                                  frame_size,</div>
-<div class="line">                                                  &amp;end_samples);</div>
-<div class="line">            }</div>
-<div class="line">            <span class="keywordflow">else</span></div>
-<div class="line">                <span class="keywordflow">break</span>;</div>
-<div class="line">        } <span class="keywordflow">else</span> {</div>
-<div class="line">            speech = <a class="code" href="endpointer_8h.html#a727e85173b371379a08f7f8161c0c5b0">ps_endpointer_process</a>(ep, frame);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> (speech != NULL) {</div>
-<div class="line">            <span class="keyword">const</span> <span class="keywordtype">char</span> *hyp;</div>
-<div class="line">            <span class="keywordflow">if</span> (!prev_in_speech) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Speech start at %.2f\n&quot;</span>,</div>
-<div class="line">                        <a class="code" href="endpointer_8h.html#a808204c820723b3cd4c16d38c66980c6">ps_endpointer_speech_start</a>(ep));</div>
-<div class="line">                <a class="code" href="pocketsphinx_8h.html#ade3909b1c12c1b70afe284639e70cbff">ps_start_utt</a>(decoder);</div>
-<div class="line">            }</div>
-<div class="line">            <span class="keywordflow">if</span> (<a class="code" href="pocketsphinx_8h.html#a572ad08651b4caae820d178a12c8f95f">ps_process_raw</a>(decoder, speech, frame_size, FALSE, FALSE) &lt; 0)</div>
-<div class="line">                <a class="code" href="err_8h.html#abaacffc3c0f14e4dd180b1e38c62c5a0">E_FATAL</a>(<span class="stringliteral">&quot;ps_process_raw() failed\n&quot;</span>);</div>
-<div class="line">            <span class="keywordflow">if</span> ((hyp = <a class="code" href="pocketsphinx_8h.html#a4a8495c168fb5763b050cfd9f8cfd2c3">ps_get_hyp</a>(decoder, NULL)) != NULL)</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;PARTIAL RESULT: %s\n&quot;</span>, hyp);</div>
-<div class="line">            <span class="keywordflow">if</span> (!<a class="code" href="endpointer_8h.html#adac16cf29e75f65ec68957daaaa2d467">ps_endpointer_in_speech</a>(ep)) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Speech end at %.2f\n&quot;</span>,</div>
-<div class="line">                        <a class="code" href="endpointer_8h.html#abc71fe3155fa1a9536c58c3c69fe8dea">ps_endpointer_speech_end</a>(ep));</div>
-<div class="line">                <a class="code" href="pocketsphinx_8h.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt</a>(decoder);</div>
-<div class="line">                <span class="keywordflow">if</span> ((hyp = <a class="code" href="pocketsphinx_8h.html#a4a8495c168fb5763b050cfd9f8cfd2c3">ps_get_hyp</a>(decoder, NULL)) != NULL)</div>
-<div class="line">                    printf(<span class="stringliteral">&quot;%s\n&quot;</span>, hyp);</div>
-<div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-<div class="line">    free(frame);</div>
-<div class="line">    <span class="keywordflow">if</span> (pclose(sox) &lt; 0)</div>
-<div class="line">        <a class="code" href="err_8h.html#add0768056bee50c260c5623b4edd4038">E_ERROR_SYSTEM</a>(<span class="stringliteral">&quot;Failed to pclose(sox)&quot;</span>);</div>
-<div class="line">    <a class="code" href="endpointer_8h.html#ad1c967ebc8f3975d40c8002428cdde32">ps_endpointer_free</a>(ep);</div>
-<div class="line">    <a class="code" href="pocketsphinx_8h.html#ad8fd9b79ae9f87703af3f4755b3ab567">ps_free</a>(decoder);</div>
-<div class="line">        </div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="faq_sec"></a>
+<p>The Python interface is documented at <a href="http://pocketsphinx.readthedocs.io/,">http://pocketsphinx.readthedocs.io/,</a> where you will find a quick start guide as well as a full API reference.</p>
+<h1><a class="anchor" id="faq_sec"></a>
 Frequently Asked Questions</h1>
-<h2><a class="anchor" id="faq_faq"></a>
-Why are there no frequently asked questions?</h2>
-<p>I'm glad you asked! There will be some soon.</p>
+<h2><a class="anchor" id="faq_audio"></a>
+Why doesn't my audio device work?</h2>
+<p>Because it's an audio device. They don't work, at least for things other than making annoying "beep boop" noises and playing Video Games. More generally, I cannot solve this problem for you, because every single computer, operating system, sound card, microphone, phase of the moon, and day of the week is different when it comes to recording audio. That's why I suggest you use SoX, because (a) it usually works, and (b) whoever wrote it seems to have retired long ago, so you can't bother them.</p>
+<h2><a class="anchor" id="faq_error"></a>
+The recognized text is wrong.</h2>
+<p>That's not a question! But since this isn't Jeopardy, and my name is not Watson, I'll try to answer it anyway. Be aware that the answer depends on many things, first and foremost what you mean by "wrong".</p>
+<p>If it <em>sounds</em> the same, e.g. "wreck a nice beach" when you said "recognize speech" then the issue is that the <b>language model</b> is not appropriate for the task, domain, dialect, or whatever it is you're trying to recognize. You may wish to consider writing a JSGF grammar and using it instead of the default language model (with the <code>-jsgf</code> flag). Or you can get an N-best list or word lattice and rescore it with a better language model, such as a recurrent neural network or a human being.</p>
+<p>If it is total nonsense, or if it is just blank, or if it's the same word repeated, e.g. "a a a a a a", then there is likely a problem with the input audio. The sampling rate could be wrong, or even if it's correct, you may have narrow-band data. Try to look at the spectrogram (Audacity can show you this) and see if it looks empty or flat below the frequency in the <code>-upperf</code> flag. Alternately it could just be very noisy. In particular, if the noise consists of other people talking, automatic speech recognition will nearly always fail.</p>
+<h2><a class="anchor" id="faq_tech"></a>
+Why don't you support (pick one or more: WFST,</h2>
+<p>fMLLR, SAT, DNN, CTC, LAS, CNN, RNN, LSTM, etc)?</p>
+<p>Not because there's anything wrong with those things (except LAS, which is kind of a dumb idea) but simply because PocketSphinx does not do them, or anything like them, and there is no point in adding them to it when other systems exist. Many of them are also heavily dependent on distasteful and wasteful platforms like C++, CUDA, TensorFlow, PyTorch, and so on.</p>
 <h1><a class="anchor" id="thanks_sec"></a>
 Acknowledgements</h1>
 <p>PocketSphinx was originally released by David Huggins-Daines, but is largely based on the previous Sphinx-II and Sphinx-III systems, developed by a large number of contributors at Carnegie Mellon University, and released as open source under a BSD-like license thanks to Kevin Lenzo. For some time, it was maintained by Nickolay Shmyrev and others at Alpha Cephei, Inc. See the <code>AUTHORS</code> file for a list of contributors. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
-<div class="ttc" id="apocketsphinx_8h_html_ac26f7cefd786aafc8c239b709b0a6c39"><div class="ttname"><a href="pocketsphinx_8h.html#ac26f7cefd786aafc8c239b709b0a6c39">ps_init</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_decoder_t * ps_init(ps_config_t *config)</div></div>
-<div class="ttc" id="aendpointer_8h_html_adac16cf29e75f65ec68957daaaa2d467"><div class="ttname"><a href="endpointer_8h.html#adac16cf29e75f65ec68957daaaa2d467">ps_endpointer_in_speech</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int ps_endpointer_in_speech(ps_endpointer_t *ep)</div></div>
-<div class="ttc" id="astructcmd__ln__t_html"><div class="ttname"><a href="structcmd__ln__t.html">cmd_ln_t</a></div></div>
-<div class="ttc" id="acmd__ln_8h_html_aa5a3a9e49198d8fd0dd3424fb880b6b6"><div class="ttname"><a href="cmd__ln_8h.html#aa5a3a9e49198d8fd0dd3424fb880b6b6">cmd_ln_parse_r</a></div><div class="ttdeci">SPHINXBASE_EXPORT cmd_ln_t * cmd_ln_parse_r(cmd_ln_t *inout_cmdln, arg_t const *defn, int32 argc, char *argv[], int32 strict)</div></div>
-<div class="ttc" id="apocketsphinx_8h_html_a4a8495c168fb5763b050cfd9f8cfd2c3"><div class="ttname"><a href="pocketsphinx_8h.html#a4a8495c168fb5763b050cfd9f8cfd2c3">ps_get_hyp</a></div><div class="ttdeci">POCKETSPHINX_EXPORT const char * ps_get_hyp(ps_decoder_t *ps, int32 *out_best_score)</div></div>
-<div class="ttc" id="aerr_8h_html_add0768056bee50c260c5623b4edd4038"><div class="ttname"><a href="err_8h.html#add0768056bee50c260c5623b4edd4038">E_ERROR_SYSTEM</a></div><div class="ttdeci">#define E_ERROR_SYSTEM(...)</div><div class="ttdef"><b>Definition:</b> err.h:99</div></div>
-<div class="ttc" id="aendpointer_8h_html_a808204c820723b3cd4c16d38c66980c6"><div class="ttname"><a href="endpointer_8h.html#a808204c820723b3cd4c16d38c66980c6">ps_endpointer_speech_start</a></div><div class="ttdeci">POCKETSPHINX_EXPORT double ps_endpointer_speech_start(ps_endpointer_t *ep)</div></div>
-<div class="ttc" id="apocketsphinx_8h_html_ad8fd9b79ae9f87703af3f4755b3ab567"><div class="ttname"><a href="pocketsphinx_8h.html#ad8fd9b79ae9f87703af3f4755b3ab567">ps_free</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int ps_free(ps_decoder_t *ps)</div></div>
-<div class="ttc" id="aendpointer_8h_html_abc71fe3155fa1a9536c58c3c69fe8dea"><div class="ttname"><a href="endpointer_8h.html#abc71fe3155fa1a9536c58c3c69fe8dea">ps_endpointer_speech_end</a></div><div class="ttdeci">POCKETSPHINX_EXPORT double ps_endpointer_speech_end(ps_endpointer_t *ep)</div></div>
-<div class="ttc" id="apocketsphinx_8h_html_ab9339de730713b68cbd68a7f36dc8730"><div class="ttname"><a href="pocketsphinx_8h.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int ps_end_utt(ps_decoder_t *ps)</div></div>
-<div class="ttc" id="aerr_8h_html_acc9aaeb2e0eb21f964913c14403d6795"><div class="ttname"><a href="err_8h.html#acc9aaeb2e0eb21f964913c14403d6795">E_FATAL_SYSTEM</a></div><div class="ttdeci">#define E_FATAL_SYSTEM(...)</div><div class="ttdef"><b>Definition:</b> err.h:90</div></div>
-<div class="ttc" id="apocketsphinx_8h_html_a9d646a38b30b7d776701f4de3600bab2"><div class="ttname"><a href="pocketsphinx_8h.html#a9d646a38b30b7d776701f4de3600bab2">ps_default_search_args</a></div><div class="ttdeci">POCKETSPHINX_EXPORT void ps_default_search_args(ps_config_t *)</div></div>
-<div class="ttc" id="apocketsphinx_8h_html_aeb0d15726f63f122798d58e4e2ae0846"><div class="ttname"><a href="pocketsphinx_8h.html#aeb0d15726f63f122798d58e4e2ae0846">ps_args</a></div><div class="ttdeci">POCKETSPHINX_EXPORT const arg_t * ps_args(void)</div></div>
-<div class="ttc" id="apocketsphinx_8h_html_a572ad08651b4caae820d178a12c8f95f"><div class="ttname"><a href="pocketsphinx_8h.html#a572ad08651b4caae820d178a12c8f95f">ps_process_raw</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int ps_process_raw(ps_decoder_t *ps, int16 const *data, size_t n_samples, int no_search, int full_utt)</div></div>
-<div class="ttc" id="apocketsphinx_8h_html"><div class="ttname"><a href="pocketsphinx_8h.html">pocketsphinx.h</a></div></div>
-<div class="ttc" id="aendpointer_8h_html_a948bd22b903aaf5a32e012de8d7fd7ca"><div class="ttname"><a href="endpointer_8h.html#a948bd22b903aaf5a32e012de8d7fd7ca">ps_endpointer_init</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_endpointer_t * ps_endpointer_init(double window, double ratio, ps_vad_mode_t mode, int sample_rate, double frame_length)</div></div>
-<div class="ttc" id="apocketsphinx_8h_html_ade3909b1c12c1b70afe284639e70cbff"><div class="ttname"><a href="pocketsphinx_8h.html#ade3909b1c12c1b70afe284639e70cbff">ps_start_utt</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int ps_start_utt(ps_decoder_t *ps)</div></div>
-<div class="ttc" id="astructps__decoder__t_html"><div class="ttname"><a href="structps__decoder__t.html">ps_decoder_t</a></div></div>
-<div class="ttc" id="aendpointer_8h_html_ad1c967ebc8f3975d40c8002428cdde32"><div class="ttname"><a href="endpointer_8h.html#ad1c967ebc8f3975d40c8002428cdde32">ps_endpointer_free</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int ps_endpointer_free(ps_endpointer_t *ep)</div></div>
-<div class="ttc" id="aerr_8h_html_abaacffc3c0f14e4dd180b1e38c62c5a0"><div class="ttname"><a href="err_8h.html#abaacffc3c0f14e4dd180b1e38c62c5a0">E_FATAL</a></div><div class="ttdeci">#define E_FATAL(...)</div><div class="ttdef"><b>Definition:</b> err.h:81</div></div>
-<div class="ttc" id="aendpointer_8h_html_a727e85173b371379a08f7f8161c0c5b0"><div class="ttname"><a href="endpointer_8h.html#a727e85173b371379a08f7f8161c0c5b0">ps_endpointer_process</a></div><div class="ttdeci">const POCKETSPHINX_EXPORT int16 * ps_endpointer_process(ps_endpointer_t *ep, const int16 *frame)</div></div>
-<div class="ttc" id="astructps__endpointer__t_html"><div class="ttname"><a href="structps__endpointer__t.html">ps_endpointer_t</a></div><div class="ttdoc">Simple voice activity detection based endpointing.</div></div>
-<div class="ttc" id="aendpointer_8h_html_aaa16760235cea4c0a06db70c907bc576"><div class="ttname"><a href="endpointer_8h.html#aaa16760235cea4c0a06db70c907bc576">ps_endpointer_frame_size</a></div><div class="ttdeci">#define ps_endpointer_frame_size(ep)</div><div class="ttdef"><b>Definition:</b> endpointer.h:133</div></div>
-<div class="ttc" id="aendpointer_8h_html_a1b52b6d6bf58004f463ad01697b1076f"><div class="ttname"><a href="endpointer_8h.html#a1b52b6d6bf58004f463ad01697b1076f">ps_endpointer_sample_rate</a></div><div class="ttdeci">#define ps_endpointer_sample_rate(ep)</div><div class="ttdef"><b>Definition:</b> endpointer.h:138</div></div>
-<div class="ttc" id="aendpointer_8h_html_a3caea346c074d981e1800a02b368707d"><div class="ttname"><a href="endpointer_8h.html#a3caea346c074d981e1800a02b368707d">ps_endpointer_end_stream</a></div><div class="ttdeci">const POCKETSPHINX_EXPORT int16 * ps_endpointer_end_stream(ps_endpointer_t *ep, const int16 *frame, size_t nsamp, size_t *out_nsamp)</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
