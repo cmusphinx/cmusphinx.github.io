@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc3</span>
+   &#160;<span id="projectnumber">5.0.0rc4</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -68,12 +68,6 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Member <a class="el" href="feat_8h.html#a1fe686c88d5b0598d7509af21acd9b76">feat_n_stream</a>  (f)</dt>
-<dd><a class="anchor" id="_deprecated000003"></a>Do not use this, use <a class="el" href="feat_8h.html#abadd19e2cc72df33e81e9d73a7ddffdb">feat_dimension1()</a> instead.  </dd>
-<dt>Member <a class="el" href="feat_8h.html#a3d50283fc416fff87f3b907a12c2c11e">feat_stream_len</a>  (f, i)</dt>
-<dd><a class="anchor" id="_deprecated000004"></a>Do not use this, use <a class="el" href="feat_8h.html#a5bd29a80c7f23f281d55555757f97f34">feat_dimension2()</a> instead.  </dd>
-<dt>Member <a class="el" href="pio_8h.html#a11e0daa4f315d01c2e030d3a0abe702c">fread_line</a>  (FILE *stream, size_t *out_len)</dt>
-<dd><a class="anchor" id="_deprecated000005"></a>Use line iterators instead. </dd>
 <dt>Member <a class="el" href="pocketsphinx_8h.html#adcbb8aeb9ebf3f73e935d3b3c8832ea0">ps_get_in_speech</a>  (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</dt>
 <dd><a class="anchor" id="_deprecated000002"></a>This function is retained for compatibility but should not be considered a reliable voice activity detector. It will always return 1 between calls to <a class="el" href="pocketsphinx_8h.html#ade3909b1c12c1b70afe284639e70cbff">ps_start_utt()</a> and <a class="el" href="pocketsphinx_8h.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt()</a>. You probably want <a class="el" href="structps__endpointer__t.html" title="Simple voice activity detection based endpointing.">ps_endpointer_t</a>, but for single frames of data you can also use ps_vad_t </dd>
 <dt>Member <a class="el" href="pocketsphinx_8h.html#a89be3b2a8f83291a225db0bcd9ee65b2">ps_start_stream</a>  (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</dt>

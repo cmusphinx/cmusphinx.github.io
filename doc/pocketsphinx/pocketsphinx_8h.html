@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc3</span>
+   &#160;<span id="projectnumber">5.0.0rc4</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -64,45 +64,48 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">pocketsphinx.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="cmd__ln_8h_source.html">sphinxbase/cmd_ln.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="logmath_8h_source.html">sphinxbase/logmath.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="fe_8h_source.html">sphinxbase/fe.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="feat_8h_source.html">sphinxbase/feat.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="err_8h_source.html">sphinxbase/err.h</a>&gt;</code><br />
+<code>#include &lt;pocketsphinx/sphinx_config.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="prim__type_8h_source.html">pocketsphinx/prim_type.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="logmath_8h_source.html">pocketsphinx/logmath.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="err_8h_source.html">pocketsphinx/err.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="vad_8h_source.html">pocketsphinx/vad.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="endpointer_8h_source.html">pocketsphinx/endpointer.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="model_8h_source.html">pocketsphinx/model.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="search_8h_source.html">pocketsphinx/search.h</a>&gt;</code><br />
 <code>#include &lt;pocketsphinx/export.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="lattice_8h_source.html">pocketsphinx/lattice.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mllr_8h_source.html">pocketsphinx/mllr.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="vad_8h_source.html">pocketsphinx/vad.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="endpointer_8h_source.html">pocketsphinx/endpointer.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="search_8h_source.html">pocketsphinx/search.h</a>&gt;</code><br />
 </div>
 <p><a href="pocketsphinx_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a7658781195017983d7e97661c38166a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a7658781195017983d7e97661c38166a1">ps_config_parse_args</a>(argc,  argv)&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#aa5a3a9e49198d8fd0dd3424fb880b6b6">cmd_ln_parse_r</a>(NULL, <a class="el" href="pocketsphinx_8h.html#aeb0d15726f63f122798d58e4e2ae0846">ps_args</a>(), argc, argv, FALSE)</td></tr>
-<tr class="separator:a7658781195017983d7e97661c38166a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26b464413b891f509f3e17a74af816b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a26b464413b891f509f3e17a74af816b1">ps_config_retain</a>(config)&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#a975f5bf7b6f4fc95f426d1979281f73b">cmd_ln_retain</a>(config)</td></tr>
-<tr class="separator:a26b464413b891f509f3e17a74af816b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1b08d281f85e800a0088e0cd85d4758"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ad1b08d281f85e800a0088e0cd85d4758">ps_config_free</a>(config)&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#a26707fc85e87d8999e368a680e7873cd">cmd_ln_free_r</a>(config)</td></tr>
-<tr class="separator:ad1b08d281f85e800a0088e0cd85d4758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarg__s.html">arg_s</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:abe6ad8a2efc87195489fe107e13045d6"><td class="memItemLeft" align="right" valign="top"><a id="abe6ad8a2efc87195489fe107e13045d6"></a>
+typedef enum ps_type_e&#160;</td><td class="memItemRight" valign="bottom"><b>ps_type_t</b></td></tr>
+<tr class="separator:abe6ad8a2efc87195489fe107e13045d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da98cf11416dc481e69ae70fa9985ec"><td class="memItemLeft" align="right" valign="top"><a id="a5da98cf11416dc481e69ae70fa9985ec"></a>
+typedef struct <a class="el" href="structarg__s.html">arg_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>arg_t</b></td></tr>
+<tr class="separator:a5da98cf11416dc481e69ae70fa9985ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a689111af4bbe76465dda7c7b90874d69"><td class="memItemLeft" align="right" valign="top"><a id="a689111af4bbe76465dda7c7b90874d69"></a>
+typedef struct cmd_ln_s&#160;</td><td class="memItemRight" valign="bottom"><b>ps_config_t</b></td></tr>
+<tr class="separator:a689111af4bbe76465dda7c7b90874d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6ba825b5a9e1c9003b257221eb6e055"><td class="memItemLeft" align="right" valign="top"><a id="ac6ba825b5a9e1c9003b257221eb6e055"></a>
 typedef struct ps_decoder_s&#160;</td><td class="memItemRight" valign="bottom"><b>ps_decoder_t</b></td></tr>
 <tr class="separator:ac6ba825b5a9e1c9003b257221eb6e055"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a689111af4bbe76465dda7c7b90874d69"><td class="memItemLeft" align="right" valign="top"><a id="a689111af4bbe76465dda7c7b90874d69"></a>
-typedef struct <a class="el" href="structcmd__ln__s.html">cmd_ln_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ps_config_t</b></td></tr>
-<tr class="separator:a689111af4bbe76465dda7c7b90874d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73090e41024a1f07f5552b83ac7e0993"><td class="memItemLeft" align="right" valign="top"><a id="a73090e41024a1f07f5552b83ac7e0993"></a>
 typedef struct ps_astar_s&#160;</td><td class="memItemRight" valign="bottom"><b>ps_nbest_t</b></td></tr>
 <tr class="separator:a73090e41024a1f07f5552b83ac7e0993"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,10 +113,60 @@ typedef struct ps_astar_s&#160;</td><td class="memItemRight" valign="bottom"><b>
 typedef struct ps_seg_s&#160;</td><td class="memItemRight" valign="bottom"><b>ps_seg_t</b></td></tr>
 <tr class="separator:a64d3ac229ef945017112bab4c2a5ec94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a46e29965a820dcffd41e0cdef15bc6fc"><td class="memItemLeft" align="right" valign="top"><a id="a46e29965a820dcffd41e0cdef15bc6fc"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ps_type_e</b> { <br />
+&#160;&#160;<b>ARG_REQUIRED</b> = (1&lt;&lt;0), 
+<b>ARG_INTEGER</b> = (1&lt;&lt;1), 
+<b>ARG_FLOATING</b> = (1&lt;&lt;2), 
+<b>ARG_STRING</b> = (1&lt;&lt;3), 
+<br />
+&#160;&#160;<b>ARG_BOOLEAN</b> = (1&lt;&lt;4), 
+<b>REQARG_INTEGER</b> = (ARG_INTEGER | ARG_REQUIRED), 
+<b>REQARG_FLOATING</b> = (ARG_FLOATING | ARG_REQUIRED), 
+<b>REQARG_STRING</b> = (ARG_STRING | ARG_REQUIRED), 
+<br />
+&#160;&#160;<b>REQARG_BOOLEAN</b> = (ARG_BOOLEAN | ARG_REQUIRED)
+<br />
+ }</td></tr>
+<tr class="separator:a46e29965a820dcffd41e0cdef15bc6fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9d646a38b30b7d776701f4de3600bab2"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a9d646a38b30b7d776701f4de3600bab2">ps_default_search_args</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *)</td></tr>
-<tr class="separator:a9d646a38b30b7d776701f4de3600bab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90be3cca33ba55d1768e516166f77f94"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a90be3cca33ba55d1768e516166f77f94">ps_config_init</a> (const <a class="el" href="structarg__s.html">arg_t</a> *defn)</td></tr>
+<tr class="separator:a90be3cca33ba55d1768e516166f77f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75939046eae1b51673fc773ca4271911"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a75939046eae1b51673fc773ca4271911">ps_config_retain</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
+<tr class="separator:a75939046eae1b51673fc773ca4271911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58efc9357b6871c0575be7ea59f326b0"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a58efc9357b6871c0575be7ea59f326b0">ps_config_free</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
+<tr class="separator:a58efc9357b6871c0575be7ea59f326b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af02f2dcddc9809043e859c6b413eb938"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#af02f2dcddc9809043e859c6b413eb938">ps_config_parse_json</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *json)</td></tr>
+<tr class="separator:af02f2dcddc9809043e859c6b413eb938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5935c99b912e7a9b6d4baaa993991a9"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#aa5935c99b912e7a9b6d4baaa993991a9">ps_config_serialize_json</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
+<tr class="separator:aa5935c99b912e7a9b6d4baaa993991a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a957ca92e4393991b08e0273c29a08315"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT ps_type_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a957ca92e4393991b08e0273c29a08315">ps_config_typeof</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, char const *name)</td></tr>
+<tr class="separator:a957ca92e4393991b08e0273c29a08315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e733516cbe7a0aae96b1c34e6c9f9e"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a38e733516cbe7a0aae96b1c34e6c9f9e">ps_config_get</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name)</td></tr>
+<tr class="separator:a38e733516cbe7a0aae96b1c34e6c9f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1e87d99ec7a86ec6628f828718f6588"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#af1e87d99ec7a86ec6628f828718f6588">ps_config_set</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name, const <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a> *val, ps_type_t t)</td></tr>
+<tr class="separator:af1e87d99ec7a86ec6628f828718f6588"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec8132830a14ceb9a1d2c53bbf1c6284"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#aec8132830a14ceb9a1d2c53bbf1c6284">ps_config_int</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name)</td></tr>
+<tr class="separator:aec8132830a14ceb9a1d2c53bbf1c6284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9412a3e395deb907fee7d4d307cab66"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#aa9412a3e395deb907fee7d4d307cab66">ps_config_bool</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name)</td></tr>
+<tr class="separator:aa9412a3e395deb907fee7d4d307cab66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf6ac1c6030616293f8e50e1b6a565af"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#abf6ac1c6030616293f8e50e1b6a565af">ps_config_float</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name)</td></tr>
+<tr class="separator:abf6ac1c6030616293f8e50e1b6a565af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9baea42bd0a5e630ec201f79aa6f978"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#af9baea42bd0a5e630ec201f79aa6f978">ps_config_str</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name)</td></tr>
+<tr class="separator:af9baea42bd0a5e630ec201f79aa6f978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafde916ce150ff488735ebbb7cecdd30"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#aafde916ce150ff488735ebbb7cecdd30">ps_config_set_int</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name, long val)</td></tr>
+<tr class="separator:aafde916ce150ff488735ebbb7cecdd30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f3759db642ff97ed93f58f445e5df63"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a2f3759db642ff97ed93f58f445e5df63">ps_config_set_bool</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name, int val)</td></tr>
+<tr class="separator:a2f3759db642ff97ed93f58f445e5df63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca379570cd479b30ebb2b1b55c1bfa7a"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#aca379570cd479b30ebb2b1b55c1bfa7a">ps_config_set_float</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name, double val)</td></tr>
+<tr class="separator:aca379570cd479b30ebb2b1b55c1bfa7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1207e7a662e522517ff2291785d7777a"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a1207e7a662e522517ff2291785d7777a">ps_config_set_str</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config, const char *name, const char *val)</td></tr>
+<tr class="separator:a1207e7a662e522517ff2291785d7777a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab33df51031c41cdb73794845c33a2d88"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ab33df51031c41cdb73794845c33a2d88">ps_default_search_args</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
+<tr class="separator:ab33df51031c41cdb73794845c33a2d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac022a88c8bd55f78398a55ffb3a6597c"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ac022a88c8bd55f78398a55ffb3a6597c">ps_expand_model_config</a> (<a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
 <tr class="separator:ac022a88c8bd55f78398a55ffb3a6597c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0015dc196b0db36326bdf37c4a6eb78e"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a0015dc196b0db36326bdf37c4a6eb78e">ps_default_modeldir</a> (void)</td></tr>
@@ -126,9 +179,9 @@ Functions</h2></td></tr>
 <tr class="separator:ad950da65e86a4611c93e3ad765ad22e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7ff79b3e31792552968e510040d8eae"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ab7ff79b3e31792552968e510040d8eae">ps_get_cmn</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, int update)</td></tr>
 <tr class="separator:ab7ff79b3e31792552968e510040d8eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae74f202f105207d5c499280ab187081f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ae74f202f105207d5c499280ab187081f">ps_set_cmn</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *<a class="el" href="cmn_8h.html#accf10de8ef4d98b4bf591529cf16565e">cmn</a>)</td></tr>
+<tr class="memitem:ae74f202f105207d5c499280ab187081f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ae74f202f105207d5c499280ab187081f">ps_set_cmn</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *cmn)</td></tr>
 <tr class="separator:ae74f202f105207d5c499280ab187081f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb0d15726f63f122798d58e4e2ae0846"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT const <a class="el" href="structarg__t.html">arg_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#aeb0d15726f63f122798d58e4e2ae0846">ps_args</a> (void)</td></tr>
+<tr class="memitem:aeb0d15726f63f122798d58e4e2ae0846"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT const <a class="el" href="structarg__s.html">arg_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#aeb0d15726f63f122798d58e4e2ae0846">ps_args</a> (void)</td></tr>
 <tr class="separator:aeb0d15726f63f122798d58e4e2ae0846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d912ce9a5fea61b7b10db1750531c34"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a8d912ce9a5fea61b7b10db1750531c34">ps_retain</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
 <tr class="separator:a8d912ce9a5fea61b7b10db1750531c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,10 +191,6 @@ Functions</h2></td></tr>
 <tr class="separator:a264be647c21fcefa26c9a3ee03399d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a249cfc383b7d9111a28b550945a606b5"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a249cfc383b7d9111a28b550945a606b5">ps_get_logmath</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
 <tr class="separator:a249cfc383b7d9111a28b550945a606b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6237e2822756f230b88019b533a28724"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="fe_8h.html#a680a1df9d1dac86083625506cd434eaf">fe_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a6237e2822756f230b88019b533a28724">ps_get_fe</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
-<tr class="separator:a6237e2822756f230b88019b533a28724"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d74d90f0db0782386487cc061a09218"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structfeat__t.html">feat_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a0d74d90f0db0782386487cc061a09218">ps_get_feat</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
-<tr class="separator:a0d74d90f0db0782386487cc061a09218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85e04bcbf5366f1bdad555dbb4d73d5d"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="mllr_8h.html#ad4b6bf4c3cb6a671f79f1d709857d5b1">ps_mllr_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a85e04bcbf5366f1bdad555dbb4d73d5d">ps_update_mllr</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="mllr_8h.html#ad4b6bf4c3cb6a671f79f1d709857d5b1">ps_mllr_t</a> *mllr)</td></tr>
 <tr class="separator:a85e04bcbf5366f1bdad555dbb4d73d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a824f46e51681d931b7e2706a86c3d86f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a824f46e51681d931b7e2706a86c3d86f">ps_load_dict</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, char const *dictfile, char const *fdictfile, char const *format)</td></tr>
@@ -164,8 +213,8 @@ Functions</h2></td></tr>
 <tr class="separator:ade3909b1c12c1b70afe284639e70cbff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a572ad08651b4caae820d178a12c8f95f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a572ad08651b4caae820d178a12c8f95f">ps_process_raw</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, int16 const *data, size_t n_samples, int no_search, int full_utt)</td></tr>
 <tr class="separator:a572ad08651b4caae820d178a12c8f95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc0ab735d6460142126bc31a9e9d2ba0"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#adc0ab735d6460142126bc31a9e9d2ba0">ps_process_cep</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="fe_8h.html#acb67b0ba99b11bba972eb049fe89e333">mfcc_t</a> **data, int n_frames, int no_search, int full_utt)</td></tr>
-<tr class="separator:adc0ab735d6460142126bc31a9e9d2ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063c7e2f84ba6e7d0c287b13b234c563"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#a063c7e2f84ba6e7d0c287b13b234c563">ps_process_cep</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, float **data, int n_frames, int no_search, int full_utt)</td></tr>
+<tr class="separator:a063c7e2f84ba6e7d0c287b13b234c563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb3527e41c2f4cd64dccbdbd5f812d1d"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#abb3527e41c2f4cd64dccbdbd5f812d1d">ps_get_n_frames</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
 <tr class="separator:abb3527e41c2f4cd64dccbdbd5f812d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9339de730713b68cbd68a7f36dc8730"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pocketsphinx_8h.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
@@ -205,75 +254,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main header file for the PocketSphinx decoder. </p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ad1b08d281f85e800a0088e0cd85d4758"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1b08d281f85e800a0088e0cd85d4758">&#9670;&nbsp;</a></span>ps_config_free</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ps_config_free</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">config</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#a26707fc85e87d8999e368a680e7873cd">cmd_ln_free_r</a>(config)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Releases a configuration object. </p>
-
-</div>
-</div>
-<a id="a7658781195017983d7e97661c38166a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7658781195017983d7e97661c38166a1">&#9670;&nbsp;</a></span>ps_config_parse_args</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ps_config_parse_args</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">argc, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">argv&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#aa5a3a9e49198d8fd0dd3424fb880b6b6">cmd_ln_parse_r</a>(NULL, <a class="el" href="pocketsphinx_8h.html#aeb0d15726f63f122798d58e4e2ae0846">ps_args</a>(), argc, argv, FALSE)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Parses arguments from the command-line into a configuration. </p>
-
-</div>
-</div>
-<a id="a26b464413b891f509f3e17a74af816b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26b464413b891f509f3e17a74af816b1">&#9670;&nbsp;</a></span>ps_config_retain</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ps_config_retain</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">config</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="cmd__ln_8h.html#a975f5bf7b6f4fc95f426d1979281f73b">cmd_ln_retain</a>(config)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Retains a pointer to a configuration object. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a5f3c4fcdbef34915c4e785ac9a1c6005"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5f3c4fcdbef34915c4e785ac9a1c6005">&#9670;&nbsp;</a></span>ps_add_word()</h2>
 
@@ -332,7 +313,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">POCKETSPHINX_EXPORT const <a class="el" href="structarg__t.html">arg_t</a>* ps_args </td>
+          <td class="memname">POCKETSPHINX_EXPORT const <a class="el" href="structarg__s.html">arg_t</a>* ps_args </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -342,6 +323,524 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the argument definitions used in <a class="el" href="pocketsphinx_8h.html#ac26f7cefd786aafc8c239b709b0a6c39">ps_init()</a>.</p>
 <p>This is here to avoid exporting global data, which is problematic on Win32 and Symbian (and possibly other platforms). </p>
+
+</div>
+</div>
+<a id="aa9412a3e395deb907fee7d4d307cab66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9412a3e395deb907fee7d4d307cab66">&#9670;&nbsp;</a></span>ps_config_bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_config_bool </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get a boolean-valued parameter.</p>
+<p>If the parameter does not have an integer or boolean type, this will print an error and return 0. The return value is either 0 or 1 (if the parameter has an integer type, any non-zero value will return 1). </p>
+
+</div>
+</div>
+<a id="abf6ac1c6030616293f8e50e1b6a565af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf6ac1c6030616293f8e50e1b6a565af">&#9670;&nbsp;</a></span>ps_config_float()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT double ps_config_float </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get a floating-point parameter.</p>
+<p>If the parameter does not have a floating-point type, this will print an error and return 0. </p>
+
+</div>
+</div>
+<a id="a58efc9357b6871c0575be7ea59f326b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58efc9357b6871c0575be7ea59f326b0">&#9670;&nbsp;</a></span>ps_config_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_config_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Release a configuration object. </p>
+
+</div>
+</div>
+<a id="a38e733516cbe7a0aae96b1c34e6c9f9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38e733516cbe7a0aae96b1c34e6c9f9e">&#9670;&nbsp;</a></span>ps_config_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a>* ps_config_get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Access the value of a configuration parameter.</p>
+<p>To actually do something with the value, you will need to know its type, which can be obtained with <a class="el" href="pocketsphinx_8h.html#a957ca92e4393991b08e0273c29a08315">ps_config_typeof()</a>. This function is thus mainly useful for dynamic language bindings, and you should use <a class="el" href="pocketsphinx_8h.html#aec8132830a14ceb9a1d2c53bbf1c6284">ps_config_int()</a>, <a class="el" href="pocketsphinx_8h.html#abf6ac1c6030616293f8e50e1b6a565af">ps_config_float()</a>, or <a class="el" href="pocketsphinx_8h.html#af9baea42bd0a5e630ec201f79aa6f978">ps_config_str()</a> instead.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>Configuration object. </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the parameter to retrieve. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the parameter's value, or NULL if the parameter does not exist. Note that a string parameter can also have NULL as a value, in which case the <code>ptr</code> field in the return value is NULL. This pointer (and any pointers inside it) is owned by the <a class="el" href="structps__config__t.html">ps_config_t</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a90be3cca33ba55d1768e516166f77f94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90be3cca33ba55d1768e516166f77f94">&#9670;&nbsp;</a></span>ps_config_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a>* ps_config_init </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structarg__s.html">arg_t</a> *&#160;</td>
+          <td class="paramname"><em>defn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a configuration with default values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">defn</td><td>Array of arg_t defining and describing parameters, terminated by an arg_t with <code>name == NULL</code>. You should usually just pass NULL here, which will result in the standard set of parameters being used. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Newly created configuration or NULL on failure (should not happen, but check it anyway). </dd></dl>
+
+</div>
+</div>
+<a id="aec8132830a14ceb9a1d2c53bbf1c6284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec8132830a14ceb9a1d2c53bbf1c6284">&#9670;&nbsp;</a></span>ps_config_int()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT long ps_config_int </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get an integer-valued parameter.</p>
+<p>If the parameter does not have an integer or boolean type, this will print an error and return 0. So don't do that. </p>
+
+</div>
+</div>
+<a id="af02f2dcddc9809043e859c6b413eb938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af02f2dcddc9809043e859c6b413eb938">&#9670;&nbsp;</a></span>ps_config_parse_json()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a>* ps_config_parse_json </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>json</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create or update a configuration by parsing slightly extended JSON.</p>
+<p>This function parses a JSON object in non-strict mode to produce a <a class="el" href="structps__config__t.html">ps_config_t</a>. Configuration parameters are given <em>without</em> a leading dash, and do not need to be quoted, nor does the object need to be enclosed in curly braces, nor are commas necessary between key/value pairs. Basically, it's degenerate YAML. So, for example, this is accepted: </p><pre class="fragment">hmm: fr-fr
+samprate: 8000
+keyprhase: "hello world"
+</pre><p>Of course, valid JSON is also accepted, but who wants to use that.</p>
+<ul>
+<li>config Previously existing <a class="el" href="structps__config__t.html">ps_config_t</a> to update, or NULL to create a new one. </li>
+<li>json JSON serialized object as null-terminated UTF-8, containing configuration parameters. <dl class="section return"><dt>Returns</dt><dd>Newly created configuration or NULL on failure (such as invalid or missing parameters). </dd></dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="a75939046eae1b51673fc773ca4271911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75939046eae1b51673fc773ca4271911">&#9670;&nbsp;</a></span>ps_config_retain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a>* ps_config_retain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retain a pointer to a configuration object. </p>
+
+</div>
+</div>
+<a id="aa5935c99b912e7a9b6d4baaa993991a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5935c99b912e7a9b6d4baaa993991a9">&#9670;&nbsp;</a></span>ps_config_serialize_json()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT char* ps_config_serialize_json </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Construct JSON from a configuration object.</p>
+<p>Unlike <a class="el" href="pocketsphinx_8h.html#af02f2dcddc9809043e859c6b413eb938">ps_config_parse_json()</a>, this actually produces valid JSON ;-)</p>
+<ul>
+<li>config Configuration object <dl class="section return"><dt>Returns</dt><dd>Newly created null-terminated JSON string. The <a class="el" href="structps__config__t.html">ps_config_t</a> retains ownership of this pointer, which is only valid until the next call to <a class="el" href="pocketsphinx_8h.html#aa5935c99b912e7a9b6d4baaa993991a9">ps_config_serialize_json()</a>. You must copy it if you wish to retain it. </dd></dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="af1e87d99ec7a86ec6628f828718f6588"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1e87d99ec7a86ec6628f828718f6588">&#9670;&nbsp;</a></span>ps_config_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a>* ps_config_set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a> *&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ps_type_t&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set or unset the value of a configuration parameter.</p>
+<p>This will coerce the value to the proper type, so you can, for example, pass it a string with ARG_STRING as the type when adding options from the command-line. Note that the return pointer will <em>not</em> be the same as the one passed in the value.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>Configuration object. </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the parameter to set. Must exist. </td></tr>
+    <tr><td class="paramname">val</td><td>Pointer to the value (strings will be copied) inside an anytype_t union. On 64-bit little-endian platforms, you <em>can</em> cast a pointer to int, long, double, or char* here, but that doesn't necessarily mean that you <em>should</em>. As a convenience, you can pass NULL here to reset a parameter to its default value. </td></tr>
+    <tr><td class="paramname">t</td><td>Type of the value in <code>val</code>, will be coerced to the type of the actual parameter if necessary. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the parameter's value, or NULL on failure (unknown parameter, usually). This pointer (and any pointers inside it) is owned by the <a class="el" href="structps__config__t.html">ps_config_t</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a2f3759db642ff97ed93f58f445e5df63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f3759db642ff97ed93f58f445e5df63">&#9670;&nbsp;</a></span>ps_config_set_bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a>* ps_config_set_bool </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set a boolean-valued parameter.</p>
+<p>If the parameter does not have an integer or boolean type, this will convert <code>val</code> appropriately. </p>
+
+</div>
+</div>
+<a id="aca379570cd479b30ebb2b1b55c1bfa7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca379570cd479b30ebb2b1b55c1bfa7a">&#9670;&nbsp;</a></span>ps_config_set_float()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a>* ps_config_set_float </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set a floating-point parameter.</p>
+<p>If the parameter does not have a floating-point type, this will convert <code>val</code> appropriately. </p>
+
+</div>
+</div>
+<a id="aafde916ce150ff488735ebbb7cecdd30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafde916ce150ff488735ebbb7cecdd30">&#9670;&nbsp;</a></span>ps_config_set_int()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a>* ps_config_set_int </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set an integer-valued parameter.</p>
+<p>If the parameter does not have an integer or boolean type, this will convert <code>val</code> appropriately. </p>
+
+</div>
+</div>
+<a id="a1207e7a662e522517ff2291785d7777a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1207e7a662e522517ff2291785d7777a">&#9670;&nbsp;</a></span>ps_config_set_str()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT <a class="el" href="prim__type_8h.html#abfc21839f45a6def491687f823eaa94d">anytype_t</a>* ps_config_set_str </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set a string-valued parameter.</p>
+<p>If the parameter does not have a string type, this will convert <code>val</code> appropriately. For boolean parameters, any string matching <code>/^[yt1]/</code> will be true, while any string matching <code>/^[nf0]/</code> will be false. NULL is also false.</p>
+<p>This function is used for configuration from JSON, you may want to use it for your own configuration files too. </p>
+
+</div>
+</div>
+<a id="af9baea42bd0a5e630ec201f79aa6f978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9baea42bd0a5e630ec201f79aa6f978">&#9670;&nbsp;</a></span>ps_config_str()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT char* ps_config_str </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get a string parameter.</p>
+<p>If the parameter does not have a string type, this will print an error and return NULL. Notably, it will <em>NOT</em> format an integer or float for you, because that would involve allocating memory. So don't do that. </p>
+
+</div>
+</div>
+<a id="a957ca92e4393991b08e0273c29a08315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a957ca92e4393991b08e0273c29a08315">&#9670;&nbsp;</a></span>ps_config_typeof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT ps_type_t ps_config_typeof </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Access the type of a configuration parameter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>Configuration object. </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the parameter to retrieve. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the type of the parameter (as a combination of the ARG_* bits), or 0 if no such parameter exists. </dd></dl>
 
 </div>
 </div>
@@ -447,8 +946,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9d646a38b30b7d776701f4de3600bab2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d646a38b30b7d776701f4de3600bab2">&#9670;&nbsp;</a></span>ps_default_search_args()</h2>
+<a id="ab33df51031c41cdb73794845c33a2d88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab33df51031c41cdb73794845c33a2d88">&#9670;&nbsp;</a></span>ps_default_search_args()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,7 +956,7 @@ Functions</h2></td></tr>
           <td class="memname">POCKETSPHINX_EXPORT void ps_default_search_args </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -642,47 +1141,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Get the configuration object for this decoder.</p>
-<dl class="section return"><dt>Returns</dt><dd>The configuration object for this decoder. The decoder owns this pointer, so you should not attempt to free it manually. Use <a class="el" href="cmd__ln_8h.html#a975f5bf7b6f4fc95f426d1979281f73b">cmd_ln_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
-
-</div>
-</div>
-<a id="a6237e2822756f230b88019b533a28724"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6237e2822756f230b88019b533a28724">&#9670;&nbsp;</a></span>ps_get_fe()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="fe_8h.html#a680a1df9d1dac86083625506cd434eaf">fe_t</a>* ps_get_fe </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
-          <td class="paramname"><em>ps</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Get the feature extraction object for this decoder.</p>
-<dl class="section return"><dt>Returns</dt><dd>The feature extraction object for this decoder. The decoder owns this pointer, so you should not attempt to free it manually. Use <a class="el" href="fe_8h.html#ac0dab42c3ba151f4452d0f7f5571d117">fe_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
-
-</div>
-</div>
-<a id="a0d74d90f0db0782386487cc061a09218"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d74d90f0db0782386487cc061a09218">&#9670;&nbsp;</a></span>ps_get_feat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structfeat__t.html">feat_t</a>* ps_get_feat </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
-          <td class="paramname"><em>ps</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Get the dynamic feature computation object for this decoder.</p>
-<dl class="section return"><dt>Returns</dt><dd>The dynamic feature computation object for this decoder. The decoder owns this pointer, so you should not attempt to free it manually. Use <a class="el" href="feat_8h.html#a80d6eabf01ff119d324a07c1de8fda80">feat_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The configuration object for this decoder. The decoder owns this pointer, so you should not attempt to free it manually. Use <a class="el" href="pocketsphinx_8h.html#a75939046eae1b51673fc773ca4271911">ps_config_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
 
 </div>
 </div>
@@ -793,7 +1252,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Get the log-math computation object for this decoder.</p>
-<dl class="section return"><dt>Returns</dt><dd>The log-math object for this decoder. The decoder owns this pointer, so you should not attempt to free it manually. Use <a class="el" href="logmath_8h.html#a1c1b2ba3b137a39e9e835a8f3e27d381">logmath_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The log-math object for this decoder. The decoder owns this pointer, so you should not attempt to free it manually. Use <a class="el" href="logmath_8h.html#aed536dd6fe847876c911b45e79847648">logmath_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
 
 </div>
 </div>
@@ -917,10 +1376,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Initialize the decoder from a configuration object.</p>
-<dl class="section note"><dt>Note</dt><dd>The decoder retains ownership of the pointer <code>config</code>, so if you are not going to use it elsewhere, you can free it.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The decoder retains ownership of the pointer <code>config</code>, so if you are not going to use it elsewhere, you can free it. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">config</td><td>a command-line structure, as created by <a class="el" href="cmd__ln_8h.html#aa5a3a9e49198d8fd0dd3424fb880b6b6">cmd_ln_parse_r()</a> or <a class="el" href="cmd__ln_8h.html#a57f54649952a07b8bef888af4e416550">cmd_ln_parse_file_r()</a>. If NULL, the decoder will be allocated but not initialized. You can proceed to initialize it with <a class="el" href="pocketsphinx_8h.html#a7a335c6650fa98985b5687fde408ef0a">ps_reinit()</a>. </td></tr>
+    <tr><td class="paramname">config</td><td>a configuration object. If NULL, the decoder will be allocated but not initialized. You can proceed to initialize it with <a class="el" href="pocketsphinx_8h.html#a7a335c6650fa98985b5687fde408ef0a">ps_reinit()</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1154,8 +1613,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adc0ab735d6460142126bc31a9e9d2ba0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc0ab735d6460142126bc31a9e9d2ba0">&#9670;&nbsp;</a></span>ps_process_cep()</h2>
+<a id="a063c7e2f84ba6e7d0c287b13b234c563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063c7e2f84ba6e7d0c287b13b234c563">&#9670;&nbsp;</a></span>ps_process_cep()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1169,7 +1628,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="fe_8h.html#acb67b0ba99b11bba972eb049fe89e333">mfcc_t</a> **&#160;</td>
+          <td class="paramtype">float **&#160;</td>
           <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>

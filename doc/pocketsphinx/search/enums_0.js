@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['agc_5ftype_5fe_1421',['agc_type_e',['../agc_8h.html#aef1d2c7e32d37aa84d70c2f3675fc923',1,'agc.h']]]
+  ['ngram_5fcase_5fe_584',['ngram_case_e',['../model_8h.html#aad16a0a1edf29ba8c0df43959c0c4771',1,'model.h']]],
+  ['ngram_5ffile_5ftype_5fe_585',['ngram_file_type_e',['../model_8h.html#a406c0d64c15a9d1749d07c8ab6e0ae74',1,'model.h']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PocketSphinx: sphinxbase/err.h File Reference</title>
+<title>PocketSphinx: pocketsphinx/err.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc3</span>
+   &#160;<span id="projectnumber">5.0.0rc4</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_da7289121d0013e03540a8198af12b2c.html">sphinxbase</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_1ab61053a7725f9ee56d02b0a8f265b2.html">pocketsphinx</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -83,7 +83,7 @@ $(function() {
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;errno.h&gt;</code><br />
-<code>#include &lt;sphinxbase/sphinxbase_export.h&gt;</code><br />
+<code>#include &lt;pocketsphinx/export.h&gt;</code><br />
 </div>
 <p><a href="err_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -139,32 +139,32 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a560638ee94fca8ffa65c033614fd4054"><td class="memItemLeft" align="right" valign="top"><a id="a560638ee94fca8ffa65c033614fd4054"></a>
-SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err_msg</b> (err_lvl_t lvl, const char *path, long ln, const char *fmt,...)</td></tr>
-<tr class="separator:a560638ee94fca8ffa65c033614fd4054"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f843bd6298fdc072f15a708e48ab246"><td class="memItemLeft" align="right" valign="top"><a id="a6f843bd6298fdc072f15a708e48ab246"></a>
-SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err_msg_system</b> (err_lvl_t lvl, const char *path, long ln, const char *fmt,...)</td></tr>
-<tr class="separator:a6f843bd6298fdc072f15a708e48ab246"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e25c4aaad723deaeccee35c9a14871a"><td class="memItemLeft" align="right" valign="top"><a id="a3e25c4aaad723deaeccee35c9a14871a"></a>
-SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err_logfp_cb</b> (void *user_data, err_lvl_t level, const char *fmt,...)</td></tr>
-<tr class="separator:a3e25c4aaad723deaeccee35c9a14871a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7e91b2e114c3991517b34d07e69dbf3"><td class="memItemLeft" align="right" valign="top">SPHINXBASE_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#ae7e91b2e114c3991517b34d07e69dbf3">err_set_loglevel</a> (err_lvl_t lvl)</td></tr>
-<tr class="separator:ae7e91b2e114c3991517b34d07e69dbf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8831c7872919a79e5c3047a156643cca"><td class="memItemLeft" align="right" valign="top">const SPHINXBASE_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#a8831c7872919a79e5c3047a156643cca">err_set_loglevel_str</a> (const char *lvl)</td></tr>
-<tr class="separator:a8831c7872919a79e5c3047a156643cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb253e337ff3774f3b089bbbbb2195f9"><td class="memItemLeft" align="right" valign="top">SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#abb253e337ff3774f3b089bbbbb2195f9">err_set_callback</a> (err_cb_f callback, void *user_data)</td></tr>
-<tr class="separator:abb253e337ff3774f3b089bbbbb2195f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9200c98c02f9fb424ea35eaa14a437e8"><td class="memItemLeft" align="right" valign="top">SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#a9200c98c02f9fb424ea35eaa14a437e8">err_set_logfp</a> (FILE *stream)</td></tr>
-<tr class="separator:a9200c98c02f9fb424ea35eaa14a437e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9707012f263e46ea66e93349313ddbe6"><td class="memItemLeft" align="right" valign="top">SPHINXBASE_EXPORT FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#a9707012f263e46ea66e93349313ddbe6">err_get_logfp</a> (void)</td></tr>
-<tr class="separator:a9707012f263e46ea66e93349313ddbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ccfa2c3d46f765dac7066c417b5e926"><td class="memItemLeft" align="right" valign="top">SPHINXBASE_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#a1ccfa2c3d46f765dac7066c417b5e926">err_set_logfile</a> (const char *path)</td></tr>
-<tr class="separator:a1ccfa2c3d46f765dac7066c417b5e926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a013286d4dd133b9a716953ede1ddb0ae"><td class="memItemLeft" align="right" valign="top"><a id="a013286d4dd133b9a716953ede1ddb0ae"></a>
+POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err_msg</b> (err_lvl_t lvl, const char *path, long ln, const char *fmt,...)</td></tr>
+<tr class="separator:a013286d4dd133b9a716953ede1ddb0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6a26dc9c533d592a6e98b85941bb200"><td class="memItemLeft" align="right" valign="top"><a id="ad6a26dc9c533d592a6e98b85941bb200"></a>
+POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err_msg_system</b> (err_lvl_t lvl, const char *path, long ln, const char *fmt,...)</td></tr>
+<tr class="separator:ad6a26dc9c533d592a6e98b85941bb200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85783daf263f1638977c3e07b8f4725b"><td class="memItemLeft" align="right" valign="top"><a id="a85783daf263f1638977c3e07b8f4725b"></a>
+POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err_logfp_cb</b> (void *user_data, err_lvl_t level, const char *fmt,...)</td></tr>
+<tr class="separator:a85783daf263f1638977c3e07b8f4725b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac011c0d3b793abc19010c2255bce5c88"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#ac011c0d3b793abc19010c2255bce5c88">err_set_loglevel</a> (err_lvl_t lvl)</td></tr>
+<tr class="separator:ac011c0d3b793abc19010c2255bce5c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d18352f0a521d04848a95df5ea1e996"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#a6d18352f0a521d04848a95df5ea1e996">err_set_loglevel_str</a> (const char *lvl)</td></tr>
+<tr class="separator:a6d18352f0a521d04848a95df5ea1e996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27fbaecbcb755fd9e5a503566b6ec542"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#a27fbaecbcb755fd9e5a503566b6ec542">err_set_callback</a> (err_cb_f callback, void *user_data)</td></tr>
+<tr class="separator:a27fbaecbcb755fd9e5a503566b6ec542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adead72aa5614d8d305ab8710369ea01b"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#adead72aa5614d8d305ab8710369ea01b">err_set_logfp</a> (FILE *stream)</td></tr>
+<tr class="separator:adead72aa5614d8d305ab8710369ea01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22bd49d11a1acc3b7d9a9498cf9e2c59"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#a22bd49d11a1acc3b7d9a9498cf9e2c59">err_get_logfp</a> (void)</td></tr>
+<tr class="separator:a22bd49d11a1acc3b7d9a9498cf9e2c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ff33abcf6f29dd25138f0d9846a26cd"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="err_8h.html#a2ff33abcf6f29dd25138f0d9846a26cd">err_set_logfile</a> (const char *path)</td></tr>
+<tr class="separator:a2ff33abcf6f29dd25138f0d9846a26cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of logging routines. </p>
 <p>Logging, warning, debug and error message output funtionality is provided in this file. Sphinxbase defines several level of logging messages - INFO, WARNING, ERROR, FATAL. By default output goes to standard error output.</p>
-<p>Logging is implemented through macros. They take same arguments as printf: format string and values. By default source file name and source line are prepended to the message. Log output could be redirected to any file using <a class="el" href="err_8h.html#a9200c98c02f9fb424ea35eaa14a437e8">err_set_logfp()</a> and <a class="el" href="err_8h.html#a1ccfa2c3d46f765dac7066c417b5e926">err_set_logfile()</a> functions. To disable logging in your application, call err_set_logfp(NULL).</p>
+<p>Logging is implemented through macros. They take same arguments as printf: format string and values. By default source file name and source line are prepended to the message. Log output could be redirected to any file using <a class="el" href="err_8h.html#adead72aa5614d8d305ab8710369ea01b">err_set_logfp()</a> and <a class="el" href="err_8h.html#a2ff33abcf6f29dd25138f0d9846a26cd">err_set_logfile()</a> functions. To disable logging in your application, call err_set_logfp(NULL).</p>
 <p>It's possible to log multiline info messages, to do that you need to start message with E_INFO and output other lines with E_INFOCONT. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="af4689a912d0c49e9eb5244659d8702ad"></a>
@@ -347,14 +347,14 @@ SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9707012f263e46ea66e93349313ddbe6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9707012f263e46ea66e93349313ddbe6">&#9670;&nbsp;</a></span>err_get_logfp()</h2>
+<a id="a22bd49d11a1acc3b7d9a9498cf9e2c59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22bd49d11a1acc3b7d9a9498cf9e2c59">&#9670;&nbsp;</a></span>err_get_logfp()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SPHINXBASE_EXPORT FILE* err_get_logfp </td>
+          <td class="memname">POCKETSPHINX_EXPORT FILE* err_get_logfp </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -367,14 +367,14 @@ SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err
 
 </div>
 </div>
-<a id="abb253e337ff3774f3b089bbbbb2195f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb253e337ff3774f3b089bbbbb2195f9">&#9670;&nbsp;</a></span>err_set_callback()</h2>
+<a id="a27fbaecbcb755fd9e5a503566b6ec542"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27fbaecbcb755fd9e5a503566b6ec542">&#9670;&nbsp;</a></span>err_set_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SPHINXBASE_EXPORT void err_set_callback </td>
+          <td class="memname">POCKETSPHINX_EXPORT void err_set_callback </td>
           <td>(</td>
           <td class="paramtype">err_cb_f&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
@@ -403,14 +403,14 @@ SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err
 
 </div>
 </div>
-<a id="a1ccfa2c3d46f765dac7066c417b5e926"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ccfa2c3d46f765dac7066c417b5e926">&#9670;&nbsp;</a></span>err_set_logfile()</h2>
+<a id="a2ff33abcf6f29dd25138f0d9846a26cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ff33abcf6f29dd25138f0d9846a26cd">&#9670;&nbsp;</a></span>err_set_logfile()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SPHINXBASE_EXPORT int err_set_logfile </td>
+          <td class="memname">POCKETSPHINX_EXPORT int err_set_logfile </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>path</em></td><td>)</td>
@@ -430,14 +430,14 @@ SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err
 
 </div>
 </div>
-<a id="a9200c98c02f9fb424ea35eaa14a437e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9200c98c02f9fb424ea35eaa14a437e8">&#9670;&nbsp;</a></span>err_set_logfp()</h2>
+<a id="adead72aa5614d8d305ab8710369ea01b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adead72aa5614d8d305ab8710369ea01b">&#9670;&nbsp;</a></span>err_set_logfp()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SPHINXBASE_EXPORT void err_set_logfp </td>
+          <td class="memname">POCKETSPHINX_EXPORT void err_set_logfp </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>stream</em></td><td>)</td>
@@ -455,14 +455,14 @@ SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err
 
 </div>
 </div>
-<a id="ae7e91b2e114c3991517b34d07e69dbf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7e91b2e114c3991517b34d07e69dbf3">&#9670;&nbsp;</a></span>err_set_loglevel()</h2>
+<a id="ac011c0d3b793abc19010c2255bce5c88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac011c0d3b793abc19010c2255bce5c88">&#9670;&nbsp;</a></span>err_set_loglevel()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SPHINXBASE_EXPORT int err_set_loglevel </td>
+          <td class="memname">POCKETSPHINX_EXPORT int err_set_loglevel </td>
           <td>(</td>
           <td class="paramtype">err_lvl_t&#160;</td>
           <td class="paramname"><em>lvl</em></td><td>)</td>
@@ -481,14 +481,14 @@ SPHINXBASE_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>err
 
 </div>
 </div>
-<a id="a8831c7872919a79e5c3047a156643cca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8831c7872919a79e5c3047a156643cca">&#9670;&nbsp;</a></span>err_set_loglevel_str()</h2>
+<a id="a6d18352f0a521d04848a95df5ea1e996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d18352f0a521d04848a95df5ea1e996">&#9670;&nbsp;</a></span>err_set_loglevel_str()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const SPHINXBASE_EXPORT char* err_set_loglevel_str </td>
+          <td class="memname">const POCKETSPHINX_EXPORT char* err_set_loglevel_str </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>lvl</em></td><td>)</td>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['cmn_5ftype_5ft_1395',['cmn_type_t',['../cmn_8h.html#aa531ad5066da796fcd55e31121c1f943',1,'cmn.h']]]
+  ['logadd_5ft_573',['logadd_t',['../logmath_8h.html#a8c04c94e2c6364f6cf3b649eb4ce5bfd',1,'logmath.h']]],
+  ['logmath_5ft_574',['logmath_t',['../logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8',1,'logmath.h']]]
 ];

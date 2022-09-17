@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc3</span>
+   &#160;<span id="projectnumber">5.0.0rc4</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -111,156 +111,154 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifndef __PS_LATTICE_H__</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define __PS_LATTICE_H__</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/* SphinxBase headers. */</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="prim__type_8h.html">sphinxbase/prim_type.h</a>&gt;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ngram__model_8h.html">sphinxbase/ngram_model.h</a>&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="prim__type_8h.html">pocketsphinx/prim_type.h</a>&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="model_8h.html">pocketsphinx/model.h</a>&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;pocketsphinx/export.h&gt;</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/* PocketSphinx headers. */</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &lt;pocketsphinx/export.h&gt;</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_lattice_s <a class="code" href="structps__lattice__t.html">ps_lattice_t</a>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_latnode_s <a class="code" href="structps__latnode__t.html">ps_latnode_t</a>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_latnode_s <a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a>; <span class="comment">/* pay no attention to the man behind the curtain */</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_latlink_s <a class="code" href="structps__latlink__t.html">ps_latlink_t</a>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>latlink_list_s <a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_lattice_s <a class="code" href="structps__lattice__t.html">ps_lattice_t</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_latnode_s <a class="code" href="structps__latnode__t.html">ps_latnode_t</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_latnode_s <a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a>; <span class="comment">/* pay no attention to the man behind the curtain */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_latlink_s <a class="code" href="structps__latlink__t.html">ps_latlink_t</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>latlink_list_s <a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/* Forward declaration needed to avoid circular includes */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">struct </span>ps_decoder_s;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/* Forward declaration needed to avoid circular includes */</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">struct </span>ps_decoder_s;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *<a class="code" href="lattice_8h.html#a26f4a34c81b112109621b7ecacd57ee0">ps_lattice_read</a>(<span class="keyword">struct</span> ps_decoder_s *ps,</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                              <span class="keywordtype">char</span> <span class="keyword">const</span> *file);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *<a class="code" href="lattice_8h.html#a9efc5f2836e2a0bd5d58326303516df5">ps_lattice_retain</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#a3f90e846bde47cd1acdff165b92f5c22">ps_lattice_free</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#a3f2e2b88d0aa80346cc64d2b7934b863">ps_lattice_write</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <span class="keywordtype">char</span> <span class="keyword">const</span> *filename);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#aefd25c0f49a0d70f999187a26fa2ff06">ps_lattice_write_htk</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <span class="keywordtype">char</span> <span class="keyword">const</span> *filename);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *<a class="code" href="lattice_8h.html#a5c9d9171c9846c46c107bfe41a9120cf">ps_lattice_get_logmath</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *<a class="code" href="lattice_8h.html#aaf073a0617c446aa5424513f7c1045b8">ps_latnode_iter</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *<a class="code" href="lattice_8h.html#a48aaf30b9396b38ccaf3a1b6e9225a01">ps_latnode_iter_next</a>(<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *itor);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lattice_8h.html#ae9a6464b83d37bfa2ce570206eff6aad">ps_latnode_iter_free</a>(<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *itor);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *<a class="code" href="lattice_8h.html#a591bd15a350284b938deb84242736acc">ps_latnode_iter_node</a>(<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *itor);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#a42bd0fbfe8b0cab1a9a7e799a3fc30a2">ps_latnode_times</a>(<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node, int16 *out_fef, int16 *out_lef);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code" href="lattice_8h.html#af42d78cdbbe4115703b58f0c7fde73c1">ps_latnode_word</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code" href="lattice_8h.html#a9d63a1283cb386689f41db36fe5e7578">ps_latnode_baseword</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *<a class="code" href="lattice_8h.html#a13fb923cd41fae910457df2643e58738">ps_latnode_exits</a>(<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *<a class="code" href="lattice_8h.html#a16ad0cfb8d4b02f9cf90a8b52756a7f7">ps_latnode_entries</a>(<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;int32 <a class="code" href="lattice_8h.html#a68253946c2405d7f9090de7530f33b9d">ps_latnode_prob</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node,</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                      <a class="code" href="structps__latlink__t.html">ps_latlink_t</a> **out_link);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *<a class="code" href="lattice_8h.html#af737b31c2570d321c26a79b5002f2ba7">ps_latlink_iter_next</a>(<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *itor);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lattice_8h.html#aa19aaa4a38a922ff28fe071f69b8272d">ps_latlink_iter_free</a>(<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *itor);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#aec0e905415e724e6d6eed9b12c2f8584">ps_latlink_iter_link</a>(<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *itor);</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#aef48bb18865b449e69316ed5959eae9f">ps_latlink_times</a>(<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link, int16 *out_sf);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *<a class="code" href="lattice_8h.html#a7344aa4fdb94a3a0af47901cb77185ed">ps_latlink_nodes</a>(<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> **out_src);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code" href="lattice_8h.html#a2740bc686e8f6024ed3b0b2d2e4c5814">ps_latlink_word</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code" href="lattice_8h.html#ae91c1c2bff30b30abc4b763314f576d0">ps_latlink_baseword</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link);</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#a8f37d188bd1dff70293adebdb2453ab4">ps_latlink_pred</a>(<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link);</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;int32 <a class="code" href="lattice_8h.html#aa393fbcf215acc8116e18aac2847cc59">ps_latlink_prob</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link, int32 *out_ascr);</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lattice_8h.html#a4aaae70904361b23a78cdcb632c298c4">ps_lattice_link</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *from, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *to,</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                     int32 score, int32 ef);</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#a997fce2eb1eaf316d463ddfb3d8395b8">ps_lattice_traverse_edges</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *start, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *end);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#a2682f3cbbb4e6aee040fbe570ca983a9">ps_lattice_traverse_next</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *end);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#ad712e99a75ab8e9eb2f636aac8d5e2cb">ps_lattice_reverse_edges</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *start, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *end);</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#ae94a8b82335f782370faa66bb4801c72">ps_lattice_reverse_next</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *start);</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#af19b8f0749af01d4874595e80fc612ba">ps_lattice_bestpath</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="ngram__model_8h.html#afaaf0c00e20056d97efcd97e4cae4ea7">ngram_model_t</a> *lmset,</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                                  float32 lwf, float32 ascale);</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;int32 <a class="code" href="lattice_8h.html#a8c5c6ef260ab006099ab34d09b5b1d06">ps_lattice_posterior</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="ngram__model_8h.html#afaaf0c00e20056d97efcd97e4cae4ea7">ngram_model_t</a> *lmset,</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                           float32 ascale);</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;int32 <a class="code" href="lattice_8h.html#a30d83a5fd158d2acaa5107be7a09ed09">ps_lattice_posterior_prune</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, int32 beam);</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="preprocessor">#ifdef NOT_IMPLEMENTED_YET</span></div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;int32 ps_lattice_ngram_expand(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="ngram__model_8h.html#afaaf0c00e20056d97efcd97e4cae4ea7">ngram_model_t</a> *lm);</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#a44a196a35a8aeb044251c6c152034c90">ps_lattice_n_frames</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;}</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __PS_LATTICE_H__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *<a class="code" href="lattice_8h.html#a26f4a34c81b112109621b7ecacd57ee0">ps_lattice_read</a>(<span class="keyword">struct</span> ps_decoder_s *ps,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                              <span class="keywordtype">char</span> <span class="keyword">const</span> *file);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *<a class="code" href="lattice_8h.html#a9efc5f2836e2a0bd5d58326303516df5">ps_lattice_retain</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#a3f90e846bde47cd1acdff165b92f5c22">ps_lattice_free</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#a3f2e2b88d0aa80346cc64d2b7934b863">ps_lattice_write</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <span class="keywordtype">char</span> <span class="keyword">const</span> *filename);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#aefd25c0f49a0d70f999187a26fa2ff06">ps_lattice_write_htk</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <span class="keywordtype">char</span> <span class="keyword">const</span> *filename);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *<a class="code" href="lattice_8h.html#a5c9d9171c9846c46c107bfe41a9120cf">ps_lattice_get_logmath</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *<a class="code" href="lattice_8h.html#aaf073a0617c446aa5424513f7c1045b8">ps_latnode_iter</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *<a class="code" href="lattice_8h.html#a48aaf30b9396b38ccaf3a1b6e9225a01">ps_latnode_iter_next</a>(<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *itor);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lattice_8h.html#ae9a6464b83d37bfa2ce570206eff6aad">ps_latnode_iter_free</a>(<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *itor);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *<a class="code" href="lattice_8h.html#a591bd15a350284b938deb84242736acc">ps_latnode_iter_node</a>(<a class="code" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *itor);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#a42bd0fbfe8b0cab1a9a7e799a3fc30a2">ps_latnode_times</a>(<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node, int16 *out_fef, int16 *out_lef);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code" href="lattice_8h.html#af42d78cdbbe4115703b58f0c7fde73c1">ps_latnode_word</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code" href="lattice_8h.html#a9d63a1283cb386689f41db36fe5e7578">ps_latnode_baseword</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *<a class="code" href="lattice_8h.html#a13fb923cd41fae910457df2643e58738">ps_latnode_exits</a>(<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *<a class="code" href="lattice_8h.html#a16ad0cfb8d4b02f9cf90a8b52756a7f7">ps_latnode_entries</a>(<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;int32 <a class="code" href="lattice_8h.html#a68253946c2405d7f9090de7530f33b9d">ps_latnode_prob</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *node,</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                      <a class="code" href="structps__latlink__t.html">ps_latlink_t</a> **out_link);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *<a class="code" href="lattice_8h.html#af737b31c2570d321c26a79b5002f2ba7">ps_latlink_iter_next</a>(<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *itor);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lattice_8h.html#aa19aaa4a38a922ff28fe071f69b8272d">ps_latlink_iter_free</a>(<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *itor);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#aec0e905415e724e6d6eed9b12c2f8584">ps_latlink_iter_link</a>(<a class="code" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *itor);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#aef48bb18865b449e69316ed5959eae9f">ps_latlink_times</a>(<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link, int16 *out_sf);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *<a class="code" href="lattice_8h.html#a7344aa4fdb94a3a0af47901cb77185ed">ps_latlink_nodes</a>(<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> **out_src);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code" href="lattice_8h.html#a2740bc686e8f6024ed3b0b2d2e4c5814">ps_latlink_word</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code" href="lattice_8h.html#ae91c1c2bff30b30abc4b763314f576d0">ps_latlink_baseword</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#a8f37d188bd1dff70293adebdb2453ab4">ps_latlink_pred</a>(<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;int32 <a class="code" href="lattice_8h.html#aa393fbcf215acc8116e18aac2847cc59">ps_latlink_prob</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *link, int32 *out_ascr);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lattice_8h.html#a4aaae70904361b23a78cdcb632c298c4">ps_lattice_link</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *from, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *to,</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                     int32 score, int32 ef);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#a997fce2eb1eaf316d463ddfb3d8395b8">ps_lattice_traverse_edges</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *start, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *end);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#a2682f3cbbb4e6aee040fbe570ca983a9">ps_lattice_traverse_next</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *end);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#ad712e99a75ab8e9eb2f636aac8d5e2cb">ps_lattice_reverse_edges</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *start, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *end);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#ae94a8b82335f782370faa66bb4801c72">ps_lattice_reverse_next</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structps__latnode__t.html">ps_latnode_t</a> *start);</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<a class="code" href="structps__latlink__t.html">ps_latlink_t</a> *<a class="code" href="lattice_8h.html#af19b8f0749af01d4874595e80fc612ba">ps_lattice_bestpath</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structngram__model__t.html">ngram_model_t</a> *lmset,</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                                  float32 lwf, float32 ascale);</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;int32 <a class="code" href="lattice_8h.html#a8c5c6ef260ab006099ab34d09b5b1d06">ps_lattice_posterior</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structngram__model__t.html">ngram_model_t</a> *lmset,</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                           float32 ascale);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;int32 <a class="code" href="lattice_8h.html#a30d83a5fd158d2acaa5107be7a09ed09">ps_lattice_posterior_prune</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, int32 beam);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="preprocessor">#ifdef NOT_IMPLEMENTED_YET</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;int32 ps_lattice_ngram_expand(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="code" href="structngram__model__t.html">ngram_model_t</a> *lm);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lattice_8h.html#a44a196a35a8aeb044251c6c152034c90">ps_lattice_n_frames</a>(<a class="code" href="structps__lattice__t.html">ps_lattice_t</a> *dag);</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;}</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __PS_LATTICE_H__ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="alogmath_8h_html_ae613aa7db1dd40ff56a80a7dadb22cc8"><div class="ttname"><a href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a></div><div class="ttdeci">struct logmath_s logmath_t</div><div class="ttdef"><b>Definition:</b> logmath.h:108</div></div>
+<div class="ttc" id="alogmath_8h_html_ae613aa7db1dd40ff56a80a7dadb22cc8"><div class="ttname"><a href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a></div><div class="ttdeci">struct logmath_s logmath_t</div><div class="ttdef"><b>Definition:</b> logmath.h:106</div></div>
 <div class="ttc" id="aprim__type_8h_html"><div class="ttname"><a href="prim__type_8h.html">prim_type.h</a></div><div class="ttdoc">Basic type definitions used in Sphinx.</div></div>
 <div class="ttc" id="alattice_8h_html_a2682f3cbbb4e6aee040fbe570ca983a9"><div class="ttname"><a href="lattice_8h.html#a2682f3cbbb4e6aee040fbe570ca983a9">ps_lattice_traverse_next</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_latlink_t * ps_lattice_traverse_next(ps_lattice_t *dag, ps_latnode_t *end)</div></div>
+<div class="ttc" id="amodel_8h_html"><div class="ttname"><a href="model_8h.html">model.h</a></div><div class="ttdoc">Public API for language models.</div></div>
 <div class="ttc" id="alattice_8h_html_ae91c1c2bff30b30abc4b763314f576d0"><div class="ttname"><a href="lattice_8h.html#ae91c1c2bff30b30abc4b763314f576d0">ps_latlink_baseword</a></div><div class="ttdeci">POCKETSPHINX_EXPORT const char * ps_latlink_baseword(ps_lattice_t *dag, ps_latlink_t *link)</div></div>
 <div class="ttc" id="alattice_8h_html_a591bd15a350284b938deb84242736acc"><div class="ttname"><a href="lattice_8h.html#a591bd15a350284b938deb84242736acc">ps_latnode_iter_node</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_latnode_t * ps_latnode_iter_node(ps_latnode_iter_t *itor)</div></div>
 <div class="ttc" id="alattice_8h_html_aaf073a0617c446aa5424513f7c1045b8"><div class="ttname"><a href="lattice_8h.html#aaf073a0617c446aa5424513f7c1045b8">ps_latnode_iter</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_latnode_iter_t * ps_latnode_iter(ps_lattice_t *dag)</div></div>
@@ -268,7 +266,6 @@ $(function() {
 <div class="ttc" id="alattice_8h_html_a9d63a1283cb386689f41db36fe5e7578"><div class="ttname"><a href="lattice_8h.html#a9d63a1283cb386689f41db36fe5e7578">ps_latnode_baseword</a></div><div class="ttdeci">POCKETSPHINX_EXPORT const char * ps_latnode_baseword(ps_lattice_t *dag, ps_latnode_t *node)</div></div>
 <div class="ttc" id="alattice_8h_html_a42bd0fbfe8b0cab1a9a7e799a3fc30a2"><div class="ttname"><a href="lattice_8h.html#a42bd0fbfe8b0cab1a9a7e799a3fc30a2">ps_latnode_times</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int ps_latnode_times(ps_latnode_t *node, int16 *out_fef, int16 *out_lef)</div></div>
 <div class="ttc" id="alattice_8h_html_a48aaf30b9396b38ccaf3a1b6e9225a01"><div class="ttname"><a href="lattice_8h.html#a48aaf30b9396b38ccaf3a1b6e9225a01">ps_latnode_iter_next</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_latnode_iter_t * ps_latnode_iter_next(ps_latnode_iter_t *itor)</div></div>
-<div class="ttc" id="angram__model_8h_html_afaaf0c00e20056d97efcd97e4cae4ea7"><div class="ttname"><a href="ngram__model_8h.html#afaaf0c00e20056d97efcd97e4cae4ea7">ngram_model_t</a></div><div class="ttdeci">struct ngram_model_s ngram_model_t</div><div class="ttdef"><b>Definition:</b> ngram_model.h:66</div></div>
 <div class="ttc" id="alattice_8h_html_af42d78cdbbe4115703b58f0c7fde73c1"><div class="ttname"><a href="lattice_8h.html#af42d78cdbbe4115703b58f0c7fde73c1">ps_latnode_word</a></div><div class="ttdeci">POCKETSPHINX_EXPORT const char * ps_latnode_word(ps_lattice_t *dag, ps_latnode_t *node)</div></div>
 <div class="ttc" id="astructps__latnode__iter__t_html"><div class="ttname"><a href="structps__latnode__iter__t.html">ps_latnode_iter_t</a></div><div class="ttdoc">Iterator over DAG nodes.</div></div>
 <div class="ttc" id="alattice_8h_html_aa19aaa4a38a922ff28fe071f69b8272d"><div class="ttname"><a href="lattice_8h.html#aa19aaa4a38a922ff28fe071f69b8272d">ps_latlink_iter_free</a></div><div class="ttdeci">POCKETSPHINX_EXPORT void ps_latlink_iter_free(ps_latlink_iter_t *itor)</div></div>
@@ -290,8 +287,8 @@ $(function() {
 <div class="ttc" id="alattice_8h_html_a44a196a35a8aeb044251c6c152034c90"><div class="ttname"><a href="lattice_8h.html#a44a196a35a8aeb044251c6c152034c90">ps_lattice_n_frames</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int ps_lattice_n_frames(ps_lattice_t *dag)</div></div>
 <div class="ttc" id="alattice_8h_html_a2740bc686e8f6024ed3b0b2d2e4c5814"><div class="ttname"><a href="lattice_8h.html#a2740bc686e8f6024ed3b0b2d2e4c5814">ps_latlink_word</a></div><div class="ttdeci">POCKETSPHINX_EXPORT const char * ps_latlink_word(ps_lattice_t *dag, ps_latlink_t *link)</div></div>
 <div class="ttc" id="alattice_8h_html_a5c9d9171c9846c46c107bfe41a9120cf"><div class="ttname"><a href="lattice_8h.html#a5c9d9171c9846c46c107bfe41a9120cf">ps_lattice_get_logmath</a></div><div class="ttdeci">POCKETSPHINX_EXPORT logmath_t * ps_lattice_get_logmath(ps_lattice_t *dag)</div></div>
+<div class="ttc" id="astructngram__model__t_html"><div class="ttname"><a href="structngram__model__t.html">ngram_model_t</a></div><div class="ttdoc">N-Gram based language model.</div></div>
 <div class="ttc" id="alattice_8h_html_ae94a8b82335f782370faa66bb4801c72"><div class="ttname"><a href="lattice_8h.html#ae94a8b82335f782370faa66bb4801c72">ps_lattice_reverse_next</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_latlink_t * ps_lattice_reverse_next(ps_lattice_t *dag, ps_latnode_t *start)</div></div>
-<div class="ttc" id="angram__model_8h_html"><div class="ttname"><a href="ngram__model_8h.html">ngram_model.h</a></div><div class="ttdoc">N-Gram language models.</div></div>
 <div class="ttc" id="alattice_8h_html_a997fce2eb1eaf316d463ddfb3d8395b8"><div class="ttname"><a href="lattice_8h.html#a997fce2eb1eaf316d463ddfb3d8395b8">ps_lattice_traverse_edges</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_latlink_t * ps_lattice_traverse_edges(ps_lattice_t *dag, ps_latnode_t *start, ps_latnode_t *end)</div></div>
 <div class="ttc" id="astructps__latnode__t_html"><div class="ttname"><a href="structps__latnode__t.html">ps_latnode_t</a></div><div class="ttdoc">Node in a word lattice.</div></div>
 <div class="ttc" id="alattice_8h_html_a8f37d188bd1dff70293adebdb2453ab4"><div class="ttname"><a href="lattice_8h.html#a8f37d188bd1dff70293adebdb2453ab4">ps_latlink_pred</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_latlink_t * ps_latlink_pred(ps_latlink_t *link)</div></div>

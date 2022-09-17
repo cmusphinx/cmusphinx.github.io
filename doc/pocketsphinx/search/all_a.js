@@ -1,23 +1,6 @@
 var searchData=
 [
-  ['jsgf_2eh_366',['jsgf.h',['../jsgf_8h.html',1,'']]],
-  ['jsgf_5fbuild_5ffsg_367',['jsgf_build_fsg',['../jsgf_8h.html#ac355893a25aa071eba6874fae1d51ad2',1,'jsgf.h']]],
-  ['jsgf_5fbuild_5ffsg_5fraw_368',['jsgf_build_fsg_raw',['../jsgf_8h.html#a5873c31ddf99379d123c0db2e36600ba',1,'jsgf.h']]],
-  ['jsgf_5fget_5fpublic_5frule_369',['jsgf_get_public_rule',['../jsgf_8h.html#a2a0aec4ec986cc56b39bb6be50d980e3',1,'jsgf.h']]],
-  ['jsgf_5fget_5frule_370',['jsgf_get_rule',['../jsgf_8h.html#a8b2e5d3bbc95505c0e651735edd75b4e',1,'jsgf.h']]],
-  ['jsgf_5fgrammar_5ffree_371',['jsgf_grammar_free',['../jsgf_8h.html#a8bbbd8834e0248bd8c52252e93c9822b',1,'jsgf.h']]],
-  ['jsgf_5fgrammar_5fname_372',['jsgf_grammar_name',['../jsgf_8h.html#a56df4787ff25a91e56ee2118aec0e759',1,'jsgf.h']]],
-  ['jsgf_5fgrammar_5fnew_373',['jsgf_grammar_new',['../jsgf_8h.html#a504181dfffafe125df5763e4b841b658',1,'jsgf.h']]],
-  ['jsgf_5fparse_5ffile_374',['jsgf_parse_file',['../jsgf_8h.html#ac67cab54fdb6ead62a3be79ccffb0836',1,'jsgf.h']]],
-  ['jsgf_5fparse_5fstring_375',['jsgf_parse_string',['../jsgf_8h.html#a2b993fbf25c0a9b497918ad356dd551d',1,'jsgf.h']]],
-  ['jsgf_5fread_5ffile_376',['jsgf_read_file',['../jsgf_8h.html#a5ed2b423b8ecacdda900e0b1e28b4e46',1,'jsgf.h']]],
-  ['jsgf_5fread_5fstring_377',['jsgf_read_string',['../jsgf_8h.html#a7eadec805b5ad224d7801748ed166a2a',1,'jsgf.h']]],
-  ['jsgf_5frule_5fiter_378',['jsgf_rule_iter',['../jsgf_8h.html#a9617a53c34041e32f0800795aa1341ca',1,'jsgf.h']]],
-  ['jsgf_5frule_5fiter_5ffree_379',['jsgf_rule_iter_free',['../jsgf_8h.html#a697875f60dede64c607180514e4ab2c4',1,'jsgf.h']]],
-  ['jsgf_5frule_5fiter_5fnext_380',['jsgf_rule_iter_next',['../jsgf_8h.html#a7216bc3a99823fb509e0dd4f8ee02b75',1,'jsgf.h']]],
-  ['jsgf_5frule_5fiter_5frule_381',['jsgf_rule_iter_rule',['../jsgf_8h.html#a23b17eb0a92ba7e3c4aa086a33e3c5e6',1,'jsgf.h']]],
-  ['jsgf_5frule_5fiter_5ft_382',['jsgf_rule_iter_t',['../jsgf_8h.html#ac1e450c03748feb7e1db2a487b21c3fa',1,'jsgf.h']]],
-  ['jsgf_5frule_5fname_383',['jsgf_rule_name',['../jsgf_8h.html#a356f3a670df45b0fbaeba03d98223b8b',1,'jsgf.h']]],
-  ['jsgf_5frule_5fpublic_384',['jsgf_rule_public',['../jsgf_8h.html#a85d7895c7a11d82c85b4529f6009c213',1,'jsgf.h']]],
-  ['jsgf_5fwrite_5ffsg_385',['jsgf_write_fsg',['../jsgf_8h.html#abc18712a5a7bda442a8afba38f5827e7',1,'jsgf.h']]]
+  ['table_301',['table',['../structlogadd__s.html#a27793577d513d85cd73c2daffc140695',1,'logadd_s']]],
+  ['table_5fsize_302',['table_size',['../structlogadd__s.html#a484c53a05b46d863d0456af679cee5d8',1,'logadd_s']]],
+  ['type_303',['type',['../structarg__s.html#ad19743ceba37f2af159b255306bb8920',1,'arg_s']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['deflt_1330',['deflt',['../structarg__s.html#ac879b23f87ec5265bd9b11aa1b3381cc',1,'arg_s']]],
-  ['doc_1331',['doc',['../structarg__s.html#a676924469bfad7cc7085082705754bc3',1,'arg_s']]]
+  ['table_567',['table',['../structlogadd__s.html#a27793577d513d85cd73c2daffc140695',1,'logadd_s']]],
+  ['table_5fsize_568',['table_size',['../structlogadd__s.html#a484c53a05b46d863d0456af679cee5d8',1,'logadd_s']]],
+  ['type_569',['type',['../structarg__s.html#ad19743ceba37f2af159b255306bb8920',1,'arg_s']]]
 ];

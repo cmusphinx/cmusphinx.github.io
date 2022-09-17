@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['doublecomplex_786',['doublecomplex',['../structdoublecomplex.html',1,'']]]
+  ['logadd_5fs_311',['logadd_s',['../structlogadd__s.html',1,'']]]
 ];

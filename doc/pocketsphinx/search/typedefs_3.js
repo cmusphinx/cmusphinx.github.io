@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['fe_5ft_1396',['fe_t',['../fe_8h.html#a680a1df9d1dac86083625506cd434eaf',1,'fe.h']]],
-  ['fixed32_1397',['fixed32',['../fixpoint_8h.html#a27c554ddc65d9370be4e6cee795351dc',1,'fixpoint.h']]],
-  ['fsg_5farciter_5ft_1398',['fsg_arciter_t',['../fsg__model_8h.html#aca82b5173954b3a5290d4c273615a938',1,'fsg_model.h']]]
+  ['ngram_5fcase_5ft_575',['ngram_case_t',['../model_8h.html#afbe3bcb7dd0de6bc550cc7d4e75de403',1,'model.h']]],
+  ['ngram_5ffile_5ftype_5ft_576',['ngram_file_type_t',['../model_8h.html#abbb6bc6e5fc219434a1f644903cab097',1,'model.h']]],
+  ['ngram_5fiter_5ft_577',['ngram_iter_t',['../model_8h.html#ac7de090a02fa12a8bba84abb4d5236aa',1,'model.h']]],
+  ['ngram_5fmodel_5fset_5fiter_5ft_578',['ngram_model_set_iter_t',['../model_8h.html#afffd75c5bde8dd84107449468be48547',1,'model.h']]]
 ];
