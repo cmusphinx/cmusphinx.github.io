@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PocketSphinx: pocketsphinx/mllr.h Source File</title>
+<title>PocketSphinx: pocketsphinx/alignment.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,12 +68,12 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">mllr.h</div>  </div>
+<div class="title">alignment.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="mllr_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* -*- c-basic-offset: 4; indent-tabs-mode: nil -*- */</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* -*- c-basic-offset: 4; indent-tabs-mode: nil -*- */</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">/* ====================================================================</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (c) 2008 Carnegie Mellon University.  All rights</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (c) 2010 Carnegie Mellon University.  All rights</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * reserved.</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Redistribution and use in source and binary forms, with or without</span></div>
@@ -108,41 +108,53 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifndef __PS_MLLR_H__</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define __PS_MLLR_H__</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifndef __PS_ALIGNMENT_H__</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define __PS_ALIGNMENT_H__</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="prim__type_8h.html">pocketsphinx/prim_type.h</a>&gt;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;pocketsphinx/export.h&gt;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="mllr_8h.html#ad4b6bf4c3cb6a671f79f1d709857d5b1">   59</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_mllr_s <a class="code" href="mllr_8h.html#ad4b6bf4c3cb6a671f79f1d709857d5b1">ps_mllr_t</a>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<a class="code" href="mllr_8h.html#ad4b6bf4c3cb6a671f79f1d709857d5b1">ps_mllr_t</a> *<a class="code" href="mllr_8h.html#a05d268b1d79a1be2ae96093c96aad79d">ps_mllr_read</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *file);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<a class="code" href="mllr_8h.html#ad4b6bf4c3cb6a671f79f1d709857d5b1">ps_mllr_t</a> *<a class="code" href="mllr_8h.html#a2f40deff6976bf03a845aa474494edfb">ps_mllr_retain</a>(<a class="code" href="mllr_8h.html#ad4b6bf4c3cb6a671f79f1d709857d5b1">ps_mllr_t</a> *mllr);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">int</span> <a class="code" href="mllr_8h.html#ae56a8c52dd7513b1883536f2a729e1d0">ps_mllr_free</a>(<a class="code" href="mllr_8h.html#ad4b6bf4c3cb6a671f79f1d709857d5b1">ps_mllr_t</a> *mllr);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __PS_MLLR_H__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define PS_ALIGNMENT_NONE -1</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_alignment_s <a class="code" href="structps__alignment__t.html">ps_alignment_t</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>ps_alignment_iter_s <a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<a class="code" href="structps__alignment__t.html">ps_alignment_t</a> *ps_alignment_retain(<a class="code" href="structps__alignment__t.html">ps_alignment_t</a> *al);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">int</span> ps_alignment_free(<a class="code" href="structps__alignment__t.html">ps_alignment_t</a> *al);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *ps_alignment_words(<a class="code" href="structps__alignment__t.html">ps_alignment_t</a> *al);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *ps_alignment_phones(<a class="code" href="structps__alignment__t.html">ps_alignment_t</a> *al);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *ps_alignment_states(<a class="code" href="structps__alignment__t.html">ps_alignment_t</a> *al);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *ps_alignment_iter_name(<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keywordtype">int</span> ps_alignment_iter_seg(<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor, <span class="keywordtype">int</span> *start, <span class="keywordtype">int</span> *duration);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *ps_alignment_iter_next(<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *ps_alignment_iter_children(<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordtype">int</span> ps_alignment_iter_free(<a class="code" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;} <span class="comment">/* extern &quot;C&quot; */</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __PS_ALIGNMENT_H__ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aprim__type_8h_html"><div class="ttname"><a href="prim__type_8h.html">prim_type.h</a></div><div class="ttdoc">Basic type definitions used in Sphinx.</div></div>
-<div class="ttc" id="amllr_8h_html_a2f40deff6976bf03a845aa474494edfb"><div class="ttname"><a href="mllr_8h.html#a2f40deff6976bf03a845aa474494edfb">ps_mllr_retain</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_mllr_t * ps_mllr_retain(ps_mllr_t *mllr)</div></div>
-<div class="ttc" id="amllr_8h_html_ad4b6bf4c3cb6a671f79f1d709857d5b1"><div class="ttname"><a href="mllr_8h.html#ad4b6bf4c3cb6a671f79f1d709857d5b1">ps_mllr_t</a></div><div class="ttdeci">struct ps_mllr_s ps_mllr_t</div><div class="ttdef"><b>Definition:</b> mllr.h:59</div></div>
-<div class="ttc" id="amllr_8h_html_a05d268b1d79a1be2ae96093c96aad79d"><div class="ttname"><a href="mllr_8h.html#a05d268b1d79a1be2ae96093c96aad79d">ps_mllr_read</a></div><div class="ttdeci">POCKETSPHINX_EXPORT ps_mllr_t * ps_mllr_read(char const *file)</div></div>
-<div class="ttc" id="amllr_8h_html_ae56a8c52dd7513b1883536f2a729e1d0"><div class="ttname"><a href="mllr_8h.html#ae56a8c52dd7513b1883536f2a729e1d0">ps_mllr_free</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int ps_mllr_free(ps_mllr_t *mllr)</div></div>
+<div class="ttc" id="astructps__alignment__iter__t_html"><div class="ttname"><a href="structps__alignment__iter__t.html">ps_alignment_iter_t</a></div><div class="ttdoc">Iterator over entries in an alignment.</div></div>
+<div class="ttc" id="astructps__alignment__t_html"><div class="ttname"><a href="structps__alignment__t.html">ps_alignment_t</a></div><div class="ttdoc">Multi-level alignment (words, phones, states) over an utterance.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
