@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,16 +70,1809 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structps__decoder__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ps_decoder_t Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>Speech recognizer object.  
+ <a href="structps__decoder__t.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pocketsphinx_8h_source.html">pocketsphinx.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a602108d3b7b35927477243b1978b8d89"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name)</td></tr>
+<tr class="separator:a602108d3b7b35927477243b1978b8d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a4c7c04ef24e58a03e82efa9f2f677"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a09a4c7c04ef24e58a03e82efa9f2f677">ps_current_search</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:a09a4c7c04ef24e58a03e82efa9f2f677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca66da675491dfbcd51f66a2cead19c9"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#aca66da675491dfbcd51f66a2cead19c9">ps_remove_search</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name)</td></tr>
+<tr class="separator:aca66da675491dfbcd51f66a2cead19c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c85d53bfd56dc83226cc7f3bbcdcef6"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__search__iter__t.html">ps_search_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a3c85d53bfd56dc83226cc7f3bbcdcef6">ps_search_iter</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:a3c85d53bfd56dc83226cc7f3bbcdcef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab11d511d180c9aea9779f545d4d22809"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structngram__model__t.html">ngram_model_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ab11d511d180c9aea9779f545d4d22809">ps_get_lm</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name)</td></tr>
+<tr class="separator:ab11d511d180c9aea9779f545d4d22809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af94c4cc983fee1c22cd9042c35f6b4ba"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#af94c4cc983fee1c22cd9042c35f6b4ba">ps_add_lm</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name, <a class="el" href="structngram__model__t.html">ngram_model_t</a> *lm)</td></tr>
+<tr class="separator:af94c4cc983fee1c22cd9042c35f6b4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a268455d472a947079dc9ece74f6a6fab"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a268455d472a947079dc9ece74f6a6fab">ps_add_lm_file</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name, const char *path)</td></tr>
+<tr class="separator:a268455d472a947079dc9ece74f6a6fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70c94d4192c66e9f203eb72f92ee532c"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a70c94d4192c66e9f203eb72f92ee532c">ps_get_fsg</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name)</td></tr>
+<tr class="separator:a70c94d4192c66e9f203eb72f92ee532c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88b4dcabadab8aceff79d273a71d61d5"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a88b4dcabadab8aceff79d273a71d61d5">ps_add_fsg</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name, <a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg)</td></tr>
+<tr class="separator:a88b4dcabadab8aceff79d273a71d61d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27cb38750271a285addc3d9c5f15c8ab"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a27cb38750271a285addc3d9c5f15c8ab">ps_add_jsgf_file</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name, const char *path)</td></tr>
+<tr class="separator:a27cb38750271a285addc3d9c5f15c8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad975de5e4114ee1d534ceffdacb18394"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ad975de5e4114ee1d534ceffdacb18394">ps_add_jsgf_string</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name, const char *jsgf_string)</td></tr>
+<tr class="separator:ad975de5e4114ee1d534ceffdacb18394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25ae0c991a7448104b8d7364e514862a"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a25ae0c991a7448104b8d7364e514862a">ps_get_kws</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name)</td></tr>
+<tr class="separator:a25ae0c991a7448104b8d7364e514862a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb32316b526c8ac3cbd4d9b5a2b8122b"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#adb32316b526c8ac3cbd4d9b5a2b8122b">ps_add_kws</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name, const char *keyfile)</td></tr>
+<tr class="separator:adb32316b526c8ac3cbd4d9b5a2b8122b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87aced38ba183da00ebd04c002af01d5"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a87aced38ba183da00ebd04c002af01d5">ps_add_keyphrase</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name, const char *keyphrase)</td></tr>
+<tr class="separator:a87aced38ba183da00ebd04c002af01d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ae78fa993cad9e1da24b052b80fff78"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a8ae78fa993cad9e1da24b052b80fff78">ps_add_allphone</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name, <a class="el" href="structngram__model__t.html">ngram_model_t</a> *lm)</td></tr>
+<tr class="separator:a8ae78fa993cad9e1da24b052b80fff78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e324573a9de664cfa0a37a5cd7a6fc8"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a6e324573a9de664cfa0a37a5cd7a6fc8">ps_add_allphone_file</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *name, const char *path)</td></tr>
+<tr class="separator:a6e324573a9de664cfa0a37a5cd7a6fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a911c4849d7ffaf2960177c34968c1b0d"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a911c4849d7ffaf2960177c34968c1b0d">ps_set_align_text</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *words)</td></tr>
+<tr class="separator:a911c4849d7ffaf2960177c34968c1b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82092689e27601f7bc9227cd904b0266"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a82092689e27601f7bc9227cd904b0266">ps_set_alignment</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *al)</td></tr>
+<tr class="separator:a82092689e27601f7bc9227cd904b0266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34112271b4b2a3cb6616e072a36f693d"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a34112271b4b2a3cb6616e072a36f693d">ps_get_alignment</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:a34112271b4b2a3cb6616e072a36f693d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a335c6650fa98985b5687fde408ef0a"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a7a335c6650fa98985b5687fde408ef0a">ps_reinit</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
+<tr class="separator:a7a335c6650fa98985b5687fde408ef0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad950da65e86a4611c93e3ad765ad22e6"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ad950da65e86a4611c93e3ad765ad22e6">ps_reinit_feat</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="structps__config__t.html">ps_config_t</a> *config)</td></tr>
+<tr class="separator:ad950da65e86a4611c93e3ad765ad22e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8928bd2a9d2bf54f35966d9608919825"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a8928bd2a9d2bf54f35966d9608919825">ps_get_cmn</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, int update)</td></tr>
+<tr class="separator:a8928bd2a9d2bf54f35966d9608919825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74f202f105207d5c499280ab187081f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ae74f202f105207d5c499280ab187081f">ps_set_cmn</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *cmn)</td></tr>
+<tr class="separator:ae74f202f105207d5c499280ab187081f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ba623b66f39ef5e322cb13b831b1b1"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ab6ba623b66f39ef5e322cb13b831b1b1">ps_retain</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:ab6ba623b66f39ef5e322cb13b831b1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8fd9b79ae9f87703af3f4755b3ab567"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ad8fd9b79ae9f87703af3f4755b3ab567">ps_free</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:ad8fd9b79ae9f87703af3f4755b3ab567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90559e2f98ee1f8439350eacc8c68f83"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a90559e2f98ee1f8439350eacc8c68f83">ps_get_config</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:a90559e2f98ee1f8439350eacc8c68f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a318ec5e87309b590a775ba1e91297b85"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structlogmath__t.html">logmath_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a318ec5e87309b590a775ba1e91297b85">ps_get_logmath</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:a318ec5e87309b590a775ba1e91297b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcf13734aad31adce2cb8c7b8612ca98"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__mllr__t.html">ps_mllr_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#abcf13734aad31adce2cb8c7b8612ca98">ps_update_mllr</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, <a class="el" href="structps__mllr__t.html">ps_mllr_t</a> *mllr)</td></tr>
+<tr class="separator:abcf13734aad31adce2cb8c7b8612ca98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a824f46e51681d931b7e2706a86c3d86f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a824f46e51681d931b7e2706a86c3d86f">ps_load_dict</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, char const *dictfile, char const *fdictfile, char const *format)</td></tr>
+<tr class="separator:a824f46e51681d931b7e2706a86c3d86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e278377cc57d921591ce95b980760d5"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a5e278377cc57d921591ce95b980760d5">ps_save_dict</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, char const *dictfile, char const *format)</td></tr>
+<tr class="separator:a5e278377cc57d921591ce95b980760d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f3c4fcdbef34915c4e785ac9a1c6005"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a5f3c4fcdbef34915c4e785ac9a1c6005">ps_add_word</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, char const *word, char const *phones, int update)</td></tr>
+<tr class="separator:a5f3c4fcdbef34915c4e785ac9a1c6005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2ca0a5e9ed39baa81ccc703bb20a7ab"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ab2ca0a5e9ed39baa81ccc703bb20a7ab">ps_lookup_word</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, const char *word)</td></tr>
+<tr class="separator:ab2ca0a5e9ed39baa81ccc703bb20a7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b378f9c42bcb19fdff0ebe71c25adb"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a43b378f9c42bcb19fdff0ebe71c25adb">ps_decode_raw</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, FILE *rawfh, long maxsamps)</td></tr>
+<tr class="separator:a43b378f9c42bcb19fdff0ebe71c25adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466d1d718873e7b1cf0881e4f552a4a2"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a466d1d718873e7b1cf0881e4f552a4a2">ps_decode_senscr</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, FILE *senfh)</td></tr>
+<tr class="separator:a466d1d718873e7b1cf0881e4f552a4a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89be3b2a8f83291a225db0bcd9ee65b2"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a89be3b2a8f83291a225db0bcd9ee65b2">ps_start_stream</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:a89be3b2a8f83291a225db0bcd9ee65b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcbb8aeb9ebf3f73e935d3b3c8832ea0"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#adcbb8aeb9ebf3f73e935d3b3c8832ea0">ps_get_in_speech</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:adcbb8aeb9ebf3f73e935d3b3c8832ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade3909b1c12c1b70afe284639e70cbff"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ade3909b1c12c1b70afe284639e70cbff">ps_start_utt</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:ade3909b1c12c1b70afe284639e70cbff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572ad08651b4caae820d178a12c8f95f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a572ad08651b4caae820d178a12c8f95f">ps_process_raw</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, int16 const *data, size_t n_samples, int no_search, int full_utt)</td></tr>
+<tr class="separator:a572ad08651b4caae820d178a12c8f95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b1311a8127f9c4daf24e7034673f50f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a8b1311a8127f9c4daf24e7034673f50f">ps_process_cep</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, float32 **data, int n_frames, int no_search, int full_utt)</td></tr>
+<tr class="separator:a8b1311a8127f9c4daf24e7034673f50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb3527e41c2f4cd64dccbdbd5f812d1d"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#abb3527e41c2f4cd64dccbdbd5f812d1d">ps_get_n_frames</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:abb3527e41c2f4cd64dccbdbd5f812d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9339de730713b68cbd68a7f36dc8730"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:ab9339de730713b68cbd68a7f36dc8730"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6846d8c5dc2abfc9e92b6ae553c594b0"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a6846d8c5dc2abfc9e92b6ae553c594b0">ps_get_hyp</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, int32 *out_best_score)</td></tr>
+<tr class="separator:a6846d8c5dc2abfc9e92b6ae553c594b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8ac154482457740173caa1c0d699c49"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ac8ac154482457740173caa1c0d699c49">ps_get_prob</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:ac8ac154482457740173caa1c0d699c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8f325d9d183e8930e48a518b13f085a"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#af8f325d9d183e8930e48a518b13f085a">ps_get_lattice</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:af8f325d9d183e8930e48a518b13f085a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0353879769209971677296b937b9aae"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__seg__t.html">ps_seg_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ab0353879769209971677296b937b9aae">ps_seg_iter</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:ab0353879769209971677296b937b9aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9c09bbe581a5ad2cdb42530c6ab009e"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__nbest__t.html">ps_nbest_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#ab9c09bbe581a5ad2cdb42530c6ab009e">ps_nbest</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</td></tr>
+<tr class="separator:ab9c09bbe581a5ad2cdb42530c6ab009e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac7070c934a2d03d0d5b34e19614360f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#aac7070c934a2d03d0d5b34e19614360f">ps_get_utt_time</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, double *out_nspeech, double *out_ncpu, double *out_nwall)</td></tr>
+<tr class="separator:aac7070c934a2d03d0d5b34e19614360f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61fb92154c5c731cf4a24e0976263da0"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__decoder__t.html#a61fb92154c5c731cf4a24e0976263da0">ps_get_all_time</a> (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps, double *out_nspeech, double *out_ncpu, double *out_nwall)</td></tr>
+<tr class="separator:a61fb92154c5c731cf4a24e0976263da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>PocketSphinx speech recognizer object. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>Speech recognizer object. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="live_8c-example.html#_a1">live.c</a>, and <a class="el" href="simple_8c-example.html#_a0">simple.c</a>.</dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a602108d3b7b35927477243b1978b8d89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a602108d3b7b35927477243b1978b8d89">&#9670;&nbsp;</a></span>ps_activate_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_activate_search </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Actives search with the provided name.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name of search module to activate. This must have been previously added by either <a class="el" href="structps__decoder__t.html#a88b4dcabadab8aceff79d273a71d61d5">ps_add_fsg()</a>, <a class="el" href="structps__decoder__t.html#af94c4cc983fee1c22cd9042c35f6b4ba">ps_add_lm()</a>, or <a class="el" href="structps__decoder__t.html#adb32316b526c8ac3cbd4d9b5a2b8122b">ps_add_kws()</a>. If NULL, it will re-activate the default search, which is useful when running second-pass alignment, for instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, -1 on failure </dd></dl>
+
+</div>
+</div>
+<a id="a09a4c7c04ef24e58a03e82efa9f2f677"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09a4c7c04ef24e58a03e82efa9f2f677">&#9670;&nbsp;</a></span>ps_current_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT char * ps_current_search </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns name of current search in decoder</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search</a> </dd></dl>
+
+</div>
+</div>
+<a id="aca66da675491dfbcd51f66a2cead19c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca66da675491dfbcd51f66a2cead19c9">&#9670;&nbsp;</a></span>ps_remove_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_remove_search </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Removes a search module and releases its resources.</p>
+<p>Removes a search module previously added with using <a class="el" href="structps__decoder__t.html#a88b4dcabadab8aceff79d273a71d61d5">ps_add_fsg()</a>, <a class="el" href="structps__decoder__t.html#af94c4cc983fee1c22cd9042c35f6b4ba">ps_add_lm()</a>, <a class="el" href="structps__decoder__t.html#adb32316b526c8ac3cbd4d9b5a2b8122b">ps_add_kws()</a>, etc.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a88b4dcabadab8aceff79d273a71d61d5">ps_add_fsg</a> </dd>
+<dd>
+<a class="el" href="structps__decoder__t.html#af94c4cc983fee1c22cd9042c35f6b4ba">ps_add_lm</a> </dd>
+<dd>
+<a class="el" href="structps__decoder__t.html#adb32316b526c8ac3cbd4d9b5a2b8122b">ps_add_kws</a> </dd></dl>
+
+</div>
+</div>
+<a id="a3c85d53bfd56dc83226cc7f3bbcdcef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c85d53bfd56dc83226cc7f3bbcdcef6">&#9670;&nbsp;</a></span>ps_search_iter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__search__iter__t.html">ps_search_iter_t</a> * ps_search_iter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns iterator over current searches</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab11d511d180c9aea9779f545d4d22809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab11d511d180c9aea9779f545d4d22809">&#9670;&nbsp;</a></span>ps_get_lm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structngram__model__t.html">ngram_model_t</a> * ps_get_lm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the language model or lmset object associated with a search.</p>
+<ul>
+<li>name Name of language model search, or NULL for current search. <dl class="section return"><dt>Returns</dt><dd>The language model (possibly set of language models) object for this decoder. The decoder retains ownership of this pointer, so you should not attempt to free it manually. Use <a class="el" href="structngram__model__t.html#a8a0b271f1941efd8e8bd3890361e2278">ngram_model_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="af94c4cc983fee1c22cd9042c35f6b4ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af94c4cc983fee1c22cd9042c35f6b4ba">&#9670;&nbsp;</a></span>ps_add_lm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_lm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structngram__model__t.html">ngram_model_t</a> *&#160;</td>
+          <td class="paramname"><em>lm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new search based on N-gram language model.</p>
+<p>Associates N-gram search with the provided name. The search can be activated using <a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search()</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a268455d472a947079dc9ece74f6a6fab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a268455d472a947079dc9ece74f6a6fab">&#9670;&nbsp;</a></span>ps_add_lm_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_lm_file </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new search based on N-gram language model.</p>
+<p>Convenient method to load N-gram model and create a search.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#af94c4cc983fee1c22cd9042c35f6b4ba">ps_add_lm</a> </dd></dl>
+
+</div>
+</div>
+<a id="a70c94d4192c66e9f203eb72f92ee532c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70c94d4192c66e9f203eb72f92ee532c">&#9670;&nbsp;</a></span>ps_get_fsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> * ps_get_fsg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the finite-state grammar set object associated with a search.</p>
+<ul>
+<li>name Name of FSG search, or NULL for current search. <dl class="section return"><dt>Returns</dt><dd>The current FSG set object for this decoder, or NULL if <code>name</code> does not correspond to an FSG search. </dd></dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="a88b4dcabadab8aceff79d273a71d61d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88b4dcabadab8aceff79d273a71d61d5">&#9670;&nbsp;</a></span>ps_add_fsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_fsg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new search based on finite state grammar.</p>
+<p>Associates FSG search with the provided name. The search can be activated using <a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search()</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search</a> </dd></dl>
+
+</div>
+</div>
+<a id="a27cb38750271a285addc3d9c5f15c8ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27cb38750271a285addc3d9c5f15c8ab">&#9670;&nbsp;</a></span>ps_add_jsgf_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_jsgf_file </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new search using JSGF model.</p>
+<p>Convenient method to load JSGF model and create a search.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a88b4dcabadab8aceff79d273a71d61d5">ps_add_fsg</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad975de5e4114ee1d534ceffdacb18394"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad975de5e4114ee1d534ceffdacb18394">&#9670;&nbsp;</a></span>ps_add_jsgf_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_jsgf_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>jsgf_string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new search using JSGF model.</p>
+<p>Convenience method to parse JSGF model from string and create a search.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a88b4dcabadab8aceff79d273a71d61d5">ps_add_fsg</a> </dd></dl>
+
+</div>
+</div>
+<a id="a25ae0c991a7448104b8d7364e514862a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25ae0c991a7448104b8d7364e514862a">&#9670;&nbsp;</a></span>ps_get_kws()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT char * ps_get_kws </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the keyphrase associated with a KWS search</p>
+<ul>
+<li>name Name of KWS search, or NULL for current search. <dl class="section return"><dt>Returns</dt><dd>The current keyphrase to spot, or NULL if <code>name</code> does not correspond to a KWS search </dd></dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="adb32316b526c8ac3cbd4d9b5a2b8122b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb32316b526c8ac3cbd4d9b5a2b8122b">&#9670;&nbsp;</a></span>ps_add_kws()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_kws </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>keyfile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds keyphrases from a file to spotting</p>
+<p>Associates KWS search with the provided name. The search can be activated using <a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search()</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search</a> </dd></dl>
+
+</div>
+</div>
+<a id="a87aced38ba183da00ebd04c002af01d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87aced38ba183da00ebd04c002af01d5">&#9670;&nbsp;</a></span>ps_add_keyphrase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_keyphrase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>keyphrase</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new keyphrase to spot</p>
+<p>Associates KWS search with the provided name. The search can be activated using <a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search()</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search</a> </dd></dl>
+
+</div>
+</div>
+<a id="a8ae78fa993cad9e1da24b052b80fff78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ae78fa993cad9e1da24b052b80fff78">&#9670;&nbsp;</a></span>ps_add_allphone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_allphone </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structngram__model__t.html">ngram_model_t</a> *&#160;</td>
+          <td class="paramname"><em>lm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new search based on phone N-gram language model.</p>
+<p>Associates N-gram search with the provided name. The search can be activated using <a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search()</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a6e324573a9de664cfa0a37a5cd7a6fc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e324573a9de664cfa0a37a5cd7a6fc8">&#9670;&nbsp;</a></span>ps_add_allphone_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_allphone_file </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new search based on phone N-gram language model.</p>
+<p>Convenient method to load N-gram model and create a search.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structps__decoder__t.html#a8ae78fa993cad9e1da24b052b80fff78">ps_add_allphone</a> </dd></dl>
+
+</div>
+</div>
+<a id="a911c4849d7ffaf2960177c34968c1b0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a911c4849d7ffaf2960177c34968c1b0d">&#9670;&nbsp;</a></span>ps_set_align_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_set_align_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>words</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set up decoder to force-align a word sequence.</p>
+<p>Unlike the <code>ps_add_*</code> functions, this activates the search module immediately, since force-alignment is nearly always a single shot. Currently "under the hood" this is an FSG search but you shouldn't depend on that.</p>
+<p>Decoding proceeds as normal, though only this word sequence will be recognized, with silences and alternate pronunciations inserted. Word alignments are available with <a class="el" href="structps__decoder__t.html#ab0353879769209971677296b937b9aae">ps_seg_iter()</a>. To obtain phoneme or state segmentations, you must subsequently call <a class="el" href="structps__decoder__t.html#a82092689e27601f7bc9227cd904b0266">ps_set_alignment()</a> and re-run decoding. It's tough son, but it's life.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder </td></tr>
+    <tr><td class="paramname">words</td><td>String containing whitespace-separated words for alignment. These words are assumed to exist in the current dictionary. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a82092689e27601f7bc9227cd904b0266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82092689e27601f7bc9227cd904b0266">&#9670;&nbsp;</a></span>ps_set_alignment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_set_alignment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *&#160;</td>
+          <td class="paramname"><em>al</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set up decoder to run phone and state-level alignment.</p>
+<p>Unlike the <code>ps_add_*</code> functions, this activates the search module immediately, since force-alignment is nearly always a single shot.</p>
+<p>To align, run or re-run decoding as usual, then call <a class="el" href="structps__decoder__t.html#a34112271b4b2a3cb6616e072a36f693d">ps_get_alignment()</a> to get the resulting alignment. Note that if you call this function <em>before</em> rerunning decoding, you can obtain the phone and state sequence, but the durations will be invalid (phones and states will inherit the parent word's duration).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder object. </td></tr>
+    <tr><td class="paramname">al</td><td>Usually NULL, which means to construct an alignment from the current search hypothesis (this does not work with allphone or keyword spotting). You can also pass a <a class="el" href="structps__alignment__t.html" title="Multi-level alignment (words, phones, states) over an utterance.">ps_alignment_t</a> here if you have one. The search will retain but not copy it, so after running decoding it will be updated with new durations. You can set starts and durations for words or phones (not states) to constrain the alignment. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, -1 for error (if there is no search hypothesis, or it cannot be aligned due to missing word IDs) </dd></dl>
+
+</div>
+</div>
+<a id="a34112271b4b2a3cb6616e072a36f693d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34112271b4b2a3cb6616e072a36f693d">&#9670;&nbsp;</a></span>ps_get_alignment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__t.html">ps_alignment_t</a> * ps_get_alignment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the alignment associated with the current search module.</p>
+<p>As noted above, if decoding has not been run, this will contain invalid durations, but that may still be useful if you just want to know the state sequence.</p>
+<dl class="section return"><dt>Returns</dt><dd>Current alignment, or NULL if none. This pointer is owned by the decoder, so you must call <a class="el" href="structps__alignment__t.html#a08bf2cf59a1e8e837e26f6e571c02c95">ps_alignment_retain()</a> on it if you wish to keep it outside the lifetime of the decoder. </dd></dl>
+
+</div>
+</div>
+<a id="a7a335c6650fa98985b5687fde408ef0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a335c6650fa98985b5687fde408ef0a">&#9670;&nbsp;</a></span>ps_reinit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_reinit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Reinitialize the decoder with updated configuration.</p>
+<p>This function allows you to switch the acoustic model, dictionary, or other configuration without creating an entirely new decoding object.</p>
+<dl class="section note"><dt>Note</dt><dd>Since the acoustic model will be reloaded, changes made to feature extraction parameters may be overridden if a <code>feat.params</code> file is present. </dd>
+<dd>
+Any searches created with ps_set_search() or words added to the dictionary with <a class="el" href="structps__decoder__t.html#a5f3c4fcdbef34915c4e785ac9a1c6005">ps_add_word()</a> will also be lost. To avoid this you can use <a class="el" href="structps__decoder__t.html#ad950da65e86a4611c93e3ad765ad22e6">ps_reinit_feat()</a>. </dd>
+<dd>
+The decoder retains ownership of the pointer <code>config</code>, so you should free it when no longer used.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+    <tr><td class="paramname">config</td><td>An optional new configuration to use. If this is NULL, the previous configuration will be reloaded, with any changes applied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, &lt;0 for failure. </dd></dl>
+
+</div>
+</div>
+<a id="ad950da65e86a4611c93e3ad765ad22e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad950da65e86a4611c93e3ad765ad22e6">&#9670;&nbsp;</a></span>ps_reinit_feat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_reinit_feat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__config__t.html">ps_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Reinitialize only the feature computation with updated configuration.</p>
+<p>This function allows you to switch the feature computation parameters without otherwise affecting the decoder configuration. For example, if you change the sample rate or the frame rate, and do not want to reconfigure the rest of the decoder.</p>
+<p>Note that if you have set a custom cepstral mean with <a class="el" href="structps__decoder__t.html#ae74f202f105207d5c499280ab187081f">ps_set_cmn()</a>, it will be overridden.</p>
+<dl class="section note"><dt>Note</dt><dd>The decoder retains ownership of the pointer <code>config</code>, so you should free it when no longer used.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+    <tr><td class="paramname">config</td><td>An optional new configuration to use. If this is NULL, the previous configuration will be reloaded, with any changes to feature computation applied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, &lt;0 for failure (usually an invalid parameter) </dd></dl>
+
+</div>
+</div>
+<a id="a8928bd2a9d2bf54f35966d9608919825"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8928bd2a9d2bf54f35966d9608919825">&#9670;&nbsp;</a></span>ps_get_cmn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT char * ps_get_cmn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>update</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the current cepstral mean as a string.</p>
+<p>This is the string representation of the current cepstral mean, which represents the acoustic channel conditions in live recognition. This can be used to initialize the decoder with the <code>cmninit</code> option, e.g.: </p><pre class="fragment">config = ps_config_parse_json(NULL, "cmninit: 42,-1,0");
+</pre><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder </td></tr>
+    <tr><td class="paramname">update</td><td>Update the cepstral mean using data processed so far. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String representation of cepstral mean, as <code>ps_config_get_int(config, "ceplen")</code> comma-separated numbers. This pointer is owned by the decoder and only valid until the next call to <a class="el" href="structps__decoder__t.html#a8928bd2a9d2bf54f35966d9608919825">ps_get_cmn()</a>, <a class="el" href="structps__decoder__t.html#ae74f202f105207d5c499280ab187081f">ps_set_cmn()</a> or <a class="el" href="structps__decoder__t.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt()</a>. </dd></dl>
+
+</div>
+</div>
+<a id="ae74f202f105207d5c499280ab187081f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae74f202f105207d5c499280ab187081f">&#9670;&nbsp;</a></span>ps_set_cmn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_set_cmn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>cmn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the current cepstral mean from a string.</p>
+<p>This does the same thing as setting <code>cmninit</code> with ps_config_set_string() and running <code><a class="el" href="structps__decoder__t.html#ad950da65e86a4611c93e3ad765ad22e6">ps_reinit_feat()</a></code> but is more efficient, and can also be done in the middle of an utterance if you like.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder </td></tr>
+    <tr><td class="paramname">cmn</td><td>String representation of cepstral mean, as up to <code>ps_config_get_int(config, "ceplen")</code> -separated numbers (any missing values will be zero-filled). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success of -1 for invalid input. </dd></dl>
+
+</div>
+</div>
+<a id="ab6ba623b66f39ef5e322cb13b831b1b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ba623b66f39ef5e322cb13b831b1b1">&#9670;&nbsp;</a></span>ps_retain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__decoder__t.html">ps_decoder_t</a> * ps_retain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retain a pointer to the decoder.</p>
+<p>This increments the reference count on the decoder, allowing it to be shared between multiple parent objects. In general you will not need to use this function, ever. It is mainly here for the convenience of scripting language bindings.</p>
+<dl class="section return"><dt>Returns</dt><dd>pointer to retained decoder. </dd></dl>
+
+</div>
+</div>
+<a id="ad8fd9b79ae9f87703af3f4755b3ab567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8fd9b79ae9f87703af3f4755b3ab567">&#9670;&nbsp;</a></span>ps_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Finalize the decoder.</p>
+<p>This releases all resources associated with the decoder.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder to be freed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New reference count (0 if freed). </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="live_8c-example.html#a22">live.c</a>, and <a class="el" href="simple_8c-example.html#a12">simple.c</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a90559e2f98ee1f8439350eacc8c68f83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90559e2f98ee1f8439350eacc8c68f83">&#9670;&nbsp;</a></span>ps_get_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__config__t.html">ps_config_t</a> * ps_get_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the configuration object for this decoder.</p>
+<dl class="section return"><dt>Returns</dt><dd>The configuration object for this decoder. The decoder owns this pointer, so you should not attempt to free it manually. Use <a class="el" href="structps__config__t.html#a6640499a04c68a27b2bf3db85555eb0f">ps_config_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
+
+</div>
+</div>
+<a id="a318ec5e87309b590a775ba1e91297b85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a318ec5e87309b590a775ba1e91297b85">&#9670;&nbsp;</a></span>ps_get_logmath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structlogmath__t.html">logmath_t</a> * ps_get_logmath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the log-math computation object for this decoder.</p>
+<dl class="section return"><dt>Returns</dt><dd>The log-math object for this decoder. The decoder owns this pointer, so you should not attempt to free it manually. Use <a class="el" href="structlogmath__t.html#afaa475efd12231945f531fca362d82d9">logmath_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
+
+</div>
+</div>
+<a id="abcf13734aad31adce2cb8c7b8612ca98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcf13734aad31adce2cb8c7b8612ca98">&#9670;&nbsp;</a></span>ps_update_mllr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__mllr__t.html">ps_mllr_t</a> * ps_update_mllr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__mllr__t.html">ps_mllr_t</a> *&#160;</td>
+          <td class="paramname"><em>mllr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adapt current acoustic model using a linear transform.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mllr</td><td>The new transform to use, or NULL to update the existing transform. The decoder retains ownership of this pointer, so you may free it if you no longer need it. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The updated transform object for this decoder, or NULL on failure. </dd></dl>
+
+</div>
+</div>
+<a id="a824f46e51681d931b7e2706a86c3d86f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a824f46e51681d931b7e2706a86c3d86f">&#9670;&nbsp;</a></span>ps_load_dict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_load_dict </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>dictfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>fdictfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>format</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Reload the pronunciation dictionary from a file.</p>
+<p>This function replaces the current pronunciation dictionary with the one stored in <code>dictfile</code>. This also causes the active search module(s) to be reinitialized, in the same manner as calling <a class="el" href="structps__decoder__t.html#a5f3c4fcdbef34915c4e785ac9a1c6005">ps_add_word()</a> with update=TRUE.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dictfile</td><td>Path to dictionary file to load. </td></tr>
+    <tr><td class="paramname">fdictfile</td><td>Path to filler dictionary to load, or NULL to keep the existing filler dictionary. </td></tr>
+    <tr><td class="paramname">format</td><td>Format of the dictionary file, or NULL to determine automatically (currently unused,should be NULL) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5e278377cc57d921591ce95b980760d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e278377cc57d921591ce95b980760d5">&#9670;&nbsp;</a></span>ps_save_dict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_save_dict </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>dictfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>format</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dump the current pronunciation dictionary to a file.</p>
+<p>This function dumps the current pronunciation dictionary to a text file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dictfile</td><td>Path to file where dictionary will be written. </td></tr>
+    <tr><td class="paramname">format</td><td>Format of the dictionary file, or NULL for the default (text) format (currently unused, should be NULL) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f3c4fcdbef34915c4e785ac9a1c6005"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f3c4fcdbef34915c4e785ac9a1c6005">&#9670;&nbsp;</a></span>ps_add_word()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_add_word </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>phones</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>update</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add a word to the pronunciation dictionary.</p>
+<p>This function adds a word to the pronunciation dictionary and the current language model (but, obviously, not to the current FSG if FSG mode is enabled). If the word is already present in one or the other, it does whatever is necessary to ensure that the word can be recognized.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">word</td><td>Word string to add. </td></tr>
+    <tr><td class="paramname">phones</td><td>Whitespace-separated list of phoneme strings describing pronunciation of <code>word</code>. </td></tr>
+    <tr><td class="paramname">update</td><td>If TRUE, update the search module (whichever one is currently active) to recognize the newly added word. If adding multiple words, it is more efficient to pass FALSE here in all but the last word. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The internal ID (&gt;= 0) of the newly added word, or &lt;0 on failure. </dd></dl>
+
+</div>
+</div>
+<a id="ab2ca0a5e9ed39baa81ccc703bb20a7ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2ca0a5e9ed39baa81ccc703bb20a7ab">&#9670;&nbsp;</a></span>ps_lookup_word()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT char * ps_lookup_word </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>word</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Look up a word in the dictionary and return phone transcription for it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Pocketsphinx decoder </td></tr>
+    <tr><td class="paramname">word</td><td>Word to look for</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whitespace-spearated phone string describing the pronunciation of the <code>word</code> or NULL if word is not present in the dictionary. The string is allocated and must be freed by the user. </dd></dl>
+
+</div>
+</div>
+<a id="a43b378f9c42bcb19fdff0ebe71c25adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43b378f9c42bcb19fdff0ebe71c25adb">&#9670;&nbsp;</a></span>ps_decode_raw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT long ps_decode_raw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>rawfh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>maxsamps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Decode a raw audio stream.</p>
+<p>No headers are recognized in this files. The configuration parameters <code>-samprate</code> and <code>-input_endian</code> are used to determine the sampling rate and endianness of the stream, respectively. Audio is always assumed to be 16-bit signed PCM.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+    <tr><td class="paramname">rawfh</td><td>Previously opened file stream. </td></tr>
+    <tr><td class="paramname">maxsamps</td><td>Maximum number of samples to read from rawfh, or -1 to read until end-of-file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of samples of audio. </dd></dl>
+
+</div>
+</div>
+<a id="a466d1d718873e7b1cf0881e4f552a4a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a466d1d718873e7b1cf0881e4f552a4a2">&#9670;&nbsp;</a></span>ps_decode_senscr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_decode_senscr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>senfh</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Decode a senone score dump file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder </td></tr>
+    <tr><td class="paramname">senfh</td><td>Previously opened file handle positioned at start of file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of frames read. </dd></dl>
+
+</div>
+</div>
+<a id="a89be3b2a8f83291a225db0bcd9ee65b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89be3b2a8f83291a225db0bcd9ee65b2">&#9670;&nbsp;</a></span>ps_start_stream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_start_stream </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Start processing of the stream of speech.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>This function is retained for compatibility, but its only effect is to reset the noise removal statistics, which are otherwise retained across utterances. You do not need to call it.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, &lt;0 on error. </dd></dl>
+
+</div>
+</div>
+<a id="adcbb8aeb9ebf3f73e935d3b3c8832ea0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcbb8aeb9ebf3f73e935d3b3c8832ea0">&#9670;&nbsp;</a></span>ps_get_in_speech()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_get_in_speech </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check in-speech status of decoder.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>This function is retained for compatibility but should not be considered a reliable voice activity detector. It will always return 1 between calls to <a class="el" href="structps__decoder__t.html#ade3909b1c12c1b70afe284639e70cbff">ps_start_utt()</a> and <a class="el" href="structps__decoder__t.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt()</a>. You probably want <a class="el" href="structps__endpointer__t.html" title="Simple voice activity detection based endpointing.">ps_endpointer_t</a>, but for single frames of data you can also use <a class="el" href="structps__vad__t.html">ps_vad_t</a>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if last buffer contained speech, 0 - otherwise </dd></dl>
+
+</div>
+</div>
+<a id="ade3909b1c12c1b70afe284639e70cbff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade3909b1c12c1b70afe284639e70cbff">&#9670;&nbsp;</a></span>ps_start_utt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_start_utt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Start utterance processing.</p>
+<p>This function should be called before any utterance data is passed to the decoder. It marks the start of a new utterance and reinitializes internal data structures.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder to be started. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, &lt;0 on error. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="live_8c-example.html#a15">live.c</a>, and <a class="el" href="simple_8c-example.html#a8">simple.c</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a572ad08651b4caae820d178a12c8f95f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a572ad08651b4caae820d178a12c8f95f">&#9670;&nbsp;</a></span>ps_process_raw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_process_raw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16 const *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n_samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>no_search</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>full_utt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Decode raw audio data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+    <tr><td class="paramname">data</td><td>Audio data, as 16-bit linear PCM. </td></tr>
+    <tr><td class="paramname">n_samples</td><td>Number of samples (not bytes) in <code>data</code>. </td></tr>
+    <tr><td class="paramname">no_search</td><td>If non-zero, perform feature extraction but don't do any recognition yet. This may be necessary if your processor has trouble doing recognition in real-time. </td></tr>
+    <tr><td class="paramname">full_utt</td><td>If non-zero, this block of data is a full utterance worth of data. This may allow the recognizer to produce more accurate results. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of frames of data searched, or &lt;0 for error. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="live_8c-example.html#a16">live.c</a>, and <a class="el" href="simple_8c-example.html#a9">simple.c</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a8b1311a8127f9c4daf24e7034673f50f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b1311a8127f9c4daf24e7034673f50f">&#9670;&nbsp;</a></span>ps_process_cep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_process_cep </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float32 **&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_frames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>no_search</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>full_utt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Decode acoustic feature data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+    <tr><td class="paramname">data</td><td>Acoustic feature data, a 2-dimensional array of 32-bit floating-point values. Note that this is not a standard 2-dimesional C array but rather an array of pointers to floats, each of which is one vector (or frame) of <code>ps_config_get_int("ceplen")</code> values. </td></tr>
+    <tr><td class="paramname">n_frames</td><td>Number of vectors in <code>data</code>. </td></tr>
+    <tr><td class="paramname">no_search</td><td>If non-zero, perform feature extraction but don't do any recognition yet. This may be necessary if your processor has trouble doing recognition in real-time. </td></tr>
+    <tr><td class="paramname">full_utt</td><td>If non-zero, this block of data is a full utterance worth of data. This may allow the recognizer to produce more accurate results. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of frames of data searched, or &lt;0 for error. </dd></dl>
+
+</div>
+</div>
+<a id="abb3527e41c2f4cd64dccbdbd5f812d1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb3527e41c2f4cd64dccbdbd5f812d1d">&#9670;&nbsp;</a></span>ps_get_n_frames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_get_n_frames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the number of frames of data searched.</p>
+<p>Note that there is a delay between this and the number of frames of audio which have been input to the system. This is due to the fact that acoustic features are computed using a sliding window of audio, and dynamic features are computed over a sliding window of acoustic features.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of frames of speech data which have been recognized so far. </dd></dl>
+
+</div>
+</div>
+<a id="ab9339de730713b68cbd68a7f36dc8730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9339de730713b68cbd68a7f36dc8730">&#9670;&nbsp;</a></span>ps_end_utt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_end_utt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>End utterance processing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, &lt;0 on error </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="live_8c-example.html#a19">live.c</a>, and <a class="el" href="simple_8c-example.html#a10">simple.c</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a6846d8c5dc2abfc9e92b6ae553c594b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6846d8c5dc2abfc9e92b6ae553c594b0">&#9670;&nbsp;</a></span>ps_get_hyp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT const char * ps_get_hyp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32 *&#160;</td>
+          <td class="paramname"><em>out_best_score</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get hypothesis string and path score.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+    <tr><td class="paramname">out_best_score</td><td>Output: path score corresponding to returned string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String containing best hypothesis at this point in decoding. NULL if no hypothesis is available. This string is owned by the decoder and only valid for the current hypothesis, so you should copy it if you need to hold onto it. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="live_8c-example.html#a17">live.c</a>, and <a class="el" href="simple_8c-example.html#a11">simple.c</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ac8ac154482457740173caa1c0d699c49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8ac154482457740173caa1c0d699c49">&#9670;&nbsp;</a></span>ps_get_prob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int32 ps_get_prob </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get posterior probability.</p>
+<dl class="section note"><dt>Note</dt><dd>Unless the -bestpath option is enabled, this function will always return zero (corresponding to a posterior probability of 1.0). Even if -bestpath is enabled, it will also return zero when called on a partial result. Ongoing research into effective confidence annotation for partial hypotheses may result in these restrictions being lifted in future versions.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Posterior probability of the best hypothesis. </dd></dl>
+
+</div>
+</div>
+<a id="af8f325d9d183e8930e48a518b13f085a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8f325d9d183e8930e48a518b13f085a">&#9670;&nbsp;</a></span>ps_get_lattice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__lattice__t.html">ps_lattice_t</a> * ps_get_lattice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get word lattice.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Word lattice object containing all hypotheses so far. NULL if no hypotheses are available. This pointer is owned by the decoder and you should not attempt to free it manually. It is only valid until the next utterance, unless you use <a class="el" href="structps__lattice__t.html#ad7c9aba902d61bb81bab1df2c437c305">ps_lattice_retain()</a> to retain it. </dd></dl>
+
+</div>
+</div>
+<a id="ab0353879769209971677296b937b9aae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0353879769209971677296b937b9aae">&#9670;&nbsp;</a></span>ps_seg_iter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__seg__t.html">ps_seg_t</a> * ps_seg_iter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get an iterator over the word segmentation for the best hypothesis.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Iterator over the best hypothesis at this point in decoding. NULL if no hypothesis is available. </dd></dl>
+
+</div>
+</div>
+<a id="ab9c09bbe581a5ad2cdb42530c6ab009e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9c09bbe581a5ad2cdb42530c6ab009e">&#9670;&nbsp;</a></span>ps_nbest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__nbest__t.html">ps_nbest_t</a> * ps_nbest </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get an iterator over the best hypotheses. The function may also return a NULL which means that there is no hypothesis available for this utterance.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Iterator over N-best hypotheses or NULL if no hypothesis is available </dd></dl>
+
+</div>
+</div>
+<a id="aac7070c934a2d03d0d5b34e19614360f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac7070c934a2d03d0d5b34e19614360f">&#9670;&nbsp;</a></span>ps_get_utt_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void ps_get_utt_time </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>out_nspeech</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>out_ncpu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>out_nwall</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get performance information for the current utterance.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+    <tr><td class="paramname">out_nspeech</td><td>Output: Number of seconds of speech. </td></tr>
+    <tr><td class="paramname">out_ncpu</td><td>Output: Number of seconds of CPU time used. </td></tr>
+    <tr><td class="paramname">out_nwall</td><td>Output: Number of seconds of wall time used. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a61fb92154c5c731cf4a24e0976263da0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61fb92154c5c731cf4a24e0976263da0">&#9670;&nbsp;</a></span>ps_get_all_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void ps_get_all_time </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>out_nspeech</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>out_ncpu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>out_nwall</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get overall performance information.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder. </td></tr>
+    <tr><td class="paramname">out_nspeech</td><td>Output: Number of seconds of speech. </td></tr>
+    <tr><td class="paramname">out_ncpu</td><td>Output: Number of seconds of CPU time used. </td></tr>
+    <tr><td class="paramname">out_nwall</td><td>Output: Number of seconds of wall time used. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li><a class="el" href="pocketsphinx_8h_source.html">pocketsphinx.h</a></li>
+<li>pocketsphinx/<a class="el" href="search_8h_source.html">search.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

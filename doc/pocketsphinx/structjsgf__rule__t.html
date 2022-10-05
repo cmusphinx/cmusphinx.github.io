@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,6 +70,9 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structjsgf__rule__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">jsgf_rule_t Struct Reference</div>  </div>
 </div><!--header-->
@@ -71,10 +81,57 @@ $(function() {
 <p>Rule in a parsed JSGF grammar.  
  <a href="structjsgf__rule__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="model_8h_source.html">model.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="model_8h_source.html">pocketsphinx/model.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:acee78a6e9f9eee36a81977947fc6ec28"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__rule__t.html#acee78a6e9f9eee36a81977947fc6ec28">jsgf_rule_name</a> (<a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *rule)</td></tr>
+<tr class="separator:acee78a6e9f9eee36a81977947fc6ec28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2abfa878f7efbbc04d562ddb9ce6200"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__rule__t.html#ab2abfa878f7efbbc04d562ddb9ce6200">jsgf_rule_public</a> (<a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *rule)</td></tr>
+<tr class="separator:ab2abfa878f7efbbc04d562ddb9ce6200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Rule in a parsed JSGF grammar. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="acee78a6e9f9eee36a81977947fc6ec28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acee78a6e9f9eee36a81977947fc6ec28">&#9670;&nbsp;</a></span>jsgf_rule_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT const char * jsgf_rule_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *&#160;</td>
+          <td class="paramname"><em>rule</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the rule name from a rule. </p>
+
+</div>
+</div>
+<a id="ab2abfa878f7efbbc04d562ddb9ce6200"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2abfa878f7efbbc04d562ddb9ce6200">&#9670;&nbsp;</a></span>jsgf_rule_public()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int jsgf_rule_public </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *&#160;</td>
+          <td class="paramname"><em>rule</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Test if a rule is public or not. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>pocketsphinx/<a class="el" href="model_8h_source.html">model.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,7 +70,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_1ab61053a7725f9ee56d02b0a8f265b2.html">pocketsphinx</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_9f5ec76c697c779781573d4bf110697e.html">pocketsphinx</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -167,63 +174,6 @@ POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>e
 <p>Logging is implemented through macros. They take same arguments as printf: format string and values. By default source file name and source line are prepended to the message. Log output could be redirected to any file using <a class="el" href="err_8h.html#adead72aa5614d8d305ab8710369ea01b">err_set_logfp()</a> and <a class="el" href="err_8h.html#a2ff33abcf6f29dd25138f0d9846a26cd">err_set_logfile()</a> functions. To disable logging in your application, call err_set_logfp(NULL).</p>
 <p>It's possible to log multiline info messages, to do that you need to start message with E_INFO and output other lines with E_INFOCONT. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="af4689a912d0c49e9eb5244659d8702ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4689a912d0c49e9eb5244659d8702ad">&#9670;&nbsp;</a></span>E_DEBUG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define E_DEBUG</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Debug is disabled by default </p>
-
-</div>
-</div>
-<a id="a87a0a12135a290cf16d06b63fcfa0ccf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87a0a12135a290cf16d06b63fcfa0ccf">&#9670;&nbsp;</a></span>E_ERROR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define E_ERROR</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;err_msg(ERR_ERROR, FILELINE, __VA_ARGS__)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Print error message to error log </p>
-
-</div>
-</div>
-<a id="add0768056bee50c260c5623b4edd4038"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add0768056bee50c260c5623b4edd4038">&#9670;&nbsp;</a></span>E_ERROR_SYSTEM</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define E_ERROR_SYSTEM</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;err_msg_system(ERR_ERROR, FILELINE, __VA_ARGS__)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Print error text; Call perror(""); </p>
-
-</div>
-</div>
 <a id="abaacffc3c0f14e4dd180b1e38c62c5a0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abaacffc3c0f14e4dd180b1e38c62c5a0">&#9670;&nbsp;</a></span>E_FATAL</h2>
 
@@ -244,6 +194,8 @@ POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>e
 <div class="line">        exit(EXIT_FAILURE);                        \</div>
 <div class="line">    } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment --><p>Exit with non-zero status after error message </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="live_8c-example.html#a7">live.c</a>, and <a class="el" href="simple_8c-example.html#a2">simple.c</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -267,63 +219,48 @@ POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>e
 <div class="line">        exit(EXIT_FAILURE);                                                  \</div>
 <div class="line">    } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment --><p>Print error text; Call perror(""); exit(errno); </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="live_8c-example.html#a0">live.c</a>, and <a class="el" href="simple_8c-example.html#a3">simple.c</a>.</dd>
+</dl>
 
 </div>
 </div>
-<a id="a92dbeb77b8e1facc7b15abab6ad19b73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92dbeb77b8e1facc7b15abab6ad19b73">&#9670;&nbsp;</a></span>E_INFO</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define E_INFO</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;err_msg(ERR_INFO, FILELINE, __VA_ARGS__)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Print logging information to standard error stream </p>
-
-</div>
-</div>
-<a id="abe6c68e16406b5f7aee0ec70e1f7d7f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe6c68e16406b5f7aee0ec70e1f7d7f1">&#9670;&nbsp;</a></span>E_INFO_NOFN</h2>
+<a id="add0768056bee50c260c5623b4edd4038"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add0768056bee50c260c5623b4edd4038">&#9670;&nbsp;</a></span>E_ERROR_SYSTEM</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define E_INFO_NOFN</td>
+          <td class="memname">#define E_ERROR_SYSTEM</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;err_msg(ERR_INFO, NULL, 0, __VA_ARGS__)</td>
+          <td>&#160;&#160;&#160;err_msg_system(ERR_ERROR, FILELINE, __VA_ARGS__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Print logging information without filename. </p>
+<p>Print error text; Call perror(""); </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="live_8c-example.html#a20">live.c</a>.</dd>
+</dl>
 
 </div>
 </div>
-<a id="aaf6601c7c08a803c55f2d55fcd8d5759"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf6601c7c08a803c55f2d55fcd8d5759">&#9670;&nbsp;</a></span>E_INFOCONT</h2>
+<a id="a87a0a12135a290cf16d06b63fcfa0ccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87a0a12135a290cf16d06b63fcfa0ccf">&#9670;&nbsp;</a></span>E_ERROR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define E_INFOCONT</td>
+          <td class="memname">#define E_ERROR</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td>&#160;&#160;&#160;err_msg(ERR_INFO, NULL, 0, __VA_ARGS__)</td>
+          <td>&#160;&#160;&#160;err_msg(ERR_ERROR, FILELINE, __VA_ARGS__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Continue printing the information to standard error stream </p>
+<p>Print error message to error log </p>
 
 </div>
 </div>
@@ -346,115 +283,83 @@ POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>e
 
 </div>
 </div>
+<a id="a92dbeb77b8e1facc7b15abab6ad19b73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92dbeb77b8e1facc7b15abab6ad19b73">&#9670;&nbsp;</a></span>E_INFO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_INFO</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;err_msg(ERR_INFO, FILELINE, __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Print logging information to standard error stream </p>
+
+</div>
+</div>
+<a id="aaf6601c7c08a803c55f2d55fcd8d5759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf6601c7c08a803c55f2d55fcd8d5759">&#9670;&nbsp;</a></span>E_INFOCONT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_INFOCONT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;err_msg(ERR_INFO, NULL, 0, __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Continue printing the information to standard error stream </p>
+
+</div>
+</div>
+<a id="abe6c68e16406b5f7aee0ec70e1f7d7f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe6c68e16406b5f7aee0ec70e1f7d7f1">&#9670;&nbsp;</a></span>E_INFO_NOFN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_INFO_NOFN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;err_msg(ERR_INFO, NULL, 0, __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Print logging information without filename. </p>
+
+</div>
+</div>
+<a id="af4689a912d0c49e9eb5244659d8702ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4689a912d0c49e9eb5244659d8702ad">&#9670;&nbsp;</a></span>E_DEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_DEBUG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Debug is disabled by default </p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a22bd49d11a1acc3b7d9a9498cf9e2c59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22bd49d11a1acc3b7d9a9498cf9e2c59">&#9670;&nbsp;</a></span>err_get_logfp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT FILE* err_get_logfp </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Get the current logging filehandle.</p>
-<dl class="section return"><dt>Returns</dt><dd>Current logging filehandle, NULL if logging is disabled. Initially it returns stderr </dd></dl>
-
-</div>
-</div>
-<a id="a27fbaecbcb755fd9e5a503566b6ec542"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27fbaecbcb755fd9e5a503566b6ec542">&#9670;&nbsp;</a></span>err_set_callback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT void err_set_callback </td>
-          <td>(</td>
-          <td class="paramtype">err_cb_f&#160;</td>
-          <td class="paramname"><em>callback</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>user_data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Sets function to output error messages. Use it to redirect the logging to your application. By default the handler which dumps messages to stderr is set.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">callback</td><td>callback to pass messages too </td></tr>
-    <tr><td class="paramname">user_data</td><td>data to pass to callback </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a2ff33abcf6f29dd25138f0d9846a26cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ff33abcf6f29dd25138f0d9846a26cd">&#9670;&nbsp;</a></span>err_set_logfile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT int err_set_logfile </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Append all log messages to a given file.</p>
-<p>Previous logging filehandle is closed (unless it was stdout or stderr).</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>File path to send log messages to </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 for success, &lt;0 for failure (e.g. if file does not exist) </dd></dl>
-
-</div>
-</div>
-<a id="adead72aa5614d8d305ab8710369ea01b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adead72aa5614d8d305ab8710369ea01b">&#9670;&nbsp;</a></span>err_set_logfp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT void err_set_logfp </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>stream</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Direct all logging to a given filehandle if default logfp callback is set.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stream</td><td>Filehandle to send log messages to, or NULL to disable logging. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ac011c0d3b793abc19010c2255bce5c88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac011c0d3b793abc19010c2255bce5c88">&#9670;&nbsp;</a></span>err_set_loglevel()</h2>
 
@@ -504,6 +409,114 @@ POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>e
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>previous log level string, or NULL for invalid argument. </dd></dl>
+
+</div>
+</div>
+<a id="a27fbaecbcb755fd9e5a503566b6ec542"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27fbaecbcb755fd9e5a503566b6ec542">&#9670;&nbsp;</a></span>err_set_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void err_set_callback </td>
+          <td>(</td>
+          <td class="paramtype">err_cb_f&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets function to output error messages. Use it to redirect the logging to your application. By default the handler which dumps messages to stderr is set.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>callback to pass messages too </td></tr>
+    <tr><td class="paramname">user_data</td><td>data to pass to callback </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adead72aa5614d8d305ab8710369ea01b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adead72aa5614d8d305ab8710369ea01b">&#9670;&nbsp;</a></span>err_set_logfp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void err_set_logfp </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Direct all logging to a given filehandle if default logfp callback is set.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>Filehandle to send log messages to, or NULL to disable logging. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a22bd49d11a1acc3b7d9a9498cf9e2c59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22bd49d11a1acc3b7d9a9498cf9e2c59">&#9670;&nbsp;</a></span>err_get_logfp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT FILE* err_get_logfp </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the current logging filehandle.</p>
+<dl class="section return"><dt>Returns</dt><dd>Current logging filehandle, NULL if logging is disabled. Initially it returns stderr </dd></dl>
+
+</div>
+</div>
+<a id="a2ff33abcf6f29dd25138f0d9846a26cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ff33abcf6f29dd25138f0d9846a26cd">&#9670;&nbsp;</a></span>err_set_logfile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int err_set_logfile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Append all log messages to a given file.</p>
+<p>Previous logging filehandle is closed (unless it was stdout or stderr).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>File path to send log messages to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, &lt;0 for failure (e.g. if file does not exist) </dd></dl>
 
 </div>
 </div>

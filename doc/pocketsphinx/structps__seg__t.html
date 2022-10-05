@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,15 +70,202 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structps__seg__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ps_seg_t Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>Segmentation iterator object.  
+ <a href="structps__seg__t.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pocketsphinx_8h_source.html">pocketsphinx.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0686bf425a8cf145bca3b149b6368223"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__seg__t.html">ps_seg_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__seg__t.html#a0686bf425a8cf145bca3b149b6368223">ps_seg_next</a> (<a class="el" href="structps__seg__t.html">ps_seg_t</a> *seg)</td></tr>
+<tr class="separator:a0686bf425a8cf145bca3b149b6368223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd63bed3e8f549473e6c7c9dbbd4f356"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__seg__t.html#afd63bed3e8f549473e6c7c9dbbd4f356">ps_seg_word</a> (<a class="el" href="structps__seg__t.html">ps_seg_t</a> *seg)</td></tr>
+<tr class="separator:afd63bed3e8f549473e6c7c9dbbd4f356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a045a044726b816678965514f2ee7d8c7"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__seg__t.html#a045a044726b816678965514f2ee7d8c7">ps_seg_frames</a> (<a class="el" href="structps__seg__t.html">ps_seg_t</a> *seg, int *out_sf, int *out_ef)</td></tr>
+<tr class="separator:a045a044726b816678965514f2ee7d8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfd45d93c3fc9de6b7be89d5417f6abb"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__seg__t.html#adfd45d93c3fc9de6b7be89d5417f6abb">ps_seg_prob</a> (<a class="el" href="structps__seg__t.html">ps_seg_t</a> *seg, int32 *out_ascr, int32 *out_lscr, int32 *out_lback)</td></tr>
+<tr class="separator:adfd45d93c3fc9de6b7be89d5417f6abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac02cea69794b0fbd17e6a4c5265b2255"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__seg__t.html#ac02cea69794b0fbd17e6a4c5265b2255">ps_seg_free</a> (<a class="el" href="structps__seg__t.html">ps_seg_t</a> *seg)</td></tr>
+<tr class="separator:ac02cea69794b0fbd17e6a4c5265b2255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>PocketSphinx segmentation iterator object. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>Segmentation iterator object. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0686bf425a8cf145bca3b149b6368223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0686bf425a8cf145bca3b149b6368223">&#9670;&nbsp;</a></span>ps_seg_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__seg__t.html">ps_seg_t</a> * ps_seg_next </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__seg__t.html">ps_seg_t</a> *&#160;</td>
+          <td class="paramname"><em>seg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the next segment in a word segmentation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seg</td><td>Segment iterator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated iterator with the next segment. NULL at end of utterance (the iterator will be freed in this case). </dd></dl>
+
+</div>
+</div>
+<a id="afd63bed3e8f549473e6c7c9dbbd4f356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd63bed3e8f549473e6c7c9dbbd4f356">&#9670;&nbsp;</a></span>ps_seg_word()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT const char * ps_seg_word </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__seg__t.html">ps_seg_t</a> *&#160;</td>
+          <td class="paramname"><em>seg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get word string from a segmentation iterator.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seg</td><td>Segment iterator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Read-only string giving string name of this segment. This is only valid until the next call to <a class="el" href="structps__seg__t.html#a0686bf425a8cf145bca3b149b6368223">ps_seg_next()</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a045a044726b816678965514f2ee7d8c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a045a044726b816678965514f2ee7d8c7">&#9670;&nbsp;</a></span>ps_seg_frames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void ps_seg_frames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__seg__t.html">ps_seg_t</a> *&#160;</td>
+          <td class="paramname"><em>seg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_sf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_ef</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get inclusive start and end frames from a segmentation iterator.</p>
+<dl class="section note"><dt>Note</dt><dd>These frame numbers are inclusive, i.e. the end frame refers to the last frame in which the given word or other segment was active. Therefore, the actual duration is *out_ef - *out_sf + 1.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seg</td><td>Segment iterator. </td></tr>
+    <tr><td class="paramname">out_sf</td><td>Output: First frame index in segment. </td></tr>
+    <tr><td class="paramname">out_ef</td><td>Output: Last frame index in segment. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adfd45d93c3fc9de6b7be89d5417f6abb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfd45d93c3fc9de6b7be89d5417f6abb">&#9670;&nbsp;</a></span>ps_seg_prob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int32 ps_seg_prob </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__seg__t.html">ps_seg_t</a> *&#160;</td>
+          <td class="paramname"><em>seg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32 *&#160;</td>
+          <td class="paramname"><em>out_ascr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32 *&#160;</td>
+          <td class="paramname"><em>out_lscr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32 *&#160;</td>
+          <td class="paramname"><em>out_lback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get language, acoustic, and posterior probabilities from a segmentation iterator.</p>
+<dl class="section note"><dt>Note</dt><dd>Unless the -bestpath option is enabled, this function will always return zero (corresponding to a posterior probability of 1.0). Even if -bestpath is enabled, it will also return zero when called on a partial result. Ongoing research into effective confidence annotation for partial hypotheses may result in these restrictions being lifted in future versions.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out_ascr</td><td>Output: acoustic model score for this segment. </td></tr>
+    <tr><td class="paramname">out_lscr</td><td>Output: language model score for this segment. </td></tr>
+    <tr><td class="paramname">out_lback</td><td>Output: language model backoff mode for this segment (i.e. the number of words used in calculating lscr). This field is, of course, only meaningful for N-Gram models. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Log posterior probability of current segment. Log is expressed in the log-base used in the decoder. To convert to linear floating-point, use logmath_exp(<a class="el" href="structps__decoder__t.html#a318ec5e87309b590a775ba1e91297b85">ps_get_logmath()</a>, pprob). </dd></dl>
+
+</div>
+</div>
+<a id="ac02cea69794b0fbd17e6a4c5265b2255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac02cea69794b0fbd17e6a4c5265b2255">&#9670;&nbsp;</a></span>ps_seg_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void ps_seg_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__seg__t.html">ps_seg_t</a> *&#160;</td>
+          <td class="paramname"><em>seg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Finish iterating over a word segmentation early, freeing resources. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="pocketsphinx_8h_source.html">pocketsphinx.h</a></li>
 </ul>
 </div><!-- contents -->

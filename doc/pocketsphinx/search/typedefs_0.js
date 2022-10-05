@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['anytype_5ft_581',['anytype_t',['../prim__type_8h.html#abfc21839f45a6def491687f823eaa94d',1,'prim_type.h']]]
+  ['ps_5ftype_5ft_617',['ps_type_t',['../pocketsphinx_8h.html#a366fa973fe0a8318cf935d20bdd50c43',1,'pocketsphinx.h']]]
 ];

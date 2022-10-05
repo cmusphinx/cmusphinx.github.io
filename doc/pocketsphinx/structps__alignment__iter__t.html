@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,6 +70,9 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structps__alignment__iter__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ps_alignment_iter_t Struct Reference</div>  </div>
 </div><!--header-->
@@ -71,10 +81,144 @@ $(function() {
 <p>Iterator over entries in an alignment.  
  <a href="structps__alignment__iter__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="alignment_8h_source.html">alignment.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="alignment_8h_source.html">pocketsphinx/alignment.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a44a74857b5ca5e3f08d5a41fa346e176"><td class="memItemLeft" align="right" valign="top">const POCKETSPHINX_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__iter__t.html#a44a74857b5ca5e3f08d5a41fa346e176">ps_alignment_iter_name</a> (<a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor)</td></tr>
+<tr class="separator:a44a74857b5ca5e3f08d5a41fa346e176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5810641dfea5220b6b17674cd28046f9"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__iter__t.html#a5810641dfea5220b6b17674cd28046f9">ps_alignment_iter_seg</a> (<a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor, int *start, int *duration)</td></tr>
+<tr class="separator:a5810641dfea5220b6b17674cd28046f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86c1a5d3a522405c038b3f0917ec7e42"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__iter__t.html#a86c1a5d3a522405c038b3f0917ec7e42">ps_alignment_iter_next</a> (<a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor)</td></tr>
+<tr class="separator:a86c1a5d3a522405c038b3f0917ec7e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc617cc49965b92ed2974ee93355c828"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__iter__t.html#acc617cc49965b92ed2974ee93355c828">ps_alignment_iter_children</a> (<a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor)</td></tr>
+<tr class="separator:acc617cc49965b92ed2974ee93355c828"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a395971ce8af5acd6d26c9d6ec43a7bca"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__iter__t.html#a395971ce8af5acd6d26c9d6ec43a7bca">ps_alignment_iter_free</a> (<a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *itor)</td></tr>
+<tr class="separator:a395971ce8af5acd6d26c9d6ec43a7bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Iterator over entries in an alignment. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a44a74857b5ca5e3f08d5a41fa346e176"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a74857b5ca5e3f08d5a41fa346e176">&#9670;&nbsp;</a></span>ps_alignment_iter_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const POCKETSPHINX_EXPORT char * ps_alignment_iter_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the human-readable name of the current segment for an alignment.</p>
+<dl class="section return"><dt>Returns</dt><dd>Name of this segment as a string (word, phone, or state number). This pointer is owned by the iterator, do not free it yourself. </dd></dl>
+
+</div>
+</div>
+<a id="a5810641dfea5220b6b17674cd28046f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5810641dfea5220b6b17674cd28046f9">&#9670;&nbsp;</a></span>ps_alignment_iter_seg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_alignment_iter_seg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>duration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the timing and score information for the current segment of an aligment.</p>
+<ul>
+<li>start Output pointer for start frame </li>
+<li>duration Output pointer for duration <dl class="section return"><dt>Returns</dt><dd>Acoustic score for this segment </dd></dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="a86c1a5d3a522405c038b3f0917ec7e42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86c1a5d3a522405c038b3f0917ec7e42">&#9670;&nbsp;</a></span>ps_alignment_iter_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> * ps_alignment_iter_next </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Move an alignment iterator forward.</p>
+<p>If the end of the alignment is reached, this will free the iterator and return NULL. </p>
+
+</div>
+</div>
+<a id="acc617cc49965b92ed2974ee93355c828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc617cc49965b92ed2974ee93355c828">&#9670;&nbsp;</a></span>ps_alignment_iter_children()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> * ps_alignment_iter_children </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterate over the children of the current alignment entry.</p>
+<p>If there are no child nodes, NULL is returned. </p>
+
+</div>
+</div>
+<a id="a395971ce8af5acd6d26c9d6ec43a7bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a395971ce8af5acd6d26c9d6ec43a7bca">&#9670;&nbsp;</a></span>ps_alignment_iter_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_alignment_iter_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Release an iterator before completing all iterations. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>pocketsphinx/<a class="el" href="alignment_8h_source.html">alignment.h</a></li>
 </ul>
 </div><!-- contents -->

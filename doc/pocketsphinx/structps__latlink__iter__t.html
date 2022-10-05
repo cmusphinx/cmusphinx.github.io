@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,6 +70,9 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structps__latlink__iter__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ps_latlink_iter_t Struct Reference</div>  </div>
 </div><!--header-->
@@ -71,10 +81,91 @@ $(function() {
 <p>Iterator over DAG links.  
  <a href="structps__latlink__iter__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="lattice_8h_source.html">lattice.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="lattice_8h_source.html">pocketsphinx/lattice.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a355b571d5eb906b7f58f41e168af46ba"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__latlink__iter__t.html#a355b571d5eb906b7f58f41e168af46ba">ps_latlink_iter_next</a> (<a class="el" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *itor)</td></tr>
+<tr class="separator:a355b571d5eb906b7f58f41e168af46ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa19aaa4a38a922ff28fe071f69b8272d"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__latlink__iter__t.html#aa19aaa4a38a922ff28fe071f69b8272d">ps_latlink_iter_free</a> (<a class="el" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *itor)</td></tr>
+<tr class="separator:aa19aaa4a38a922ff28fe071f69b8272d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71a92726c7e3bac137efbae29e4c5c8a"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__latlink__iter__t.html#a71a92726c7e3bac137efbae29e4c5c8a">ps_latlink_iter_link</a> (<a class="el" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *itor)</td></tr>
+<tr class="separator:a71a92726c7e3bac137efbae29e4c5c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Iterator over DAG links. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a355b571d5eb906b7f58f41e168af46ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a355b571d5eb906b7f58f41e168af46ba">&#9670;&nbsp;</a></span>ps_latlink_iter_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> * ps_latlink_iter_next </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get next link from a lattice link iterator.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itor</td><td>Iterator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated iterator, or NULL if finished. </dd></dl>
+
+</div>
+</div>
+<a id="aa19aaa4a38a922ff28fe071f69b8272d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa19aaa4a38a922ff28fe071f69b8272d">&#9670;&nbsp;</a></span>ps_latlink_iter_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void ps_latlink_iter_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stop iterating over links.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itor</td><td>Link iterator. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a71a92726c7e3bac137efbae29e4c5c8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71a92726c7e3bac137efbae29e4c5c8a">&#9670;&nbsp;</a></span>ps_latlink_iter_link()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> * ps_latlink_iter_link </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__latlink__iter__t.html">ps_latlink_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get link from iterator. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>pocketsphinx/<a class="el" href="lattice_8h_source.html">lattice.h</a></li>
 </ul>
 </div><!-- contents -->

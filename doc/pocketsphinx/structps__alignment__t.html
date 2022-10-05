@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,6 +70,10 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#related">Related Functions</a> &#124;
+<a href="structps__alignment__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ps_alignment_t Struct Reference</div>  </div>
 </div><!--header-->
@@ -71,10 +82,151 @@ $(function() {
 <p>Multi-level alignment (words, phones, states) over an utterance.  
  <a href="structps__alignment__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="alignment_8h_source.html">alignment.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="alignment_8h_source.html">pocketsphinx/alignment.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a08bf2cf59a1e8e837e26f6e571c02c95"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__t.html#a08bf2cf59a1e8e837e26f6e571c02c95">ps_alignment_retain</a> (<a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *al)</td></tr>
+<tr class="separator:a08bf2cf59a1e8e837e26f6e571c02c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3397b6ae46535516b71a5cc5a049bf1"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__t.html#ad3397b6ae46535516b71a5cc5a049bf1">ps_alignment_free</a> (<a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *al)</td></tr>
+<tr class="separator:ad3397b6ae46535516b71a5cc5a049bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55bd9be876b2ee4f9be894561f7cfb41"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__t.html#a55bd9be876b2ee4f9be894561f7cfb41">ps_alignment_words</a> (<a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *al)</td></tr>
+<tr class="separator:a55bd9be876b2ee4f9be894561f7cfb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d2fa99d658585157ce4629d1ae5882e"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__t.html#a5d2fa99d658585157ce4629d1ae5882e">ps_alignment_phones</a> (<a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *al)</td></tr>
+<tr class="separator:a5d2fa99d658585157ce4629d1ae5882e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8d74903490fadb9fbddcef2955593c8"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__t.html#ad8d74903490fadb9fbddcef2955593c8">ps_alignment_states</a> (<a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *al)</td></tr>
+<tr class="separator:ad8d74903490fadb9fbddcef2955593c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="related"></a>
+Related Functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
+</td></tr>
+<tr class="memitem:aa6ddcfcd7598f1b50582dd5489e63e50"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__alignment__t.html#aa6ddcfcd7598f1b50582dd5489e63e50">PS_ALIGNMENT_NONE</a>&#160;&#160;&#160;-1</td></tr>
+<tr class="separator:aa6ddcfcd7598f1b50582dd5489e63e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Multi-level alignment (words, phones, states) over an utterance. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a08bf2cf59a1e8e837e26f6e571c02c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08bf2cf59a1e8e837e26f6e571c02c95">&#9670;&nbsp;</a></span>ps_alignment_retain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__t.html">ps_alignment_t</a> * ps_alignment_retain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *&#160;</td>
+          <td class="paramname"><em>al</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retain an alighment </p>
+
+</div>
+</div>
+<a id="ad3397b6ae46535516b71a5cc5a049bf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3397b6ae46535516b71a5cc5a049bf1">&#9670;&nbsp;</a></span>ps_alignment_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_alignment_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *&#160;</td>
+          <td class="paramname"><em>al</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Release an alignment </p>
+
+</div>
+</div>
+<a id="a55bd9be876b2ee4f9be894561f7cfb41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55bd9be876b2ee4f9be894561f7cfb41">&#9670;&nbsp;</a></span>ps_alignment_words()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> * ps_alignment_words </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *&#160;</td>
+          <td class="paramname"><em>al</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterate over the alignment starting at the first word. </p>
+
+</div>
+</div>
+<a id="a5d2fa99d658585157ce4629d1ae5882e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d2fa99d658585157ce4629d1ae5882e">&#9670;&nbsp;</a></span>ps_alignment_phones()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> * ps_alignment_phones </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *&#160;</td>
+          <td class="paramname"><em>al</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterate over the alignment starting at the first phone. </p>
+
+</div>
+</div>
+<a id="ad8d74903490fadb9fbddcef2955593c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8d74903490fadb9fbddcef2955593c8">&#9670;&nbsp;</a></span>ps_alignment_states()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__alignment__iter__t.html">ps_alignment_iter_t</a> * ps_alignment_states </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__alignment__t.html">ps_alignment_t</a> *&#160;</td>
+          <td class="paramname"><em>al</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterate over the alignment starting at the first state. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="aa6ddcfcd7598f1b50582dd5489e63e50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6ddcfcd7598f1b50582dd5489e63e50">&#9670;&nbsp;</a></span>PS_ALIGNMENT_NONE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PS_ALIGNMENT_NONE&#160;&#160;&#160;-1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Value indicating no parent or child for an entry. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>pocketsphinx/<a class="el" href="alignment_8h_source.html">alignment.h</a></li>
 </ul>
 </div><!-- contents -->

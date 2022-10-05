@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,6 +70,9 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structps__lattice__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ps_lattice_t Struct Reference</div>  </div>
 </div><!--header-->
@@ -71,10 +81,586 @@ $(function() {
 <p>Word graph structure used in bestpath/nbest search.  
  <a href="structps__lattice__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="lattice_8h_source.html">lattice.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="lattice_8h_source.html">pocketsphinx/lattice.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a6edc5631b7d5ab3f54747293f9bef3e3"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a6edc5631b7d5ab3f54747293f9bef3e3">ps_lattice_read</a> (struct ps_decoder_s *ps, char const *file)</td></tr>
+<tr class="separator:a6edc5631b7d5ab3f54747293f9bef3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c9aba902d61bb81bab1df2c437c305"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#ad7c9aba902d61bb81bab1df2c437c305">ps_lattice_retain</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag)</td></tr>
+<tr class="separator:ad7c9aba902d61bb81bab1df2c437c305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f90e846bde47cd1acdff165b92f5c22"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a3f90e846bde47cd1acdff165b92f5c22">ps_lattice_free</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag)</td></tr>
+<tr class="separator:a3f90e846bde47cd1acdff165b92f5c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f2e2b88d0aa80346cc64d2b7934b863"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a3f2e2b88d0aa80346cc64d2b7934b863">ps_lattice_write</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, char const *filename)</td></tr>
+<tr class="separator:a3f2e2b88d0aa80346cc64d2b7934b863"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefd25c0f49a0d70f999187a26fa2ff06"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#aefd25c0f49a0d70f999187a26fa2ff06">ps_lattice_write_htk</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, char const *filename)</td></tr>
+<tr class="separator:aefd25c0f49a0d70f999187a26fa2ff06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ec403afeb085ce901a4a2b2a0830991"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structlogmath__t.html">logmath_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a2ec403afeb085ce901a4a2b2a0830991">ps_lattice_get_logmath</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag)</td></tr>
+<tr class="separator:a2ec403afeb085ce901a4a2b2a0830991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefc403a8d205927a02d9436417e0caa5"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#aefc403a8d205927a02d9436417e0caa5">ps_latnode_iter</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag)</td></tr>
+<tr class="separator:aefc403a8d205927a02d9436417e0caa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aaae70904361b23a78cdcb632c298c4"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a4aaae70904361b23a78cdcb632c298c4">ps_lattice_link</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *from, <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *to, int32 score, int32 ef)</td></tr>
+<tr class="separator:a4aaae70904361b23a78cdcb632c298c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b6d58c7646f20a078aa0f7d5029e67f"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a0b6d58c7646f20a078aa0f7d5029e67f">ps_lattice_traverse_edges</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *start, <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *end)</td></tr>
+<tr class="separator:a0b6d58c7646f20a078aa0f7d5029e67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a2a8d13f30836c34246cc6e8108115"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#ae7a2a8d13f30836c34246cc6e8108115">ps_lattice_traverse_next</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *end)</td></tr>
+<tr class="separator:ae7a2a8d13f30836c34246cc6e8108115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b41fb328ee88d7f8de274b217c97451"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a5b41fb328ee88d7f8de274b217c97451">ps_lattice_reverse_edges</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *start, <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *end)</td></tr>
+<tr class="separator:a5b41fb328ee88d7f8de274b217c97451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad85dcdee93cc3eb067051202d9563a9e"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#ad85dcdee93cc3eb067051202d9563a9e">ps_lattice_reverse_next</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *start)</td></tr>
+<tr class="separator:ad85dcdee93cc3eb067051202d9563a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc5aee64d40f8b9349f2125ed0096396"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#afc5aee64d40f8b9349f2125ed0096396">ps_lattice_bestpath</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="el" href="structngram__model__t.html">ngram_model_t</a> *lmset, float32 lwf, float32 ascale)</td></tr>
+<tr class="separator:afc5aee64d40f8b9349f2125ed0096396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c5c6ef260ab006099ab34d09b5b1d06"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a8c5c6ef260ab006099ab34d09b5b1d06">ps_lattice_posterior</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, <a class="el" href="structngram__model__t.html">ngram_model_t</a> *lmset, float32 ascale)</td></tr>
+<tr class="separator:a8c5c6ef260ab006099ab34d09b5b1d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30d83a5fd158d2acaa5107be7a09ed09"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a30d83a5fd158d2acaa5107be7a09ed09">ps_lattice_posterior_prune</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag, int32 beam)</td></tr>
+<tr class="separator:a30d83a5fd158d2acaa5107be7a09ed09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a196a35a8aeb044251c6c152034c90"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__lattice__t.html#a44a196a35a8aeb044251c6c152034c90">ps_lattice_n_frames</a> (<a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *dag)</td></tr>
+<tr class="separator:a44a196a35a8aeb044251c6c152034c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Word graph structure used in bestpath/nbest search. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6edc5631b7d5ab3f54747293f9bef3e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6edc5631b7d5ab3f54747293f9bef3e3">&#9670;&nbsp;</a></span>ps_lattice_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__lattice__t.html">ps_lattice_t</a> * ps_lattice_read </td>
+          <td>(</td>
+          <td class="paramtype">struct ps_decoder_s *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read a lattice from a file on disk.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>Decoder to use for processing this lattice, or NULL. </td></tr>
+    <tr><td class="paramname">file</td><td>Path to lattice file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Newly created lattice, or NULL for failure. </dd></dl>
+
+</div>
+</div>
+<a id="ad7c9aba902d61bb81bab1df2c437c305"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c9aba902d61bb81bab1df2c437c305">&#9670;&nbsp;</a></span>ps_lattice_retain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__lattice__t.html">ps_lattice_t</a> * ps_lattice_retain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retain a lattice.</p>
+<p>This function retains ownership of a lattice for the caller, preventing it from being freed automatically. You must call <a class="el" href="structps__lattice__t.html#a3f90e846bde47cd1acdff165b92f5c22">ps_lattice_free()</a> to free it after having called this function.</p>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the retained lattice. </dd></dl>
+
+</div>
+</div>
+<a id="a3f90e846bde47cd1acdff165b92f5c22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f90e846bde47cd1acdff165b92f5c22">&#9670;&nbsp;</a></span>ps_lattice_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_lattice_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Free a lattice.</p>
+<dl class="section return"><dt>Returns</dt><dd>new reference count (0 if dag was freed) </dd></dl>
+
+</div>
+</div>
+<a id="a3f2e2b88d0aa80346cc64d2b7934b863"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f2e2b88d0aa80346cc64d2b7934b863">&#9670;&nbsp;</a></span>ps_lattice_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_lattice_write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write a lattice to disk.</p>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, &lt;0 on failure. </dd></dl>
+
+</div>
+</div>
+<a id="aefd25c0f49a0d70f999187a26fa2ff06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefd25c0f49a0d70f999187a26fa2ff06">&#9670;&nbsp;</a></span>ps_lattice_write_htk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_lattice_write_htk </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write a lattice to disk in HTK format</p>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, &lt;0 on failure. </dd></dl>
+
+</div>
+</div>
+<a id="a2ec403afeb085ce901a4a2b2a0830991"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ec403afeb085ce901a4a2b2a0830991">&#9670;&nbsp;</a></span>ps_lattice_get_logmath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structlogmath__t.html">logmath_t</a> * ps_lattice_get_logmath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the log-math computation object for this lattice</p>
+<dl class="section return"><dt>Returns</dt><dd>The log-math object for this lattice. The lattice retains ownership of this pointer, so you should not attempt to free it manually. Use <a class="el" href="structlogmath__t.html#afaa475efd12231945f531fca362d82d9">logmath_retain()</a> if you wish to reuse it elsewhere. </dd></dl>
+
+</div>
+</div>
+<a id="aefc403a8d205927a02d9436417e0caa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefc403a8d205927a02d9436417e0caa5">&#9670;&nbsp;</a></span>ps_latnode_iter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> * ps_latnode_iter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Start iterating over nodes in the lattice.</p>
+<dl class="section note"><dt>Note</dt><dd>No particular order of traversal is guaranteed, and you should not depend on this.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dag</td><td>Lattice to iterate over. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Iterator over lattice nodes. </dd></dl>
+
+</div>
+</div>
+<a id="a4aaae70904361b23a78cdcb632c298c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aaae70904361b23a78cdcb632c298c4">&#9670;&nbsp;</a></span>ps_lattice_link()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void ps_lattice_link </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32&#160;</td>
+          <td class="paramname"><em>score</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32&#160;</td>
+          <td class="paramname"><em>ef</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a directed link between "from" and "to" nodes, but if a link already exists, choose one with the best link_scr. </p>
+
+</div>
+</div>
+<a id="a0b6d58c7646f20a078aa0f7d5029e67f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b6d58c7646f20a078aa0f7d5029e67f">&#9670;&nbsp;</a></span>ps_lattice_traverse_edges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> * ps_lattice_traverse_edges </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Start a forward traversal of edges in a word graph.</p>
+<dl class="section note"><dt>Note</dt><dd>A keen eye will notice an inconsistency in this API versus other types of iterators in PocketSphinx. The reason for this is that the traversal algorithm is much more efficient when it is able to modify the lattice structure. Therefore, to avoid giving the impression that multiple traversals are possible at once, no separate iterator structure is provided.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dag</td><td>Lattice to be traversed. </td></tr>
+    <tr><td class="paramname">start</td><td>Start node (source) of traversal. </td></tr>
+    <tr><td class="paramname">end</td><td>End node (goal) of traversal. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>First link in traversal. </dd></dl>
+
+</div>
+</div>
+<a id="ae7a2a8d13f30836c34246cc6e8108115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7a2a8d13f30836c34246cc6e8108115">&#9670;&nbsp;</a></span>ps_lattice_traverse_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> * ps_lattice_traverse_next </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the next link in forward traversal.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dag</td><td>Lattice to be traversed. </td></tr>
+    <tr><td class="paramname">end</td><td>End node (goal) of traversal. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Next link in traversal. </dd></dl>
+
+</div>
+</div>
+<a id="a5b41fb328ee88d7f8de274b217c97451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b41fb328ee88d7f8de274b217c97451">&#9670;&nbsp;</a></span>ps_lattice_reverse_edges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> * ps_lattice_reverse_edges </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Start a reverse traversal of edges in a word graph.</p>
+<dl class="section note"><dt>Note</dt><dd>See <a class="el" href="structps__lattice__t.html#a0b6d58c7646f20a078aa0f7d5029e67f">ps_lattice_traverse_edges()</a> for why this API is the way it is.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dag</td><td>Lattice to be traversed. </td></tr>
+    <tr><td class="paramname">start</td><td>Start node (goal) of traversal. </td></tr>
+    <tr><td class="paramname">end</td><td>End node (source) of traversal. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>First link in traversal. </dd></dl>
+
+</div>
+</div>
+<a id="ad85dcdee93cc3eb067051202d9563a9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad85dcdee93cc3eb067051202d9563a9e">&#9670;&nbsp;</a></span>ps_lattice_reverse_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> * ps_lattice_reverse_next </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td>
+          <td class="paramname"><em>start</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the next link in reverse traversal.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dag</td><td>Lattice to be traversed. </td></tr>
+    <tr><td class="paramname">start</td><td>Start node (goal) of traversal. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Next link in traversal. </dd></dl>
+
+</div>
+</div>
+<a id="afc5aee64d40f8b9349f2125ed0096396"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc5aee64d40f8b9349f2125ed0096396">&#9670;&nbsp;</a></span>ps_lattice_bestpath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latlink__t.html">ps_latlink_t</a> * ps_lattice_bestpath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structngram__model__t.html">ngram_model_t</a> *&#160;</td>
+          <td class="paramname"><em>lmset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float32&#160;</td>
+          <td class="paramname"><em>lwf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float32&#160;</td>
+          <td class="paramname"><em>ascale</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Do N-Gram based best-path search on a word graph.</p>
+<p>This function calculates both the best path as well as the forward probability used in confidence estimation.</p>
+<dl class="section return"><dt>Returns</dt><dd>Final link in best path, NULL on error. </dd></dl>
+
+</div>
+</div>
+<a id="a8c5c6ef260ab006099ab34d09b5b1d06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c5c6ef260ab006099ab34d09b5b1d06">&#9670;&nbsp;</a></span>ps_lattice_posterior()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int32 ps_lattice_posterior </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structngram__model__t.html">ngram_model_t</a> *&#160;</td>
+          <td class="paramname"><em>lmset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float32&#160;</td>
+          <td class="paramname"><em>ascale</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculate link posterior probabilities on a word graph.</p>
+<p>This function assumes that bestpath search has already been done.</p>
+<dl class="section return"><dt>Returns</dt><dd>Posterior probability of the utterance as a whole. </dd></dl>
+
+</div>
+</div>
+<a id="a30d83a5fd158d2acaa5107be7a09ed09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d83a5fd158d2acaa5107be7a09ed09">&#9670;&nbsp;</a></span>ps_lattice_posterior_prune()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int32 ps_lattice_posterior_prune </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32&#160;</td>
+          <td class="paramname"><em>beam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Prune all links (and associated nodes) below a certain posterior probability.</p>
+<p>This function assumes that <a class="el" href="structps__lattice__t.html#a8c5c6ef260ab006099ab34d09b5b1d06">ps_lattice_posterior()</a> has already been called.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beam</td><td>Minimum posterior probability for links. This is expressed in the log-base used in the decoder. To convert from linear floating-point, use logmath_log(ps_lattice_get_logmath(), prob). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of arcs removed. </dd></dl>
+
+</div>
+</div>
+<a id="a44a196a35a8aeb044251c6c152034c90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a196a35a8aeb044251c6c152034c90">&#9670;&nbsp;</a></span>ps_lattice_n_frames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_lattice_n_frames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__lattice__t.html">ps_lattice_t</a> *&#160;</td>
+          <td class="paramname"><em>dag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the number of frames in the lattice.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dag</td><td>The lattice in question. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of frames in this lattice. </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>pocketsphinx/<a class="el" href="lattice_8h_source.html">lattice.h</a></li>
 </ul>
 </div><!-- contents -->

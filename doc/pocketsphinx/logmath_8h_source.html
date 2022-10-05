@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,7 +70,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_1ab61053a7725f9ee56d02b0a8f265b2.html">pocketsphinx</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_9f5ec76c697c779781573d4bf110697e.html">pocketsphinx</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -107,127 +114,123 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * ====================================================================</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#ifndef __LOGMATH_H__</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define __LOGMATH_H__</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#include &lt;pocketsphinx/export.h&gt;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="prim__type_8h.html">pocketsphinx/prim_type.h</a>&gt;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#ifndef __LOGMATH_H__</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define __LOGMATH_H__</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/* Fool Emacs. */</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="logmath_8h.html#a8c04c94e2c6364f6cf3b649eb4ce5bfd">   91</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structlogadd__s.html">logadd_s</a> <a class="code" href="structlogadd__s.html">logadd_t</a>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structlogadd__s.html">   92</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structlogadd__s.html">logadd_s</a> {</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="structlogadd__s.html#a27793577d513d85cd73c2daffc140695">   94</a></span>&#160;    <span class="keywordtype">void</span> *<a class="code" href="structlogadd__s.html#a27793577d513d85cd73c2daffc140695">table</a>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="structlogadd__s.html#a484c53a05b46d863d0456af679cee5d8">   96</a></span>&#160;    uint32 <a class="code" href="structlogadd__s.html#a484c53a05b46d863d0456af679cee5d8">table_size</a>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="structlogadd__s.html#a8e35a353d751d957270baf5192007c3e">   98</a></span>&#160;    uint8 <a class="code" href="structlogadd__s.html#a8e35a353d751d957270baf5192007c3e">width</a>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="structlogadd__s.html#a4000a49e71ed2c09da4f34cb5ccaed4b">  100</a></span>&#160;    int8 <a class="code" href="structlogadd__s.html#a4000a49e71ed2c09da4f34cb5ccaed4b">shift</a>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">  106</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>logmath_s <a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="logmath_8h.html#ae5c5ce106e9f8f1e763d419de53317a8">  111</a></span>&#160;<span class="preprocessor">#define LOGMATH_TABLE(lm) ((logadd_t *)lm)</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#include &lt;pocketsphinx/export.h&gt;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="prim__type_8h.html">pocketsphinx/prim_type.h</a>&gt;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/* Fool Emacs. */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>logadd_s <a class="code" href="structlogadd__t.html">logadd_t</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">struct </span>logadd_s {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> *table;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    uint32 table_size;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    uint8 width;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    int8 shift;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>logmath_s <a class="code" href="structlogmath__t.html">logmath_t</a>;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *<a class="code" href="logmath_8h.html#a8b910dcbc8cc2de3e9c60f7a6e6abbf6">logmath_init</a>(float64 base, <span class="keywordtype">int</span> shift, <span class="keywordtype">int</span> use_table);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="logmath_8h.html#ae5c5ce106e9f8f1e763d419de53317a8">  116</a></span>&#160;<span class="preprocessor">#define LOGMATH_TABLE(lm) ((logadd_t *)lm)</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *<a class="code" href="logmath_8h.html#a6f0c9f216b26b2deb7d27007af190f05">logmath_read</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<a class="code" href="structlogmath__t.html">logmath_t</a> *<a class="code" href="structlogmath__t.html#a67fa75e38e518666547d676b1723be86">logmath_init</a>(float64 base, <span class="keywordtype">int</span> shift, <span class="keywordtype">int</span> use_table);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;int32 <a class="code" href="logmath_8h.html#a02bcbb922fcbb4983cc003da84f5da6d">logmath_write</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;int32 <a class="code" href="logmath_8h.html#ae921cd21e0c7c28a5801f5063ddb8228">logmath_get_table_shape</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, uint32 *out_size,</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                              uint32 *out_width, uint32 *out_shift);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;float64 <a class="code" href="logmath_8h.html#a6e619faaacbd3eea427e22b223353754">logmath_get_base</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logmath_8h.html#aa7188fd7b15e28688d86a368e31df2e0">logmath_get_zero</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logmath_8h.html#ae484ab0132dc7324ee9927b660ac77d8">logmath_get_width</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logmath_8h.html#af12b536b7cd046d8c02f98b647e290cd">logmath_get_shift</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *<a class="code" href="logmath_8h.html#aed536dd6fe847876c911b45e79847648">logmath_retain</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logmath_8h.html#a178bfdd5bb8c9f8c84e9e5c00cc343a4">logmath_free</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<a class="code" href="structlogmath__t.html">logmath_t</a> *<a class="code" href="structlogmath__t.html#ad5f25906919e112859a51dec5aa96752">logmath_read</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;int32 <a class="code" href="structlogmath__t.html#a02bcbb922fcbb4983cc003da84f5da6d">logmath_write</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;int32 <a class="code" href="structlogmath__t.html#ae921cd21e0c7c28a5801f5063ddb8228">logmath_get_table_shape</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, uint32 *out_size,</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                              uint32 *out_width, uint32 *out_shift);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;float64 <a class="code" href="structlogmath__t.html#a6e619faaacbd3eea427e22b223353754">logmath_get_base</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">int</span> <a class="code" href="structlogmath__t.html#aa7188fd7b15e28688d86a368e31df2e0">logmath_get_zero</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keywordtype">int</span> <a class="code" href="structlogmath__t.html#ae484ab0132dc7324ee9927b660ac77d8">logmath_get_width</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keywordtype">int</span> <a class="code" href="structlogmath__t.html#af12b536b7cd046d8c02f98b647e290cd">logmath_get_shift</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logmath_8h.html#ab706b56ac49ab2dfa945d2d32758ab55">logmath_add_exact</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p, <span class="keywordtype">int</span> logb_q);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<a class="code" href="structlogmath__t.html">logmath_t</a> *<a class="code" href="structlogmath__t.html#afaa475efd12231945f531fca362d82d9">logmath_retain</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath);</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logmath_8h.html#a49c7b087532d7cf136167ad6cf61e4b3">logmath_add</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p, <span class="keywordtype">int</span> logb_q);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logmath_8h.html#a9e3c7cbe0d9b3ba74b7e6965cacd6d5a">logmath_log</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, float64 p);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;float64 <a class="code" href="logmath_8h.html#a439a78b7c6f5821a750574ececc20fae">logmath_exp</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logmath_8h.html#a66303cb0b91f43452ea500f53ef7eaa5">logmath_ln_to_log</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, float64 log_p);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="keywordtype">int</span> <a class="code" href="structlogmath__t.html#a178bfdd5bb8c9f8c84e9e5c00cc343a4">logmath_free</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keywordtype">int</span> <a class="code" href="structlogmath__t.html#ab706b56ac49ab2dfa945d2d32758ab55">logmath_add_exact</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p, <span class="keywordtype">int</span> logb_q);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="keywordtype">int</span> <a class="code" href="structlogmath__t.html#a49c7b087532d7cf136167ad6cf61e4b3">logmath_add</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p, <span class="keywordtype">int</span> logb_q);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;float64 <a class="code" href="logmath_8h.html#abaff7c0ba0976c7cf8f232d8340b7b2f">logmath_log_to_ln</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keywordtype">int</span> <a class="code" href="structlogmath__t.html#a9e3c7cbe0d9b3ba74b7e6965cacd6d5a">logmath_log</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, float64 p);</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logmath_8h.html#abb7027d633f0cabb372504e189e7b4b0">logmath_log10_to_log</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, float64 log_p);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keywordtype">float</span> <a class="code" href="logmath_8h.html#a9cc2394054dc95d9e94720d036f28a41">logmath_log10_to_log_float</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, float64 log_p);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;float64 <a class="code" href="logmath_8h.html#ac8fe69a67fcca378b1e5a32428899a23">logmath_log_to_log10</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;POCKETSPHINX_EXPORT</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;float64 <a class="code" href="logmath_8h.html#a4e596e6d01e92280e0caa24a48727afb">logmath_log_float_to_log10</a>(<a class="code" href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a> *lmath, <span class="keywordtype">float</span> log_p);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;float64 <a class="code" href="structlogmath__t.html#a439a78b7c6f5821a750574ececc20fae">logmath_exp</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="keywordtype">int</span> <a class="code" href="structlogmath__t.html#a66303cb0b91f43452ea500f53ef7eaa5">logmath_ln_to_log</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, float64 log_p);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;float64 <a class="code" href="structlogmath__t.html#abaff7c0ba0976c7cf8f232d8340b7b2f">logmath_log_to_ln</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keywordtype">int</span> <a class="code" href="structlogmath__t.html#abb7027d633f0cabb372504e189e7b4b0">logmath_log10_to_log</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, float64 log_p);</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*  __LOGMATH_H__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keywordtype">float</span> <a class="code" href="structlogmath__t.html#a9cc2394054dc95d9e94720d036f28a41">logmath_log10_to_log_float</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, float64 log_p);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;float64 <a class="code" href="structlogmath__t.html#ac8fe69a67fcca378b1e5a32428899a23">logmath_log_to_log10</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, <span class="keywordtype">int</span> logb_p);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;POCKETSPHINX_EXPORT</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;float64 <a class="code" href="structlogmath__t.html#a4e596e6d01e92280e0caa24a48727afb">logmath_log_float_to_log10</a>(<a class="code" href="structlogmath__t.html">logmath_t</a> *lmath, <span class="keywordtype">float</span> log_p);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*  __LOGMATH_H__ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="alogmath_8h_html_abaff7c0ba0976c7cf8f232d8340b7b2f"><div class="ttname"><a href="logmath_8h.html#abaff7c0ba0976c7cf8f232d8340b7b2f">logmath_log_to_ln</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_log_to_ln(logmath_t *lmath, int logb_p)</div></div>
-<div class="ttc" id="alogmath_8h_html_ae613aa7db1dd40ff56a80a7dadb22cc8"><div class="ttname"><a href="logmath_8h.html#ae613aa7db1dd40ff56a80a7dadb22cc8">logmath_t</a></div><div class="ttdeci">struct logmath_s logmath_t</div><div class="ttdef"><b>Definition:</b> logmath.h:106</div></div>
-<div class="ttc" id="alogmath_8h_html_a6e619faaacbd3eea427e22b223353754"><div class="ttname"><a href="logmath_8h.html#a6e619faaacbd3eea427e22b223353754">logmath_get_base</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_get_base(logmath_t *lmath)</div></div>
-<div class="ttc" id="astructlogadd__s_html_a27793577d513d85cd73c2daffc140695"><div class="ttname"><a href="structlogadd__s.html#a27793577d513d85cd73c2daffc140695">logadd_s::table</a></div><div class="ttdeci">void * table</div><div class="ttdef"><b>Definition:</b> logmath.h:94</div></div>
+<div class="ttc" id="astructlogadd__t_html"><div class="ttname"><a href="structlogadd__t.html">logadd_t</a></div><div class="ttdoc">Integer log math computation table.</div></div>
 <div class="ttc" id="aprim__type_8h_html"><div class="ttname"><a href="prim__type_8h.html">prim_type.h</a></div><div class="ttdoc">Basic type definitions used in Sphinx.</div></div>
-<div class="ttc" id="alogmath_8h_html_aa7188fd7b15e28688d86a368e31df2e0"><div class="ttname"><a href="logmath_8h.html#aa7188fd7b15e28688d86a368e31df2e0">logmath_get_zero</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_get_zero(logmath_t *lmath)</div></div>
-<div class="ttc" id="alogmath_8h_html_ac8fe69a67fcca378b1e5a32428899a23"><div class="ttname"><a href="logmath_8h.html#ac8fe69a67fcca378b1e5a32428899a23">logmath_log_to_log10</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_log_to_log10(logmath_t *lmath, int logb_p)</div></div>
-<div class="ttc" id="alogmath_8h_html_a49c7b087532d7cf136167ad6cf61e4b3"><div class="ttname"><a href="logmath_8h.html#a49c7b087532d7cf136167ad6cf61e4b3">logmath_add</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_add(logmath_t *lmath, int logb_p, int logb_q)</div></div>
-<div class="ttc" id="alogmath_8h_html_abb7027d633f0cabb372504e189e7b4b0"><div class="ttname"><a href="logmath_8h.html#abb7027d633f0cabb372504e189e7b4b0">logmath_log10_to_log</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_log10_to_log(logmath_t *lmath, float64 log_p)</div></div>
-<div class="ttc" id="astructlogadd__s_html_a4000a49e71ed2c09da4f34cb5ccaed4b"><div class="ttname"><a href="structlogadd__s.html#a4000a49e71ed2c09da4f34cb5ccaed4b">logadd_s::shift</a></div><div class="ttdeci">int8 shift</div><div class="ttdef"><b>Definition:</b> logmath.h:100</div></div>
-<div class="ttc" id="alogmath_8h_html_ae921cd21e0c7c28a5801f5063ddb8228"><div class="ttname"><a href="logmath_8h.html#ae921cd21e0c7c28a5801f5063ddb8228">logmath_get_table_shape</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int32 logmath_get_table_shape(logmath_t *lmath, uint32 *out_size, uint32 *out_width, uint32 *out_shift)</div></div>
-<div class="ttc" id="astructlogadd__s_html_a8e35a353d751d957270baf5192007c3e"><div class="ttname"><a href="structlogadd__s.html#a8e35a353d751d957270baf5192007c3e">logadd_s::width</a></div><div class="ttdeci">uint8 width</div><div class="ttdef"><b>Definition:</b> logmath.h:98</div></div>
-<div class="ttc" id="astructlogadd__s_html"><div class="ttname"><a href="structlogadd__s.html">logadd_s</a></div><div class="ttdef"><b>Definition:</b> logmath.h:92</div></div>
-<div class="ttc" id="alogmath_8h_html_a9cc2394054dc95d9e94720d036f28a41"><div class="ttname"><a href="logmath_8h.html#a9cc2394054dc95d9e94720d036f28a41">logmath_log10_to_log_float</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float logmath_log10_to_log_float(logmath_t *lmath, float64 log_p)</div></div>
-<div class="ttc" id="alogmath_8h_html_aed536dd6fe847876c911b45e79847648"><div class="ttname"><a href="logmath_8h.html#aed536dd6fe847876c911b45e79847648">logmath_retain</a></div><div class="ttdeci">POCKETSPHINX_EXPORT logmath_t * logmath_retain(logmath_t *lmath)</div></div>
-<div class="ttc" id="alogmath_8h_html_ae484ab0132dc7324ee9927b660ac77d8"><div class="ttname"><a href="logmath_8h.html#ae484ab0132dc7324ee9927b660ac77d8">logmath_get_width</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_get_width(logmath_t *lmath)</div></div>
-<div class="ttc" id="alogmath_8h_html_ab706b56ac49ab2dfa945d2d32758ab55"><div class="ttname"><a href="logmath_8h.html#ab706b56ac49ab2dfa945d2d32758ab55">logmath_add_exact</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_add_exact(logmath_t *lmath, int logb_p, int logb_q)</div></div>
-<div class="ttc" id="alogmath_8h_html_a4e596e6d01e92280e0caa24a48727afb"><div class="ttname"><a href="logmath_8h.html#a4e596e6d01e92280e0caa24a48727afb">logmath_log_float_to_log10</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_log_float_to_log10(logmath_t *lmath, float log_p)</div></div>
-<div class="ttc" id="alogmath_8h_html_a6f0c9f216b26b2deb7d27007af190f05"><div class="ttname"><a href="logmath_8h.html#a6f0c9f216b26b2deb7d27007af190f05">logmath_read</a></div><div class="ttdeci">POCKETSPHINX_EXPORT logmath_t * logmath_read(const char *filename)</div></div>
-<div class="ttc" id="alogmath_8h_html_a8b910dcbc8cc2de3e9c60f7a6e6abbf6"><div class="ttname"><a href="logmath_8h.html#a8b910dcbc8cc2de3e9c60f7a6e6abbf6">logmath_init</a></div><div class="ttdeci">POCKETSPHINX_EXPORT logmath_t * logmath_init(float64 base, int shift, int use_table)</div></div>
-<div class="ttc" id="alogmath_8h_html_a9e3c7cbe0d9b3ba74b7e6965cacd6d5a"><div class="ttname"><a href="logmath_8h.html#a9e3c7cbe0d9b3ba74b7e6965cacd6d5a">logmath_log</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_log(logmath_t *lmath, float64 p)</div></div>
-<div class="ttc" id="alogmath_8h_html_a439a78b7c6f5821a750574ececc20fae"><div class="ttname"><a href="logmath_8h.html#a439a78b7c6f5821a750574ececc20fae">logmath_exp</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_exp(logmath_t *lmath, int logb_p)</div></div>
-<div class="ttc" id="alogmath_8h_html_a178bfdd5bb8c9f8c84e9e5c00cc343a4"><div class="ttname"><a href="logmath_8h.html#a178bfdd5bb8c9f8c84e9e5c00cc343a4">logmath_free</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_free(logmath_t *lmath)</div></div>
-<div class="ttc" id="alogmath_8h_html_af12b536b7cd046d8c02f98b647e290cd"><div class="ttname"><a href="logmath_8h.html#af12b536b7cd046d8c02f98b647e290cd">logmath_get_shift</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_get_shift(logmath_t *lmath)</div></div>
-<div class="ttc" id="astructlogadd__s_html_a484c53a05b46d863d0456af679cee5d8"><div class="ttname"><a href="structlogadd__s.html#a484c53a05b46d863d0456af679cee5d8">logadd_s::table_size</a></div><div class="ttdeci">uint32 table_size</div><div class="ttdef"><b>Definition:</b> logmath.h:96</div></div>
-<div class="ttc" id="alogmath_8h_html_a02bcbb922fcbb4983cc003da84f5da6d"><div class="ttname"><a href="logmath_8h.html#a02bcbb922fcbb4983cc003da84f5da6d">logmath_write</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int32 logmath_write(logmath_t *lmath, const char *filename)</div></div>
-<div class="ttc" id="alogmath_8h_html_a66303cb0b91f43452ea500f53ef7eaa5"><div class="ttname"><a href="logmath_8h.html#a66303cb0b91f43452ea500f53ef7eaa5">logmath_ln_to_log</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_ln_to_log(logmath_t *lmath, float64 log_p)</div></div>
+<div class="ttc" id="astructlogmath__t_html_ad5f25906919e112859a51dec5aa96752"><div class="ttname"><a href="structlogmath__t.html#ad5f25906919e112859a51dec5aa96752">logmath_t::logmath_read</a></div><div class="ttdeci">POCKETSPHINX_EXPORT logmath_t * logmath_read(const char *filename)</div></div>
+<div class="ttc" id="astructlogmath__t_html_a9e3c7cbe0d9b3ba74b7e6965cacd6d5a"><div class="ttname"><a href="structlogmath__t.html#a9e3c7cbe0d9b3ba74b7e6965cacd6d5a">logmath_t::logmath_log</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_log(logmath_t *lmath, float64 p)</div></div>
+<div class="ttc" id="astructlogmath__t_html_ab706b56ac49ab2dfa945d2d32758ab55"><div class="ttname"><a href="structlogmath__t.html#ab706b56ac49ab2dfa945d2d32758ab55">logmath_t::logmath_add_exact</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_add_exact(logmath_t *lmath, int logb_p, int logb_q)</div></div>
+<div class="ttc" id="astructlogmath__t_html_ae921cd21e0c7c28a5801f5063ddb8228"><div class="ttname"><a href="structlogmath__t.html#ae921cd21e0c7c28a5801f5063ddb8228">logmath_t::logmath_get_table_shape</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int32 logmath_get_table_shape(logmath_t *lmath, uint32 *out_size, uint32 *out_width, uint32 *out_shift)</div></div>
+<div class="ttc" id="astructlogmath__t_html_afaa475efd12231945f531fca362d82d9"><div class="ttname"><a href="structlogmath__t.html#afaa475efd12231945f531fca362d82d9">logmath_t::logmath_retain</a></div><div class="ttdeci">POCKETSPHINX_EXPORT logmath_t * logmath_retain(logmath_t *lmath)</div></div>
+<div class="ttc" id="astructlogmath__t_html_a439a78b7c6f5821a750574ececc20fae"><div class="ttname"><a href="structlogmath__t.html#a439a78b7c6f5821a750574ececc20fae">logmath_t::logmath_exp</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_exp(logmath_t *lmath, int logb_p)</div></div>
+<div class="ttc" id="astructlogmath__t_html_af12b536b7cd046d8c02f98b647e290cd"><div class="ttname"><a href="structlogmath__t.html#af12b536b7cd046d8c02f98b647e290cd">logmath_t::logmath_get_shift</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_get_shift(logmath_t *lmath)</div></div>
+<div class="ttc" id="astructlogmath__t_html_a9cc2394054dc95d9e94720d036f28a41"><div class="ttname"><a href="structlogmath__t.html#a9cc2394054dc95d9e94720d036f28a41">logmath_t::logmath_log10_to_log_float</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float logmath_log10_to_log_float(logmath_t *lmath, float64 log_p)</div></div>
+<div class="ttc" id="astructlogmath__t_html_a66303cb0b91f43452ea500f53ef7eaa5"><div class="ttname"><a href="structlogmath__t.html#a66303cb0b91f43452ea500f53ef7eaa5">logmath_t::logmath_ln_to_log</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_ln_to_log(logmath_t *lmath, float64 log_p)</div></div>
+<div class="ttc" id="astructlogmath__t_html_a6e619faaacbd3eea427e22b223353754"><div class="ttname"><a href="structlogmath__t.html#a6e619faaacbd3eea427e22b223353754">logmath_t::logmath_get_base</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_get_base(logmath_t *lmath)</div></div>
+<div class="ttc" id="astructlogmath__t_html_a4e596e6d01e92280e0caa24a48727afb"><div class="ttname"><a href="structlogmath__t.html#a4e596e6d01e92280e0caa24a48727afb">logmath_t::logmath_log_float_to_log10</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_log_float_to_log10(logmath_t *lmath, float log_p)</div></div>
+<div class="ttc" id="astructlogmath__t_html_ae484ab0132dc7324ee9927b660ac77d8"><div class="ttname"><a href="structlogmath__t.html#ae484ab0132dc7324ee9927b660ac77d8">logmath_t::logmath_get_width</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_get_width(logmath_t *lmath)</div></div>
+<div class="ttc" id="astructlogmath__t_html_a178bfdd5bb8c9f8c84e9e5c00cc343a4"><div class="ttname"><a href="structlogmath__t.html#a178bfdd5bb8c9f8c84e9e5c00cc343a4">logmath_t::logmath_free</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_free(logmath_t *lmath)</div></div>
+<div class="ttc" id="astructlogmath__t_html_abb7027d633f0cabb372504e189e7b4b0"><div class="ttname"><a href="structlogmath__t.html#abb7027d633f0cabb372504e189e7b4b0">logmath_t::logmath_log10_to_log</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_log10_to_log(logmath_t *lmath, float64 log_p)</div></div>
+<div class="ttc" id="astructlogmath__t_html_a49c7b087532d7cf136167ad6cf61e4b3"><div class="ttname"><a href="structlogmath__t.html#a49c7b087532d7cf136167ad6cf61e4b3">logmath_t::logmath_add</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_add(logmath_t *lmath, int logb_p, int logb_q)</div></div>
+<div class="ttc" id="astructlogmath__t_html"><div class="ttname"><a href="structlogmath__t.html">logmath_t</a></div><div class="ttdoc">Integer log math computation class.</div></div>
+<div class="ttc" id="astructlogmath__t_html_a67fa75e38e518666547d676b1723be86"><div class="ttname"><a href="structlogmath__t.html#a67fa75e38e518666547d676b1723be86">logmath_t::logmath_init</a></div><div class="ttdeci">POCKETSPHINX_EXPORT logmath_t * logmath_init(float64 base, int shift, int use_table)</div></div>
+<div class="ttc" id="astructlogmath__t_html_ac8fe69a67fcca378b1e5a32428899a23"><div class="ttname"><a href="structlogmath__t.html#ac8fe69a67fcca378b1e5a32428899a23">logmath_t::logmath_log_to_log10</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_log_to_log10(logmath_t *lmath, int logb_p)</div></div>
+<div class="ttc" id="astructlogmath__t_html_a02bcbb922fcbb4983cc003da84f5da6d"><div class="ttname"><a href="structlogmath__t.html#a02bcbb922fcbb4983cc003da84f5da6d">logmath_t::logmath_write</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int32 logmath_write(logmath_t *lmath, const char *filename)</div></div>
+<div class="ttc" id="astructlogmath__t_html_abaff7c0ba0976c7cf8f232d8340b7b2f"><div class="ttname"><a href="structlogmath__t.html#abaff7c0ba0976c7cf8f232d8340b7b2f">logmath_t::logmath_log_to_ln</a></div><div class="ttdeci">POCKETSPHINX_EXPORT float64 logmath_log_to_ln(logmath_t *lmath, int logb_p)</div></div>
+<div class="ttc" id="astructlogmath__t_html_aa7188fd7b15e28688d86a368e31df2e0"><div class="ttname"><a href="structlogmath__t.html#aa7188fd7b15e28688d86a368e31df2e0">logmath_t::logmath_get_zero</a></div><div class="ttdeci">POCKETSPHINX_EXPORT int logmath_get_zero(logmath_t *lmath)</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

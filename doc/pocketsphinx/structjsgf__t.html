@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,6 +70,9 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structjsgf__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">jsgf_t Struct Reference</div>  </div>
 </div><!--header-->
@@ -71,10 +81,289 @@ $(function() {
 <p>JSGF parser.  
  <a href="structjsgf__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="model_8h_source.html">model.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="model_8h_source.html">pocketsphinx/model.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a5988aae174c3ea4a8458c68dd737272e"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__t.html#a5988aae174c3ea4a8458c68dd737272e">jsgf_parse_file</a> (const char *filename, <a class="el" href="structjsgf__t.html">jsgf_t</a> *parent)</td></tr>
+<tr class="separator:a5988aae174c3ea4a8458c68dd737272e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c261446ef7e5eb84b4c0cd7ea403a4c"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__t.html#a2c261446ef7e5eb84b4c0cd7ea403a4c">jsgf_parse_string</a> (const char *string, <a class="el" href="structjsgf__t.html">jsgf_t</a> *parent)</td></tr>
+<tr class="separator:a2c261446ef7e5eb84b4c0cd7ea403a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24cb617b9b03613f765becd40bd6cf97"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__t.html#a24cb617b9b03613f765becd40bd6cf97">jsgf_grammar_name</a> (<a class="el" href="structjsgf__t.html">jsgf_t</a> *jsgf)</td></tr>
+<tr class="separator:a24cb617b9b03613f765becd40bd6cf97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad33f663dddfec516122f2ee0d5c58b89"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__t.html#ad33f663dddfec516122f2ee0d5c58b89">jsgf_grammar_free</a> (<a class="el" href="structjsgf__t.html">jsgf_t</a> *jsgf)</td></tr>
+<tr class="separator:ad33f663dddfec516122f2ee0d5c58b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0bf791d1ae06bf952d30401377767c8"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__t.html#ab0bf791d1ae06bf952d30401377767c8">jsgf_get_rule</a> (<a class="el" href="structjsgf__t.html">jsgf_t</a> *grammar, const char *name)</td></tr>
+<tr class="separator:ab0bf791d1ae06bf952d30401377767c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4c63ff31f11effef78a867cc61c9937"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__t.html#ac4c63ff31f11effef78a867cc61c9937">jsgf_get_public_rule</a> (<a class="el" href="structjsgf__t.html">jsgf_t</a> *grammar)</td></tr>
+<tr class="separator:ac4c63ff31f11effef78a867cc61c9937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78d604e387eb282d66e1017bf2ef718"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__rule__iter__t.html">jsgf_rule_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__t.html#ab78d604e387eb282d66e1017bf2ef718">jsgf_rule_iter</a> (<a class="el" href="structjsgf__t.html">jsgf_t</a> *grammar)</td></tr>
+<tr class="separator:ab78d604e387eb282d66e1017bf2ef718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3351602453d463a51eb6e9fa832dc956"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__t.html#a3351602453d463a51eb6e9fa832dc956">jsgf_build_fsg</a> (<a class="el" href="structjsgf__t.html">jsgf_t</a> *grammar, <a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *rule, <a class="el" href="structlogmath__t.html">logmath_t</a> *lmath, float32 lw)</td></tr>
+<tr class="separator:a3351602453d463a51eb6e9fa832dc956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab31ecf0ecdde813d744f7830f29e58db"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjsgf__t.html#ab31ecf0ecdde813d744f7830f29e58db">jsgf_write_fsg</a> (<a class="el" href="structjsgf__t.html">jsgf_t</a> *grammar, <a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *rule, FILE *outfh)</td></tr>
+<tr class="separator:ab31ecf0ecdde813d744f7830f29e58db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>JSGF parser. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5988aae174c3ea4a8458c68dd737272e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5988aae174c3ea4a8458c68dd737272e">&#9670;&nbsp;</a></span>jsgf_parse_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__t.html">jsgf_t</a> * jsgf_parse_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Parse a JSGF grammar from a file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the name of the file to parse. </td></tr>
+    <tr><td class="paramname">parent</td><td>optional parent grammar for this one (NULL, usually). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>new JSGF grammar object, or NULL on failure. </dd></dl>
+
+</div>
+</div>
+<a id="a2c261446ef7e5eb84b4c0cd7ea403a4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c261446ef7e5eb84b4c0cd7ea403a4c">&#9670;&nbsp;</a></span>jsgf_parse_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__t.html">jsgf_t</a> * jsgf_parse_string </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Parse a JSGF grammar from a string.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>0-terminated string with grammar. </td></tr>
+    <tr><td class="paramname">parent</td><td>optional parent grammar for this one (NULL, usually). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>new JSGF grammar object, or NULL on failure. </dd></dl>
+
+</div>
+</div>
+<a id="a24cb617b9b03613f765becd40bd6cf97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24cb617b9b03613f765becd40bd6cf97">&#9670;&nbsp;</a></span>jsgf_grammar_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT const char * jsgf_grammar_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td>
+          <td class="paramname"><em>jsgf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the grammar name from the file. </p>
+
+</div>
+</div>
+<a id="ad33f663dddfec516122f2ee0d5c58b89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad33f663dddfec516122f2ee0d5c58b89">&#9670;&nbsp;</a></span>jsgf_grammar_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void jsgf_grammar_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td>
+          <td class="paramname"><em>jsgf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Free a JSGF grammar. </p>
+
+</div>
+</div>
+<a id="ab0bf791d1ae06bf952d30401377767c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0bf791d1ae06bf952d30401377767c8">&#9670;&nbsp;</a></span>jsgf_get_rule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> * jsgf_get_rule </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td>
+          <td class="paramname"><em>grammar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get a rule by name from a grammar. Name should not contain brackets. </p>
+
+</div>
+</div>
+<a id="ac4c63ff31f11effef78a867cc61c9937"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4c63ff31f11effef78a867cc61c9937">&#9670;&nbsp;</a></span>jsgf_get_public_rule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> * jsgf_get_public_rule </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td>
+          <td class="paramname"><em>grammar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the first public rule of the grammar </p>
+
+</div>
+</div>
+<a id="ab78d604e387eb282d66e1017bf2ef718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab78d604e387eb282d66e1017bf2ef718">&#9670;&nbsp;</a></span>jsgf_rule_iter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structjsgf__rule__iter__t.html">jsgf_rule_iter_t</a> * jsgf_rule_iter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td>
+          <td class="paramname"><em>grammar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get an iterator over all rules in a grammar. </p>
+
+</div>
+</div>
+<a id="a3351602453d463a51eb6e9fa832dc956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3351602453d463a51eb6e9fa832dc956">&#9670;&nbsp;</a></span>jsgf_build_fsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> * jsgf_build_fsg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td>
+          <td class="paramname"><em>grammar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *&#160;</td>
+          <td class="paramname"><em>rule</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structlogmath__t.html">logmath_t</a> *&#160;</td>
+          <td class="paramname"><em>lmath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float32&#160;</td>
+          <td class="paramname"><em>lw</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Build a Sphinx FSG object from a JSGF rule. </p>
+
+</div>
+</div>
+<a id="ab31ecf0ecdde813d744f7830f29e58db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab31ecf0ecdde813d744f7830f29e58db">&#9670;&nbsp;</a></span>jsgf_write_fsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int jsgf_write_fsg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjsgf__t.html">jsgf_t</a> *&#160;</td>
+          <td class="paramname"><em>grammar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjsgf__rule__t.html">jsgf_rule_t</a> *&#160;</td>
+          <td class="paramname"><em>rule</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>outfh</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Convert a JSGF rule to Sphinx FSG text form.</p>
+<p>This does a direct conversion without doing transitive closure on null transitions and so forth. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>pocketsphinx/<a class="el" href="model_8h_source.html">model.h</a></li>
 </ul>
 </div><!-- contents -->

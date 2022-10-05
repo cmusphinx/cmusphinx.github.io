@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,6 +70,9 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structps__latnode__iter__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ps_latnode_iter_t Struct Reference</div>  </div>
 </div><!--header-->
@@ -71,10 +81,137 @@ $(function() {
 <p>Iterator over DAG nodes.  
  <a href="structps__latnode__iter__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="lattice_8h_source.html">lattice.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="lattice_8h_source.html">pocketsphinx/lattice.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a6b62626b9613fe78a1b74a9b8e969c33"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__latnode__iter__t.html#a6b62626b9613fe78a1b74a9b8e969c33">ps_latnode_iter_next</a> (<a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *itor)</td></tr>
+<tr class="separator:a6b62626b9613fe78a1b74a9b8e969c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9a6464b83d37bfa2ce570206eff6aad"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__latnode__iter__t.html#ae9a6464b83d37bfa2ce570206eff6aad">ps_latnode_iter_free</a> (<a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *itor)</td></tr>
+<tr class="separator:ae9a6464b83d37bfa2ce570206eff6aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36ccc88328881079f3fe511c993072b0"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__latnode__iter__t.html#a36ccc88328881079f3fe511c993072b0">ps_latnode_iter_node</a> (<a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *itor)</td></tr>
+<tr class="separator:a36ccc88328881079f3fe511c993072b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42bd0fbfe8b0cab1a9a7e799a3fc30a2"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structps__latnode__iter__t.html#a42bd0fbfe8b0cab1a9a7e799a3fc30a2">ps_latnode_times</a> (<a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *node, int16 *out_fef, int16 *out_lef)</td></tr>
+<tr class="separator:a42bd0fbfe8b0cab1a9a7e799a3fc30a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Iterator over DAG nodes. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6b62626b9613fe78a1b74a9b8e969c33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b62626b9613fe78a1b74a9b8e969c33">&#9670;&nbsp;</a></span>ps_latnode_iter_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> * ps_latnode_iter_next </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Move to next node in iteration.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itor</td><td>Node iterator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated node iterator, or NULL if finished </dd></dl>
+
+</div>
+</div>
+<a id="ae9a6464b83d37bfa2ce570206eff6aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9a6464b83d37bfa2ce570206eff6aad">&#9670;&nbsp;</a></span>ps_latnode_iter_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void ps_latnode_iter_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stop iterating over nodes.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itor</td><td>Node iterator. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a36ccc88328881079f3fe511c993072b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36ccc88328881079f3fe511c993072b0">&#9670;&nbsp;</a></span>ps_latnode_iter_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structps__latnode__t.html">ps_latnode_t</a> * ps_latnode_iter_node </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__latnode__iter__t.html">ps_latnode_iter_t</a> *&#160;</td>
+          <td class="paramname"><em>itor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get node from iterator. </p>
+
+</div>
+</div>
+<a id="a42bd0fbfe8b0cab1a9a7e799a3fc30a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42bd0fbfe8b0cab1a9a7e799a3fc30a2">&#9670;&nbsp;</a></span>ps_latnode_times()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int ps_latnode_times </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structps__latnode__t.html">ps_latnode_t</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16 *&#160;</td>
+          <td class="paramname"><em>out_fef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16 *&#160;</td>
+          <td class="paramname"><em>out_lef</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get start and end time range for a node.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>Node inquired about. </td></tr>
+    <tr><td class="paramname">out_fef</td><td>Output: End frame of first exit from this node. </td></tr>
+    <tr><td class="paramname">out_lef</td><td>Output: End frame of last exit from this node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Start frame for all edges exiting this node. </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>pocketsphinx/<a class="el" href="lattice_8h_source.html">lattice.h</a></li>
 </ul>
 </div><!-- contents -->

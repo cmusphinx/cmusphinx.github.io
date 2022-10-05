@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -67,21 +74,24 @@ $(function() {
 <div class="title">PocketSphinx API Documentation </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#intro_sec">Introduction</a></li>
+<li class="level1"><a href="#install_sec">Installation</a></li>
+<li class="level1"><a href="#programming_sec">Using the Library</a></li>
+<li class="level1"><a href="#faq_sec">Frequently Asked Questions</a></li>
+<li class="level1"><a href="#thanks_sec">Acknowledgements</a></li>
+</ul>
+</div>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>David Huggins-Daines <a href="#" onclick="location.href='mai'+'lto:'+'dhd'+'ai'+'nes'+'@g'+'mai'+'l.'+'com'; return false;">dhdai<span style="display: none;">.nosp@m.</span>nes@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>5.0.0rc5 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>September 28, 2022</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>5.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>October 5, 2022</dd></dl>
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p>This is the documentation for the PocketSphinx speech recognition engine. The main API calls are documented in &lt;<a class="el" href="pocketsphinx_8h.html">pocketsphinx.h</a>&gt;.</p>
+<p>This is the documentation for the PocketSphinx speech recognition engine. The main API calls are documented in <a class="el" href="structps__decoder__t.html">ps_decoder_t</a> and <a class="el" href="structps__config__t.html">ps_config_t</a>. The organization of this document is not optimal due to the limitations of Doxygen, so if you know of a better tool for documenting object-oriented interfaces in C, please let me know.</p>
 <h1><a class="anchor" id="install_sec"></a>
 Installation</h1>
 <p>To install from source, you will need a C compiler and a recent version of CMake. If you wish to use an integrated development environment, Visual Studio Code will automate most of this process for you once you have installed C++ and CMake support as described at <a href="https://code.visualstudio.com/docs/languages/cpp">https://code.visualstudio.com/docs/languages/cpp</a></p>
-<h2><a class="anchor" id="python_install"></a>
-Python module install</h2>
-<p>The easiest way to program PocketSphinx is with the Python module. This can be installed in a <a href="https://docs.python.org/3/library/venv.html">VirtualEnv</a> or <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html">Conda</a> environment without affecting the rest of your system. For example, from the <em>top-level source directory</em>: </p><pre class="fragment">python3 -m venv ~/ve_pocketsphinx
-. ~/ve_pocketsphinx/bin/activate
-pip install .
-</pre><p>There is no need to create a separate build directory as <code>pip</code> will do this for you.</p>
+<p>The easiest way to program PocketSphinx is with the Python module. See <a href="http://pocketsphinx.readthedocs.io/">http://pocketsphinx.readthedocs.io/</a> for installation and usage instructions.</p>
 <h2><a class="anchor" id="unix_install"></a>
 Unix-like systems</h2>
 <p>From the top-level source directory, use CMake to generate a build directory: </p><pre class="fragment">cmake -S . -B build
@@ -89,26 +99,50 @@ Unix-like systems</h2>
 cmake --build build --target check
 cmake --build build --target install
 </pre><p>By default CMake will try to install things in <code>/usr/local</code>, which you might not have access to. If you want to install somewhere else you need to set <code>CMAKE_INSTALL_PREFIX</code> <em>when running cmake for the first time</em>, for example: </p><pre class="fragment">cmake -S . -B build -DCMAKE_INSTALL_PREFIX=$HOME/.local
-</pre><p>In this case you may also need to set the <code>LD_LIBRARY_PATH</code> environment variable so that the PocketSphinx library can be found: </p><pre class="fragment">export LD_LIBRARY_PATH=$HOME/.local/lib
 </pre><h2><a class="anchor" id="windows_install"></a>
 Windows</h2>
-<p>On Windows, the process is similar, but you will need to tell CMake what build tool you are using with the <code>-G</code> option, and there are many of them. The build is known to work with <code>nmake</code> but it is easiest just to use Visual Studio Code, which should automatically detect and offer to run the build when you add the source directory to your list of directories. Once built, you will find the DLL and EXE files in <code>build\Debug</code> or <code>build\Release</code> depending on your build type. If the EXE files do not run, you need to ensure that <code>pocketsphinx.dll</code> is located in the same directory as them.</p>
+<p>On Windows, the process is similar, but you will need to tell CMake what build tool you are using with the <code>-G</code> option, and there are many of them. The build is known to work with <code>nmake</code> but it is easiest just to use Visual Studio Code, which should automatically detect and offer to run the build when you add the source directory to your list of directories. Once built, you will find the EXE files in <code>build\Debug</code> or <code>build\Release</code> depending on your build type.</p>
+<h2><a class="anchor" id="build_options"></a>
+Compilation options</h2>
+<p>By default, PocketSphinx does <em>not</em> build shared libraries, as there are not very many executables, and the library is quite smol. If you insist on building them, you can add <code>BUILD_SHARED_LIBS=ON</code> to the CMake configuration. This is done either in the CMake GUI, in Visual Studio Code, or with the <code>-D</code> option to the first CMake command-line above, e.g.: </p><pre class="fragment">cmake -S. -B build -DBUILD_SHARED_LIBS=ON
+</pre><p>GStreamer support is not built by default, but can be enabled with <code>BUILD_GSTREAMER=ON</code>.</p>
+<p>PocketSphinx uses a mixture of fixed and floating-point computation by default, but can be configured to use fixed-point (nearly) exclusively with <code>FIXED_POINT=ON</code>.</p>
 <h1><a class="anchor" id="programming_sec"></a>
 Using the Library</h1>
-<p>The Python interface is documented at <a href="http://pocketsphinx.readthedocs.io/,">http://pocketsphinx.readthedocs.io/,</a> where you will find a quick start guide as well as a full API reference.</p>
+<p>Minimally, to do speech recognition, you must first create a configuration, using <a class="el" href="structps__config__t.html">ps_config_t</a> and its associated functions. This configuration is then passed to <a class="el" href="structps__config__t.html#a69b05a7582ee80ff206fb1e4d709bc4c">ps_init()</a> to initialize the decoder, which is returned as a <a class="el" href="structps__decoder__t.html">ps_decoder_t</a>. Note that you must ultimately release the configuration with <a class="el" href="structps__config__t.html#a58efc9357b6871c0575be7ea59f326b0">ps_config_free()</a> to avoid memory leaks.</p>
+<p>At this point, you can start an "utterance" (a section of speech you wish to recognize) with <a class="el" href="structps__decoder__t.html#ade3909b1c12c1b70afe284639e70cbff">ps_start_utt()</a> and pass audio data to the decoder with <a class="el" href="structps__decoder__t.html#a572ad08651b4caae820d178a12c8f95f">ps_process_raw()</a>. When finished, call <a class="el" href="structps__decoder__t.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt()</a> to finalize recognition. The result can then be obtained with <a class="el" href="structps__decoder__t.html#a6846d8c5dc2abfc9e92b6ae553c594b0">ps_get_hyp()</a>. To get a detailed word segmentation, use <a class="el" href="structps__decoder__t.html#ab0353879769209971677296b937b9aae">ps_seg_iter()</a>. To get the N-best results, use <a class="el" href="structps__decoder__t.html#ab9c09bbe581a5ad2cdb42530c6ab009e">ps_nbest()</a>.</p>
+<p>When you no longer need the decoder, release its memory with <a class="el" href="structps__decoder__t.html#ad8fd9b79ae9f87703af3f4755b3ab567">ps_free()</a>.</p>
+<p>A concrete example can be found in <a class="el" href="simple_8c-example.html">simple.c</a>.</p>
+<p>You may, however, wish to do more interesting things like segmenting and recognizing speech from an audio stream. As described below, PocketSphinx will <em>not</em> handle the details of microphone input for you, because doing this in a reliable and portable way is outside the scope of a speech recognizer. If you have <code>sox</code>, you can use the method shown in <a class="el" href="live_8c-example.html">live.c</a>.</p>
 <h1><a class="anchor" id="faq_sec"></a>
 Frequently Asked Questions</h1>
+<h2><a class="anchor" id="faq_api"></a>
+My code no longer compiles! Why?</h2>
+<p>Some APIs were intentionally broken by the 5.0.0 release. The most likely culprit here is the configuration API, where the old "options" which started with a <code>-</code> are now "parameters" which do not, and instead of a <code>cmd_ln_t</code> it is now a <code><a class="el" href="structps__config__t.html" title="configuration object.">ps_config_t</a></code>. There is no backward compatibility, you have to change your code manually. This is straightforward for the most part. For example, instead of writing: </p><pre class="fragment">cmdln = cmd_ln_init(NULL, "-samprate", "16000", NULL);
+cmd_ln_set_int32_r(NULL, "-maxwpf", 40);
+</pre><p>You should write: </p><pre class="fragment">config = ps_config_init(NULL);
+ps_config_set_int(config, "samprate", 16000);
+ps_config_set_int(config, "maxwpf", 40);
+</pre><p>Another likely suspect is the <a class="el" href="search_8h.html">search module API</a> where the function names have been changed to be more intuitive. Wherever you had <code>ps_set_search</code> you can use <a class="el" href="structps__decoder__t.html#a602108d3b7b35927477243b1978b8d89">ps_activate_search()</a>, it is the same function. Likewise, anything that was <code>ps_set_*</code> is now <code>ps_add_*</code>, e.g. <a class="el" href="structps__decoder__t.html#af94c4cc983fee1c22cd9042c35f6b4ba">ps_add_lm()</a>, <a class="el" href="structps__decoder__t.html#a88b4dcabadab8aceff79d273a71d61d5">ps_add_fsg()</a>, <a class="el" href="structps__decoder__t.html#a87aced38ba183da00ebd04c002af01d5">ps_add_keyphrase()</a>.</p>
+<h2><a class="anchor" id="faq_path"></a>
+What does ERROR: "acmod.c, line NN: ..." mean?</h2>
+<p>In general you will get "Acoustic model definition is not
+specified" or "Folder does not contain acoustic model definition" errors if PocketSphinx cannot find a model. If you are trying to use the default module, perhaps you have not installed PocketSphinx. Unfortunately it is not designed to run "in-place", but you can get around this by setting the <code>POCKETSPHINX_PATH</code> environment variable, e.g. </p><pre class="fragment">cmake --build build
+POCKETSPHINX_PATH=$PWD/model build/pocketsphinx single foo.wav
+</pre><h2><a class="anchor" id="faq_blank"></a>
+There is literally no output!</h2>
+<p>If by this you mean it doesn't spew copious logging output like it used to, you can solve this by passing <code>-loglevel INFO</code> on the command-line, or setting the <code>loglevel</code> parameter to <code>"INFO"</code>, or calling <a class="el" href="err_8h.html#ac011c0d3b793abc19010c2255bce5c88">err_set_loglevel()</a> with <code>ERR_INFO</code>.</p>
+<p>If you mean that you just don't have any recognition result, you may have forgotten to configure a dictionary. Or see <a class="el" href="index.html#faq_error">below</a> for other reasons the output could be blank.</p>
 <h2><a class="anchor" id="faq_audio"></a>
 Why doesn't my audio device work?</h2>
 <p>Because it's an audio device. They don't work, at least for things other than making annoying "beep boop" noises and playing Video Games. More generally, I cannot solve this problem for you, because every single computer, operating system, sound card, microphone, phase of the moon, and day of the week is different when it comes to recording audio. That's why I suggest you use SoX, because (a) it usually works, and (b) whoever wrote it seems to have retired long ago, so you can't bother them.</p>
 <h2><a class="anchor" id="faq_error"></a>
 The recognized text is wrong.</h2>
 <p>That's not a question! But since this isn't Jeopardy, and my name is not Watson, I'll try to answer it anyway. Be aware that the answer depends on many things, first and foremost what you mean by "wrong".</p>
-<p>If it <em>sounds</em> the same, e.g. "wreck a nice beach" when you said "recognize speech" then the issue is that the <b>language model</b> is not appropriate for the task, domain, dialect, or whatever it is you're trying to recognize. You may wish to consider writing a JSGF grammar and using it instead of the default language model (with the <code>-jsgf</code> flag). Or you can get an N-best list or word lattice and rescore it with a better language model, such as a recurrent neural network or a human being.</p>
-<p>If it is total nonsense, or if it is just blank, or if it's the same word repeated, e.g. "a a a a a a", then there is likely a problem with the input audio. The sampling rate could be wrong, or even if it's correct, you may have narrow-band data. Try to look at the spectrogram (Audacity can show you this) and see if it looks empty or flat below the frequency in the <code>-upperf</code> flag. Alternately it could just be very noisy. In particular, if the noise consists of other people talking, automatic speech recognition will nearly always fail.</p>
+<p>If it <em>sounds</em> the same, e.g. "wreck a nice beach" when you said "recognize speech" then the issue is that the <b>language model</b> is not appropriate for the task, domain, dialect, or whatever it is you're trying to recognize. You may wish to consider writing a JSGF grammar and using it instead of the default language model (with the <code>jsgf</code> parameter). Or you can get an N-best list or word lattice and rescore it with a better language model, such as a recurrent neural network or a human being.</p>
+<p>If it is total nonsense, or if it is just blank, or if it's the same word repeated, e.g. "a a a a a a", then there is likely a problem with the input audio. The sampling rate could be wrong, or even if it's correct, you may have narrow-band data. Try to look at the spectrogram (Audacity can show you this) and see if it looks empty or flat below the frequency in the <code>upperf</code> parameter. Alternately it could just be very noisy. In particular, if the noise consists of other people talking, automatic speech recognition will nearly always fail.</p>
 <h2><a class="anchor" id="faq_tech"></a>
-Why don't you support (pick one or more: WFST,</h2>
-<p>fMLLR, SAT, DNN, CTC, LAS, CNN, RNN, LSTM, etc)?</p>
+Why don't you support (pick one or more: WFST, fMLLR, SAT, DNN, CTC, LAS, CNN, RNN, LSTM, etc)?</h2>
 <p>Not because there's anything wrong with those things (except LAS, which is kind of a dumb idea) but simply because PocketSphinx does not do them, or anything like them, and there is no point in adding them to it when other systems exist. Many of them are also heavily dependent on distasteful and wasteful platforms like C++, CUDA, TensorFlow, PyTorch, and so on.</p>
 <h1><a class="anchor" id="thanks_sec"></a>
 Acknowledgements</h1>

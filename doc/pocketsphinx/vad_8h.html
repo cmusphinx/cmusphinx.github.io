@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,15 +70,14 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_1ab61053a7725f9ee56d02b0a8f265b2.html">pocketsphinx</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_9f5ec76c697c779781573d4bf110697e.html">pocketsphinx</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">vad.h File Reference</div>  </div>
 </div><!--header-->
@@ -90,16 +96,19 @@ Macros</h2></td></tr>
 <tr class="separator:a619d5a74e526164718dfee5ed9a48202"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42e1e50b03fb55c0b0377cf017c70390"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a42e1e50b03fb55c0b0377cf017c70390">PS_VAD_DEFAULT_FRAME_LENGTH</a>&#160;&#160;&#160;0.03</td></tr>
 <tr class="separator:a42e1e50b03fb55c0b0377cf017c70390"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8605289aba98c9ef20a53d77fd1bcfe4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a8605289aba98c9ef20a53d77fd1bcfe4">ps_vad_frame_length</a>(vad)&#160;&#160;&#160;((double)<a class="el" href="vad_8h.html#ac35931b7e6c879dbda6508f302be4751">ps_vad_frame_size</a>(vad) / <a class="el" href="vad_8h.html#a1c692aeda85aa6122589404ef401e03c">ps_vad_sample_rate</a>(vad))</td></tr>
+<tr class="memitem:a8605289aba98c9ef20a53d77fd1bcfe4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a8605289aba98c9ef20a53d77fd1bcfe4">ps_vad_frame_length</a>(vad)&#160;&#160;&#160;((double)<a class="el" href="structps__vad__t.html#ac35931b7e6c879dbda6508f302be4751">ps_vad_frame_size</a>(vad) / <a class="el" href="structps__vad__t.html#a1c692aeda85aa6122589404ef401e03c">ps_vad_sample_rate</a>(vad))</td></tr>
 <tr class="separator:a8605289aba98c9ef20a53d77fd1bcfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a6813ff6e0f9e0f11336dd7cc5d901170"><td class="memItemLeft" align="right" valign="top">typedef struct ps_vad_s&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a></td></tr>
+<tr class="memitem:a6813ff6e0f9e0f11336dd7cc5d901170"><td class="memItemLeft" align="right" valign="top"><a id="a6813ff6e0f9e0f11336dd7cc5d901170"></a>
+typedef struct ps_vad_s&#160;</td><td class="memItemRight" valign="bottom"><b>ps_vad_t</b></td></tr>
 <tr class="separator:a6813ff6e0f9e0f11336dd7cc5d901170"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a635b81a4ad803c8c4f164929802c15e3"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vad_8h.html#abbe4d33c65a9eadfc19e34814b67008a">ps_vad_mode_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a635b81a4ad803c8c4f164929802c15e3">ps_vad_mode_t</a></td></tr>
+<tr class="memitem:a635b81a4ad803c8c4f164929802c15e3"><td class="memItemLeft" align="right" valign="top"><a id="a635b81a4ad803c8c4f164929802c15e3"></a>
+typedef enum <a class="el" href="vad_8h.html#abbe4d33c65a9eadfc19e34814b67008a">ps_vad_mode_e</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ps_vad_mode_t</b></td></tr>
 <tr class="separator:a635b81a4ad803c8c4f164929802c15e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ec7428965724fab96f9ca4f7ded5b4d"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vad_8h.html#aca4440aaf5b90a96ad30702d6ace5f52">ps_vad_class_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a8ec7428965724fab96f9ca4f7ded5b4d">ps_vad_class_t</a></td></tr>
+<tr class="memitem:a8ec7428965724fab96f9ca4f7ded5b4d"><td class="memItemLeft" align="right" valign="top"><a id="a8ec7428965724fab96f9ca4f7ded5b4d"></a>
+typedef enum <a class="el" href="vad_8h.html#aca4440aaf5b90a96ad30702d6ace5f52">ps_vad_class_e</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ps_vad_class_t</b></td></tr>
 <tr class="separator:a8ec7428965724fab96f9ca4f7ded5b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -109,48 +118,19 @@ Enumerations</h2></td></tr>
 <b>PS_VAD_MEDIUM_STRICT</b> = 2, 
 <b>PS_VAD_STRICT</b> = 3
  }</td></tr>
+<tr class="memdesc:abbe4d33c65a9eadfc19e34814b67008a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voice activity detection "aggressiveness" levels.  <a href="vad_8h.html#abbe4d33c65a9eadfc19e34814b67008a">More...</a><br /></td></tr>
 <tr class="separator:abbe4d33c65a9eadfc19e34814b67008a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca4440aaf5b90a96ad30702d6ace5f52"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#aca4440aaf5b90a96ad30702d6ace5f52">ps_vad_class_e</a> { <b>PS_VAD_ERROR</b> = -1, 
 <b>PS_VAD_NOT_SPEECH</b> = 0, 
 <b>PS_VAD_SPEECH</b> = 1
  }</td></tr>
+<tr class="memdesc:aca4440aaf5b90a96ad30702d6ace5f52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classification of input frames returned by <a class="el" href="structps__vad__t.html#aaf0e13d20d7b8988977ca8e5a9894cb7">ps_vad_classify()</a>.  <a href="vad_8h.html#aca4440aaf5b90a96ad30702d6ace5f52">More...</a><br /></td></tr>
 <tr class="separator:aca4440aaf5b90a96ad30702d6ace5f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a71e83e17c4c1e3bfa61d541b42ae4fea"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a71e83e17c4c1e3bfa61d541b42ae4fea">ps_vad_init</a> (<a class="el" href="vad_8h.html#a635b81a4ad803c8c4f164929802c15e3">ps_vad_mode_t</a> mode, int sample_rate, double frame_length)</td></tr>
-<tr class="separator:a71e83e17c4c1e3bfa61d541b42ae4fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a467922a073e3d3a08199473a8a9f4953"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a467922a073e3d3a08199473a8a9f4953">ps_vad_retain</a> (<a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *vad)</td></tr>
-<tr class="separator:a467922a073e3d3a08199473a8a9f4953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add5e5c92c593edbf45edd20624129370"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#add5e5c92c593edbf45edd20624129370">ps_vad_free</a> (<a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *vad)</td></tr>
-<tr class="separator:add5e5c92c593edbf45edd20624129370"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69fe34f7717228b0cc8ada126d1d5feb"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a69fe34f7717228b0cc8ada126d1d5feb">ps_vad_set_input_params</a> (<a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *vad, int sample_rate, double frame_length)</td></tr>
-<tr class="separator:a69fe34f7717228b0cc8ada126d1d5feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c692aeda85aa6122589404ef401e03c"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#a1c692aeda85aa6122589404ef401e03c">ps_vad_sample_rate</a> (<a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *vad)</td></tr>
-<tr class="separator:a1c692aeda85aa6122589404ef401e03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac35931b7e6c879dbda6508f302be4751"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#ac35931b7e6c879dbda6508f302be4751">ps_vad_frame_size</a> (<a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *vad)</td></tr>
-<tr class="separator:ac35931b7e6c879dbda6508f302be4751"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf0e13d20d7b8988977ca8e5a9894cb7"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="vad_8h.html#a8ec7428965724fab96f9ca4f7ded5b4d">ps_vad_class_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vad_8h.html#aaf0e13d20d7b8988977ca8e5a9894cb7">ps_vad_classify</a> (<a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *vad, const int16 *frame)</td></tr>
-<tr class="separator:aaf0e13d20d7b8988977ca8e5a9894cb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Simple voice activity detection. </p>
+<p>Because doxygen is Bad Software, the actual documentation can only exist in <a class="el" href="structps__vad__t.html">ps_vad_t</a>. Sorry about that. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a42e1e50b03fb55c0b0377cf017c70390"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42e1e50b03fb55c0b0377cf017c70390">&#9670;&nbsp;</a></span>PS_VAD_DEFAULT_FRAME_LENGTH</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PS_VAD_DEFAULT_FRAME_LENGTH&#160;&#160;&#160;0.03</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Default frame length for voice activity detector </p>
-
-</div>
-</div>
 <a id="a619d5a74e526164718dfee5ed9a48202"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a619d5a74e526164718dfee5ed9a48202">&#9670;&nbsp;</a></span>PS_VAD_DEFAULT_SAMPLE_RATE</h2>
 
@@ -166,6 +146,21 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a42e1e50b03fb55c0b0377cf017c70390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42e1e50b03fb55c0b0377cf017c70390">&#9670;&nbsp;</a></span>PS_VAD_DEFAULT_FRAME_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PS_VAD_DEFAULT_FRAME_LENGTH&#160;&#160;&#160;0.03</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Default frame length for voice activity detector </p>
+
+</div>
+</div>
 <a id="a8605289aba98c9ef20a53d77fd1bcfe4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8605289aba98c9ef20a53d77fd1bcfe4">&#9670;&nbsp;</a></span>ps_vad_frame_length</h2>
 
@@ -177,77 +172,16 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">vad</td><td>)</td>
-          <td>&#160;&#160;&#160;((double)<a class="el" href="vad_8h.html#ac35931b7e6c879dbda6508f302be4751">ps_vad_frame_size</a>(vad) / <a class="el" href="vad_8h.html#a1c692aeda85aa6122589404ef401e03c">ps_vad_sample_rate</a>(vad))</td>
+          <td>&#160;&#160;&#160;((double)<a class="el" href="structps__vad__t.html#ac35931b7e6c879dbda6508f302be4751">ps_vad_frame_size</a>(vad) / <a class="el" href="structps__vad__t.html#a1c692aeda85aa6122589404ef401e03c">ps_vad_sample_rate</a>(vad))</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Get the <em>actual</em> length of a frame in seconds.</p>
-<p>This may differ from the value requested in <a class="el" href="vad_8h.html#a69fe34f7717228b0cc8ada126d1d5feb">ps_vad_set_input_params()</a>. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a8ec7428965724fab96f9ca4f7ded5b4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ec7428965724fab96f9ca4f7ded5b4d">&#9670;&nbsp;</a></span>ps_vad_class_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef enum <a class="el" href="vad_8h.html#aca4440aaf5b90a96ad30702d6ace5f52">ps_vad_class_e</a> <a class="el" href="vad_8h.html#a8ec7428965724fab96f9ca4f7ded5b4d">ps_vad_class_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Classification of input frames returned by <a class="el" href="vad_8h.html#aaf0e13d20d7b8988977ca8e5a9894cb7">ps_vad_classify()</a>. </p>
-
-</div>
-</div>
-<a id="a635b81a4ad803c8c4f164929802c15e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a635b81a4ad803c8c4f164929802c15e3">&#9670;&nbsp;</a></span>ps_vad_mode_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef enum <a class="el" href="vad_8h.html#abbe4d33c65a9eadfc19e34814b67008a">ps_vad_mode_e</a> <a class="el" href="vad_8h.html#a635b81a4ad803c8c4f164929802c15e3">ps_vad_mode_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Voice activity detection "aggressiveness" levels. </p>
-
-</div>
-</div>
-<a id="a6813ff6e0f9e0f11336dd7cc5d901170"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6813ff6e0f9e0f11336dd7cc5d901170">&#9670;&nbsp;</a></span>ps_vad_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct ps_vad_s <a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Voice activity detector. </p>
+<p>This may differ from the value requested in <a class="el" href="structps__vad__t.html#a69fe34f7717228b0cc8ada126d1d5feb">ps_vad_set_input_params()</a>. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="aca4440aaf5b90a96ad30702d6ace5f52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca4440aaf5b90a96ad30702d6ace5f52">&#9670;&nbsp;</a></span>ps_vad_class_e</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="vad_8h.html#aca4440aaf5b90a96ad30702d6ace5f52">ps_vad_class_e</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Classification of input frames returned by <a class="el" href="vad_8h.html#aaf0e13d20d7b8988977ca8e5a9894cb7">ps_vad_classify()</a>. </p>
-
-</div>
-</div>
 <a id="abbe4d33c65a9eadfc19e34814b67008a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abbe4d33c65a9eadfc19e34814b67008a">&#9670;&nbsp;</a></span>ps_vad_mode_e</h2>
 
@@ -259,237 +193,26 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Voice activity detection "aggressiveness" levels. </p>
+<p><a class="el" href="vad_8h.html" title="Simple voice activity detection.">pocketsphinx/vad.h</a> </p>
 
 </div>
 </div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="aaf0e13d20d7b8988977ca8e5a9894cb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf0e13d20d7b8988977ca8e5a9894cb7">&#9670;&nbsp;</a></span>ps_vad_classify()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="vad_8h.html#a8ec7428965724fab96f9ca4f7ded5b4d">ps_vad_class_t</a> ps_vad_classify </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *&#160;</td>
-          <td class="paramname"><em>vad</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int16 *&#160;</td>
-          <td class="paramname"><em>frame</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Classify a frame as speech or not speech.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">vad</td><td>Voice activity detector. </td></tr>
-    <tr><td class="paramname">frame</td><td>Frame of input, <b>must</b> contain the number of samples returned by <a class="el" href="vad_8h.html#ac35931b7e6c879dbda6508f302be4751">ps_vad_frame_size()</a>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>PS_VAD_SPEECH, PS_VAD_NOT_SPEECH, or PS_VAD_ERROR (see ps_vad_class_t). </dd></dl>
-
-</div>
-</div>
-<a id="ac35931b7e6c879dbda6508f302be4751"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac35931b7e6c879dbda6508f302be4751">&#9670;&nbsp;</a></span>ps_vad_frame_size()</h2>
+<a id="aca4440aaf5b90a96ad30702d6ace5f52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca4440aaf5b90a96ad30702d6ace5f52">&#9670;&nbsp;</a></span>ps_vad_class_e</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">POCKETSPHINX_EXPORT size_t ps_vad_frame_size </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *&#160;</td>
-          <td class="paramname"><em>vad</em></td><td>)</td>
-          <td></td>
+          <td class="memname">enum <a class="el" href="vad_8h.html#aca4440aaf5b90a96ad30702d6ace5f52">ps_vad_class_e</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the number of samples expected by voice activity detection.</p>
-<p>You <b>must</b> always ensure that the buffers passed to <a class="el" href="vad_8h.html#aaf0e13d20d7b8988977ca8e5a9894cb7">ps_vad_classify()</a> contain this number of samples (zero-pad them if necessary).</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">vad</td><td>Voice activity detector. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Size, in samples, of the frames passed to <a class="el" href="vad_8h.html#aaf0e13d20d7b8988977ca8e5a9894cb7">ps_vad_classify()</a>. </dd></dl>
 
-</div>
-</div>
-<a id="add5e5c92c593edbf45edd20624129370"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add5e5c92c593edbf45edd20624129370">&#9670;&nbsp;</a></span>ps_vad_free()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT int ps_vad_free </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *&#160;</td>
-          <td class="paramname"><em>vad</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Release a pointer to voice activity detector.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">vad</td><td>Voice activity detector. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>New reference count (0 if freed). </dd></dl>
-
-</div>
-</div>
-<a id="a71e83e17c4c1e3bfa61d541b42ae4fea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71e83e17c4c1e3bfa61d541b42ae4fea">&#9670;&nbsp;</a></span>ps_vad_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a>* ps_vad_init </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vad_8h.html#a635b81a4ad803c8c4f164929802c15e3">ps_vad_mode_t</a>&#160;</td>
-          <td class="paramname"><em>mode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>sample_rate</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>frame_length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Initialize voice activity detection.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mode</td><td>"Aggressiveness" of voice activity detection. Stricter values (see ps_vad_mode_t) are less likely to misclassify non-speech as speech. </td></tr>
-    <tr><td class="paramname">sample_rate</td><td>Sampling rate of input, or 0 for default (which can be obtained with <a class="el" href="vad_8h.html#a1c692aeda85aa6122589404ef401e03c">ps_vad_sample_rate()</a>). Only 8000, 16000, 32000, 48000 are directly supported. See <a class="el" href="vad_8h.html#a69fe34f7717228b0cc8ada126d1d5feb">ps_vad_set_input_params()</a> for more information. </td></tr>
-    <tr><td class="paramname">frame_length</td><td>Frame length in seconds, or 0.0 for the default. Only 0.01, 0.02, 0.03 currently supported. <b>Actual</b> value may differ, you must use <a class="el" href="vad_8h.html#a8605289aba98c9ef20a53d77fd1bcfe4">ps_vad_frame_length()</a> to obtain it. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>VAD object or NULL on failure (invalid parameter for instance). </dd></dl>
-
-</div>
-</div>
-<a id="a467922a073e3d3a08199473a8a9f4953"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a467922a073e3d3a08199473a8a9f4953">&#9670;&nbsp;</a></span>ps_vad_retain()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a>* ps_vad_retain </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *&#160;</td>
-          <td class="paramname"><em>vad</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Retain a pointer to voice activity detector.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">vad</td><td>Voice activity detector. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Voice activity detector with incremented reference count. </dd></dl>
-
-</div>
-</div>
-<a id="a1c692aeda85aa6122589404ef401e03c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c692aeda85aa6122589404ef401e03c">&#9670;&nbsp;</a></span>ps_vad_sample_rate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT int ps_vad_sample_rate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *&#160;</td>
-          <td class="paramname"><em>vad</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Get the sampling rate expected by voice activity detection.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">vad</td><td>Voice activity detector. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Expected sampling rate. </dd></dl>
-
-</div>
-</div>
-<a id="a69fe34f7717228b0cc8ada126d1d5feb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69fe34f7717228b0cc8ada126d1d5feb">&#9670;&nbsp;</a></span>ps_vad_set_input_params()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">POCKETSPHINX_EXPORT int ps_vad_set_input_params </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vad_8h.html#a6813ff6e0f9e0f11336dd7cc5d901170">ps_vad_t</a> *&#160;</td>
-          <td class="paramname"><em>vad</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>sample_rate</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>frame_length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Set the input parameters for voice activity detection.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sample_rate</td><td>Sampling rate of input, or 0 for default (which can be obtained with <a class="el" href="vad_8h.html#a1c692aeda85aa6122589404ef401e03c">ps_vad_sample_rate()</a>). Only 8000, 16000, 32000, 48000 are directly supported, others will use the closest supported rate (within reason). Note that this means that the actual frame length may not be exactly the one requested, so you must always use the one returned by <a class="el" href="vad_8h.html#ac35931b7e6c879dbda6508f302be4751">ps_vad_frame_size()</a> (in samples) or <a class="el" href="vad_8h.html#a8605289aba98c9ef20a53d77fd1bcfe4">ps_vad_frame_length()</a> (in seconds). </td></tr>
-    <tr><td class="paramname">frame_length</td><td>Requested frame length in seconds, or 0.0 for the default. Only 0.01, 0.02, 0.03 currently supported. <b>Actual frame length may be different, you must always use <a class="el" href="vad_8h.html#a8605289aba98c9ef20a53d77fd1bcfe4">ps_vad_frame_length()</a> to obtain it.</b> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 for success or -1 on error. </dd></dl>
+<p>Classification of input frames returned by <a class="el" href="structps__vad__t.html#aaf0e13d20d7b8988977ca8e5a9894cb7">ps_vad_classify()</a>. </p>
+<p><a class="el" href="vad_8h.html" title="Simple voice activity detection.">pocketsphinx/vad.h</a> </p>
 
 </div>
 </div>

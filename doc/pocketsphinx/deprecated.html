@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -68,9 +75,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Member <a class="el" href="pocketsphinx_8h.html#adcbb8aeb9ebf3f73e935d3b3c8832ea0">ps_get_in_speech</a>  (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</dt>
-<dd><a class="anchor" id="_deprecated000002"></a>This function is retained for compatibility but should not be considered a reliable voice activity detector. It will always return 1 between calls to <a class="el" href="pocketsphinx_8h.html#ade3909b1c12c1b70afe284639e70cbff">ps_start_utt()</a> and <a class="el" href="pocketsphinx_8h.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt()</a>. You probably want <a class="el" href="structps__endpointer__t.html" title="Simple voice activity detection based endpointing.">ps_endpointer_t</a>, but for single frames of data you can also use ps_vad_t </dd>
-<dt>Member <a class="el" href="pocketsphinx_8h.html#a89be3b2a8f83291a225db0bcd9ee65b2">ps_start_stream</a>  (<a class="el" href="structps__decoder__t.html">ps_decoder_t</a> *ps)</dt>
+<dt>Member <a class="el" href="structps__decoder__t.html#adcbb8aeb9ebf3f73e935d3b3c8832ea0">ps_decoder_t::ps_get_in_speech</a>  (<a class="el" href="structps__decoder__t.html" title="Speech recognizer object.">ps_decoder_t</a> *ps)</dt>
+<dd><a class="anchor" id="_deprecated000002"></a>This function is retained for compatibility but should not be considered a reliable voice activity detector. It will always return 1 between calls to <a class="el" href="structps__decoder__t.html#ade3909b1c12c1b70afe284639e70cbff">ps_start_utt()</a> and <a class="el" href="structps__decoder__t.html#ab9339de730713b68cbd68a7f36dc8730">ps_end_utt()</a>. You probably want <a class="el" href="structps__endpointer__t.html" title="Simple voice activity detection based endpointing.">ps_endpointer_t</a>, but for single frames of data you can also use <a class="el" href="structps__vad__t.html">ps_vad_t</a>. </dd>
+<dt>Member <a class="el" href="structps__decoder__t.html#a89be3b2a8f83291a225db0bcd9ee65b2">ps_decoder_t::ps_start_stream</a>  (<a class="el" href="structps__decoder__t.html" title="Speech recognizer object.">ps_decoder_t</a> *ps)</dt>
 <dd><a class="anchor" id="_deprecated000001"></a>This function is retained for compatibility, but its only effect is to reset the noise removal statistics, which are otherwise retained across utterances. You do not need to call it.</dd>
 </dl>
 </div></div><!-- contents -->

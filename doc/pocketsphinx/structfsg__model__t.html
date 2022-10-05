@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -63,6 +70,9 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structfsg__model__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">fsg_model_t Struct Reference</div>  </div>
 </div><!--header-->
@@ -71,11 +81,451 @@ $(function() {
 <p>Finite-state grammar.  
  <a href="structfsg__model__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="model_8h_source.html">model.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="model_8h_source.html">pocketsphinx/model.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad86d12c175458f89eadafcbb1cffcfa0"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#ad86d12c175458f89eadafcbb1cffcfa0">jsgf_read_file</a> (const char *file, <a class="el" href="structlogmath__t.html">logmath_t</a> *lmath, float32 lw)</td></tr>
+<tr class="separator:ad86d12c175458f89eadafcbb1cffcfa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a605c88e824bb9fe9ad20a0aa76f93deb"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#a605c88e824bb9fe9ad20a0aa76f93deb">jsgf_read_string</a> (const char *string, <a class="el" href="structlogmath__t.html">logmath_t</a> *lmath, float32 lw)</td></tr>
+<tr class="separator:a605c88e824bb9fe9ad20a0aa76f93deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae660cd51180526f7f3050fa7413592b6"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#ae660cd51180526f7f3050fa7413592b6">fsg_model_retain</a> (<a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg)</td></tr>
+<tr class="separator:ae660cd51180526f7f3050fa7413592b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef2610a66f069de1a150083bd34a540"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#a1ef2610a66f069de1a150083bd34a540">fsg_model_free</a> (<a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg)</td></tr>
+<tr class="separator:a1ef2610a66f069de1a150083bd34a540"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a392a842691581158195e2a3cd5d03a6e"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#a392a842691581158195e2a3cd5d03a6e">fsg_model_readfile</a> (const char *file, <a class="el" href="structlogmath__t.html">logmath_t</a> *lmath, float32 lw)</td></tr>
+<tr class="separator:a392a842691581158195e2a3cd5d03a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f69628ed178ff0bf6f10fd0e24b0158"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#a6f69628ed178ff0bf6f10fd0e24b0158">fsg_model_read</a> (FILE *fp, <a class="el" href="structlogmath__t.html">logmath_t</a> *lmath, float32 lw)</td></tr>
+<tr class="separator:a6f69628ed178ff0bf6f10fd0e24b0158"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ddaf82f2f00dbf11c8faf28f2d4d71a"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#a6ddaf82f2f00dbf11c8faf28f2d4d71a">fsg_model_accept</a> (<a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg, char const *words)</td></tr>
+<tr class="separator:a6ddaf82f2f00dbf11c8faf28f2d4d71a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22a8bc6a9385527a8c0cb1bc39afe7b2"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#a22a8bc6a9385527a8c0cb1bc39afe7b2">fsg_model_write</a> (<a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg, FILE *fp)</td></tr>
+<tr class="separator:a22a8bc6a9385527a8c0cb1bc39afe7b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae7c2ed126099be78ab9e6d451a5d324"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#aae7c2ed126099be78ab9e6d451a5d324">fsg_model_writefile</a> (<a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg, char const *file)</td></tr>
+<tr class="separator:aae7c2ed126099be78ab9e6d451a5d324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64ed5023c8a741daf7a339003b087007"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#a64ed5023c8a741daf7a339003b087007">fsg_model_write_fsm</a> (<a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg, FILE *fp)</td></tr>
+<tr class="separator:a64ed5023c8a741daf7a339003b087007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c6d82f65a090b66176ba26386d6e6f8"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#a6c6d82f65a090b66176ba26386d6e6f8">fsg_model_writefile_fsm</a> (<a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg, char const *file)</td></tr>
+<tr class="separator:a6c6d82f65a090b66176ba26386d6e6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab980ba7d0ca500ec42f77e3ad956a546"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#ab980ba7d0ca500ec42f77e3ad956a546">fsg_model_write_symtab</a> (<a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg, FILE *file)</td></tr>
+<tr class="separator:ab980ba7d0ca500ec42f77e3ad956a546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f075e2fd97cdc5e77ffdbe5e68f5359"><td class="memItemLeft" align="right" valign="top">POCKETSPHINX_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsg__model__t.html#a2f075e2fd97cdc5e77ffdbe5e68f5359">fsg_model_writefile_symtab</a> (<a class="el" href="structfsg__model__t.html">fsg_model_t</a> *fsg, char const *file)</td></tr>
+<tr class="separator:a2f075e2fd97cdc5e77ffdbe5e68f5359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Finite-state grammar. </p>
 <p>States are simply integers 0..n_state-1. A transition emits a word and has a given probability of being taken. There can also be null or epsilon transitions, with no associated emitted word. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad86d12c175458f89eadafcbb1cffcfa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad86d12c175458f89eadafcbb1cffcfa0">&#9670;&nbsp;</a></span>jsgf_read_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> * jsgf_read_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structlogmath__t.html">logmath_t</a> *&#160;</td>
+          <td class="paramname"><em>lmath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float32&#160;</td>
+          <td class="paramname"><em>lw</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read JSGF from file and return FSG object from it.</p>
+<p>This function looks for a first public rule in jsgf and constructs JSGF from it. </p>
+
+</div>
+</div>
+<a id="a605c88e824bb9fe9ad20a0aa76f93deb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a605c88e824bb9fe9ad20a0aa76f93deb">&#9670;&nbsp;</a></span>jsgf_read_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> * jsgf_read_string </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structlogmath__t.html">logmath_t</a> *&#160;</td>
+          <td class="paramname"><em>lmath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float32&#160;</td>
+          <td class="paramname"><em>lw</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read JSGF from string and return FSG object from it.</p>
+<p>This function looks for a first public rule in jsgf and constructs JSGF from it. </p>
+
+</div>
+</div>
+<a id="ae660cd51180526f7f3050fa7413592b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae660cd51180526f7f3050fa7413592b6">&#9670;&nbsp;</a></span>fsg_model_retain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> * fsg_model_retain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retain ownership of an FSG.</p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to retained FSG. </dd></dl>
+
+</div>
+</div>
+<a id="a1ef2610a66f069de1a150083bd34a540"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ef2610a66f069de1a150083bd34a540">&#9670;&nbsp;</a></span>fsg_model_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int fsg_model_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Free the given word FSG.</p>
+<dl class="section return"><dt>Returns</dt><dd>new reference count (0 if freed completely) </dd></dl>
+
+</div>
+</div>
+<a id="a392a842691581158195e2a3cd5d03a6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a392a842691581158195e2a3cd5d03a6e">&#9670;&nbsp;</a></span>fsg_model_readfile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> * fsg_model_readfile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structlogmath__t.html">logmath_t</a> *&#160;</td>
+          <td class="paramname"><em>lmath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float32&#160;</td>
+          <td class="paramname"><em>lw</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read a word FSG from the given file and return a pointer to the structure created. Return NULL if any error occurred.</p>
+<p>File format:</p>
+<pre>
+  Any number of comment lines; ignored
+  FSG_BEGIN [&lt;fsgname&gt;]
+  N &lt;#states&gt;
+  S &lt;start-state ID&gt;
+  F &lt;final-state ID&gt;
+  T &lt;from-state&gt; &lt;to-state&gt; &lt;prob&gt; [&lt;word-string&gt;]
+  T ...
+  ... (any number of state transitions)
+  FSG_END
+  Any number of comment lines; ignored
+</pre><p>The FSG spec begins with the line containing the keyword FSG_BEGIN. It has an optional fsg name string. If not present, the FSG has the empty string as its name.</p>
+<p>Following the FSG_BEGIN declaration is the number of states, the start state, and the final state, each on a separate line. States are numbered in the range [0 .. &lt;numberofstate&gt;-1].</p>
+<p>These are followed by all the state transitions, each on a separate line, and terminated by the FSG_END line. A state transition has the given probability of being taken, and emits the given word. The word emission is optional; if word-string omitted, it is an epsilon or null transition.</p>
+<p>Comments can also be embedded within the FSG body proper (i.e. between FSG_BEGIN and FSG_END): any line with a # character in col 1 is treated as a comment line.</p>
+<p>Return value: a new <a class="el" href="structfsg__model__t.html" title="Finite-state grammar.">fsg_model_t</a> structure if the file is successfully read, NULL otherwise. </p>
+
+</div>
+</div>
+<a id="a6f69628ed178ff0bf6f10fd0e24b0158"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f69628ed178ff0bf6f10fd0e24b0158">&#9670;&nbsp;</a></span>fsg_model_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT <a class="el" href="structfsg__model__t.html">fsg_model_t</a> * fsg_model_read </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structlogmath__t.html">logmath_t</a> *&#160;</td>
+          <td class="paramname"><em>lmath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float32&#160;</td>
+          <td class="paramname"><em>lw</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Like <a class="el" href="structfsg__model__t.html#a392a842691581158195e2a3cd5d03a6e">fsg_model_readfile()</a>, but from an already open stream. </p>
+
+</div>
+</div>
+<a id="a6ddaf82f2f00dbf11c8faf28f2d4d71a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ddaf82f2f00dbf11c8faf28f2d4d71a">&#9670;&nbsp;</a></span>fsg_model_accept()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT int fsg_model_accept </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>words</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check that an FSG accepts a word sequence</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">words</td><td>Whitespace-separated word sequence </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if accepts, 0 if not. </dd></dl>
+
+</div>
+</div>
+<a id="a22a8bc6a9385527a8c0cb1bc39afe7b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22a8bc6a9385527a8c0cb1bc39afe7b2">&#9670;&nbsp;</a></span>fsg_model_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void fsg_model_write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write FSG to a file. </p>
+
+</div>
+</div>
+<a id="aae7c2ed126099be78ab9e6d451a5d324"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae7c2ed126099be78ab9e6d451a5d324">&#9670;&nbsp;</a></span>fsg_model_writefile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void fsg_model_writefile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write FSG to a file. </p>
+
+</div>
+</div>
+<a id="a64ed5023c8a741daf7a339003b087007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64ed5023c8a741daf7a339003b087007">&#9670;&nbsp;</a></span>fsg_model_write_fsm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void fsg_model_write_fsm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write FSG to a file in AT&amp;T FSM format. </p>
+
+</div>
+</div>
+<a id="a6c6d82f65a090b66176ba26386d6e6f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c6d82f65a090b66176ba26386d6e6f8">&#9670;&nbsp;</a></span>fsg_model_writefile_fsm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void fsg_model_writefile_fsm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write FSG to a file in AT&amp;T FSM format. </p>
+
+</div>
+</div>
+<a id="ab980ba7d0ca500ec42f77e3ad956a546"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab980ba7d0ca500ec42f77e3ad956a546">&#9670;&nbsp;</a></span>fsg_model_write_symtab()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void fsg_model_write_symtab </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write FSG symbol table to a file (for AT&amp;T FSM) </p>
+
+</div>
+</div>
+<a id="a2f075e2fd97cdc5e77ffdbe5e68f5359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f075e2fd97cdc5e77ffdbe5e68f5359">&#9670;&nbsp;</a></span>fsg_model_writefile_symtab()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">POCKETSPHINX_EXPORT void fsg_model_writefile_symtab </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsg__model__t.html">fsg_model_t</a> *&#160;</td>
+          <td class="paramname"><em>fsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write FSG symbol table to a file (for AT&amp;T FSM) </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>pocketsphinx/<a class="el" href="model_8h_source.html">model.h</a></li>
 </ul>
 </div><!-- contents -->

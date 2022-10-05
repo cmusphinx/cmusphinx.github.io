@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -22,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PocketSphinx
-   &#160;<span id="projectnumber">5.0.0rc5</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">A small speech recognizer</div>
   </td>
@@ -69,27 +76,33 @@ $(function() {
 <div class="contents">
 <div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><div class="directory">
 <table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="unionanytype__s.html" target="_self">anytype_s</a></td><td class="desc"></td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structarg__s.html" target="_self">arg_s</a></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structfsg__model__t.html" target="_self">fsg_model_t</a></td><td class="desc">Finite-state grammar </td></tr>
+<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="unionanytype__t.html" target="_self">anytype_t</a></td><td class="desc">Literally any type! </td></tr>
+<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structfsg__model__t.html" target="_self">fsg_model_t</a></td><td class="desc">Finite-state grammar </td></tr>
+<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structjsgf__rule__iter__t.html" target="_self">jsgf_rule_iter_t</a></td><td class="desc">Iterator over rules in a grammar </td></tr>
 <tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structjsgf__rule__t.html" target="_self">jsgf_rule_t</a></td><td class="desc">Rule in a parsed JSGF grammar </td></tr>
 <tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structjsgf__t.html" target="_self">jsgf_t</a></td><td class="desc">JSGF parser </td></tr>
-<tr id="row_5_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structlogadd__s.html" target="_self">logadd_s</a></td><td class="desc"></td></tr>
-<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structngram__class__t.html" target="_self">ngram_class_t</a></td><td class="desc">Word class in an N-Gram model </td></tr>
-<tr id="row_7_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structngram__model__t.html" target="_self">ngram_model_t</a></td><td class="desc">N-Gram based language model </td></tr>
-<tr id="row_8_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__alignment__iter__t.html" target="_self">ps_alignment_iter_t</a></td><td class="desc">Iterator over entries in an alignment </td></tr>
-<tr id="row_9_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__alignment__t.html" target="_self">ps_alignment_t</a></td><td class="desc">Multi-level alignment (words, phones, states) over an utterance </td></tr>
-<tr id="row_10_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__arg__t.html" target="_self">ps_arg_t</a></td><td class="desc"></td></tr>
-<tr id="row_11_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__astar__t.html" target="_self">ps_astar_t</a></td><td class="desc"></td></tr>
-<tr id="row_12_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__config__t.html" target="_self">ps_config_t</a></td><td class="desc"></td></tr>
-<tr id="row_13_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__decoder__t.html" target="_self">ps_decoder_t</a></td><td class="desc"></td></tr>
-<tr id="row_14_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__endpointer__t.html" target="_self">ps_endpointer_t</a></td><td class="desc">Simple voice activity detection based endpointing </td></tr>
-<tr id="row_15_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__latlink__iter__t.html" target="_self">ps_latlink_iter_t</a></td><td class="desc">Iterator over DAG links </td></tr>
-<tr id="row_16_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__latlink__t.html" target="_self">ps_latlink_t</a></td><td class="desc">Link between DAG nodes </td></tr>
-<tr id="row_17_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__latnode__iter__t.html" target="_self">ps_latnode_iter_t</a></td><td class="desc">Iterator over DAG nodes </td></tr>
-<tr id="row_18_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__latnode__t.html" target="_self">ps_latnode_t</a></td><td class="desc">Node in a word lattice </td></tr>
-<tr id="row_19_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__lattice__t.html" target="_self">ps_lattice_t</a></td><td class="desc">Word graph structure used in bestpath/nbest search </td></tr>
-<tr id="row_20_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__seg__t.html" target="_self">ps_seg_t</a></td><td class="desc"></td></tr>
+<tr id="row_5_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structlogadd__t.html" target="_self">logadd_t</a></td><td class="desc">Integer log math computation table </td></tr>
+<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structlogmath__t.html" target="_self">logmath_t</a></td><td class="desc">Integer log math computation class </td></tr>
+<tr id="row_7_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structngram__class__t.html" target="_self">ngram_class_t</a></td><td class="desc">Word class in an N-Gram model </td></tr>
+<tr id="row_8_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structngram__iter__t.html" target="_self">ngram_iter_t</a></td><td class="desc">M-gram (yes, <b>M</b>-gram) iterator object </td></tr>
+<tr id="row_9_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structngram__model__set__iter__t.html" target="_self">ngram_model_set_iter_t</a></td><td class="desc">Iterator over language models in a set </td></tr>
+<tr id="row_10_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structngram__model__t.html" target="_self">ngram_model_t</a></td><td class="desc">N-Gram based language model </td></tr>
+<tr id="row_11_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__alignment__iter__t.html" target="_self">ps_alignment_iter_t</a></td><td class="desc">Iterator over entries in an alignment </td></tr>
+<tr id="row_12_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__alignment__t.html" target="_self">ps_alignment_t</a></td><td class="desc">Multi-level alignment (words, phones, states) over an utterance </td></tr>
+<tr id="row_13_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__arg__t.html" target="_self">ps_arg_t</a></td><td class="desc">Definition of a configuration parameter </td></tr>
+<tr id="row_14_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__config__t.html" target="_self">ps_config_t</a></td><td class="desc">Configuration object </td></tr>
+<tr id="row_15_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__decoder__t.html" target="_self">ps_decoder_t</a></td><td class="desc">Speech recognizer object </td></tr>
+<tr id="row_16_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__endpointer__t.html" target="_self">ps_endpointer_t</a></td><td class="desc">Simple voice activity detection based endpointing </td></tr>
+<tr id="row_17_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__latlink__iter__t.html" target="_self">ps_latlink_iter_t</a></td><td class="desc">Iterator over DAG links </td></tr>
+<tr id="row_18_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__latlink__t.html" target="_self">ps_latlink_t</a></td><td class="desc">Link between DAG nodes </td></tr>
+<tr id="row_19_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__latnode__iter__t.html" target="_self">ps_latnode_iter_t</a></td><td class="desc">Iterator over DAG nodes </td></tr>
+<tr id="row_20_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__latnode__t.html" target="_self">ps_latnode_t</a></td><td class="desc">Node in a word lattice </td></tr>
+<tr id="row_21_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__lattice__t.html" target="_self">ps_lattice_t</a></td><td class="desc">Word graph structure used in bestpath/nbest search </td></tr>
+<tr id="row_22_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__mllr__t.html" target="_self">ps_mllr_t</a></td><td class="desc">Linear transform object </td></tr>
+<tr id="row_23_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__nbest__t.html" target="_self">ps_nbest_t</a></td><td class="desc">N-best hypothesis iterator object </td></tr>
+<tr id="row_24_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__search__iter__t.html" target="_self">ps_search_iter_t</a></td><td class="desc">Iterator over search modules </td></tr>
+<tr id="row_25_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__seg__t.html" target="_self">ps_seg_t</a></td><td class="desc">Segmentation iterator object </td></tr>
+<tr id="row_26_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structps__vad__t.html" target="_self">ps_vad_t</a></td><td class="desc">Voice activity detector </td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
