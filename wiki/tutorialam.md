@@ -8,10 +8,6 @@ title: Training an acoustic model for CMUSphinx
 {:toc}
 ---
 
-> **Caution!**  
-  This tutorial describes pocketsphinx [5 pre-alpha release](https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/).
-  It is not up-to-date with the current development version and will be updated soon.
-
 ## Introduction
 
 The CMUSphinx project comes with several high-quality acoustic models. There
@@ -314,87 +310,73 @@ recordings at present.
 
 ## Compilation of the required packages
 
-The following packages are required for training:
+The following packages are required for training.  On Linux you can
+install them with the usual package manager (`apt` or `yum` or `dnf`
+or whatever):
 
-* sphinxbase
+* git
+* cmake (version 3.14 or higher)
+* perl
+* python3
+* python3-numpy (only if using LDA or MLLR)
+* python3-scipy (only if using MLLT)
+
+We recommend that you train on Linux: this way you’ll be able to use
+all the features of sphinxtrain. You can also use a Windows system for
+training, in that case we recommend to use Windows System for Linux,
+in which case the process is exactly the same.
+
+If you insist on building "natively" on Windows, you will need to
+ensure that Perl and Python are available in your command-line search
+path.  The easiest way by far to do this is to use
+[Anaconda](https://www.anaconda.com/products/distribution) - after
+configuring your environment, you can proceed to install Perl with:
+
+    conda install -c anaconda perl
+
+You will additionaly need to download and build:
+
 * pocketsphinx
-
-The following external packages are also required:
-
-*  perl, for example ActivePerl on Windows
-*  python, for example ActivePython on Windows
-
-In addition, if you download the packages with a `.gz` suffix, you will need
-`gunzip` or an equivalent tool to unpack them.
-
-Install the perl and python packages somewhere in your executable path, if they
-are not already there.
-
-We recommend that you train on Linux: this way you’ll be able to use all the
-features of sphinxtrain. You can also use a Windows system for training,
-in that case we recommend to use ActivePerl.
 
 For further download instructions, see
 the [download page](http://cmusphinx.github.io/wiki/download/).
 
-Basically you need to put everything into a single root folder, unzip and
-untar them, and run `configure` and `make` and `make install` in each
-package folder. Put the database folder into this root folder as well.
+It is highly recommended to use `git` to download the necessary code
+and data, and to put everything in a single folder:
+
+    mkdir tutorial
+    cd tutorial
+    git clone --depth 1 https://github.com/cmusphinx/an4.git
+    git clone --depth 1 https://github.com/cmusphinx/sphinxtrain.git
+    git clone --depth 1 https://github.com/cmusphinx/pocketsphinx.git
+
 By the time you finish this, you will have a tutorial directory with
 the following contents:
 
 ```
 └─ tutorial
    ├─ an4
-   ├─ an4_sphere.tar.gz
    ├─ sphinxtrain
-   ├─ sphinxtrain-5prealpha.tar.gz
-   ├─ pocketsphinx
-   ├─ pocketsphinx-5prealpha.tar.gz
-   ├─ sphinxbase
-   └─ sphinxbase-5prealpha.tar.gz
+   └─ pocketsphinx
 ```
 
-You will need to install the software as an administrator `root`. After you
-installed the software you may need to update the system configuration
-so that the system will be able to find the dynamic libraries, e.g.:
+You do not need to install things system-wide.  Unless you know what
+you're doing, please don't do this.  On the other hand you will need
+to copy the `pocketsphinx_batch` program into the build folder for
+`sphinxtrain` so it can find it.  The whole process looks like:
 
-```
-export PATH=/usr/local/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/lib
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-```
-
-If you don’t want to install into your system path, you may install the packages
-in your home folder. In that case you can append the following option to the
-`autogen.sh` script or to the `configure` script:
-
-```
---prefix=/home/user/local
-```
-
-Obviously, the folder can be an arbitrary folder, just remember to update
-the environment configuration after modifying its name. If your binaries fail
-to load dynamic libraries with an error message like `failed to open
-libsphinx.so.0 no such file or directory`, it means that you didn't
-configure the environment properly.
+    cmake -S sphinxtrain -B sphinxtrain/build
+    cmake --build sphinxtrain/build
+    cmake -S pocketsphinx -B pocketsphinx/build
+    cmake --build pocketsphinx/build
+    cp pocketsphinx/build/pocketsphinx_batch sphinxtrain/build
 
 ## Setting up the training scripts
 
 To start the training, change to the database folder and run the following
 commands:
 
-*On Linux:*
-
-```
-sphinxtrain -t an4 setup
-```
-
-*On Windows:*
-
-```
-python ../sphinxtrain/scripts/sphinxtrain -t an4 setup
-```
+    python ../sphinxtrain/scripts/sphinxtrain -t an4 setup
 
 Do not forget to replace *an4* with your task name.
 
@@ -614,17 +596,7 @@ cd an4
 
 To train, just run the following commands:
 
-*On Linux:*
-
-```
-sphinxtrain run
-```
-
-*On Windows:*
-
-```
-python ../sphinxtrain/scripts/sphinxtrain run
-```
+    python ../sphinxtrain/scripts/sphinxtrain run
 
 and it will go through all the required stages. It will take a few
 minutes to train. On large databases, training could take up to a month.
@@ -654,22 +626,22 @@ finished, the training is complete.
 
 This section describes in detail what happens during the training.
 
-In the scripts directory (`./scripts_pl`), there are several directories
+In the scripts directory (`./scripts`), there are several directories
 numbered sequentially from *00* through *99*. Each directory either has a
 directory named `slave*.pl` or it has a single file with the extension `.pl`.
 The script sequentially goes through the directories and executes either the
 `slave*.pl` or the single `.pl` file, as below.
 
 ```
-perl scripts_pl/000.comp_feat/slave_feat.pl
-perl scripts_pl/00.verify/verify_all.pl
-perl scripts_pl/10.vector_quantize/slave.VQ.pl
-perl scripts_pl/20.ci_hmm/slave_convg.pl
-perl scripts_pl/30.cd_hmm_untied/slave_convg.pl
-perl scripts_pl/40.buildtrees/slave.treebuilder.pl
-perl scripts_pl/45.prunetree/slave-state-tying.pl
-perl scripts_pl/50.cd_hmm_tied/slave_convg.pl
-perl scripts_pl/90.deleted_interpolation/deleted_interpolation.pl
+perl scripts/000.comp_feat/slave_feat.pl
+perl scripts/00.verify/verify_all.pl
+perl scripts/10.vector_quantize/slave.VQ.pl
+perl scripts/20.ci_hmm/slave_convg.pl
+perl scripts/30.cd_hmm_untied/slave_convg.pl
+perl scripts/40.buildtrees/slave.treebuilder.pl
+perl scripts/45.prunetree/slave-state-tying.pl
+perl scripts/50.cd_hmm_tied/slave_convg.pl
+perl scripts/90.deleted_interpolation/deleted_interpolation.pl
 ```
 
 These scripts launch jobs on your machine, and the jobs will take a few
@@ -777,6 +749,9 @@ Finally, one more step will run if you specify MMIE training by setting:
 $CFG_MMIE =  "yes";
 ```
 The default value is `"no"`. This will run steps `60.lattice_generation`, `61.lattice_pruning`, `62.lattice_conversion` and `65.mmie_train`.
+
+This requires you to have Sphinx-III installed somewhere, and is not currently supported.
+
 For details see the page about [MMIE Training in SphinxTrain](/wiki/mmie_train).
 
 ## Testing
