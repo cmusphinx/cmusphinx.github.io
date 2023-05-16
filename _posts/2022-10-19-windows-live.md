@@ -1,5 +1,14 @@
-Live audio examples for Windows
--------------------------------
+---
+layout: post
+status: publish
+published: true
+title: Live audio examples for Windows
+author:
+  display_name: David Huggins-Daines
+  email: dhd@ecolingui.ca
+author_email: dhd@ecolingui.ca
+excerpt_separator: <!--more-->
+---
 
 Well, it turns out that people *were* using
 [`pocketsphinx_continuous`](./2022-08-16-pocketsphinx-continuous.md),
