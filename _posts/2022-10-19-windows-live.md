@@ -28,18 +28,16 @@ The sensible solution to this is to bring back something like
 `pocketsphinx_continuous` but explicitly in the form of example code.
 Adding cross-platform audio support to the library is absolutely
 something I will not do, but there are some other options,
-[PortAudio](https://portaudio.com) foremost among them.  So, here is
-an example of using PortAudio:
+[PortAudio](https://portaudio.com) foremost among them.  So, [here is
+an example of using PortAudio](https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_portaudio.c)
 
-https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_portaudio.c
 
 That said, wrangling external dependencies on Windows is very
 annoying.  To use the above example may require a certain amount of
 path and environment wrangling to get CMake/VSCode/Visual Studio to
-find PortAudio.  For this reason there is also now an example of using
-the Win32 Waveform Audio API directly:
-
-https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_win32.c
+find PortAudio.  For this reason [there is also now an example of
+using the Win32 Waveform Audio API
+directly](https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_win32.c)
 
 Note that in both cases you may have quite bad results when running a
 "Debug" build, because Windows is very slow, and Visual C++ outputs
