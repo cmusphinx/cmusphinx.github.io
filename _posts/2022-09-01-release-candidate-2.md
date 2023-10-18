@@ -53,4 +53,4 @@ and there will never be.  But I am trying to make this into a decent
 piece of software nonetheless.  All documentation, bug reports (that
 are actually bug reports and not just 'how do i run the program') and
 such are welcome via
-[https://github.com/cmusphinx/pocketsphinx](GitHub).
+[GitHub](https://github.com/cmusphinx/pocketsphinx).
