@@ -23,4 +23,4 @@ now called just plain `pocketsphinx`.  It should install properly on
 Windows and Mac OS X now, as well.
 
 Pull requests and bug reports and such are welcome via
-[https://github.com/cmusphinx/pocketsphinx](GitHub).
+[GitHub](https://github.com/cmusphinx/pocketsphinx).

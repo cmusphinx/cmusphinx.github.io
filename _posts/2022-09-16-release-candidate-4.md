@@ -65,4 +65,4 @@ also acquired the JSON functions mentioned above), so you should maybe
 use Python instead of hurting yourself with the C API.
 
 Pull requests and bug reports and such are welcome via
-[https://github.com/cmusphinx/pocketsphinx](GitHub).
+[GitHub](https://github.com/cmusphinx/pocketsphinx).
