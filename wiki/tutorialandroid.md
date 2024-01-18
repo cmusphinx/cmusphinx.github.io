@@ -8,6 +8,10 @@ title: PocketSphinx on Android
 {:toc}
 ---
 
+> **Caution!** This tutorial has not been tested for quite some
+  time. It is possible that it no longer works with the latest
+  versions of Android and the developer tools.
+
 This tutorial describes a demo app that is available on [GitHub](https://github.com/cmusphinx/pocketsphinx-android-demo).
 
 ## PocketSphinx Android demo

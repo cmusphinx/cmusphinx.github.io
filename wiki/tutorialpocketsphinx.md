@@ -8,338 +8,299 @@ title: Building an application with PocketSphinx
 {:toc}
 ---
 
-> **Caution!**  
-  This tutorial describes pocketsphinx [5 pre-alpha release](https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/).
-  It is not up-to-date with the current development version and will be updated soon.
+In this tutorial we will walk through a simple code example in C using
+PocketSphinx.  This corresponds exactly to the [`live_portaudio.c`
+example](https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_portaudio.c)
+in the source code.  So, TL;DR, you could just try to compile that:
 
-## Installation
+    cmake -G Ninja -S. -B build
+    cmake --build --target live_portaudio
 
-PocketSphinx is a library that depends on another library called SphinxBase
-which provides common functionality across all CMUSphinx projects.
-To install Pocketsphinx, you need to install both Pocketsphinx and Sphinxbase.
-You can use Pocketsphinx with Linux, Windows, on MacOS, iPhone and Android.
+## Building PocketSphinx
 
-First of all, download the released packages for pocketsphinx and sphinxbase from
-the projects download page or check them out from Subversion or Github.
+First, obtain the source code, either by downloading a release from
+the [GitHub releases
+page](https://github.com/cmusphinx/pocketsphinx/releases) or by
+[cloning the source with git](https://github.com/cmusphinx/pocketsphinx.git)
 
-For more details see the [download page](/wiki/download).
+For more details see the [download page](/wiki/download) or the
+[README
+file](https://github.com/cmusphinx/pocketsphinx/blob/master/README.md)
 
-Unpack them into the same directory. On Windows, you will need to rename
-'sphinxbase-X.Y' (where X.Y is the SphinxBase version number) to simply
-'sphinxbase' to satisfy the project configuration of pocketsphinx.
+PocketSphinx uses [CMake](https://cmake.org/) to manage configuration
+and buliding on multiple platforms.  By default, it builds static
+libraries and binaries which can simply be used from the source
+directory.  You may also install it system-wide or in a user
+directory.  In the case where it is installed, it will use
+[`pkg-config`](https://www.freedesktop.org/wiki/Software/pkg-config/)
+to allow you to find library and header directories and names, but
+this isn't really necessary, since there is just one header file
+([`<pocketsphinx.h>`](../doc/pocketsphinx/pocketsphinx_8h.html)) and
+one library (`-lpocketsphinx`).
 
-### Installation on Unix system
+For the purposes of this tutorial we will install it in a local
+directory.
 
-To build pocketsphinx in a Unix-like environment (such as Linux, Solaris,
-FreeBSD etc.) you need to make sure you have the following dependencies
-installed: gcc, automake, autoconf, libtool, bison, swig (at least version 2.0),
-the Python development package and the pulseaudio development package.
+### Installation on a Unix-like system (including MacOS)
 
-If you want to build it without some dependencies you can use the respective
-configuration options like `--without-swig-python`. However, for beginners it’s
-recommended to install all dependencies.
+Make sure you have CMake, PortAudio, and a working C compiler
+installed.  On GNU/Linux you can use your package manager, whatever it
+is.  For example on Ubuntu/Debian/etc:
 
-You need to download both the sphinxbase and pocketsphinx packages and unpack them.
-Please note that you cannot use sphinxbase and pocketsphinx of different
-version. So, please make sure that their versions are in sync. After unpacking,
-you should see the following two main folders:
+    sudo apt install build-essential cmake ninja-build portaudio19-dev
 
-```
-sphinxbase-X.X
-pocketsphinx-X.x
-```
+On MacOS this will require you to minimally install the "Xcode
+command-line tools".  If you have installed
+[Homebrew](https://brew.sh/) then you have these already.  You can
+then install CMake, either with the [official
+installer](https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-macos-universal.dmg),
+or [from Homebrew](https://formulae.brew.sh/formula/cmake#default).
+For PortAudio... I dunno, use Homebrew, I guess:
 
-First, build and install SphinxBase. Change the current directory to the
-`sphinxbase` folder. If you downloaded it directly from the repository, you need
-to run the following command at least once to generate the `configure` file:
+    brew install cmake portaudio
 
-```bash
-./autogen.sh
-```
+We will assume that you install PocketSphinx in directory called
+`cmusphinx` inside your home directory.  It should be as simple as
+(assuming CMake is installed):
 
-If you downloaded the release version, or ran `autogen.sh` at least once, then
-compile and install it with:
+    cmake -S . -B build -DCMAKE_INSTALL_PREFIX=$HOME/cmusphinx
+    cmake --build build --target install
 
-```bash
-./configure
-make
-make install
-```
-
-The last step might require root permissions, so you might need to run `sudo make
-install`. If you want to use fixed-point arithmetic, you must configure
-SphinxBase with the `--enable-fixed` option. You can also set an installation prefix
-with `--prefix` or configure to use or not to use SWIG Python support.
-
-Sphinxbase will be installed in the `/usr/local/` directory by default. Not
-all systems load libraries from this folder automatically. In order to load
-them you need to configure the path to look for shared libaries. This can be done
-either in the `/etc/ld.so.conf` file or by exporting the environment variables:
-
-```bash
-export LD_LIBRARY_PATH=/usr/local/lib
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-```
-
-For more details on the linker configuration see the [Shared Libraries
-HOWTO](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html).
-
-Then change to the pocketsphinx folder and perform the same steps:
-
-```bash
-./configure
-make
-make install
-```
-
-To test the installation, run `pocketsphinx_continuous -inmic yes` and check
-that it recognizes words you speak into your microphone.
-
-If you get an error such as: `error while loading shared libraries:
-libpocketsphinx.so.3`, you may want to check your linker configuration of the
-`LD_LIBRARY_PATH` environment variable described above.
+If you are lucky enough to have [Ninja](https://ninja-build.org/)
+installed, you can make the build many times faster (it takes 1.7
+seconds to complete on an [Intel processor from
+2009](https://www.intel.com/content/www/us/en/products/sku/41316/intel-core-i7860-processor-8m-cache-2-80-ghz/specifications.html)),
+simply add `-G Ninja` to the first line above.
 
 ### Windows
 
-In MS Windows, under MS Visual Studio 2012 (or newer – we test with Visual
-C++ 2012 Express):
+Of course, Windows is more complicated in every possible way.  There
+are many ways to do everything, all of them inconvenient and
+frustrating.  The path of least resistance is to just install
+[MSYS2](https://www.msys2.org/), start the MSYS2 shell (preferably the
+`UCRT64` version whatever that is) then install CMake, PortAudio and
+Ninja along with the compiler:
 
-  *  load `sphinxbase.sln` in the sphinxbase directory
-  *  compile all the projects in SphinxBase (from `sphinxbase.sln`)
-  *  load `pocketsphinx.sln` in the pocketsphinx directory
-  *  compile all the projects in PocketSphinx
+    pacman -S mingw-w64-ucrt-x86_64-gcc cmake ninja mingw-x64-ucrt-x86_64-portaudio
 
-MS Visual Studio will build the executables and libraries under
-`.\bin\Release` or `.\bin\Debug` (depending on the target you choose on
-MS  Visual Studio). In order to run `pocketsphinx_continuous.exe`, don’t forget
-to copy the sphinxbase.dll file to the bin folder. Otherwise the executable will
-fail to find this library. Unlike on Linux, the path to the model is not
-preconfigured in Windows, so you have to specify for pocketsphinx_continuous
-where to find the model  with the `-hmm`, `-lm` and `-dict` options.
+Now build:
 
-To recognize speech from your microphone, change to the pocketsphinx folder and
-run:
+    cmake -S . -B build -G Ninja -DCMAKE_INSTALL_PREFIX=$HOME/cmusphinx
+    cmake --build build --target install
+    
+Note that because you're running the MSYS2 version of CMake, you
+*cannot* directly use a Windows-y path like `$LOCALAPPDATA/cmusphinx`
+or (horror) `%LOCALAPPDATA%/cmusphinx` as the `CMAKE_INSTALL_PREFIX`,
+as it [won't understand the drive
+letters](https://www.msys2.org/docs/filesystem-paths/).  You can use
+`cygpath` for this, e.g.:
 
-```bash
-bin\Release\Win32\pocketsphinx_continuous.exe -inmic yes
-    -hmm model\en-us\en-us -lm model\en-us\en-us.lm.bin
-    -dict model\en-us\cmudict-en-us.dict
-```
+    cmake -S . -B build -G Ninja -DCMAKE_INSTALL_PREFIX=$(cygpath $LOCALAPPDATA)/cmusphinx
+    cmake --build build --target install
 
-To recognize speech from a file run:
+## Configuration
 
-```bash
-bin\Release\Win32\pocketsphinx_continuous.exe -infile test\data\goforward.raw
-    -hmm model\en-us\en-us -lm model\en-us\en-us.lm.bin
-    -dict model\en-us\cmudict-en-us.dict
-```
+Now that you have installed PocketSphinx you must set one little
+environment variable to make sure that it can find its models.  When
+you ran the first `cmake` command above you may have seen a line like
+this:
 
-## Pocketsphinx API core ideas
+    MODELDIR="/home/user/cmusphinx/share/pocketsphinx/model"
 
-The Pocketsphinx API is designed to ease the use of speech recognizer
-functionality in your applications:
+You'll need to set `POCKETSPHINX_PATH` to this directory.  In the near
+future the install target will also tell you about this, and will also
+create a little script to do it for you, but for now you have to do it
+manually:
 
-  1. It is very likely to remain stable both in terms of source and binary
-     compatibility, due to the use of abstract types.
-  2. It is fully re-entrant, so there is no problem having multiple decoders in
-     the same process.
-  3. It allows a drastic reduction in code footprint and a modest but
-     significant reduction in memory consumption.
+    export POCKETSPHINX_PATH=$HOME/cmusphinx/share/pocketsphinx/model
 
-The reference documentation for the new API is available at <https://cmusphinx.github.io/doc/pocketsphinx/>.
+## Using the Pocketsphinx API
 
-## Basic usage (hello world)
+Okay, let's get to the code!  As a reminder, you can see the whole
+thing at
+https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_portaudio.c
 
-There are a few key things you need to know when you want to use the API:
+### General Principles
 
-  1. command-line parsing is done externally (in `<cmd_ln.h>`)
-  2. everything takes a `ps_decoder_t *` as the first argument
+The reference documentation for the API is available at
+<https://cmusphinx.github.io/doc/pocketsphinx/>.  There are three
+opaque types (like classes) that we will create and use to configure
+the recognizer, detect speech segments in the input, and recognize
+speech:
 
-To illustrate the API, we will step through a simple "hello world" example.
-This example is somewhat specific to Unix regarding the locations of files and
-the compilation process. We will create a C source file called `hello_ps.c`.
-To compile it (on Unix), use this command:
+- [`ps_config_t`](../doc/pocketsphinx/structps__config__t.html)
+- [`ps_endpointer_t`](../doc/pocketsphinx/structps__endpointer__t.html)
+- [`ps_decoder_t`](../doc/pocketsphinx/structps__decoder__t.html)
 
-```bash
-gcc -o hello_ps hello_ps.c \
-    -DMODELDIR=\"`pkg-config --variable=modeldir pocketsphinx`\" \
-    `pkg-config --cflags --libs pocketsphinx sphinxbase`
-```
+In general, PocketSphinx types have a function called `TYPE_init`
+which creates an instance of type and a function called `TYPE_free`
+which releases an instance of a type.  The general rule is that if you
+create an instance in your code, you will always need to free it, and
+if you didn't create it (i.e. it was returned to you by some API
+function), you shouldn't free it.  The sole exception to this is
+iterator types like
+[`ps_seg_t`](../doc/pocketsphinx/structps__seg__t.html) and
+[`ps_alignment_iter_t`](../doc/pocketsphinx/structps__alignment__iter__t.html),
+which must be "freed" if you stop iterating over them before the end
+of the list.
 
-Please note that compilation errors mean that you didn’t carefully follow the
-installation guide above. For example pocketsphinx needs to be properly
-installed to be available through the pkg-config system. To check whether
-pocketsphinx is installed properly, just run
-
-```bash
-pkg-config --cflags --libs pocketsphinx sphinxbase
-```
-on the command line and make sure the output looks like this:
-
-```bash
--I/usr/local/include -I/usr/local/include/sphinxbase -I/usr/local/include/pocketsphinx  
-	-L/usr/local/lib -lpocketsphinx -lsphinxbase -lsphinxad
-```
+That sounds confusing but it makes sense if you think about it!  When
+in doubt, remember: ["Memory leaks are quite acceptable in many
+applications"](https://accu.org/journals/overload/1/2/toms_1356/)
 
 ### Initialization
 
-The first thing we need to do is to create a configuration object, which for
-historical reasons is called `cmd_ln_t`. Along with the general boilerplate
-for our C program, our code looks like this:
+First we will [create the
+`ps_config_t`](https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_portaudio.c#L52C1-L54C1)
+with the set of default arguments, which also includes a default
+acoustic and language model:
 
-```c
-#include <pocketsphinx.h>
+    config = ps_config_init(NULL);
+    ps_default_search_args(config);
 
-int
-main(int argc, char *argv[])
-{
-    ps_decoder_t *ps = NULL;
-    cmd_ln_t *config = NULL;
+The `ps_config_t` has a bunch of associated functions to get
+information out of it.  We will use one of these in particular to
+obtain the sampling rate, which we will [use to initialize
+PortAudio](https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_portaudio.c#L65)
+later on.
 
-    config = cmd_ln_init(NULL, ps_args(), TRUE,
-		         "-hmm", MODELDIR "/en-us/en-us",
-	                 "-lm", MODELDIR "/en-us/en-us.lm.bin",
-	                 "-dict", MODELDIR "/en-us/cmudict-en-us.dict",
-	                 NULL);
+(note that you can *also* do this the other way around, and use the
+sampling rate provided by your audio stream to initialize the
+recognizer, which makes more sense in some cases)
 
-    return 0;
-}
-```
+Skipping the details of initializing PortAudio, we will now
+[initialize the
+recognizer](https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_portaudio.c#L58),
+which is called a "decoder" for Reasons:
 
-The `cmd_ln_init()` function takes a variable number of null-terminated
-string arguments, followed by NULL. The first argument is any previous
-`cmd_ln_t *` which is to be updated. The second argument is an array of
-argument definitions – the standard set can be obtained by calling
-`ps_args()`. The third argument is a flag telling the argument parser to
-be "strict". If this argument is `TRUE`, then duplicate arguments or unknown
-arguments will cause the parsing process to fail.
+    if ((decoder = ps_init(config)) == NULL)
+        E_FATAL("PocketSphinx decoder init failed\n");
 
-The `MODELDIR` macro is defined on the GCC command-line by using the
-`pkg-config` to obtain the `modeldir` variable from the PocketSphinx
-configuration. On Windows, you can simply add a preprocessor definition
-to the code, such as this:
+And [the
+endpointer](https://github.com/cmusphinx/pocketsphinx/blob/master/examples/live_portaudio.c#L60C1-L62C1),
+which is the component that detects speech in the audio stream.  Yes,
+that's a lot of zeros.  You can see what they mean in the
+documentation:
 
-```c
-#define MODELDIR "c:/sphinx/model"
-```
+    if ((ep = ps_endpointer_init(0, 0.0, 0, 0, 0)) == NULL)
+        E_FATAL("PocketSphinx endpointer init failed\n");
 
-(replace this with wherever your models are installed). In order to
-initialize the decoder, use `ps_init`:
+### Endpointing
 
-```c
-ps = ps_init(config);
-```
+The endpointer works by consuming a "frame" of audio data and
+returning a "frame" of speech data, if any was detected.  Again, since
+we're in C here, it's important to remember that:
 
-### Decoding a file stream
+- The input data is owned by the caller
+- The output data is owned by the endpointer
 
-Because live audio input is somewhat platform-specific, we will confine
-ourselves to decoding audio files. There is an audio file helpfully included in
-the pocketsphinx source code which contains this very sentence. You can find it
-in `pocketsphinx/test/data/goforward.raw`.
-Copy it to the current directory. If you want to create your own version of it:
-it needs to be a single-channel (monaural), little-endian, unheadered 16-bit
-signed PCM audio file sampled at 16000 Hz.
+What this means is that you can simply allocate a single buffer for
+input audio and reuse it through your whole application, and that you
+should never do *anything* with the frames of speech returned by the
+endpointer except:
 
-The main pocketsphinx use case is to read audio data in blocks of memory
-from a source and feed it to the decoder. To do that, we first open the file and
-start decoding the utterance using `ps_start_utt()`:
+- Pass them directly to the decoder
+- Copy them somewhere else if you want to save them
 
-```c
-rv = ps_start_utt(ps);
-```
+This means, by the way, that you should also never try to share an
+endpointer or a decoder between multiple threads.
 
-Next, we read 512 samples at a time from the file, and feed them to the decoder
-using `ps_process_raw()`:
+How do you know what to allocate?  The endpointer tells you, with
+`ps_endpointer_frame_size`:
 
-```c
-int16 buf[512];
-while (!feof(fh)) {
-    size_t nsamp;
-    nsamp = fread(buf, 2, 512, fh);
-    ps_process_raw(ps, buf, nsamp, FALSE, FALSE);
-}
-```
+    frame_size = ps_endpointer_frame_size(ep);
+    if ((frame = malloc(frame_size * sizeof(frame[0]))) == NULL)
+        E_FATAL_SYSTEM("Failed to allocate frame");
 
-Afterwards, we need to mark the end of the utterance using `ps_end_utt()`:
+If you don't care about compatibility with ancient C compilers you can
+simply do this and not worry about freeing anything later on:
 
-```c
-    rv = ps_end_utt(ps);
-```
+    int16_t frame[ps_endpointer_frame_size(ep)];
+    
+(as an aside, likely a future version of PocketSphinx will drop C89
+compatibility entirely, since it is dubiously C89-compliant already)
 
-Last, we retrieve the hypothesis to get our recognition result:
+It's important to note that you can *only* ever pass buffers of this
+size to the endpointer.  With certain low-level audio APIs, this means
+that you'll have to do some buffering.  Luckily, PortAudio allows you
+to request the buffer size, which we do when opening the audio stream:
 
-```c
-    hyp = ps_get_hyp(ps, &score);
-    printf("Recognized: %s\n", hyp);
-```
+    if ((err = Pa_OpenDefaultStream(&stream, 1, 0, paInt16,
+                                    ps_config_int(config, "samprate"),
+                                    frame_size, NULL, NULL)) != paNoError)
+        E_FATAL("Failed to open PortAudio stream: %s\n",
+                Pa_GetErrorText(err));
 
-We can also retrieve the hypothesis during recognition. If we do so, it will
-return a partial result.
+Now, your application will wait to get some audio buffers, which
+usually involves either a callback function (yuck) or a nice, simple
+loop (hooray).  Luckily, PortAudio gives us the second option.  So, we
+sit in a loop, which looks like this:
 
-### Cleaning up
+1. Check if we are currently in a speech section with
+   `ps_endpointer_in_speech`.
+2. Wait for an audio buffer.
+3. Pass it to the endpointer with `ps_endpointer_process`.  If it's
+   `NULL`, then go back to step 1.
+4. If we weren't in a speech section before, start recognizing speech.
+5. Pass the speech buffer to the recognizer.
+6. If we are no longer in a speech section (check with
+   `ps_endpointer_in_speech` again), stop recognizing speech and get
+   recognition results.
+   
+### Processing
 
-To clean up, simply call `ps_free()` on the object that was returned by
-`ps_init()`. Free the configuration object with `cmd_ln_free_r`.
+Before we can recognize any speech, we need to start an "utterance" by
+calling `ps_start_utt`.  Then we can pass buffers of audio (of any
+size, in this case) using `ps_process_raw`.  This has a couple of
+options which we won't use here for live-mode recognition, but may be
+useful in other cases - one can instruct it to simply buffer the audio
+without actually doing any recognition (in the case of a very slow
+computer), or to treat the entire buffer as a single utterance (useful
+when recognizing entire files at once, as it gives better accuracy).
 
-### Full code listing
+### Getting Results
 
-Here is the full listing of our code again:
+Recognition results can be requested using `ps_get_hyp` at any point
+between a call to `ps_start_utt` and `ps_end_utt`.  This function
+simply returns a string - if you want a word segmentation, you can use
+`ps_seg_iter`.
 
-```c
-#include <pocketsphinx.h>
+As with speech buffers, you didn't allocate this string, you shouldn't
+free it, and you shouldn't do anything with it except:
 
-int
-main(int argc, char *argv[])
-{
-    ps_decoder_t *ps;
-    cmd_ln_t *config;
-    FILE *fh;
-    char const *hyp, *uttid;
-    int16 buf[512];
-    int rv;
-    int32 score;
+- Print it out or some other immediate action.
+- Copy it if you wish to save or store it for later use.
 
-    config = cmd_ln_init(NULL, ps_args(), TRUE,
-		         "-hmm", MODELDIR "/en-us/en-us",
-		         "-lm", MODELDIR "/en-us/en-us.lm.bin",
-	    		 "-dict", MODELDIR "/en-us/cmudict-en-us.dict",
-		         NULL);
-    if (config == NULL) {
-	fprintf(stderr, "Failed to create config object, see log for details\n");
-	return -1;
+Likewise same warnings about not sharing `ps_decoder_t` between threads.
+
+### Code
+
+Concretely, the whole thing looks like this:
+
+    while (!global_done) {
+        const int16 *speech;
+        int prev_in_speech = ps_endpointer_in_speech(ep);
+        if ((err = Pa_ReadStream(stream, frame, frame_size)) != paNoError) {
+            E_ERROR("Error in PortAudio read: %s\n",
+                Pa_GetErrorText(err));
+            break;
+        }
+        speech = ps_endpointer_process(ep, frame);
+        if (speech != NULL) {
+            const char *hyp;
+            if (!prev_in_speech)
+                ps_start_utt(decoder);
+            if (ps_process_raw(decoder, speech, frame_size, FALSE, FALSE) < 0)
+                E_FATAL("ps_process_raw() failed\n");
+            if (!ps_endpointer_in_speech(ep)) {
+                ps_end_utt(decoder);
+                if ((hyp = ps_get_hyp(decoder, NULL)) != NULL) {
+                    printf("%s\n", hyp);
+                    fflush(stdout);
+                }
+            }
+        }
     }
-
-    ps = ps_init(config);
-    if (ps == NULL) {
-	fprintf(stderr, "Failed to create recognizer, see log for details\n");
-	return -1;
-    }
-
-    fh = fopen("goforward.raw", "rb");
-    if (fh == NULL) {
-	fprintf(stderr, "Unable to open input file goforward.raw\n");
-	return -1;
-    }
-
-    rv = ps_start_utt(ps);
-
-    while (!feof(fh)) {
-	size_t nsamp;
-	nsamp = fread(buf, 2, 512, fh);
-	rv = ps_process_raw(ps, buf, nsamp, FALSE, FALSE);
-    }
-
-    rv = ps_end_utt(ps);
-    hyp = ps_get_hyp(ps, &score);
-    printf("Recognized: %s\n", hyp);
-
-    fclose(fh);
-    ps_free(ps);
-    cmd_ln_free_r(config);
-
-    return 0;
-}
-```
 
 ## Advanced usage
 

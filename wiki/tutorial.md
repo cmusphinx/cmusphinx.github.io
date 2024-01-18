@@ -14,7 +14,9 @@ toolkits such as [Kaldi](https://kaldi-asr.org/),
 [Coqui](https://coqui.ai/),
 [NeMo](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/stable/asr/intro.html),
 [Wav2vec2](https://ai.facebook.com/blog/wav2vec-20-learning-the-structure-of-speech-from-raw-audio/),
-etc, etc, will perform much, much better on larger vocabulary tasks.
+[Whisper](https://github.com/openai/whisper) and
+[whisper.cpp](https://github.com/ggerganov/whisper.cpp), etc, etc,
+will perform much, much better on larger vocabulary tasks.
 
 The tutorial is intended for developers who need to apply speech
 technology in their applications, not for speech recognition researchers.
