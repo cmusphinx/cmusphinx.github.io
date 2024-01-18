@@ -31,10 +31,22 @@ due to the different types of acoustic models used. For more technical
 information on that read the article about
 [Acoustic Model Types](/wiki/acousticmodeltypes).
 
+## Building the tools
+
+You'll minimally need PocketSphinx and SphinxTrain here.  Build and
+install PocketSphinx following the instructions in [the
+tutorial](../tutorialpocketsphinx).  SphinxTrain can be built using
+the same instructions:
+
+    cmake -S . -B build -DCMAKE_INSTALL_PREFIX=$HOME/cmusphinx -G Ninja
+    cmake --build build --target install
+    
+The tools will be located in `$HOME/cmusphinx/libexec/sphinxtrain`.
+
 ##  Creating an adaptation corpus
 
-The first thing you need to do is to create a corpus of adaptation data. The
-corpus will consist of
+Now, you will need to create a corpus of adaptation data. The corpus
+will consist of
 
 * a list of sentences
 * a dictionary describing the pronunciation of all the words in that list of sentences
@@ -52,9 +64,8 @@ ARCTIC](http://festvox.org/cmu_arctic/) text-to-speech databases. To that
 effect, here are the first 20 sentences from ARCTIC, a `.fileids` file, and a
 transcription file:
 
-* [arctic20.fileids](http://cmusphinx.github.io/data/arctic20.fileids)
-* [arctic20.transcription](http://cmusphinx.github.io/data/arctic20.transcri
-ption)
+* [arctic20.fileids](../data/arctic20.fileids)
+* [arctic20.transcription](../data/arctic20.transcription)
 
 The sections below will refer to these files, so, if you want to follow along we
 recommend downloading these files now. You should also make sure that you have
@@ -76,7 +87,7 @@ and read all sentences in one big audio file. Then you can cut the audio files
 on sentences in a text editor and make sure every sentence is saved in the
 corresponding file. The file structure should look like this:
 
-	arctic_0001.wav  
+	arctic_0001.wav
 	arctic_0002.wav
 	.....
 	arctic_0019.wav
@@ -102,16 +113,16 @@ them to improve the recognizer accuracy by means of adaptation.
 
 First we will copy the default acoustic model from PocketSphinx into the
 current directory in order to work on it. Assuming that you installed
-PocketSphinx under `/usr/local`, the acoustic model directory is
-`/usr/local/share/pocketsphinx/model/en-us/en-us`. Copy this directory to
+PocketSphinx under `$HOME/cmusphinx`, the acoustic model directory is
+`$HOME/cmusphinx/share/pocketsphinx/model/en-us/en-us`. Copy this directory to
 your working directory:
 
-	cp -a /usr/local/share/pocketsphinx/model/en-us/en-us .
+	cp -a $HOME/cmusphinx/share/pocketsphinx/model/en-us/en-us .
 
 Let’s also copy the dictionary and the langauge model for testing:
 
-	cp -a /usr/local/share/pocketsphinx/model/en-us/cmudict-en-us.dict .
-	cp -a /usr/local/share/pocketsphinx/model/en-us/en-us.lm.bin .
+	cp -a $HOME/cmusphinx/share/pocketsphinx/model/en-us/cmudict-en-us.dict .
+	cp -a $HOME/cmusphinx/share/pocketsphinx/model/en-us/en-us.lm.bin .
 
 ### Generating acoustic feature files
 
@@ -123,7 +134,7 @@ to train the standard acoustic model. Since PocketSphinx 0.4, these are stored
 in a file called `feat.params` in the acoustic model directory. You can
 simply add it to the command line for `sphinx_fe`, like this:
 
-	sphinx_fe -argfile en-us/feat.params \
+	$HOME/cmusphinx/libexec/sphinxtrain/sphinx_fe -argfile en-us/feat.params \
 	        -samprate 16000 -c arctic20.fileids \
 	       -di . -do . -ei wav -eo mfc -mswav yes
 
@@ -149,10 +160,7 @@ Some models like en-us are distributed in compressed version. Extra files
 that are required for adaptation are excluded to save space. For the en-us model
 from pocketsphinx you can download the full version suitable for adaptation:
 
-[cmusphinx-en-us-ptm-5.2.tar.gz
-](http://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Mo
-dels/US%20English%20Generic%20Acoustic%20Model/cmusphinx-en-us-ptm-5.2.tar.gz/do
-wnload)
+[cmusphinx-en-us-ptm-5.2.tar.gz](../data/cmusphinx-en-us-ptm-5.2.tar.gz)
 
 Make sure you are using the full model with the `mixture_weights` file present.
 
@@ -161,22 +169,20 @@ to convert the `mdef` file from the acoustic model to the plain text format used
 by the SphinxTrain tools. To do this, use the `pocketsphinx_mdef_convert`
 program:
 
-	pocketsphinx_mdef_convert -text en-us/mdef en-us/mdef.txt
+	$HOME/cmusphinx/bin/pocketsphinx_mdef_convert -text en-us/mdef en-us/mdef.txt
 
 In the downloads the `mdef` is already in the text form.
 
 ### Accumulating observation counts
 
-The next step in the adaptation is to collect statistics from the adaptation data.  
-This is done using the `bw` program from SphinxTrain. You should be able to find
-the `bw` tool in a sphinxtrain installation in the folder
-`/usr/local/libexec/sphinxtrain` (or under another prefix on Linux) or in
-`bin\Release` (in the sphinxtrain directory on Windows). Copy it to the working
-directory along with the `map_adapt` and `mk_s2sendump` programs.
+The next step in the adaptation is to collect statistics from the adaptation data.
+This is done using the `bw` program from SphinxTrain. You should be
+able to find the `bw` tool in a sphinxtrain installation in the folder
+`$HOME/cmusphinx/libexec/sphinxtrain`.
 
 Now, to collect the statistics, run:
 
-	./bw \
+	$HOME/cmusphinx/libexec/sphinxtrain/bw \
 	 -hmmdir en-us \
 	 -moddeffn en-us/mdef.txt \
 	 -ts2cbfn .ptm. \
@@ -221,7 +227,7 @@ Next, we will generate an MLLR transformation which we will pass to the decoder
 to adapt the acoustic model at run-time. This is done with the `mllr_solve`
 program:
 
-	./mllr_solve \
+	$HOME/cmusphinx/libexec/sphinxtrain/mllr_solve \
 	    -meanfn en-us/means \
 	    -varfn en-us/variances \
 	    -outmllrfn mllr_matrix -accumdir .
@@ -242,7 +248,7 @@ with the adapted model files:
 
 To apply the adaptation, use the `map_adapt` program:
 
-	./map_adapt \
+	$HOME/cmusphinx/libexec/sphinxtrain/map_adapt \
 	    -moddeffn en-us/mdef.txt \
 	    -ts2cbfn .ptm. \
 	    -meanfn en-us/means \
@@ -261,7 +267,7 @@ If you want to save space for the model you can use a `sendump` file which is
 supported by PocketSphinx. For Sphinx4 you don’t need that. To recreate the
 `sendump` file from the updated `mixture_weights` file run:
 
-	./mk_s2sendump \
+	$HOME/cmusphinx/libexec/sphinxtrain/mk_s2sendump \
 	    -pocketsphinx yes \
 	    -moddeffn en-us-adapt/mdef.txt \
 	    -mixwfn en-us-adapt/mixture_weights \
@@ -309,11 +315,8 @@ depending on the type of the model you trained.
 To use the model in PocketSphinx, simply put the model files to the resources
 of your application. Then point to it with the `-hmm` option:
 
-	pocketsphinx_continuous -hmm `<your_new_model_folder>` -lm `<your_lm>`
--dict `<your_dict>` -infile test.wav
-
-or with the `-hmm` engine configuration option through the `cmd_ln_init`
-function. Alternatively, you can replace the old model files with the new ones.
+	pocketsphinx -hmm `<your_new_model_folder>` -lm `<your_lm>` \
+        -dict `<your_dict>` single test.wav
 
 To use the trained model in Sphinx4, you need to update the model location in
 the code.
