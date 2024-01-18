@@ -302,6 +302,18 @@ Concretely, the whole thing looks like this:
         }
     }
 
+How to compile?  Well... the actual example of course can just be
+built with CMake as noted way up at the top, but for your own code
+you'll need to know how to compile and link it.  If you installed
+using the commands above you'll find the PocketSphinx headers in
+`$HOME/cmusphinx/include` and the libraries in `$HOME/cmusphinx/lib`.
+For PortAudio, they'll be... somewhere, but `pkg-config` can tell you.
+So, if your code was in `example.c`:
+
+    cc -o example example.c \
+        -I$HOME/cmusphinx/include -L$HOME/cmusphinx/lib -lpocketsphinx -lm \
+        $(pkg-config --static --libs --cflags portaudio-2.0)
+
 ## Advanced usage
 
 For more advanced uses of the API please check the API reference.

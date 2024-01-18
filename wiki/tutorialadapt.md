@@ -8,10 +8,6 @@ title: Adapting the default acoustic model
 {:toc}
 ---
 
-> **Caution!**  
-  This tutorial uses the [5 pre-alpha release](https://sourceforge.net/projects/cmusphinx/files/sphinx4/5prealpha/).  
-  It is not going to work for older versions.
-
 This page describes how to do some simple acoustic model adaptation to improve
 speech recognition in your configuration. Please note that the adaptation
 doesn't necessary adapt for a particular speaker. It just improves the fit
