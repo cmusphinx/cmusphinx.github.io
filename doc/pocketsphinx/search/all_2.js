@@ -1,20 +1,10 @@
 var searchData=
 [
-  ['e_5fdebug_3',['E_DEBUG',['../err_8h.html#af4689a912d0c49e9eb5244659d8702ad',1,'err.h']]],
-  ['e_5ferror_4',['E_ERROR',['../err_8h.html#a87a0a12135a290cf16d06b63fcfa0ccf',1,'err.h']]],
-  ['e_5ferror_5fsystem_5',['E_ERROR_SYSTEM',['../err_8h.html#add0768056bee50c260c5623b4edd4038',1,'err.h']]],
-  ['e_5ffatal_6',['E_FATAL',['../err_8h.html#abaacffc3c0f14e4dd180b1e38c62c5a0',1,'err.h']]],
-  ['e_5ffatal_5fsystem_7',['E_FATAL_SYSTEM',['../err_8h.html#acc9aaeb2e0eb21f964913c14403d6795',1,'err.h']]],
-  ['e_5finfo_8',['E_INFO',['../err_8h.html#a92dbeb77b8e1facc7b15abab6ad19b73',1,'err.h']]],
-  ['e_5finfo_5fnofn_9',['E_INFO_NOFN',['../err_8h.html#abe6c68e16406b5f7aee0ec70e1f7d7f1',1,'err.h']]],
-  ['e_5finfocont_10',['E_INFOCONT',['../err_8h.html#aaf6601c7c08a803c55f2d55fcd8d5759',1,'err.h']]],
-  ['e_5fwarn_11',['E_WARN',['../err_8h.html#aed4c99044fd3e70b7b33a0298a2279b4',1,'err.h']]],
-  ['endpointer_2eh_12',['endpointer.h',['../endpointer_8h.html',1,'']]],
-  ['err_2eh_13',['err.h',['../err_8h.html',1,'']]],
-  ['err_5fget_5flogfp_14',['err_get_logfp',['../err_8h.html#a22bd49d11a1acc3b7d9a9498cf9e2c59',1,'err.h']]],
-  ['err_5fset_5fcallback_15',['err_set_callback',['../err_8h.html#a27fbaecbcb755fd9e5a503566b6ec542',1,'err.h']]],
-  ['err_5fset_5flogfile_16',['err_set_logfile',['../err_8h.html#a2ff33abcf6f29dd25138f0d9846a26cd',1,'err.h']]],
-  ['err_5fset_5flogfp_17',['err_set_logfp',['../err_8h.html#adead72aa5614d8d305ab8710369ea01b',1,'err.h']]],
-  ['err_5fset_5floglevel_18',['err_set_loglevel',['../err_8h.html#ac011c0d3b793abc19010c2255bce5c88',1,'err.h']]],
-  ['err_5fset_5floglevel_5fstr_19',['err_set_loglevel_str',['../err_8h.html#a6d18352f0a521d04848a95df5ea1e996',1,'err.h']]]
+  ['deprecated_20list_0',['Deprecated List',['../deprecated.html',1,'']]],
+  ['device_20work_1',['Why doesn&apos;t my audio device work?',['../index.html#faq_audio',1,'']]],
+  ['dnn_20ctc_20las_20cnn_20rnn_20lstm_20etc_2',['Why don&apos;t you support (pick one or more: WFST, fMLLR, SAT, DNN, CTC, LAS, CNN, RNN, LSTM, etc)?',['../index.html#faq_tech',1,'']]],
+  ['documentation_3',['PocketSphinx API Documentation',['../index.html',1,'']]],
+  ['does_20error_3a_20acmod_20c_20line_20nn_3a_20mean_4',['What does ERROR: &quot;acmod.c, line NN: ...&quot; mean?',['../index.html#faq_path',1,'']]],
+  ['doesn_20t_20my_20audio_20device_20work_5',['Why doesn&apos;t my audio device work?',['../index.html#faq_audio',1,'']]],
+  ['don_20t_20you_20support_20pick_20one_20or_20more_3a_20wfst_20fmllr_20sat_20dnn_20ctc_20las_20cnn_20rnn_20lstm_20etc_6',['Why don&apos;t you support (pick one or more: WFST, fMLLR, SAT, DNN, CTC, LAS, CNN, RNN, LSTM, etc)?',['../index.html#faq_tech',1,'']]]
 ];

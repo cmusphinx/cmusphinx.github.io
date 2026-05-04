@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['deprecated_20list_649',['Deprecated List',['../deprecated.html',1,'']]]
+  ['api_20documentation_0',['PocketSphinx API Documentation',['../index.html',1,'']]]
 ];
