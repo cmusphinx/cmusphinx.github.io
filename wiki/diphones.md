@@ -5,6 +5,35 @@ A *diphone* is the last part of one phoneme followed by the first part of
 another. Either phoneme could be silence, and they can be the same phoneme. 
 Diphthongs include diphones in them.
 
+There are 2 variants of the diphone alignment system in PocketSphinx.
+
+The first one is **synthetic**, which builds diphone units automatically
+from context-dependent phone units (triphones) after reading their
+definition from `mdef` file. More precisely, it is done as follows:
+for each possible pair of base phones, it tries to find 2 triphones:
+one triphone that has the first base phone as main phone and the second
+base phone as RC (right context), and another triphone that has the
+first base phone as LC (left context) and the second base phone as
+main phone. Then it takes the last 1 senone from the first found
+triphone and the first 2 senones from the second found triphone.
+Use `-diphones=synthetic` command line parameter to enable this variant.
+
+The second one is **trained**, which uses pretrained acoustic model
+where diphones are defined as context-independent units.
+The model was trained on the "clean" subset of
+[LibriSpeech](http://www.openslr.org/12/) ASR corpus and
+contains 899 diphones. It requires the dictionary to use diphone
+units as well. The version of CMU Sphinx `en-us` dictionary
+with diphones was created with
+[this](https://github.com/akreal/diphones/blob/master/scripts/dict.py)
+script and it is also used automatically when the trained
+diphones acoustic model is chosen. Use `-diphones=trained` command
+line parameter to enable this variant.
+
+Additionally, you can use `-diphones=yes` command line parameter,
+which is currently an alias for the trained variant of
+the diphones alignment system.
+
 [This list of the top 4,800 words by frequency in English 
 speech](http://ucrel.lancs.ac.uk/bncfreq/lists/2_2_spokenvwritten.txt) was used 
 with [CMUDICT](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) to create the 
@@ -13,6 +42,7 @@ by approximate prevalence.
 
 ![diphones](/data/diphones.png)
 
+```
 UH_R 2.376%,
 AH_N 2.083%,
 T_SIL 1.863%,
@@ -1065,3 +1095,4 @@ ZH_V 0.003%,
 ZH_W 0.003%,
 ZH_Y 0.003%,
 ZH_Z 0.003%.
+```
