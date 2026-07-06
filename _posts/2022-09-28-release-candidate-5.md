@@ -42,4 +42,4 @@ transitions ("null" transitions for the less FST-aware), but it
 produces correct output now.
 
 Pull requests and bug reports and such are welcome via
-[https://github.com/cmusphinx/pocketsphinx](GitHub).
+[GitHub](https://github.com/cmusphinx/pocketsphinx).
