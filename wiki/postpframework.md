@@ -74,7 +74,7 @@ chuckled Billy Waldon `<PERIOD>`  He wants to show them where they get off
 ## Usage
 
 The project is available for download at 
-<https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/branches/ppf>.
+<https://sourceforge.net/p/cmusphinx/code/HEAD/tree/branches/ppf>.
 
 To compile the project install ant and be sure to set the required enviroment 
 variables.
